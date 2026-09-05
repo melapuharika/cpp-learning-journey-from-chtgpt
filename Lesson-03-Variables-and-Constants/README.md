@@ -1,4 +1,4 @@
-# Lesson 3: Variables and Constants
+moon# Lesson 3: Variables and Constants
 
 1. Variables and Constants
 2. Variables
@@ -99,4 +99,81 @@ Important Points
 
 Easy Definition
 
-A variable is a named memory location used to store data whose value can change during program execution.i
+A variable is a named memory location used to store data whose value can change during program execution.
+
+
+## Topic 2: Constants
+
+What is a Constant?
+
+A constant is a value that cannot be changed after it is initialized.
+
+We use constants when a value should remain fixed throughout the program.
+
+Real-Life Example
+
+A week always has 7 days.
+
+So we can store it as a constant:
+
+const int DAYS = 7;
+
+Now the value of "DAYS" cannot be changed.
+
+DAYS = 10;   // Error
+
+The compiler gives an error because "DAYS" is a constant.
+
+Constant Syntax
+
+const data_type constant_name = value;
+
+Example
+
+const int DAYS = 7;
+const double PI = 3.14159;
+
+Here:
+
+- "const" → Makes the variable constant
+- "int" / "double" → Data type
+- "DAYS" / "PI" → Constant name
+- "7" / "3.14159" → Value
+
+Variable vs Constant
+
+Variable| Constant
+Value can be changed| Value cannot be changed
+Example: "int age = 22;"| Example: "const int DAYS = 7;"
+Flexible| Fixed
+
+Example
+
+int age = 22;
+age = 23;          // Allowed
+
+const int DAYS = 7;
+DAYS = 10;         // Error
+
+Why Do We Use Constants?
+
+Constants are useful when a value should not change.
+
+Examples:
+
+- Number of days in a week
+- Mathematical values such as PI
+- Fixed limits
+- Configuration values
+
+Important Points
+
+- A constant stores a fixed value.
+- Its value cannot be changed after initialization.
+- The "const" keyword is used to create a constant.
+- A constant must normally be initialized when it is declared.
+- Trying to modify a constant causes a compilation error.
+
+Easy Definition
+
+A constant is a value that remains fixed and cannot be changed after initialization.
