@@ -1,4 +1,4 @@
-moon# Lesson 3: Variables and Constants
+# Lesson 3: Variables and Constants
 
 1. Variables and Constants
 2. Variables
