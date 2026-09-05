@@ -1065,3 +1065,67 @@ Some commonly used C++ compiler toolchains are:
 Easy Definition
 
 Compiler = A translator that converts C++ source code into compiled code and checks the program for many errors during compilation.
+
+
+### Topic 8: GCC, Clang & MSVC
+
+C++ programs ni compile cheyyadaniki different compiler toolchains available unnayi. The most common ones are GCC, Clang, and MSVC.
+
+1. GCC / g++
+
+GCC stands for GNU Compiler Collection.
+
+It is a collection of compilers developed by the GNU Project.
+
+For compiling C++ programs, we commonly use g++.
+
+Example:
+
+g++ main.cpp -o main
+
+GCC/g++ → GNU Project
+
+---
+
+2. Clang
+
+Clang is a compiler for C and C++ that is part of the LLVM project.
+
+It is known for:
+
+- Fast compilation
+- Helpful error messages
+- Good developer tools
+
+Clang → LLVM Project
+
+---
+
+3. MSVC
+
+MSVC stands for Microsoft Visual C++.
+
+It is Microsoft's C/C++ compiler toolchain and is commonly used for Windows development.
+
+It is closely integrated with Visual Studio.
+
+MSVC → Microsoft
+
+---
+
+4. Quick Comparison
+
+Compiler| Organization / Project| Common Use
+GCC / g++| GNU| Linux, Windows, cross-platform
+Clang| LLVM| macOS, Linux, cross-platform
+MSVC| Microsoft| Windows
+
+Easy Memory Trick
+
+GCC / g++ → GNU
+Clang     → LLVM
+MSVC      → Microsoft
+
+One-Line Summary
+
+GCC/g++, Clang, and MSVC are popular C++ compiler toolchains used to compile C++ programs on different platforms.
