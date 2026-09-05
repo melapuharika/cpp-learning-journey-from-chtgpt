@@ -25,3 +25,20 @@ Topics Covered
 Learning Goal
 
 By the end of this lesson, I will understand what C++ is, why it is used, the major C++ standards, what a compiler does, and how a C++ program is converted from source code into an executable program.
+
+## 1. Introduction to C++
+
+C++ is a general-purpose, compiled, statically typed, multi-paradigm programming language designed for high performance and providing significant control over system resources.
+
+### Key Points
+
+- C++ is a general-purpose programming language.
+- It was developed by Bjarne Stroustrup at Bell Labs.
+- C++ evolved from the C programming language.
+- C++ supports procedural, object-oriented, and generic programming.
+- C++ provides high performance and low-level capabilities.
+- C++ is widely used in performance-critical applications.
+
+### What I Learned
+
+I learned what C++ is, why it is used, its major characteristics, and how a basic C++ program works.
