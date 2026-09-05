@@ -251,3 +251,80 @@ Important Points
 Easy Definition
 
 "const" is a keyword used to create a variable whose value cannot be changed after initialization.
+
+## Topic 4: constexpr
+
+What is "constexpr"?
+
+"constexpr" is a C++ keyword used to declare a value that can be evaluated at compile time.
+
+A "constexpr" variable is also constant, so its value cannot be changed after initialization.
+
+Syntax
+
+constexpr data_type variable_name = value;
+
+Example
+
+constexpr int DAYS = 7;
+
+Here, "DAYS" has a fixed value of "7".
+
+It cannot be changed:
+
+DAYS = 10;   // ❌ Error
+
+Compile-Time Calculation
+
+"constexpr" can be used when a value can be calculated during compilation.
+
+constexpr int SIZE = 10 * 2;
+
+The compiler can evaluate "10 * 2" at compile time, so "SIZE" becomes "20".
+
+"const" vs "constexpr"
+
+Both are used for values that should not be modified.
+
+"const"
+
+const int age = 22;
+
+"const" means the value cannot be changed after initialization.
+
+"constexpr"
+
+constexpr int SIZE = 10 * 2;
+
+"constexpr" means the value is constant and is intended to be evaluated at compile time.
+
+"const"| "constexpr"
+Value cannot be changed| Value cannot be changed
+Not necessarily a compile-time constant| Must be usable as a compile-time constant
+Used for read-only values| Used for compile-time constants
+
+Examples
+
+constexpr int DAYS = 7;
+constexpr int HOURS = 24;
+constexpr int MINUTES = 60;
+constexpr int SIZE = 10 * 2;
+
+Why Use "constexpr"?
+
+- Helps create compile-time constants
+- Can allow calculations to happen during compilation
+- Makes the programmer's intention clear
+- Useful where a compile-time constant is required
+
+Important Points
+
+- "constexpr" is a C++ keyword.
+- A "constexpr" variable is constant.
+- Its value cannot be modified.
+- It is designed for compile-time evaluation.
+- The initializer must satisfy the rules for a constant expression.
+
+Easy Definition
+
+"constexpr" is used to create a constant whose value can be evaluated at compile time.
