@@ -315,3 +315,203 @@ In this topic, I learned:
 - Why C++ provides high performance
 - How C++ provides control over memory and system resources
 - What portability means in C++
+
+## Topic 3: C vs C++
+
+1. Introduction
+
+C and C++ are general-purpose programming languages.
+
+C++ evolved from C and was initially called "C with Classes."
+
+- C → Mainly Procedural Programming
+- C++ → Multi-Paradigm Programming
+
+---
+
+2. C
+
+C is mainly a procedural programming language.
+
+It focuses on:
+
+- Functions
+- Procedures
+- Data
+
+Example:
+
+void greet()
+{
+    printf("Hello");
+}
+
+---
+
+3. C++
+
+C++ is a general-purpose, compiled, statically typed, multi-paradigm language.
+
+It supports:
+
+- Procedural Programming
+- Object-Oriented Programming (OOP)
+- Generic Programming
+
+C++ also provides features like classes, objects, inheritance, polymorphism, templates, exception handling, and STL.
+
+---
+
+4. C vs C++
+
+Feature| C| C++
+Main approach| Procedural| Multi-Paradigm
+Classes & Objects| ❌| ✅
+Encapsulation| ❌| ✅
+Inheritance| ❌| ✅
+Polymorphism| ❌| ✅
+Function Overloading| ❌| ✅
+Templates| ❌| ✅
+Exception Handling| ❌| ✅
+STL| ❌| ✅
+Pointers| ✅| ✅
+Functions| ✅| ✅
+High Performance| ✅| ✅
+
+---
+
+5. Major Features of C++
+
+Classes & Objects
+
+Classes are blueprints for creating objects.
+
+class Car
+{
+public:
+    void start()
+    {
+        cout << "Car Started";
+    }
+};
+
+Car myCar;
+
+Encapsulation
+
+Combining data and related functions inside a class and controlling access to them.
+
+Inheritance
+
+One class can acquire properties and functions of another class.
+
+Polymorphism
+
+The same interface/name can have different behaviors.
+
+Function Overloading
+
+Same function name with different parameters.
+
+int add(int a, int b);
+int add(int a, int b, int c);
+
+Templates
+
+Used to write generic code that works with different data types.
+
+Exception Handling
+
+C++ provides "try", "catch", and "throw" for handling exceptions.
+
+STL
+
+Standard Template Library provides useful components such as:
+
+"vector", "list", "stack", "queue", "map", "set", and algorithms.
+
+STL is very important for DSA and coding interviews.
+
+---
+
+6. Memory Management
+
+C
+
+malloc()
+calloc()
+realloc()
+free()
+
+C++
+
+new
+delete
+
+Modern C++ also provides smart pointers such as:
+
+unique_ptr
+shared_ptr
+
+---
+
+7. Input and Output
+
+C
+
+printf()
+scanf()
+
+C++
+
+cout
+cin
+
+---
+
+8. Performance
+
+Both C and C++ can provide high performance.
+
+They are commonly used in:
+
+- Operating Systems
+- Games
+- Embedded Systems
+- Automotive Software
+- Scientific Computing
+- Financial Systems
+
+---
+
+9. Important Point
+
+C++ evolved from C, but C++ is a separate programming language with its own rules and features.
+
+Not every valid C program is guaranteed to be valid C++.
+
+---
+
+Easy Shortcut
+
+C
+→ Mainly Procedural
+→ Functions + Data
+
+C++
+→ Multi-Paradigm
+→ Procedural + OOP + Generic Programming
+→ Classes + Objects + Templates + STL
+
+One-Line Difference
+
+C mainly focuses on functions and procedural programming, while C++ supports procedural programming along with OOP, generic programming, and many additional features.
+
+What I Learned
+
+- C is mainly procedural.
+- C++ evolved from C.
+- C++ supports multiple programming paradigms.
+- C++ provides OOP features like classes, objects, inheritance, encapsulation, and polymorphism.
+- C++ supports templates, exception handling, and STL.
+- Both C and C++ can provide high performance.
