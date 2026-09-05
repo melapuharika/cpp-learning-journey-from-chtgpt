@@ -1129,3 +1129,60 @@ MSVC      → Microsoft
 One-Line Summary
 
 GCC/g++, Clang, and MSVC are popular C++ compiler toolchains used to compile C++ programs on different platforms.
+
+
+### Topic 9: IDEs and Compilers
+
+1. What is an IDE?
+
+IDE stands for Integrated Development Environment.
+
+It is a software environment that provides tools needed for software development in one place.
+
+An IDE commonly provides:
+
+- Code Editor – write and edit code
+- Compiler Integration – compile programs
+- Debugger – find and fix errors
+- Build Tools – build projects
+- Project Management – organize project files
+
+---
+
+2. Examples of IDEs
+
+- Visual Studio
+- CLion
+- Code::Blocks
+- Dev-C++
+
+VS Code is primarily a code editor, but with extensions and external tools such as a compiler and debugger, it can be used for C++ development.
+
+---
+
+3. IDE vs Compiler
+
+IDE| Compiler
+Provides a complete development environment| Translates/compiles source code
+Used to write, build, debug, and manage code| Mainly processes and compiles code
+Example: Visual Studio| Example: g++
+May integrate with a compiler| Is a tool used by the development environment
+
+Example
+
+VS Code
+   ↓
+Code Editor
+   ↓
+g++ Compiler
+   ↓
+Compiled C++ Program
+
+Easy Memory Trick
+
+IDE = Place where you develop your program.
+Compiler = Tool that compiles your program.
+
+One-Line Summary
+
+An IDE provides an integrated environment for writing, compiling, debugging, and managing programs, while a compiler processes source code into compiled code.
