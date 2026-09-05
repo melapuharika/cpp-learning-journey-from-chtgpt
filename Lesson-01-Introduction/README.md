@@ -1186,3 +1186,80 @@ Compiler = Tool that compiles your program.
 One-Line Summary
 
 An IDE provides an integrated environment for writing, compiling, debugging, and managing programs, while a compiler processes source code into compiled code.
+
+
+
+### Topic 10: Program Compilation Process
+
+What is Compilation?
+
+Compilation is the process of converting C++ source code into an executable program that the computer can run.
+
+Compilation Flow
+
+C++ Source Code → Preprocessing → Compilation → Assembly → Linking → Executable
+
+---
+
+1. Preprocessing
+
+The preprocessor handles preprocessor directives such as:
+
+#include <iostream>
+
+It prepares the source code before actual compilation.
+
+---
+
+2. Compilation
+
+The compiler:
+
+- Checks syntax and type-related errors
+- Translates C++ code into lower-level code, commonly assembly
+- Reports compilation errors
+
+Example:
+
+int age = "Hello";
+
+This causes a type-related compilation error because "age" is an "int".
+
+---
+
+3. Assembly
+
+The assembler converts assembly code into machine/object code.
+
+The result is usually an object file.
+
+---
+
+4. Linking
+
+The linker combines:
+
+- Object files
+- Required library code
+- Other compiled code
+
+It produces the final executable program.
+
+---
+
+Final Result
+
+After linking, we get an executable file that can be run by the operating system.
+
+Easy Memory Trick
+
+P → C → A → L
+
+- P = Preprocessing
+- C = Compilation
+- A = Assembly
+- L = Linking
+
+One-Line Summary
+
+The C++ compilation process converts source code into an executable program through preprocessing, compilation, assembly, and linking.
