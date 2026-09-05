@@ -627,3 +627,112 @@ Important Points
 Easy Definition
 
 Scope is the area of a program where a variable can be accessed or used.
+
+
+## Topic 8: Lifetime
+
+What is Lifetime?
+
+Lifetime is the period during which an object exists in a program.
+
+In simple words:
+
+«Lifetime tells us how long an object is alive.»
+
+An object's lifetime starts when it is created and ends when it is destroyed.
+
+Simple Example
+
+void fun()
+{
+    int x = 10;
+
+    std::cout << x << std::endl;
+}
+
+When "fun()" is called:
+
+1. "x" is created.
+2. "x" is used.
+3. The function finishes.
+4. "x" is destroyed.
+
+So, the lifetime of "x" is approximately:
+
+Function starts → Function ends
+
+Static Variable Example
+
+void fun()
+{
+    static int x = 10;
+
+    std::cout << x << std::endl;
+}
+
+Here, "x" is a local variable, but because it is "static", its lifetime continues until the program ends.
+
+It is initialized only once and keeps its value between function calls.
+
+Scope vs Lifetime
+
+Scope and lifetime are different concepts.
+
+Scope
+
+Scope = Where can I use the variable?
+
+Lifetime
+
+Lifetime = How long does the object exist?
+
+For example:
+
+void fun()
+{
+    static int x = 10;
+}
+
+Here:
+
+- "x" has local/block scope.
+- "x" has static storage duration.
+- Its lifetime continues until the program ends.
+
+Common Lifetime Examples
+
+Local Automatic Object
+
+void fun()
+{
+    int x = 10;
+}
+
+"x" is created when execution reaches its declaration and is destroyed when its scope is exited.
+
+Static Object
+
+static int x = 10;
+
+The object exists for the lifetime of the program.
+
+Dynamic Object
+
+int* p = new int(10);
+
+delete p;
+
+The dynamically allocated object exists from "new" until it is released with "delete" (for this raw-pointer example).
+
+Important Points
+
+- Lifetime starts when an object is created.
+- Lifetime ends when an object is destroyed.
+- Different objects can have different lifetimes.
+- Lifetime is different from scope.
+- A local variable usually has a short lifetime.
+- A static object has a lifetime that lasts until program termination.
+
+Easy Definition
+
+Lifetime is the period from when an object is created until it is destroyed.
