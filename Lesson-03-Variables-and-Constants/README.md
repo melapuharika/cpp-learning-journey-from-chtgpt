@@ -415,3 +415,98 @@ Important Points
 Easy Definition
 
 A "static" local variable is a variable that remembers its value between function calls and exists for the lifetime of the program.
+
+
+## Topic 6: extern
+
+What is "extern"?
+
+"extern" is a keyword in C++ used to tell the compiler that a variable is defined somewhere else.
+
+It is commonly used when we want to use a global variable from another source file.
+
+Simple Example
+
+Suppose we have two files.
+
+File 1:
+
+int marks = 90;
+
+Here, "marks" is actually created and defined.
+
+File 2:
+
+extern int marks;
+
+Here, we are telling the compiler:
+
+«""marks" already exists somewhere else. I want to use it here."»
+
+We can then use it:
+
+std::cout << marks;
+
+Output:
+
+90
+
+Definition vs Declaration
+
+Definition
+
+int marks = 90;
+
+This creates/defines the variable and gives it storage.
+
+"extern" Declaration
+
+extern int marks;
+
+This declares that the variable exists somewhere else.
+
+It does not create a new variable.
+
+Why Use "extern"?
+
+"extern" is useful when:
+
+- A program has multiple ".cpp" files.
+- A global variable is defined in one file.
+- We need to access that variable from another file.
+
+Example with Two Files
+
+"main.cpp"
+
+#include <iostream>
+
+extern int marks;
+
+int main()
+{
+    std::cout << marks << std::endl;
+    return 0;
+}
+
+"data.cpp"
+
+int marks = 90;
+
+Here:
+
+- "data.cpp" → defines "marks"
+- "main.cpp" → declares "marks" using "extern"
+- "main.cpp" can use the variable defined in "data.cpp"
+
+Important Points
+
+- "extern" is a C++ keyword.
+- It tells the compiler that a variable is defined somewhere else.
+- It is commonly used with global variables.
+- It is useful for sharing variables between multiple source files.
+- "extern" declaration does not create a new variable.
+
+Easy Definition
+
+"extern" tells the compiler that a variable exists somewhere else and can be used here.
