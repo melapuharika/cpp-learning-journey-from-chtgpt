@@ -328,3 +328,90 @@ Important Points
 Easy Definition
 
 "constexpr" is used to create a constant whose value can be evaluated at compile time.
+
+## Topic 5: static
+
+What is "static"?
+
+"static" is a keyword in C++.
+
+For a local variable, "static" allows the variable to keep its value between function calls.
+
+Simple Example
+
+void count()
+{
+    static int x = 0;
+    x++;
+    std::cout << x << std::endl;
+}
+
+If we call "count()" three times:
+
+count();
+count();
+count();
+
+Output:
+
+1
+2
+3
+
+Why?
+
+Normally, a local variable starts again when the function is called.
+
+But a "static" local variable remembers its previous value.
+
+Think of it like a box 📦:
+
+- Normal variable → box is thrown away after the function finishes.
+- Static variable → box is kept, so its value can be used in the next function call.
+
+Normal Variable
+
+void count()
+{
+    int x = 0;
+    x++;
+    std::cout << x << std::endl;
+}
+
+Calling it three times gives:
+
+1
+1
+1
+
+Because "x" starts from "0" each time.
+
+Static Variable
+
+void count()
+{
+    static int x = 0;
+    x++;
+    std::cout << x << std::endl;
+}
+
+Calling it three times gives:
+
+1
+2
+3
+
+Because "x" remembers its previous value.
+
+Important Points
+
+- "static" is a C++ keyword.
+- A static local variable is initialized only once.
+- It keeps its value between function calls.
+- It has static storage duration.
+- Its lifetime continues until the program ends.
+- "static" has different uses depending on where it is declared.
+
+Easy Definition
+
+A "static" local variable is a variable that remembers its value between function calls and exists for the lifetime of the program.
