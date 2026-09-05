@@ -510,3 +510,120 @@ Important Points
 Easy Definition
 
 "extern" tells the compiler that a variable exists somewhere else and can be used here.
+
+
+## Topic 7: Scope
+
+What is Scope?
+
+Scope is the area of a program where a variable can be accessed or used.
+
+In simple words:
+
+«Scope tells us where a variable can be used.»
+
+Simple Example
+
+int main()
+{
+    int age = 22;
+
+    std::cout << age;   // ✅ Allowed
+}
+
+Here, "age" is declared inside "main()", so it can be used inside that area.
+
+But:
+
+int main()
+{
+    int age = 22;
+}
+
+std::cout << age;   // ❌ Error
+
+Here, "age" cannot be used outside "main()" because it is outside its scope.
+
+Types of Scope
+
+1. Local Scope
+
+A variable declared inside a function has local scope.
+
+void display()
+{
+    int number = 10;
+
+    std::cout << number;   // ✅ Allowed
+}
+
+"number" can be accessed inside "display()".
+
+2. Block Scope
+
+A variable declared inside "{ }" has block scope.
+
+int main()
+{
+    {
+        int x = 10;
+        std::cout << x;   // ✅ Allowed
+    }
+
+    std::cout << x;       // ❌ Error
+}
+
+"x" can be used only inside the block where it is declared.
+
+3. Global Scope
+
+A variable declared outside all functions has global scope.
+
+int age = 22;
+
+int main()
+{
+    std::cout << age;   // ✅ Allowed
+}
+
+Here, "age" is declared outside the functions, so it can be accessed from places where its name is visible.
+
+Scope Example
+
+int x = 10;   // Global scope
+
+int main()
+{
+    int y = 20;   // Local scope
+
+    std::cout << x << std::endl;
+    std::cout << y << std::endl;
+
+    return 0;
+}
+
+Here:
+
+- "x" → Global scope
+- "y" → Local scope
+
+Scope vs Lifetime
+
+Scope and lifetime are different.
+
+- Scope → Where can I use the variable?
+- Lifetime → How long does the object exist?
+
+For example, a local variable may have a small scope but exist only while execution is inside that function.
+
+Important Points
+
+- Scope defines where a variable can be accessed.
+- A local variable can be accessed only within its scope.
+- A variable inside "{ }" has block scope.
+- A variable declared outside functions can have global scope.
+- Scope is about where a name is visible, not how long the object exists.
+
+Easy Definition
+
+Scope is the area of a program where a variable can be accessed or used.
