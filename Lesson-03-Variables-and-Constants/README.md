@@ -177,3 +177,77 @@ Important Points
 Easy Definition
 
 A constant is a value that remains fixed and cannot be changed after initialization.
+
+
+## Topic 3: const
+
+What is "const"?
+
+"const" is a keyword in C++ used to make a variable constant.
+
+Once a "const" variable is initialized, its value cannot be changed.
+
+Syntax
+
+const data_type variable_name = value;
+
+Example
+
+const int age = 22;
+
+Here:
+
+- "const" → Makes the variable constant
+- "int" → Data type
+- "age" → Variable name
+- "22" → Initial value
+
+The value cannot be changed:
+
+age = 23;   // ❌ Error
+
+Normal Variable vs "const" Variable
+
+Normal Variable
+
+int age = 22;
+age = 23;       // ✅ Allowed
+
+The value can be changed.
+
+"const" Variable
+
+const int age = 22;
+age = 23;       // ❌ Error
+
+The value cannot be changed.
+
+Examples
+
+const int DAYS = 7;
+const double PI = 3.14159;
+const int MAX_MARKS = 100;
+
+These values should remain fixed.
+
+Why Use "const"?
+
+We use "const" when a value should not be modified accidentally.
+
+Benefits:
+
+- Prevents unwanted changes
+- Makes code safer
+- Makes the programmer's intention clear
+- Useful for fixed values
+
+Important Points
+
+- "const" is a C++ keyword.
+- It makes a variable read-only after initialization.
+- A "const" variable should be initialized when it is declared.
+- Trying to modify a "const" variable causes a compilation error.
+
+Easy Definition
+
+"const" is a keyword used to create a variable whose value cannot be changed after initialization.
