@@ -849,3 +849,161 @@ Main reasons:
 One-Line Summary
 
 C++ is mainly used in applications where speed, performance, efficiency, and control over system resources are important.
+
+
+### Topic 6: C++ Standards
+
+1. What is a C++ Standard?
+
+A C++ Standard is an official specification that defines the rules, features, and behavior of the C++ language and its standard library.
+
+New standards are released to improve and modernize C++.
+
+Main versions covered:
+
+C++11 → C++14 → C++17 → C++20 → C++23
+
+---
+
+2. C++11
+
+C++11 was a major update that introduced many modern C++ features.
+
+Important Features
+
+- "auto"
+- "nullptr"
+- Range-based "for" loop
+- Lambda expressions
+- Smart pointers
+- Move semantics
+- Multithreading support
+
+Example:
+
+auto age = 23;
+
+for (int x : numbers)
+{
+    cout << x;
+}
+
+C++11 → Major modernization of C++.
+
+---
+
+3. C++14
+
+C++14 mainly improved and simplified features introduced in C++11.
+
+Important Features
+
+- Generic lambdas
+- Return type deduction
+- Binary literals
+- Digit separators
+
+Example:
+
+auto add = [](auto a, auto b)
+{
+    return a + b;
+};
+
+C++14 → Improvements to C++11.
+
+---
+
+4. C++17
+
+C++17 introduced many useful modern language and library features.
+
+Important Features
+
+- Structured bindings
+- "if constexpr"
+- "std::optional"
+- "std::variant"
+- "std::string_view"
+- "std::filesystem"
+- "std::any"
+
+Example:
+
+auto [name, age] = student;
+
+C++17 → Important modern C++ standard.
+
+---
+
+5. C++20
+
+C++20 was another major upgrade to C++.
+
+Important Features
+
+- Concepts
+- Ranges
+- Coroutines
+- Modules
+- "std::span"
+- Three-way comparison operator "<=>"
+
+C++20 made generic programming and modern C++ development more powerful.
+
+C++20 → Major language and library upgrade.
+
+---
+
+6. C++23
+
+C++23 introduced further improvements to the language and standard library.
+
+Important Features
+
+- "std::expected"
+- "std::print"
+- "std::println"
+- Improvements to ranges
+- "std::mdspan"
+- Many library improvements
+
+Example:
+
+std::println("Hello, C++23!");
+
+C++23 → Further improvements to modern C++.
+
+---
+
+7. Quick Comparison
+
+Standard| Main Focus
+C++11| Major modernization
+C++14| C++11 improvements
+C++17| Modern language & library features
+C++20| Concepts, Ranges, Coroutines, Modules
+C++23| Further language & library improvements
+
+---
+
+Easy Memory Trick
+
+C++11 → Modernization 🚀
+C++14 → Improvements 🔧
+C++17 → Modern Features ⭐
+C++20 → Major Upgrade 🔥
+C++23 → Further Improvements ✨
+
+One-Line Summary
+
+C++ standards are updated versions of the C++ language that introduce new features, improvements, and library capabilities while maintaining compatibility as much as possible.
+
+What I Learned
+
+- A C++ standard defines rules and features of C++.
+- C++11 introduced many modern features.
+- C++14 improved C++11.
+- C++17 added many useful modern features.
+- C++20 introduced major features such as Concepts, Ranges, and Coroutines.
+- C++23 added further language and library improvements.
