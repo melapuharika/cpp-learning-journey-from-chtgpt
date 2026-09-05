@@ -736,3 +736,149 @@ Important Points
 Easy Definition
 
 Lifetime is the period from when an object is created until it is destroyed.
+
+
+## Topic 9: Storage Duration
+
+What is Storage Duration?
+
+Storage duration tells us how long the memory/storage for an object is maintained during program execution.
+
+In simple words:
+
+«Storage Duration = How long does the object's storage exist?»
+
+C++ has four main types of storage duration:
+
+1. Automatic storage duration
+2. Static storage duration
+3. Thread storage duration
+4. Dynamic storage duration
+
+---
+
+1. Automatic Storage Duration
+
+Local variables that are not declared as "static", "thread_local", etc. generally have automatic storage duration.
+
+Example
+
+void fun()
+{
+    int x = 10;
+}
+
+When execution enters the relevant scope, "x" is created.
+
+When the scope ends, "x" is destroyed and its storage is no longer available for that object.
+
+👉 Easy idea: Short/local lifetime
+
+---
+
+2. Static Storage Duration
+
+Objects with static storage duration exist for the entire program execution.
+
+Example
+
+static int x = 10;
+
+The storage for "x" remains available until the program ends.
+
+Global variables also have static storage duration.
+
+👉 Easy idea: Program lifetime
+
+---
+
+3. Thread Storage Duration
+
+A variable declared with "thread_local" has thread storage duration.
+
+Example
+
+thread_local int x = 10;
+
+Each thread gets its own separate copy of "x".
+
+The storage exists for the lifetime of that thread.
+
+👉 Easy idea: Thread lifetime
+
+---
+
+4. Dynamic Storage Duration
+
+Dynamic storage duration is used when storage is allocated during program execution.
+
+Example
+
+int* p = new int(10);
+
+delete p;
+
+Here:
+
+- "new" allocates storage during runtime.
+- "delete" releases the storage for the object.
+
+In modern C++, smart pointers and RAII are generally preferred over manually managing memory with "new" and "delete".
+
+👉 Easy idea: Runtime allocation
+
+---
+
+Storage Duration Comparison
+
+Type| Storage Exists For| Example
+Automatic| Until the relevant scope ends| "int x = 10;"
+Static| Entire program execution| "static int x = 10;"
+Thread| Lifetime of the thread| "thread_local int x = 10;"
+Dynamic| Until the allocated object is released/destroyed| "new int(10)"
+
+---
+
+Storage Duration vs Scope vs Lifetime
+
+These three concepts are different.
+
+Scope
+
+Where can I use the name?
+
+Lifetime
+
+How long does the object exist?
+
+Storage Duration
+
+How long is storage associated with the object?
+
+Example:
+
+void fun()
+{
+    static int x = 10;
+}
+
+Here:
+
+- "x" has local/block scope.
+- "x" has static storage duration.
+- The object exists until program termination.
+
+---
+
+Important Points
+
+- Storage duration describes how long an object's storage lasts.
+- C++ has four main storage duration categories.
+- Automatic storage duration is commonly associated with local variables.
+- Static storage duration lasts for the entire program execution.
+- Thread storage duration is associated with "thread_local".
+- Dynamic storage duration involves runtime allocation.
+
+Easy Definition
+
+Storage duration is the period for which storage is maintained for an object during program execution.
