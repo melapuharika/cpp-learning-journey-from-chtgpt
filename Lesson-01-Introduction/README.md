@@ -1007,3 +1007,61 @@ What I Learned
 - C++17 added many useful modern features.
 - C++20 introduced major features such as Concepts, Ranges, and Coroutines.
 - C++23 added further language and library improvements.
+
+### Topic 7: Compiler
+
+What is a Compiler?
+
+A compiler is a software program that translates source code written in a programming language like C++ into a lower-level form that the computer can execute.
+
+Computers cannot directly execute C++ source code, so the compiler processes it and converts it into compiled code.
+
+Simple Flow
+
+C++ Source Code
+      ↓
+   Compiler
+      ↓
+Compiled Code
+      ↓
+   Computer
+
+What Does a Compiler Do?
+
+A compiler mainly:
+
+1. Processes the source code.
+2. Checks the code for many syntax and type errors.
+3. Translates the source code into compiled/object code.
+4. Helps produce code that can be executed after the necessary linking steps.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello";
+    return 0;
+}
+
+The compiler processes this C++ program and reports compilation errors if the code contains problems.
+
+Example of an Error
+
+int age = "Hello";
+
+Here, "age" is an "int", but ""Hello"" is a string literal. The compiler can detect this type mismatch and report an error.
+
+C++ Compilers
+
+Some commonly used C++ compiler toolchains are:
+
+- GCC / g++
+- Clang
+- MSVC
+
+Easy Definition
+
+Compiler = A translator that converts C++ source code into compiled code and checks the program for many errors during compilation.
