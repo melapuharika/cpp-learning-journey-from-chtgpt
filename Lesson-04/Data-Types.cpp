@@ -352,3 +352,64 @@ Output
 8000000000
 
 Remember: "long long" → Very large whole numbers.
+
+
+ ### topic :10 signed and unsigned
+
+- "signed" and "unsigned" are type modifiers.
+- They are commonly used with integer data types such as "int", "short", and "long".
+
+signed
+
+- "signed" can store positive, negative, and zero values.
+- "int" is "signed" by default.
+
+Syntax
+
+signed int number = -50;
+
+Examples
+
+signed int age = 22;
+signed int temperature = -5;
+
+unsigned
+
+- "unsigned" can store zero and positive values.
+- It cannot represent negative values.
+- It can provide a larger positive range than the corresponding signed type.
+
+Syntax
+
+unsigned int number = 50;
+
+Examples
+
+unsigned int age = 22;
+unsigned int students = 100;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    signed int temperature = -5;
+    unsigned int students = 50;
+
+    cout << temperature << endl;
+    cout << students;
+
+    return 0;
+}
+
+Output
+
+-5
+50
+
+Remember:
+
+"signed" → negative + zero + positive
+"unsigned" → zero + positive
