@@ -131,3 +131,41 @@ Output
 36.5
 
 Remember: "float" → Decimal numbers.
+
+### topic 4:double
+
+- "double" is used to store decimal numbers.
+- It provides more precision than "float".
+- It is a double-precision floating-point data type.
+- It usually uses 8 bytes of memory.
+- It is commonly used when more accurate decimal calculations are needed.
+
+Syntax
+
+double variable_name = value;
+
+Examples
+
+double pi = 3.141592653589793;
+double price = 999.99;
+double distance = 12345.6789;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double pi = 3.141592653589793;
+
+    cout << pi;
+
+    return 0;
+}
+
+Output
+
+3.141592653589793
+
+Remember: "double" → Decimal numbers with higher precision.
