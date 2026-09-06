@@ -275,3 +275,42 @@ Output
 50
 
 Remember: "short" → Smaller-range whole numbers.
+
+
+ ### topic8:long
+
+- "long" is an integer data type.
+- It is used to store whole numbers.
+- It can provide a larger range than "int" on some systems.
+- The size and range of "long" depend on the system and compiler.
+- On many Windows systems, "long" is 4 bytes.
+- On many 64-bit Linux systems, "long" is 8 bytes.
+
+Syntax
+
+long variable_name = value;
+
+Examples
+
+long population = 1400000000L;
+long distance = 500000L;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long population = 1400000000L;
+
+    cout << population;
+
+    return 0;
+}
+
+Output
+
+1400000000
+
+Remember: "long" → Large-range whole numbers.
