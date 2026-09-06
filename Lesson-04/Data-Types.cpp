@@ -54,3 +54,41 @@ Output
 22
 
 Remember: "int" → Whole numbers.
+
+ ### topic:2 char
+
+- "char" is short for character.
+- It is used to store a single character.
+- A character is written inside single quotes "' '".
+- A "char" can store letters, digits, or special characters.
+
+Syntax
+
+char variable_name = 'character';
+
+Examples
+
+char grade = 'A';
+char letter = 'H';
+char digit = '5';
+char symbol = '#';
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char grade = 'A';
+
+    cout << grade;
+
+    return 0;
+}
+
+Output
+
+A
+
+Remember: "char" → Single character.
