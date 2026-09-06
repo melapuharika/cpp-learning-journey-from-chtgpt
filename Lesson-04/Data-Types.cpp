@@ -314,3 +314,41 @@ Output
 1400000000
 
 Remember: "long" → Large-range whole numbers.
+
+
+ ### topic 9:long long
+
+- "long long" is an integer data type.
+- It is used to store very large whole numbers.
+- It provides at least 64 bits (8 bytes) of storage on standard-conforming implementations.
+- It has a much larger range than "int" on typical systems.
+- The suffix "LL" can be used to indicate a "long long" integer literal.
+
+Syntax
+
+long long variable_name = value;
+
+Examples
+
+long long population = 8000000000LL;
+long long distance = 9876543210LL;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long long population = 8000000000LL;
+
+    cout << population;
+
+    return 0;
+}
+
+Output
+
+8000000000
+
+Remember: "long long" → Very large whole numbers.
