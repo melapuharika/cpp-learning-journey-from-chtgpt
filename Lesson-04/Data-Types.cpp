@@ -413,3 +413,43 @@ Remember:
 
 "signed" → negative + zero + positive
 "unsigned" → zero + positive
+
+
+ ### topic:11 wchar_t
+
+- "wchar_t" is a wide character type.
+- It is used to represent wide characters.
+- It is written with the "L" prefix.
+- The size of "wchar_t" depends on the system/compiler.
+- It is different from the normal "char" type.
+
+Syntax
+
+wchar_t variable_name = L'character';
+
+Example
+
+wchar_t letter = L'A';
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    wchar_t letter = L'A';
+
+    wcout << letter;
+
+    return 0;
+}
+
+Output
+
+A
+
+Remember
+
+"char" → "'A'"
+"wchar_t" → "L'A'"
