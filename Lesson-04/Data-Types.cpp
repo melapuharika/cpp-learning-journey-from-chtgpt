@@ -453,3 +453,173 @@ Remember
 
 "char" → "'A'"
 "wchar_t" → "L'A'"
+
+
+### topic :12,13,14 char8_t
+
+Definition
+
+- "char8_t" is a character type introduced in C++20.
+- It is specifically used for storing UTF-8 encoded character data.
+- It is an unsigned integer type used to represent UTF-8 code units.
+- It is written using the "u8" prefix.
+
+Syntax
+
+char8_t variable_name = u8'character';
+
+Example
+
+char8_t ch = u8'A';
+
+Here:
+
+- "char8_t" → data type
+- "ch" → variable name
+- "u8'A'" → UTF-8 character literal
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char8_t ch = u8'A';
+
+    cout << static_cast<char>(ch);
+
+    return 0;
+}
+
+Output
+
+A
+
+Important Points
+
+- "char8_t" is mainly used for UTF-8 encoded data.
+- It was introduced in C++20.
+- "u8" is used as the prefix for UTF-8 character/string literals.
+- "char8_t" should not be confused with ordinary "char".
+
+---
+
+char16_t
+
+Definition
+
+- "char16_t" is a character type used for UTF-16 encoded character data.
+- It is useful when working with UTF-16 code units.
+- It is written using the "u" prefix.
+
+Syntax
+
+char16_t variable_name = u'character';
+
+Example
+
+char16_t ch = u'A';
+
+Here:
+
+- "char16_t" → data type
+- "ch" → variable name
+- "u'A'" → UTF-16 character literal
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char16_t ch = u'A';
+
+    cout << static_cast<char>(ch);
+
+    return 0;
+}
+
+Output
+
+A
+
+Important Points
+
+- "char16_t" is used for UTF-16 encoded data.
+- "u" is the prefix used for UTF-16 character literals.
+- It is a distinct built-in type in C++.
+- A UTF-16 code point may sometimes require more than one "char16_t" code unit.
+
+---
+
+char32_t
+
+Definition
+
+- "char32_t" is a character type used for UTF-32 encoded character data.
+- It is useful for representing Unicode code points in a 32-bit code unit.
+- It is written using the "U" prefix.
+
+Syntax
+
+char32_t variable_name = U'character';
+
+Example
+
+char32_t ch = U'A';
+
+Here:
+
+- "char32_t" → data type
+- "ch" → variable name
+- "U'A'" → UTF-32 character literal
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char32_t ch = U'A';
+
+    cout << static_cast<char>(ch);
+
+    return 0;
+}
+
+Output
+
+A
+
+Important Points
+
+- "char32_t" is used for UTF-32 encoded data.
+- "U" is the prefix used for UTF-32 character literals.
+- It is a distinct built-in type in C++.
+- It provides a 32-bit code unit for Unicode character data.
+
+---
+
+Difference Between char8_t, char16_t and char32_t
+
+Data Type| Encoding| Literal Prefix
+"char8_t"| UTF-8| "u8"
+"char16_t"| UTF-16| "u"
+"char32_t"| UTF-32| "U"
+
+Easy Way to Remember
+
+char8_t  → UTF-8  → u8
+char16_t → UTF-16 → u
+char32_t → UTF-32 → U
+
+Final Note
+
+These three types are mainly useful when working with Unicode and encoded text.
+
+- "char8_t" → UTF-8
+- "char16_t" → UTF-16
+- "char32_t" → UTF-32
