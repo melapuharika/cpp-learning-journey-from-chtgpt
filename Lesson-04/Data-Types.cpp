@@ -209,3 +209,30 @@ Output
 1
 
 Remember: "bool" → "true" or "false".
+
+
+ ### topic:6 void
+
+- "void" means no value.
+- "void" is mainly used with functions.
+- A "void" function does not return a value.
+- "void" cannot normally be used to create a variable.
+- It is also used in other concepts such as "void*" pointers.
+
+Syntax
+
+void function_name()
+{
+    // statements
+}
+
+Example
+
+void greet()
+{
+    cout << "Hello";
+}
+
+Here, the "greet()" function performs an action but does not return a value.
+
+Remember: "void" → No value / Nothing to return.
