@@ -169,3 +169,43 @@ Output
 3.141592653589793
 
 Remember: "double" → Decimal numbers with higher precision.
+
+ ### topic:5 bool
+
+- "bool" stands for Boolean.
+- It is used to store logical values.
+- A "bool" can have only two values:
+  - "true"
+  - "false"
+- "true" is represented as "1" when printed normally.
+- "false" is represented as "0" when printed normally.
+- "bool" is commonly used in conditions and decision-making.
+
+Syntax
+
+bool variable_name = true;
+
+Examples
+
+bool isStudent = true;
+bool isPassed = false;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    bool isStudent = true;
+
+    cout << isStudent;
+
+    return 0;
+}
+
+Output
+
+1
+
+Remember: "bool" → "true" or "false".
