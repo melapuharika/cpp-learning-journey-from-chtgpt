@@ -236,3 +236,42 @@ void greet()
 Here, the "greet()" function performs an action but does not return a value.
 
 Remember: "void" → No value / Nothing to return.
+
+
+ ### topic 7:short
+
+- "short" is an integer data type.
+- It is used to store whole numbers.
+- It usually has a smaller range than "int".
+- It commonly uses 2 bytes of memory.
+- The exact size and range can depend on the system and compiler.
+
+Syntax
+
+short variable_name = value;
+
+Examples
+
+short age = 22;
+short students = 50;
+short number = -100;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    short students = 50;
+
+    cout << students;
+
+    return 0;
+}
+
+Output
+
+50
+
+Remember: "short" → Smaller-range whole numbers.
