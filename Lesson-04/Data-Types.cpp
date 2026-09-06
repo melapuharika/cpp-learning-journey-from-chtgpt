@@ -92,3 +92,42 @@ Output
 A
 
 Remember: "char" → Single character.
+
+ ### topic :3 float
+
+- "float" is used to store decimal numbers.
+- It is a floating-point data type.
+- It provides single precision for decimal values.
+- It usually uses 4 bytes of memory.
+- It is useful for values such as price, height, weight, and temperature.
+- Adding "f" at the end of a decimal value indicates a "float" literal.
+
+Syntax
+
+float variable_name = value;
+
+Examples
+
+float price = 99.5f;
+float height = 5.6f;
+float temperature = 36.5f;
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float temperature = 36.5f;
+
+    cout << temperature;
+
+    return 0;
+}
+
+Output
+
+36.5
+
+Remember: "float" → Decimal numbers.
