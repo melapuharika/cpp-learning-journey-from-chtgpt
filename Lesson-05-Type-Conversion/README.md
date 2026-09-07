@@ -107,3 +107,57 @@ The ".75" is lost because "int" cannot store decimal values.
 Simple Definition
 
 Implicit Conversion = Automatic conversion performed by the compiler.
+
+
+3. Explicit Conversion
+
+Explicit conversion means manually converting one data type into another data type by the programmer.
+
+Here, the programmer tells the compiler which data type the value should be converted to.
+
+Example
+
+double a = 10.75;
+int b = (int)a;
+
+cout << b;
+
+Output:
+
+10
+
+Here:
+
+double → int
+
+The programmer explicitly converts "double" into "int" using "(int)".
+
+The decimal part ".75" is lost because "int" cannot store decimal values.
+
+Implicit vs Explicit Conversion
+
+Implicit Conversion:
+
+int a = 10;
+double b = a;
+
+The compiler automatically performs the conversion.
+
+## topic :3 Explicit Conversion:
+
+double a = 10.75;
+int b = (int)a;
+
+The programmer manually performs the conversion.
+
+Methods of Explicit Conversion in C++
+
+1. C-style Cast
+2. static_cast
+3. const_cast
+4. dynamic_cast
+5. reinterpret_cast
+
+Simple Definition
+
+Explicit Conversion = Manually converting one data type into another data type.
