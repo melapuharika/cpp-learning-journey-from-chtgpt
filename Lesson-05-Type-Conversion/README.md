@@ -161,3 +161,60 @@ Methods of Explicit Conversion in C++
 Simple Definition
 
 Explicit Conversion = Manually converting one data type into another data type.
+
+
+
+## topic:4 C-style Cast
+
+C-style cast is a way of converting one data type into another using the C language style of type casting.
+
+The target data type is written inside parentheses "( )".
+
+Syntax
+
+(target_data_type)value;
+
+Example
+
+double a = 10.75;
+
+int b = (int)a;
+
+cout << b;
+
+Output:
+
+10
+
+Here:
+
+double → int
+
+The "(int)" tells the compiler to convert the value into an integer.
+
+The decimal part ".75" is lost because "int" cannot store decimal values.
+
+Example with Division
+
+int a = 10;
+int b = 3;
+
+double result = (double)a / b;
+
+cout << result;
+
+Output:
+
+3.33333
+
+Here, "(double)a" converts "a" from "int" to "double".
+
+Therefore, the division produces a decimal result.
+
+Important Point
+
+C-style casts work in C++, but C++-style casts such as "static_cast" are generally preferred because they make the programmer's intention clearer.
+
+Simple Definition
+
+C-style Cast = Converting a data type using "(data_type)value" syntax.
