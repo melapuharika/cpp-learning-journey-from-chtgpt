@@ -218,3 +218,80 @@ C-style casts work in C++, but C++-style casts such as "static_cast" are general
 Simple Definition
 
 C-style Cast = Converting a data type using "(data_type)value" syntax.
+
+
+
+## topic:5 static_cast
+
+"static_cast" is a C++-style type conversion operator.
+
+It is used to explicitly convert a value from one compatible data type to another.
+
+Syntax
+
+static_cast<target_type>(value);
+
+Example
+
+double a = 10.75;
+
+int b = static_cast<int>(a);
+
+cout << b;
+
+Output:
+
+10
+
+Here:
+
+double → int
+
+The decimal part ".75" is lost because "int" cannot store decimal values.
+
+Another Example
+
+int x = 10;
+
+double y = static_cast<double>(x);
+
+cout << y;
+
+Output:
+
+10
+
+Here:
+
+int → double
+
+Example with Division
+
+int a = 10;
+int b = 3;
+
+double result = static_cast<double>(a) / b;
+
+cout << result;
+
+Output:
+
+3.33333
+
+"static_cast<double>(a)" converts "a" from "int" to "double", allowing decimal division.
+
+C-style Cast vs static_cast
+
+C-style cast:
+
+int b = (int)a;
+
+C++-style cast:
+
+int b = static_cast<int>(a);
+
+"static_cast" is generally preferred in modern C++ because the conversion is more explicit and easier to understand.
+
+Simple Definition
+
+static_cast = A C++-style cast used for explicit conversion between compatible data types.
