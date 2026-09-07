@@ -374,3 +374,111 @@ It only changes the "const" qualifier of a pointer or reference.
 Simple Definition
 
 const_cast = A C++ cast used to add or remove the "const" qualifier from a pointer or reference.
+
+
+## topic:7 dynamic_cast
+
+"dynamic_cast" is a C++ cast mainly used for type conversion in an inheritance hierarchy.
+
+It performs the conversion at runtime.
+
+Parent and Child Classes
+
+class Animal {
+public:
+    virtual void sound() {
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+    }
+};
+
+Here:
+
+Animal → Parent / Base class
+Dog    → Child / Derived class
+
+Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "Dog barks";
+    }
+};
+
+int main() {
+
+    Animal* a = new Dog();
+
+    Dog* d = dynamic_cast<Dog*>(a);
+
+    if (d != nullptr) {
+        d->bark();
+    }
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+How does it work?
+
+Animal* a
+    ↓
+Dog object
+    ↓
+dynamic_cast<Dog*>(a)
+    ↓
+Runtime checks the actual object
+    ↓
+Dog* d
+
+Here, "a" is an "Animal" pointer, but it actually points to a "Dog" object.
+
+"dynamic_cast" checks the actual object at runtime.
+
+Since the object is a "Dog", the conversion succeeds.
+
+If Conversion Fails
+
+If the actual object is not a "Dog", a pointer "dynamic_cast" returns:
+
+nullptr
+
+So we can check:
+
+if (d != nullptr) {
+    // Conversion successful
+}
+
+Important Point
+
+The base class should be polymorphic, which normally means it has at least one "virtual" function.
+
+Example:
+
+class Animal {
+public:
+    virtual void sound() {
+    }
+};
+
+Simple Definition
+
+dynamic_cast = A C++ cast used for safe runtime type conversion in an inheritance hierarchy.
