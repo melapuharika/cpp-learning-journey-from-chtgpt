@@ -295,3 +295,82 @@ int b = static_cast<int>(a);
 Simple Definition
 
 static_cast = A C++-style cast used for explicit conversion between compatible data types.
+
+
+
+## topic 6. const_cast
+
+"const_cast" is a C++ cast used to add or remove the "const" qualifier from a pointer or reference.
+
+What is const?
+
+"const" means a value should not be modified through that variable.
+
+const int x = 10;
+
+Here, "x" cannot normally be changed.
+
+Example of const_cast
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 10;
+
+    const int* p = &x;
+
+    int* q = const_cast<int*>(p);
+
+    *q = 20;
+
+    cout << x;
+
+    return 0;
+}
+
+Output
+
+20
+
+How does it work?
+
+int x = 10
+    ↓
+const int* p
+    ↓
+const_cast
+    ↓
+int* q
+    ↓
+*q = 20
+
+Here, "x" was originally a normal (non-const) integer.
+
+"p" is a pointer that treats "x" as "const".
+
+"const_cast" removes the "const" qualifier from the pointer, allowing the value to be modified through "q".
+
+Important Warning ⚠️
+
+If the original object itself is declared as "const", we must NOT modify it using "const_cast".
+
+const int x = 10;
+
+const int* p = &x;
+
+int* q = const_cast<int*>(p);
+
+*q = 20;   // ❌ Undefined Behavior
+
+The reason is that "x" was originally created as a "const" object.
+
+Key Point
+
+"const_cast" does not make an originally-const object safely modifiable.
+
+It only changes the "const" qualifier of a pointer or reference.
+
+Simple Definition
+
+const_cast = A C++ cast used to add or remove the "const" qualifier from a pointer or reference.
