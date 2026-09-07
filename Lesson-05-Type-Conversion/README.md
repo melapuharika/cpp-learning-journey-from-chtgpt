@@ -482,3 +482,74 @@ public:
 Simple Definition
 
 dynamic_cast = A C++ cast used for safe runtime type conversion in an inheritance hierarchy.
+
+## topic:8 reinterpret_cast
+
+"reinterpret_cast" is a C++ cast used to reinterpret an existing pointer or memory address as another type.
+
+It is mainly used for low-level programming.
+
+Syntax
+
+reinterpret_cast<target_type>(value);
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int x = 10;
+
+    int* p = &x;
+
+    char* q = reinterpret_cast<char*>(p);
+
+    cout << p << endl;
+    cout << q << endl;
+
+    return 0;
+}
+
+Here:
+
+int* → char*
+
+The pointer is reinterpreted as a different pointer type.
+
+How does it work?
+
+int x
+  ↓
+int* p
+  ↓
+reinterpret_cast
+  ↓
+char* q
+
+The underlying address is reinterpreted; this is different from an ordinary numeric type conversion.
+
+Important Point
+
+"reinterpret_cast" is a low-level and powerful cast.
+
+It should be used carefully because accessing memory through an inappropriate type can cause:
+
+- Unexpected results
+- Portability problems
+- Undefined behavior
+
+Therefore, "reinterpret_cast" should not be used for ordinary type conversions when safer casts such as "static_cast" are appropriate.
+
+Difference from static_cast
+
+static_cast
+→ Used for normal, compatible type conversions.
+
+reinterpret_cast
+→ Used to reinterpret a pointer/address or low-level representation as another type.
+
+Simple Definition
+
+reinterpret_cast = A C++ cast used to reinterpret a pointer, reference, or memory representation as another type.
