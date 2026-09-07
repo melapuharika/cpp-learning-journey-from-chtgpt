@@ -48,3 +48,62 @@ int → float
 float → int
 char → int
 int → double
+
+
+## topic:2 Implicit Conversion
+
+Implicit conversion means automatic conversion of one data type into another data type by the compiler.
+
+We do not need to manually tell the compiler to convert the data type.
+
+Example
+
+int a = 10;
+double b = a;
+
+Here, the compiler automatically converts:
+
+int → double
+
+So, this is called Implicit Conversion.
+
+Another Example
+
+int x = 5;
+float y = x;
+
+cout << y;
+
+Output:
+
+5
+
+Here, "int" is automatically converted into "float".
+
+Important Point
+
+Implicit conversion can happen when converting a value from one compatible data type to another.
+
+Example:
+
+int → float
+int → double
+
+However, when converting from a type that can store decimal values to an integer, the decimal part may be lost.
+
+Example
+
+double x = 10.75;
+int y = x;
+
+cout << y;
+
+Output:
+
+10
+
+The ".75" is lost because "int" cannot store decimal values.
+
+Simple Definition
+
+Implicit Conversion = Automatic conversion performed by the compiler.
