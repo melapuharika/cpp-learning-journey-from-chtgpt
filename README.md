@@ -3530,3 +3530,660 @@ Outer → Category
 Inner → Option
 
 break → Exit
+
+### Topic 8 — Loops
+
+1. What is a Loop?
+
+A loop is a control structure used to repeat a block of code multiple times as long as a specified condition is satisfied.
+
+Simple Definition
+
+«A loop is used to execute the same block of code repeatedly.»
+
+Simple Meaning
+
+Loop ante:
+
+«Oka pani ni malli malli cheyyadam.»
+
+---
+
+2. Real-Life Example
+
+Suppose teacher says:
+
+«"Write "Hello" 5 times."»
+
+Without a loop:
+
+cout << "Hello\n";
+cout << "Hello\n";
+cout << "Hello\n";
+cout << "Hello\n";
+cout << "Hello\n";
+
+Same statement 5 times rayali.
+
+With a loop:
+
+for (int i = 1; i <= 5; i++) {
+    cout << "Hello\n";
+}
+
+One small block of code is enough.
+
+---
+
+3. Why Do We Use Loops?
+
+Loops are useful when we need to perform the same operation repeatedly.
+
+Common uses
+
+- Printing numbers
+- Reading multiple inputs
+- Processing arrays
+- Repeating calculations
+- Searching data
+- Processing each element of a collection
+- Creating menus
+- Performing an operation until a condition becomes false
+
+---
+
+4. Basic Idea of a Loop
+
+Every loop generally works like this:
+
+Start
+  ↓
+Check condition
+  ↓
+Is condition true?
+  ↓
+ YES
+  ↓
+Execute code
+  ↓
+Update / change value
+  ↓
+Check condition again
+  ↓
+...
+  ↓
+Condition becomes false
+  ↓
+Exit loop
+
+Important
+
+A loop should normally have a way to eventually make its condition false.
+
+Otherwise, it may become an infinite loop.
+
+---
+
+5. Types of Loops in C++
+
+C++ provides several ways to create loops.
+
+The main types covered in this lesson are:
+
+Loops
+│
+├── 1. for loop
+├── 2. while loop
+├── 3. do-while loop
+└── 4. range-based for loop
+
+---
+
+6. "for" Loop
+
+A "for" loop is commonly used when we know or can clearly define how the repetition should progress.
+
+Syntax
+
+for (initialization; condition; update) {
+    // code
+}
+
+Example:
+
+for (int i = 1; i <= 5; i++) {
+    cout << i << "\n";
+}
+
+Output:
+
+1
+2
+3
+4
+5
+
+Three important parts
+
+initialization
+      ↓
+condition
+      ↓
+update
+
+Example:
+
+for (int i = 1; i <= 5; i++)
+
+- "int i = 1" → initialization
+- "i <= 5" → condition
+- "i++" → update
+
+The "for" loop will be studied in detail separately.
+
+---
+
+7. "while" Loop
+
+A "while" loop repeats a block of code as long as its condition is true.
+
+Syntax
+
+while (condition) {
+    // code
+}
+
+Example:
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i << "\n";
+    i++;
+}
+
+Output:
+
+1
+2
+3
+4
+5
+
+Important
+
+The condition is checked before executing the loop body.
+
+Therefore, a "while" loop is called an entry-controlled loop.
+
+---
+
+8. "do-while" Loop
+
+A "do-while" loop executes the loop body first and checks the condition afterward.
+
+Syntax
+
+do {
+    // code
+} while (condition);
+
+Example:
+
+int i = 1;
+
+do {
+    cout << i << "\n";
+    i++;
+} while (i <= 5);
+
+Output:
+
+1
+2
+3
+4
+5
+
+Important
+
+The loop body executes at least once, because the condition is checked after the body.
+
+Therefore, "do-while" is called an exit-controlled loop.
+
+---
+
+9. Range-Based "for" Loop
+
+A range-based "for" loop is useful for going through each element of an array or another suitable range/collection.
+
+Syntax
+
+for (dataType variable : collection) {
+    // code
+}
+
+Example:
+
+int numbers[] = {10, 20, 30, 40};
+
+for (int number : numbers) {
+    cout << number << "\n";
+}
+
+Output:
+
+10
+20
+30
+40
+
+Simple Meaning
+
+Take each element
+      ↓
+Put it into variable
+      ↓
+Execute code
+      ↓
+Take next element
+      ↓
+Repeat
+
+---
+
+10. Comparing the Four Loops
+
+Loop| Main Idea| Condition Check
+"for"| Repeat with initialization, condition and update| Before execution
+"while"| Repeat while condition is true| Before execution
+"do-while"| Execute first, then check condition| After execution
+Range-based "for"| Process each element in a range| Automatically handles elements
+
+---
+
+11. Entry-Controlled vs Exit-Controlled
+
+Loops can also be understood based on when they check the condition.
+
+Entry-Controlled Loops
+
+Condition is checked before the loop body.
+
+Examples:
+
+for
+while
+
+Flow:
+
+Condition
+   ↓
+True?
+ ↓    ↓
+Yes   No
+ ↓     ↓
+Code   Exit
+ ↓
+Repeat
+
+---
+
+Exit-Controlled Loop
+
+Condition is checked after the loop body.
+
+Example:
+
+do-while
+
+Flow:
+
+Code
+ ↓
+Condition
+ ↓
+True?
+ ↓    ↓
+Yes   No
+ ↓     ↓
+Repeat Exit
+
+---
+
+12. Infinite Loop
+
+An infinite loop is a loop that never ends because its condition never becomes false.
+
+Example:
+
+while (true) {
+    cout << "Hello";
+}
+
+Here:
+
+true
+ ↓
+execute
+ ↓
+true
+ ↓
+execute
+ ↓
+true
+ ↓
+...
+
+The loop continues forever unless it is interrupted.
+
+---
+
+13. Example of an Accidental Infinite Loop
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i;
+}
+
+This is problematic because "i" is never changed.
+
+"i" remains:
+
+1
+
+So:
+
+i <= 5
+
+always remains true.
+
+Correct version
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i << "\n";
+    i++;
+}
+
+Now "i" changes:
+
+1 → 2 → 3 → 4 → 5 → 6
+
+When "i = 6":
+
+6 <= 5 → false
+
+So the loop stops.
+
+---
+
+14. Loop Counter
+
+A loop counter is a variable used to keep track of how many times a loop has executed or which iteration is currently running.
+
+Example:
+
+for (int i = 1; i <= 5; i++) {
+    cout << i << "\n";
+}
+
+Here:
+
+i
+
+is the loop counter.
+
+It changes as:
+
+1
+2
+3
+4
+5
+
+---
+
+15. Loop Iteration
+
+One complete execution of the loop body is called an iteration.
+
+Example:
+
+for (int i = 1; i <= 3; i++) {
+    cout << "Hello\n";
+}
+
+The loop has 3 iterations.
+
+Iteration 1 → Hello
+Iteration 2 → Hello
+Iteration 3 → Hello
+
+---
+
+16. Loop Example — Printing Numbers
+
+for (int i = 1; i <= 5; i++) {
+    cout << i << " ";
+}
+
+Output:
+
+1 2 3 4 5
+
+Execution:
+
+i = 1 → print 1
+i = 2 → print 2
+i = 3 → print 3
+i = 4 → print 4
+i = 5 → print 5
+i = 6 → condition false → stop
+
+---
+
+17. Loop Example — Printing Even Numbers
+
+for (int i = 2; i <= 10; i += 2) {
+    cout << i << " ";
+}
+
+Output:
+
+2 4 6 8 10
+
+Here:
+
+i += 2
+
+means:
+
+i = i + 2
+
+---
+
+18. Loop Example — Multiplication Table
+
+int n = 5;
+
+for (int i = 1; i <= 10; i++) {
+    cout << n << " x " << i << " = " << n * i << "\n";
+}
+
+Output:
+
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+
+---
+
+19. Nested Loops
+
+A loop can also be placed inside another loop.
+
+This is called a nested loop.
+
+Example:
+
+for (int i = 1; i <= 3; i++) {
+
+    for (int j = 1; j <= 2; j++) {
+        cout << i << " " << j << "\n";
+    }
+}
+
+The outer loop controls one repetition level and the inner loop runs for each outer iteration.
+
+Nested loops are commonly used with:
+
+- Patterns
+- Matrices
+- 2D arrays
+- Tables
+- Grid-based problems
+
+---
+
+20. Why Loops Are Important in Programming
+
+Without loops, repetitive tasks require writing the same code again and again.
+
+For example, printing 1000 numbers without loops would require a huge amount of code.
+
+With a loop:
+
+for (int i = 1; i <= 1000; i++) {
+    cout << i << "\n";
+}
+
+Only a few lines are required.
+
+Therefore, loops make programs:
+
+- Shorter
+- Easier to maintain
+- More efficient to write
+- Less repetitive
+- More flexible
+
+---
+
+21. Important Terms
+
+Loop
+
+A structure used to repeat code.
+
+Condition
+
+The expression that determines whether the loop continues.
+
+Iteration
+
+One complete execution of the loop body.
+
+Loop Counter
+
+A variable used to track iterations.
+
+Infinite Loop
+
+A loop that does not terminate because its condition remains true.
+
+Nested Loop
+
+A loop inside another loop.
+
+---
+
+22. Easy Comparison
+
+"for"
+
+I know how my repetition should progress.
+
+"while"
+
+Keep doing this while the condition is true.
+
+"do-while"
+
+Do this first, then check the condition.
+
+Range-based "for"
+
+Take each element one by one.
+
+---
+
+23. Memory Trick
+
+Remember:
+
+FOR
+→ Initialization + Condition + Update
+
+WHILE
+→ Condition first
+
+DO-WHILE
+→ Code first, Condition later
+
+RANGE-BASED FOR
+→ Each element
+
+Super Easy Trick
+
+«FOR = How many / controlled repetition»
+
+«WHILE = Until condition becomes false»
+
+«DO-WHILE = At least once»
+
+«RANGE FOR = Every element»
+
+---
+
+24. Quick Revision
+
+Loops
+│
+├── for
+│   └── initialization → condition → update
+│
+├── while
+│   └── condition → code
+│
+├── do-while
+│   └── code → condition
+│
+└── range-based for
+    └── each element
+
+Key Points
+
+- Loops repeat code.
+- "for" and "while" check the condition before execution.
+- "do-while" checks the condition after execution.
+- "do-while" executes at least once.
+- Range-based "for" is useful for processing each element.
+- A loop that never ends is an infinite loop.
+- One execution of the loop body is called an iteration.
+- A loop inside another loop is called a nested loop.
+
+---
+
+25. One-Line Definition
+
+«A loop is a control structure that repeatedly executes a block of code while a specified condition is satisfied or while elements remain to be processed.»
