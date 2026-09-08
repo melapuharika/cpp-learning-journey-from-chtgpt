@@ -945,3 +945,429 @@ Remember:
 TRUE → IF ❤️
 
 FALSE → ELSE ❤️
+
+### topic:4 Nested "if" Statement
+
+What is a Nested "if"?
+
+A nested "if" means an "if" statement placed inside another "if" statement.
+
+Simple ga:
+
+«"if" inside another "if" = Nested "if"»
+
+It is used when we need to check a second condition only after the first condition is true.
+
+---
+
+Basic Structure
+
+Outer if
+   ↓
+Condition 1
+   ↓
+TRUE
+   ↓
+Inner if
+   ↓
+Condition 2
+   ↓
+TRUE
+   ↓
+Execute code
+
+---
+
+Syntax
+
+if (condition1) {
+
+    if (condition2) {
+        // statements
+    }
+
+}
+
+Here:
+
+- The first "if" is called the outer "if".
+- The second "if" is called the inner "if".
+- The inner "if" is inside the outer "if".
+
+---
+
+Real-Life Example
+
+Suppose a student wants to write an exam.
+
+There are two conditions:
+
+1. Attendance must be at least 75%.
+2. Fees must be paid.
+
+First, we check attendance.
+
+If attendance is sufficient, then we check fees.
+
+Attendance >= 75%?
+       ↓
+     TRUE
+       ↓
+Fees paid?
+   ↓       ↓
+ TRUE     FALSE
+   ↓         ↓
+Eligible   Not eligible
+
+This is a good situation for a nested "if".
+
+---
+
+Example 1 — Exam Eligibility
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int attendance = 80;
+    bool feesPaid = true;
+
+    if (attendance >= 75) {
+
+        if (feesPaid == true) {
+            cout << "Eligible for exam";
+        }
+
+    }
+
+    return 0;
+}
+
+Output
+
+Eligible for exam
+
+---
+
+How Does This Program Work?
+
+First, the outer condition is checked:
+
+attendance >= 75
+
+The value is:
+
+80 >= 75
+   ↓
+ TRUE
+
+Because the first condition is true, the program enters the outer "if".
+
+Then it checks the inner condition:
+
+feesPaid == true
+
+This is also true.
+
+Therefore:
+
+Eligible for exam
+
+is printed.
+
+---
+
+Example 2 — First Condition is False
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int attendance = 60;
+    bool feesPaid = true;
+
+    if (attendance >= 75) {
+
+        if (feesPaid == true) {
+            cout << "Eligible for exam";
+        }
+
+    }
+
+    return 0;
+}
+
+Output
+
+No output
+
+Why?
+
+First condition:
+
+60 >= 75
+   ↓
+ FALSE
+
+Since the outer "if" is false, the program does not enter the outer block.
+
+Therefore, the inner "if" is never checked.
+
+---
+
+Example 3 — Both Conditions
+
+Consider:
+
+int age = 20;
+bool hasID = true;
+
+if (age >= 18) {
+
+    if (hasID == true) {
+        cout << "You can enter";
+    }
+
+}
+
+Flow
+
+age >= 18?
+     ↓
+   TRUE
+     ↓
+hasID == true?
+     ↓
+   TRUE
+     ↓
+You can enter
+
+Output
+
+You can enter
+
+---
+
+What if the Inner Condition is False?
+
+Suppose:
+
+int age = 20;
+bool hasID = false;
+
+Outer condition:
+
+20 >= 18
+   ↓
+ TRUE
+
+So the inner "if" is checked.
+
+Inner condition:
+
+false == true
+      ↓
+    FALSE
+
+Therefore, the inner block does not execute.
+
+Output
+
+No output
+
+---
+
+Important Concept
+
+In nested "if", the inner condition depends on reaching the outer "if" block.
+
+Outer condition
+      ↓
+   FALSE
+      ↓
+Inner condition is NOT checked
+
+But:
+
+Outer condition
+      ↓
+    TRUE
+      ↓
+Inner condition is checked
+
+This is the most important thing to remember.
+
+---
+
+Nested "if" with "else"
+
+We can also use "else" inside a nested "if".
+
+int age = 20;
+bool hasID = false;
+
+if (age >= 18) {
+
+    if (hasID == true) {
+        cout << "Entry allowed";
+    }
+    else {
+        cout << "ID required";
+    }
+
+}
+else {
+    cout << "Underage";
+}
+
+Output
+
+ID required
+
+Here:
+
+- Age is 20 → outer "if" is true.
+- Then "hasID" is checked.
+- "hasID" is false.
+- So the inner "else" executes.
+
+---
+
+Nested "if" vs "if-else"
+
+"if-else"
+
+Used when we have two alternatives:
+
+Condition
+  ↓
+TRUE → if
+FALSE → else
+
+Nested "if"
+
+Used when we need to check another condition inside an already-true condition:
+
+Condition 1
+    ↓
+  TRUE
+    ↓
+Condition 2
+    ↓
+  TRUE
+    ↓
+  Code
+
+---
+
+Real-Life Examples of Nested "if"
+
+Nested "if" can be useful for situations like:
+
+Example 1 — Driving
+
+If age >= 18
+    If hasDrivingLicense
+        Allow driving
+
+Example 2 — Login
+
+If username is correct
+    If password is correct
+        Login successful
+
+Example 3 — Online Shopping
+
+If product is available
+    If payment is successful
+        Order confirmed
+
+---
+
+Advantages
+
+1. Allows us to check conditions step by step.
+2. Useful when one condition depends on another.
+3. Makes some decision-making logic easy to understand.
+4. Useful when conditions have a clear hierarchy.
+
+---
+
+Disadvantages
+
+Too many nested "if" statements can make code difficult to read.
+
+Example:
+
+if
+    if
+        if
+            if
+                if
+                    code
+
+Deep nesting can make programs confusing.
+
+When the logic becomes complicated, other structures such as "else if", logical operators, or separate functions may sometimes be easier to understand.
+
+---
+
+Important Points
+
+1. A nested "if" is an "if" statement inside another "if".
+2. The outer "if" is checked first.
+3. The inner "if" is checked only if the outer condition is true.
+4. If the outer condition is false, the inner "if" is skipped.
+5. Nested "if" can contain "else" statements.
+6. Multiple levels of nesting are possible.
+7. Too much nesting can make code difficult to read.
+
+---
+
+Easy Memory Trick
+
+IF
+ ↓
+IF
+ ↓
+Code
+
+Remember:
+
+«First condition TRUE → Go inside → Check next condition.»
+
+Or:
+
+Outer IF = First gate 🚪
+
+Inner IF = Second gate 🚪
+
+Both gates open
+      ↓
+Reach the code
+
+---
+
+One-Line Definition
+
+A nested "if" is an "if" statement placed inside another "if" statement to check multiple dependent conditions.
+
+---
+
+Quick Revision
+
+             Outer if
+                 ↓
+          Condition 1?
+           ↙       ↘
+        FALSE      TRUE
+          ↓          ↓
+        Skip      Inner if
+                     ↓
+                Condition 2?
+                 ↙       ↘
+              FALSE      TRUE
+                ↓          ↓
+              Skip       Execute
