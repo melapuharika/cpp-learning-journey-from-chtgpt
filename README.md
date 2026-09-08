@@ -236,3 +236,283 @@ Jump| Change execution flow| "break", "continue", "return", "goto"
 One-Line Definition
 
 Control statements are statements that control the flow of execution of a C++ program.
+
+
+### topic:2 if Statement
+
+What is an "if" Statement?
+
+The "if" statement is a conditional statement used to execute a block of code only when a specified condition is true.
+
+In simple words:
+
+«If the condition is true → execute the code.
+If the condition is false → skip the code.»
+
+---
+
+Real-Life Example
+
+Suppose:
+
+If it is raining
+    Take an umbrella
+
+If it is raining, we take an umbrella.
+
+If it is not raining, we don't take the umbrella.
+
+C++ uses the same idea with the "if" statement.
+
+---
+
+Syntax
+
+if (condition) {
+    // statements
+}
+
+Parts of the Syntax
+
+- "if" → keyword used to check a condition.
+- "condition" → expression that gives "true" or "false".
+- "{ }" → contains the code that should execute when the condition is true.
+- "statements" → code to be executed.
+
+---
+
+Example 1 — Condition is True
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int age = 20;
+
+    if (age >= 18) {
+        cout << "You are eligible to vote";
+    }
+
+    return 0;
+}
+
+Output
+
+You are eligible to vote
+
+How it works
+
+age = 20
+
+Check:
+age >= 18
+
+20 >= 18
+   ↓
+ TRUE
+   ↓
+Execute if block
+   ↓
+Print the message
+
+---
+
+Example 2 — Condition is False
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int age = 15;
+
+    if (age >= 18) {
+        cout << "You are eligible to vote";
+    }
+
+    return 0;
+}
+
+Output
+
+No output
+
+Why?
+
+age = 15
+
+Check:
+15 >= 18
+   ↓
+ FALSE
+   ↓
+Skip the if block
+
+When the condition is false, the code inside the "if" block is not executed.
+
+---
+
+Example 3 — Checking Marks
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int marks = 75;
+
+    if (marks >= 40) {
+        cout << "Pass";
+    }
+
+    return 0;
+}
+
+Output
+
+Pass
+
+Because:
+
+75 >= 40
+    ↓
+  TRUE
+    ↓
+Print "Pass"
+
+---
+
+Example 4 — Multiple Statements
+
+We can have multiple statements inside an "if" block.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int marks = 80;
+
+    if (marks >= 40) {
+        cout << "You passed!" << endl;
+        cout << "Congratulations!" << endl;
+    }
+
+    return 0;
+}
+
+Output
+
+You passed!
+Congratulations!
+
+Both statements execute because the condition is true.
+
+---
+
+Conditions in "if"
+
+We can use relational operators to create conditions.
+
+Examples:
+
+if (a > b)
+if (a < b)
+if (a >= b)
+if (a <= b)
+if (a == b)
+if (a != b)
+
+Example
+
+int a = 10;
+int b = 5;
+
+if (a > b) {
+    cout << "a is greater";
+}
+
+Output:
+
+a is greater
+
+---
+
+Using Logical Operators
+
+We can also use logical operators inside an "if" condition.
+
+AND "&&"
+
+Both conditions must be true.
+
+if (age >= 18 && age <= 60) {
+    cout << "Eligible";
+}
+
+OR "||"
+
+At least one condition must be true.
+
+if (marks >= 40 || attendance >= 75) {
+    cout << "Condition satisfied";
+}
+
+NOT "!"
+
+Reverses the condition.
+
+if (!isAbsent) {
+    cout << "Present";
+}
+
+---
+
+Important Points
+
+1. "if" is a conditional statement.
+2. It checks a condition before executing its block.
+3. If the condition is true, the block executes.
+4. If the condition is false, the block is skipped.
+5. The condition is usually an expression that evaluates to "true" or "false".
+6. Multiple statements can be placed inside "{ }".
+7. Relational and logical operators can be used to create conditions.
+8. An "if" statement can be used independently without "else".
+
+---
+
+Flowchart
+
+        Start
+          ↓
+    Check condition
+          ↓
+     ┌────┴────┐
+   TRUE       FALSE
+     ↓           ↓
+Execute block   Skip block
+     ↓           ↓
+     └────┬──────┘
+          ↓
+         End
+
+---
+
+Simple Memory Trick
+
+if = Check → Decide → Execute
+
+Condition TRUE
+      ↓
+Execute
+
+Condition FALSE
+      ↓
+Skip
+
+---
+
+One-Line Definition
+
+The "if" statement executes a block of code only when the specified condition is true.
