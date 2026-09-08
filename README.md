@@ -4814,3 +4814,47 @@ B → C → R → G
 One-line Definition
 
 Jump statements change the normal flow of execution in a C++ program.
+
+
+## topic 14 "break" Statement
+
+Definition
+
+The "break" statement is used to completely stop a loop or switch statement and move to the next statement after it.
+
+Syntax
+
+break;
+
+Example
+
+for (int i = 1; i <= 10; i++) {
+    if (i == 5) {
+        break;
+    }
+    cout << i << "\n";
+}
+
+Output
+
+1
+2
+3
+4
+
+When "i == 5", "break" stops the loop completely.
+
+Where It Is Used
+
+- "for" loop
+- "while" loop
+- "do-while" loop
+- "switch" statement
+
+Important Point
+
+"break" stops the entire loop, not just the current iteration.
+
+Memory Trick
+
+"break" = STOP 🛑
