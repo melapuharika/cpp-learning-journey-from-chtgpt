@@ -4942,6 +4942,63 @@ Statement| Purpose
 "continue"| Skips current iteration
 "return"| Exits function
 
+### topic:16"goto" Statement
+
+
+
+The "goto" statement is used to jump directly to a specific labelled statement in a program.
+
+Syntax
+
+goto label;
+
+label:
+    // statements
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello\n";
+
+    goto skip;
+
+    cout << "This will not print\n";
+
+skip:
+    cout << "Welcome\n";
+
+    return 0;
+}
+
+Output
+
+Hello
+Welcome
+
+"goto skip;" directly jumps to the "skip:" label.
+
+Important Points
+
+- "goto" transfers control to a labelled statement.
+- The label is followed by a colon ":".
+- It can make program flow difficult to understand if overused.
+- Structured statements like loops and "if" are generally preferred.
+
+Jump Statements – Quick Revision
+
+Statement| Purpose
+"break"| Stops loop/switch
+"continue"| Skips current iteration
+"return"| Exits function
+"goto"| Jumps to a label
+
 Memory Trick
 
-"return" = Give the result → Exit the function. 🚪
+"goto" = Directly JUMP to a label. 🔀
+Memory Trick
+
+"return" = Give the result → Exit the function. 
+
