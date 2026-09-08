@@ -2723,3 +2723,810 @@ switch → Check value
 case → Match value
 break → Stop switch
 default → No match
+
+### Topic 7 — Nested "switch"
+
+1. What is a Nested "switch"?
+
+A Nested "switch" is a "switch" statement placed inside another "switch" statement.
+
+Simple Definition
+
+«A nested "switch" is a "switch" statement inside another "switch" statement.»
+
+Simple Meaning
+
+Normal "switch":
+
+One switch
+   ↓
+Check value
+   ↓
+Execute matching case
+
+Nested "switch":
+
+Outer switch
+     ↓
+Matching outer case
+     ↓
+Inner switch
+     ↓
+Matching inner case
+
+---
+
+2. Why is it called "Nested"?
+
+The word nested means:
+
+«One thing is placed inside another thing of the same or related type.»
+
+For example:
+
+switch (value1) {
+
+    case 1:
+
+        switch (value2) {
+
+            case 1:
+                // code
+                break;
+        }
+
+        break;
+}
+
+Here, the second "switch" is inside the first "switch".
+
+Therefore, it is called a Nested "switch".
+
+---
+
+3. Real-Life Example
+
+Imagine a college application system.
+
+First, the user selects a department:
+
+1 → CSE
+2 → BCA
+3 → B.Com
+
+If the user selects BCA, then the user gets another menu:
+
+1 → Data Science
+2 → Web Development
+3 → AI
+
+Here:
+
+- Outer "switch" → selects department
+- Inner "switch" → selects specialization
+
+So:
+
+Department
+     ↓
+BCA
+     ↓
+Specialization
+     ↓
+Data Science
+
+This is a real-life example of a nested "switch".
+
+---
+
+4. Basic Syntax
+
+switch (outerValue) {
+
+    case 1:
+        // code
+        break;
+
+    case 2:
+
+        switch (innerValue) {
+
+            case 1:
+                // code
+                break;
+
+            case 2:
+                // code
+                break;
+
+            default:
+                // code
+        }
+
+        break;
+
+    default:
+        // code
+}
+
+---
+
+5. Outer "switch"
+
+The first "switch" is called the outer switch.
+
+Example:
+
+switch (department) {
+
+It makes the first-level decision.
+
+For example:
+
+department = 2
+       ↓
+Outer switch
+       ↓
+case 2
+       ↓
+BCA
+
+---
+
+6. Inner "switch"
+
+The "switch" inside the outer "switch" is called the inner switch.
+
+Example:
+
+switch (choice) {
+
+It makes another decision based on the selected outer case.
+
+Example:
+
+Outer switch
+     ↓
+BCA selected
+     ↓
+Inner switch
+     ↓
+Choose specialization
+
+---
+
+7. Complete Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int department;
+    int choice;
+
+    cout << "Enter department: ";
+    cin >> department;
+
+    switch (department) {
+
+        case 1:
+            cout << "CSE";
+            break;
+
+        case 2:
+
+            cout << "BCA\n";
+
+            cout << "Choose specialization:\n";
+            cout << "1. Data Science\n";
+            cout << "2. Web Development\n";
+            cout << "3. AI\n";
+
+            cin >> choice;
+
+            switch (choice) {
+
+                case 1:
+                    cout << "Data Science";
+                    break;
+
+                case 2:
+                    cout << "Web Development";
+                    break;
+
+                case 3:
+                    cout << "AI";
+                    break;
+
+                default:
+                    cout << "Invalid specialization";
+            }
+
+            break;
+
+        case 3:
+            cout << "B.Com";
+            break;
+
+        default:
+            cout << "Invalid department";
+    }
+
+    return 0;
+}
+
+---
+
+8. Example Execution
+
+Suppose the user enters:
+
+2
+1
+
+First input:
+
+2
+
+means:
+
+BCA
+
+The outer switch finds:
+
+case 2:
+
+Then the inner switch starts.
+
+Second input:
+
+1
+
+matches:
+
+case 1:
+
+So the output is:
+
+BCA
+Data Science
+
+---
+
+9. Execution Flow
+
+The execution happens step-by-step.
+
+Start
+  ↓
+Read department
+  ↓
+Outer switch
+  ↓
+Find matching case
+  ↓
+If that case contains inner switch
+  ↓
+Execute inner switch
+  ↓
+Read inner value
+  ↓
+Find matching inner case
+  ↓
+Execute inner case
+  ↓
+break
+  ↓
+Continue program
+
+---
+
+10. Important Concept
+
+The inner switch does not execute automatically.
+
+It executes only when the program reaches it.
+
+For example:
+
+switch (department) {
+
+    case 1:
+        cout << "CSE";
+        break;
+
+    case 2:
+
+        switch (choice) {
+            // inner switch
+        }
+
+        break;
+}
+
+If:
+
+department = 1
+
+then:
+
+case 1
+   ↓
+CSE
+   ↓
+break
+
+The inner switch is never reached.
+
+But if:
+
+department = 2
+
+then:
+
+case 2
+   ↓
+Inner switch
+   ↓
+Check choice
+
+---
+
+11. Nested "switch" With "break"
+
+Both outer and inner switches can have their own "break".
+
+Example:
+
+switch (department) {
+
+    case 2:
+
+        switch (choice) {
+
+            case 1:
+                cout << "Data Science";
+                break;
+
+            case 2:
+                cout << "Web Development";
+                break;
+        }
+
+        break;
+}
+
+Here:
+
+Inner "break"
+
+break;
+
+inside the inner switch exits the inner switch.
+
+Outer "break"
+
+break;
+
+after the inner switch exits the outer switch.
+
+---
+
+12. Important: "break" Works on Its Own Switch
+
+This is very important.
+
+Suppose:
+
+switch (a) {
+
+    case 1:
+
+        switch (b) {
+
+            case 1:
+                cout << "Hello";
+                break;
+        }
+
+        break;
+}
+
+The first "break" belongs to the inner switch.
+
+The second "break" belongs to the outer switch.
+
+Think:
+
+Inner break
+     ↓
+Exit inner switch
+
+Outer break
+     ↓
+Exit outer switch
+
+---
+
+13. Nested "switch" Example — Food Menu
+
+Imagine a food delivery application.
+
+First choose food category:
+
+1 → Indian
+2 → Chinese
+3 → Italian
+
+Then choose food from that category.
+
+Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int category;
+    int food;
+
+    cout << "1. Indian\n";
+    cout << "2. Chinese\n";
+    cout << "3. Italian\n";
+
+    cin >> category;
+
+    switch (category) {
+
+        case 1:
+
+            cout << "1. Biryani\n";
+            cout << "2. Dosa\n";
+
+            cin >> food;
+
+            switch (food) {
+
+                case 1:
+                    cout << "Biryani";
+                    break;
+
+                case 2:
+                    cout << "Dosa";
+                    break;
+
+                default:
+                    cout << "Invalid food";
+            }
+
+            break;
+
+        case 2:
+
+            cout << "Chinese selected";
+            break;
+
+        case 3:
+
+            cout << "Italian selected";
+            break;
+
+        default:
+
+            cout << "Invalid category";
+    }
+
+    return 0;
+}
+
+If:
+
+category = 1
+food = 2
+
+Output:
+
+Dosa
+
+---
+
+14. Another Example — ATM
+
+An ATM can also be designed using nested switches.
+
+First:
+
+1 → Savings
+2 → Current
+
+Then:
+
+1 → Withdraw
+2 → Deposit
+3 → Balance
+
+The outer switch selects the account type.
+
+The inner switch selects the banking operation.
+
+switch (accountType) {
+
+    case 1:
+
+        switch (operation) {
+
+            case 1:
+                cout << "Withdraw";
+                break;
+
+            case 2:
+                cout << "Deposit";
+                break;
+
+            case 3:
+                cout << "Balance";
+                break;
+        }
+
+        break;
+
+    case 2:
+
+        switch (operation) {
+
+            case 1:
+                cout << "Withdraw";
+                break;
+
+            case 2:
+                cout << "Deposit";
+                break;
+
+            case 3:
+                cout << "Balance";
+                break;
+        }
+
+        break;
+}
+
+---
+
+15. Nested "switch" vs Normal "switch"
+
+Normal "switch"| Nested "switch"
+Contains one main switch| Contains a switch inside another switch
+Makes one-level decision| Makes multi-level decisions
+Simpler| More complex
+Suitable for one menu| Useful for categories + sub-options
+
+Example:
+
+Normal
+
+Choose food
+   ↓
+Biryani
+
+Nested
+
+Choose category
+      ↓
+Indian
+      ↓
+Choose food
+      ↓
+Biryani
+
+---
+
+16. Advantages of Nested "switch"
+
+1. Handles multiple levels of choices
+
+It can represent:
+
+Category
+   ↓
+Subcategory
+   ↓
+Option
+
+2. Useful for menu-based programs
+
+Examples:
+
+- ATM
+- Restaurant menu
+- College departments
+- Banking systems
+- Game menus
+- Application settings
+
+3. Organizes related choices
+
+The inner switch handles options related to a particular outer choice.
+
+---
+
+17. Disadvantages
+
+Too many nested switches can make code difficult to understand.
+
+Example:
+
+switch
+  ↓
+switch
+  ↓
+switch
+  ↓
+switch
+
+This can become confusing.
+
+Better practice
+
+Keep nesting reasonable and use functions or other control structures when the program becomes too complex.
+
+---
+
+18. Important Rules
+
+Rule 1
+
+A "switch" can be placed inside another "switch".
+
+switch (a) {
+
+    case 1:
+
+        switch (b) {
+            // code
+        }
+
+        break;
+}
+
+Rule 2
+
+The inner switch executes only when program flow reaches it.
+
+Rule 3
+
+Inner and outer switches have their own cases.
+
+Rule 4
+
+Each switch should handle its own "break".
+
+Rule 5
+
+"default" can be used in both switches.
+
+Example:
+
+switch (a) {
+
+    case 1:
+
+        switch (b) {
+
+            case 1:
+                cout << "Valid";
+                break;
+
+            default:
+                cout << "Invalid inner choice";
+        }
+
+        break;
+
+    default:
+        cout << "Invalid outer choice";
+}
+
+---
+
+19. Memory Trick
+
+Remember:
+
+OUTER SWITCH
+     ↓
+Choose Main Category
+     ↓
+INNER SWITCH
+     ↓
+Choose Sub-Option
+     ↓
+Execute
+     ↓
+Break
+
+One-line memory trick
+
+«Outer decides the category, Inner decides the option.»
+
+---
+
+20. One-Line Definition
+
+«A nested "switch" is a "switch" statement placed inside another "switch" statement to handle multiple levels of fixed-value choices.»
+
+---
+
+21. Quick Revision
+
+Nested "switch"
+
+A switch inside another switch.
+
+Outer switch
+
+Makes the first-level decision.
+
+Inner switch
+
+Makes the second-level decision.
+
+Inner "break"
+
+Exits the inner switch.
+
+Outer "break"
+
+Exits the outer switch.
+
+Common uses
+
+- ATM
+- Restaurant menus
+- Banking systems
+- College departments
+- Application menus
+
+---
+
+22. Easy Example to Remember
+
+switch (category) {
+
+    case 1:
+
+        switch (choice) {
+
+            case 1:
+                cout << "Option 1";
+                break;
+
+            case 2:
+                cout << "Option 2";
+                break;
+
+            default:
+                cout << "Invalid option";
+        }
+
+        break;
+
+    default:
+        cout << "Invalid category";
+}
+
+Remember:
+
+Outer switch
+     ↓
+Category
+     ↓
+Inner switch
+     ↓
+Option
+
+Outer → Category
+
+Inner → Option
+
+break → Exit
