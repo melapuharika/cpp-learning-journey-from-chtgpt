@@ -1,6 +1,6 @@
 # Lesson 6 - Operators
 
-## Topics
+### Topics
 
 1. Operators
 
