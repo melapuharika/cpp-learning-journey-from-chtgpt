@@ -4786,3 +4786,31 @@ Range-based "for" = Each element one by one.
 One-line Definition
 
 Range-based "for" loop automatically traverses each element of a collection one by one.
+
+## topic:13 Jump Statements
+
+Definition
+
+Jump statements are used to change or interrupt the normal flow of program execution.
+
+Types of Jump Statements
+
+C++ has four main jump statements:
+
+1. "break" → Stops the loop or switch.
+2. "continue" → Skips the current iteration and moves to the next iteration.
+3. "return" → Exits from a function.
+4. "goto" → Jumps to a labelled statement.
+
+Memory Trick
+
+B → C → R → G
+
+- Break → Stop
+- Continue → Skip
+- Return → Exit function
+- Goto → Jump
+
+One-line Definition
+
+Jump statements change the normal flow of execution in a C++ program.
