@@ -4858,3 +4858,46 @@ Important Point
 Memory Trick
 
 "break" = STOP 🛑
+
+## topic:14 "continue" Statement
+
+Definition
+
+The "continue" statement is used to skip the current iteration of a loop and move to the next iteration.
+
+Syntax
+
+continue;
+
+Example
+
+for (int i = 1; i <= 5; i++) {
+    if (i == 3) {
+        continue;
+    }
+
+    cout << i << "\n";
+}
+
+Output
+
+1
+2
+4
+5
+
+When "i == 3", the current iteration is skipped, and the loop continues with "i == 4".
+
+Important Point
+
+"continue" does not stop the loop. It only skips the current iteration.
+
+"break" vs "continue"
+
+Statement| Meaning
+"break"| Completely stops the loop
+"continue"| Skips the current iteration
+
+Memory Trick
+
+"continue" = Skip this one → Continue to next. ⏭️
