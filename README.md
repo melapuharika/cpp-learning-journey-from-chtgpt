@@ -4556,3 +4556,162 @@ CHECK → EXECUTE → UPDATE → CHECK → ...
 One-Line Definition
 
 «A "while" loop repeatedly executes a block of code as long as its condition remains true.»
+
+
+#### Topic 11 — do-while Loop
+
+1. What is a "do-while" Loop?
+
+A "do-while" loop executes a block of code first and checks the condition afterwards.
+
+Simple Definition
+
+«A "do-while" loop executes the loop body at least once and then continues while the condition is true.»
+
+---
+
+2. Syntax
+
+do {
+    // code
+} while (condition);
+
+⚠️ The semicolon ";" after "while(condition)" is compulsory.
+
+---
+
+3. Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    do {
+        cout << i << "\n";
+        i++;
+    } while (i <= 5);
+
+    return 0;
+}
+
+Output
+
+1
+2
+3
+4
+5
+
+---
+
+4. How It Works
+
+Execute code
+     ↓
+Update
+     ↓
+Check condition
+     ↓
+True → Repeat
+False → Stop
+
+For:
+
+int i = 1;
+
+do {
+    cout << i;
+    i++;
+} while (i <= 5);
+
+Execution:
+
+1 → 2 → 3 → 4 → 5 → 6
+
+When "i = 6":
+
+6 <= 5 → false
+
+So the loop stops.
+
+---
+
+5. Main Feature
+
+The most important feature of "do-while":
+
+«The loop body executes at least once.»
+
+Example:
+
+int i = 10;
+
+do {
+    cout << i;
+} while (i < 5);
+
+Output:
+
+10
+
+Even though:
+
+10 < 5 → false
+
+the code executes once because the condition is checked after the body.
+
+---
+
+6. "while" vs "do-while"
+
+"while"| "do-while"
+Condition checked first| Condition checked after
+May execute 0 times| Executes at least once
+Entry-controlled| Exit-controlled
+
+Remember
+
+while:
+CHECK → EXECUTE
+
+do-while:
+EXECUTE → CHECK
+
+---
+
+7. Common Uses
+
+"do-while" is useful when an operation must happen at least once.
+
+Examples:
+
+- Menu-driven programs
+- Asking for user input
+- Retry operations
+- Simple validation programs
+
+---
+
+8. Important Points
+
+- "do-while" is an exit-controlled loop.
+- Loop body executes at least once.
+- Condition is checked after execution.
+- ";" after "while(condition)" is compulsory.
+- If condition is true → loop repeats.
+- If condition is false → loop stops.
+
+---
+
+9. Memory Trick
+
+«DO first → CHECK later»
+
+DO → CHECK → REPEAT if true
+
+One-Line Definition
+
+«A "do-while" loop executes the code at least once and then repeats it while the specified condition is true.»
