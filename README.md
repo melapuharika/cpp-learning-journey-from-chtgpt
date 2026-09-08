@@ -4901,3 +4901,47 @@ Statement| Meaning
 Memory Trick
 
 "continue" = Skip this one → Continue to next. ⏭️
+
+## topic:15 "return" Statement
+
+Definition
+
+The "return" statement is used to exit from a function and optionally send a value back to the caller.
+
+Syntax
+
+return value;
+
+For no value:
+
+return;
+
+Example
+
+int square(int n) {
+    return n * n;
+}
+
+If "n = 5":
+
+5 × 5 = 25
+
+The function returns "25".
+
+Important Points
+
+- "return" immediately ends the function.
+- It can return a value to the caller.
+- A "void" function can use "return;" without a value.
+- Code written after "return" in the same execution path will not execute.
+
+Jump Statements
+
+Statement| Purpose
+"break"| Stops loop/switch
+"continue"| Skips current iteration
+"return"| Exits function
+
+Memory Trick
+
+"return" = Give the result → Exit the function. 🚪
