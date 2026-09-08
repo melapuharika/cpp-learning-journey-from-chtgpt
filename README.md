@@ -4715,3 +4715,74 @@ DO → CHECK → REPEAT if true
 One-Line Definition
 
 «A "do-while" loop executes the code at least once and then repeats it while the specified condition is true.»
+
+### topic:12 
+Range-based "for" Loop
+
+Definition
+
+A range-based "for" loop is used to access each element of an array or collection one by one without manually using an index.
+
+Syntax
+
+for (dataType variable : collection) {
+    // statements
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40};
+
+    for (int number : numbers) {
+        cout << number << "\n";
+    }
+
+    return 0;
+}
+
+Output
+
+10
+20
+30
+40
+
+How It Works
+
+For:
+
+for (int number : numbers)
+
+- "int" → data type of each element
+- "number" → stores the current element
+- "numbers" → array/collection
+- ":" → takes elements from the collection
+
+C++ automatically takes:
+
+10 → 20 → 30 → 40
+
+one by one.
+
+Advantages
+
+- No need to manage an index.
+- Simple and readable.
+- Useful when we need to access every element.
+- Reduces the chance of index-related mistakes.
+
+Important Point
+
+Range-based "for" loop is mainly useful when we want to visit every element and don't need the element's index.
+
+Memory Trick
+
+Range-based "for" = Each element one by one.
+
+One-line Definition
+
+Range-based "for" loop automatically traverses each element of a collection one by one.
