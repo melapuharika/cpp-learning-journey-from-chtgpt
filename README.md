@@ -1930,3 +1930,796 @@ Quick Revision
             else
              ↓
           Execute
+
+### Topic 6 — switch Statement
+
+1. What is a "switch" Statement?
+
+A "switch" statement is a conditional control statement in C++.
+
+It is used when we want to compare one value with multiple fixed values and execute the matching block of code.
+
+Simple Meaning
+
+"switch" ante:
+
+«"Ee value denitho match avutundo chusi, aa matching case ni execute cheyyi."»
+
+Real-Life Example
+
+Restaurant menu lo:
+
+- 1 → Biryani
+- 2 → Fried Rice
+- 3 → Noodles
+- 4 → Pizza
+
+User "2" enter chesthe, program "2" ki matching "case" ni find chesi Fried Rice print chestundi.
+
+---
+
+2. Syntax
+
+switch (expression) {
+
+    case value1:
+        // statements
+        break;
+
+    case value2:
+        // statements
+        break;
+
+    case value3:
+        // statements
+        break;
+
+    default:
+        // statements
+}
+
+---
+
+3. Important Parts of "switch"
+
+A "switch" statement mainly contains:
+
+1. "switch"
+2. Expression
+3. "case"
+4. "break"
+5. "default"
+
+---
+
+4. "switch"
+
+"switch" keyword tells the program that we want to perform a selection based on a value.
+
+Example:
+
+switch (choice) {
+    // cases
+}
+
+Here:
+
+choice
+
+is the value that will be checked.
+
+---
+
+5. Expression
+
+The expression is the value that the "switch" checks.
+
+Example:
+
+int choice = 2;
+
+switch (choice) {
+
+Here, the value of "choice" is "2".
+
+So C++ searches for:
+
+case 2:
+
+---
+
+6. "case"
+
+A "case" represents a possible fixed value.
+
+Example:
+
+case 1:
+    cout << "Biryani";
+    break;
+
+Meaning:
+
+«"Value 1 ayithe, ee code execute cheyyi."»
+
+Another example:
+
+case 2:
+    cout << "Fried Rice";
+    break;
+
+Meaning:
+
+«"Value 2 ayithe, Fried Rice print cheyyi."»
+
+---
+
+7. "break"
+
+"break" is used to exit the switch statement.
+
+Example:
+
+case 1:
+    cout << "Biryani";
+    break;
+
+When "case 1" matches:
+
+case 1 → execute → break → exit switch
+
+Why is "break" important?
+
+Suppose:
+
+switch (choice) {
+
+    case 1:
+        cout << "Biryani";
+        break;
+
+    case 2:
+        cout << "Fried Rice";
+        break;
+}
+
+If "choice = 1":
+
+case 1 matches
+     ↓
+"Biryani" printed
+     ↓
+break
+     ↓
+switch ends
+
+Without "break", C++ may continue executing the following cases. This is called fall-through.
+
+---
+
+8. "default"
+
+"default" executes when none of the cases match.
+
+Example:
+
+switch (choice) {
+
+    case 1:
+        cout << "Biryani";
+        break;
+
+    case 2:
+        cout << "Fried Rice";
+        break;
+
+    default:
+        cout << "Invalid choice";
+}
+
+If:
+
+choice = 5;
+
+There is no:
+
+case 5:
+
+So:
+
+default
+   ↓
+Invalid choice
+
+Important
+
+"default" is optional.
+
+A "switch" can work without "default", but using "default" is often useful for handling unexpected values.
+
+---
+
+9. Complete Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int choice;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+
+        case 1:
+            cout << "Biryani";
+            break;
+
+        case 2:
+            cout << "Fried Rice";
+            break;
+
+        case 3:
+            cout << "Noodles";
+            break;
+
+        case 4:
+            cout << "Pizza";
+            break;
+
+        default:
+            cout << "Invalid choice";
+    }
+
+    return 0;
+}
+
+Example Input
+
+Enter your choice: 2
+
+Output
+
+Fried Rice
+
+---
+
+10. How "switch" Works
+
+Suppose:
+
+int choice = 3;
+
+And:
+
+switch (choice) {
+
+    case 1:
+        cout << "Biryani";
+        break;
+
+    case 2:
+        cout << "Fried Rice";
+        break;
+
+    case 3:
+        cout << "Noodles";
+        break;
+
+    default:
+        cout << "Invalid choice";
+}
+
+Execution:
+
+choice = 3
+     ↓
+switch checks the value
+     ↓
+case 1? ❌
+     ↓
+case 2? ❌
+     ↓
+case 3? ✅
+     ↓
+"Noodles" printed
+     ↓
+break
+     ↓
+switch ends
+
+---
+
+11. Another Example — Day Number
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int day = 2;
+
+    switch (day) {
+
+        case 1:
+            cout << "Monday";
+            break;
+
+        case 2:
+            cout << "Tuesday";
+            break;
+
+        case 3:
+            cout << "Wednesday";
+            break;
+
+        case 4:
+            cout << "Thursday";
+            break;
+
+        case 5:
+            cout << "Friday";
+            break;
+
+        default:
+            cout << "Invalid day";
+    }
+
+    return 0;
+}
+
+Output
+
+Tuesday
+
+Because:
+
+day = 2
+   ↓
+case 2
+   ↓
+Tuesday
+
+---
+
+12. Fall-Through
+
+If we don't use "break", execution can continue into the next cases.
+
+Example:
+
+int number = 1;
+
+switch (number) {
+
+    case 1:
+        cout << "One";
+
+    case 2:
+        cout << "Two";
+
+    case 3:
+        cout << "Three";
+}
+
+Output:
+
+OneTwoThree
+
+Why?
+
+Because there is no "break".
+
+case 1 matches
+     ↓
+One
+     ↓
+case 2 also executes
+     ↓
+Two
+     ↓
+case 3 also executes
+     ↓
+Three
+
+This behavior is called fall-through.
+
+Normal usage
+
+Usually, we use "break" after each case:
+
+case 1:
+    cout << "One";
+    break;
+
+---
+
+13. Multiple Cases With Same Code
+
+Sometimes multiple values should perform the same action.
+
+Example:
+
+int day = 6;
+
+switch (day) {
+
+    case 6:
+    case 7:
+        cout << "Weekend";
+        break;
+
+    default:
+        cout << "Weekday";
+}
+
+If "day = 6" or "day = 7":
+
+Weekend
+
+Here, both cases share the same code.
+
+---
+
+14. "switch" vs "if-else"
+
+Both are conditional statements, but they are useful in different situations.
+
+"if-else"| "switch"
+Can check conditions| Mainly compares fixed values
+Good for ranges| Good for fixed choices
+Can use ">", "<", ">=", "<="| Case values must match
+Can use complex logical conditions| Simpler for menu-like choices
+Good for flexible conditions| Good for multiple fixed options
+
+Example where "if-else" is better
+
+if (marks >= 90) {
+    cout << "A";
+}
+else if (marks >= 75) {
+    cout << "B";
+}
+else {
+    cout << "C";
+}
+
+Here we are checking ranges, so "if-else" is better.
+
+Example where "switch" is better
+
+switch (choice) {
+
+    case 1:
+        cout << "Add";
+        break;
+
+    case 2:
+        cout << "Delete";
+        break;
+
+    case 3:
+        cout << "Exit";
+        break;
+}
+
+Here we have fixed choices, so "switch" is convenient.
+
+---
+
+15. Important Rules of "switch"
+
+Rule 1: Cases must have fixed values
+
+Example:
+
+case 1:
+case 2:
+case 3:
+
+These are fixed values.
+
+---
+
+Rule 2: Case values should be unique
+
+Avoid:
+
+case 1:
+case 1:
+
+The same case value cannot be repeated in one switch.
+
+---
+
+Rule 3: "break" is usually used
+
+case 1:
+    cout << "One";
+    break;
+
+Without "break", fall-through can happen.
+
+---
+
+Rule 4: "default" is optional
+
+You can write:
+
+switch (choice) {
+    case 1:
+        cout << "One";
+        break;
+}
+
+But "default" is useful:
+
+default:
+    cout << "Invalid choice";
+
+---
+
+Rule 5: "switch" works with suitable integral/enum values
+
+Common examples include:
+
+int
+char
+enum
+
+For example:
+
+char grade = 'A';
+
+switch (grade) {
+
+    case 'A':
+        cout << "Excellent";
+        break;
+
+    case 'B':
+        cout << "Good";
+        break;
+
+    default:
+        cout << "Other grade";
+}
+
+---
+
+16. "switch" With "char"
+
+"switch" can also check characters.
+
+char choice = 'y';
+
+switch (choice) {
+
+    case 'y':
+        cout << "Yes";
+        break;
+
+    case 'n':
+        cout << "No";
+        break;
+
+    default:
+        cout << "Invalid choice";
+}
+
+Output:
+
+Yes
+
+---
+
+17. "switch" With User Input
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int choice;
+
+    cout << "Enter 1 for Hello: ";
+    cin >> choice;
+
+    switch (choice) {
+
+        case 1:
+            cout << "Hello";
+            break;
+
+        default:
+            cout << "Invalid choice";
+    }
+
+    return 0;
+}
+
+If user enters:
+
+1
+
+Output:
+
+Hello
+
+If user enters:
+
+5
+
+Output:
+
+Invalid choice
+
+---
+
+18. Nested "switch"
+
+A "switch" can also be placed inside another "switch".
+
+This is called a Nested switch.
+
+Example:
+
+switch (category) {
+
+    case 1:
+
+        switch (choice) {
+
+            case 1:
+                cout << "Option 1";
+                break;
+
+            case 2:
+                cout << "Option 2";
+                break;
+        }
+
+        break;
+}
+
+Nested "switch" is covered separately in the next topic.
+
+---
+
+19. Real-Life Example
+
+Imagine an ATM.
+
+First, user chooses:
+
+1 → Withdraw
+2 → Deposit
+3 → Check Balance
+4 → Exit
+
+This can be represented using "switch".
+
+switch (choice) {
+
+    case 1:
+        cout << "Withdraw";
+        break;
+
+    case 2:
+        cout << "Deposit";
+        break;
+
+    case 3:
+        cout << "Check Balance";
+        break;
+
+    case 4:
+        cout << "Exit";
+        break;
+
+    default:
+        cout << "Invalid choice";
+}
+
+So:
+
+User choice
+     ↓
+switch
+     ↓
+Matching case
+     ↓
+Execute code
+     ↓
+break
+     ↓
+Exit switch
+
+---
+
+20. Memory Trick
+
+Remember:
+
+VALUE
+  ↓
+MATCHING CASE
+  ↓
+EXECUTE
+  ↓
+BREAK
+  ↓
+EXIT SWITCH
+
+And if no case matches:
+
+VALUE
+  ↓
+No matching case
+  ↓
+default
+
+---
+
+21. One-Line Definition
+
+«A "switch" statement is a conditional control statement used to select and execute one block of code from multiple fixed-value cases.»
+
+---
+
+22. Quick Revision
+
+"switch"
+
+Used for multiple fixed choices.
+
+"case"
+
+Represents a possible value.
+
+"break"
+
+Exits the switch and prevents unwanted fall-through.
+
+"default"
+
+Runs when no case matches.
+
+Fall-through
+
+When "break" is missing, execution continues into the next case.
+
+Nested switch
+
+A "switch" inside another "switch".
+
+---
+
+23. Basic Structure to Remember
+
+switch (value) {
+
+    case 1:
+        // code
+        break;
+
+    case 2:
+        // code
+        break;
+
+    case 3:
+        // code
+        break;
+
+    default:
+        // code
+}
+
+Easy Formula
+
+switch → Check value
+case → Match value
+break → Stop switch
+default → No match
