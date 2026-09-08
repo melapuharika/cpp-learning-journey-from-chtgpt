@@ -516,3 +516,432 @@ Skip
 One-Line Definition
 
 The "if" statement executes a block of code only when the specified condition is true.
+
+### topic:3 if-else Statement
+
+What is an "if-else" Statement?
+
+The "if-else" statement is a conditional statement used to choose between two possible blocks of code.
+
+Simple ga:
+
+«Condition true aithe → "if" block execute avtundi.
+Condition false aithe → "else" block execute avtundi.»
+
+So, "if-else" is useful when we have two possible outcomes.
+
+---
+
+Real-Life Example
+
+Suppose we want to check whether a student passed an exam.
+
+Rule:
+
+Marks >= 40 → Pass
+Marks < 40  → Fail
+
+Here there are two possibilities:
+
+              Marks
+                ↓
+          marks >= 40 ?
+           ↙         ↘
+        TRUE         FALSE
+          ↓             ↓
+        PASS           FAIL
+
+C++ lo:
+
+if (marks >= 40) {
+    cout << "Pass";
+}
+else {
+    cout << "Fail";
+}
+
+---
+
+Syntax
+
+if (condition) {
+    // statements when condition is true
+}
+else {
+    // statements when condition is false
+}
+
+Meaning
+
+- "if" → condition ni check chestundi.
+- "condition" → "true" or "false" result istundi.
+- "if" block → condition true ayithe execute avtundi.
+- "else" block → condition false ayithe execute avtundi.
+
+---
+
+Example 1 — Pass or Fail
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int marks = 75;
+
+    if (marks >= 40) {
+        cout << "Pass";
+    }
+    else {
+        cout << "Fail";
+    }
+
+    return 0;
+}
+
+Output
+
+Pass
+
+How it works
+
+marks = 75
+
+75 >= 40
+    ↓
+  TRUE
+    ↓
+if block
+    ↓
+Pass
+
+Since the condition is true, the "if" block executes.
+
+The "else" block is skipped.
+
+---
+
+Example 2 — Condition is False
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int marks = 30;
+
+    if (marks >= 40) {
+        cout << "Pass";
+    }
+    else {
+        cout << "Fail";
+    }
+
+    return 0;
+}
+
+Output
+
+Fail
+
+How it works
+
+marks = 30
+
+30 >= 40
+    ↓
+  FALSE
+    ↓
+else block
+    ↓
+Fail
+
+Since the condition is false, the "if" block is skipped and the "else" block executes.
+
+---
+
+Example 3 — Even or Odd
+
+We can use "if-else" to check whether a number is even or odd.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int number = 7;
+
+    if (number % 2 == 0) {
+        cout << "Even";
+    }
+    else {
+        cout << "Odd";
+    }
+
+    return 0;
+}
+
+Output
+
+Odd
+
+Why?
+
+7 % 2 = 1
+
+So:
+
+1 == 0
+   ↓
+ FALSE
+   ↓
+else block
+   ↓
+Odd
+
+---
+
+Example 4 — Voting Eligibility
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int age = 16;
+
+    if (age >= 18) {
+        cout << "Eligible to vote";
+    }
+    else {
+        cout << "Not eligible to vote";
+    }
+
+    return 0;
+}
+
+Output
+
+Not eligible to vote
+
+Because:
+
+16 >= 18
+    ↓
+  FALSE
+    ↓
+else block
+
+---
+
+"if" vs "if-else"
+
+Only "if"
+
+if (marks >= 40) {
+    cout << "Pass";
+}
+
+If the condition is true:
+
+Pass
+
+If the condition is false:
+
+No output
+
+---
+
+"if-else"
+
+if (marks >= 40) {
+    cout << "Pass";
+}
+else {
+    cout << "Fail";
+}
+
+If the condition is true:
+
+Pass
+
+If the condition is false:
+
+Fail
+
+Easy Difference
+
+if
+↓
+Only checks TRUE condition.
+
+if-else
+↓
+Handles both TRUE and FALSE conditions.
+
+---
+
+Important Rule
+
+In an "if-else" statement:
+
+Condition TRUE
+     ↓
+if block executes
+else block is skipped
+
+OR
+
+Condition FALSE
+     ↓
+if block is skipped
+else block executes
+
+Normally, only one of the two blocks executes.
+
+---
+
+Flowchart
+
+             Start
+               ↓
+        Check condition
+               ↓
+         ┌─────┴─────┐
+       TRUE         FALSE
+         ↓             ↓
+     if block      else block
+         ↓             ↓
+         └─────┬───────┘
+               ↓
+              End
+
+---
+
+Using Relational Operators
+
+We can use relational operators in the condition.
+
+if (a > b) {
+    // code
+}
+else {
+    // code
+}
+
+Other examples:
+
+if (a < b)
+if (a >= b)
+if (a <= b)
+if (a == b)
+if (a != b)
+
+---
+
+Using Logical Operators
+
+We can also combine conditions using logical operators.
+
+Example — AND "&&"
+
+if (age >= 18 && age <= 60) {
+    cout << "Eligible";
+}
+else {
+    cout << "Not eligible";
+}
+
+Both conditions must be true for the "if" block to execute.
+
+---
+
+Common Mistake
+
+Assignment "=" and comparison "==" are different.
+
+Wrong:
+
+if (age = 18)
+
+Correct for comparison:
+
+if (age == 18)
+
+- "=" → Assignment
+- "==" → Comparison
+
+---
+
+Another Common Mistake
+
+Don't write:
+
+else (condition)
+
+This is incorrect.
+
+Correct:
+
+if (condition) {
+    // code
+}
+else {
+    // code
+}
+
+"else" does not have a condition.
+
+---
+
+Easy Memory Trick
+
+Remember:
+
+if = If this condition is TRUE
+
+else = If the condition is NOT TRUE
+
+Or simply:
+
+TRUE  → IF
+FALSE → ELSE
+
+---
+
+Key Points
+
+1. "if-else" is a conditional statement.
+2. It is used for decision making.
+3. It provides two possible execution paths.
+4. If the condition is true, the "if" block executes.
+5. If the condition is false, the "else" block executes.
+6. Normally, only one block executes.
+7. "else" does not have a separate condition.
+8. Relational and logical operators can be used in the condition.
+9. "=" is assignment, while "==" is comparison.
+
+---
+
+One-Line Definition
+
+The "if-else" statement is used to execute one block of code when a condition is true and another block when the condition is false.
+
+---
+
+Quick Revision
+
+              if-else
+                 ↓
+        Check a condition
+                 ↓
+          ┌──────┴──────┐
+        TRUE           FALSE
+          ↓               ↓
+      if block        else block
+
+Remember:
+
+TRUE → IF ❤️
+
+FALSE → ELSE ❤️
