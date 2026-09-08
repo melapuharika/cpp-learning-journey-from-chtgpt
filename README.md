@@ -4187,3 +4187,200 @@ Key Points
 25. One-Line Definition
 
 «A loop is a control structure that repeatedly executes a block of code while a specified condition is satisfied or while elements remain to be processed.»
+
+
+### Topic 9 — for Loop
+
+1. What is a "for" Loop?
+
+A "for" loop is used to repeat a block of code multiple times.
+
+It is especially useful when we know how the repetition should progress.
+
+Simple Definition
+
+«A "for" loop repeatedly executes a block of code as long as its condition is true.»
+
+---
+
+2. Syntax
+
+for (initialization; condition; update) {
+    // code
+}
+
+There are 3 main parts:
+
+Part| Meaning
+Initialization| Starting value
+Condition| Checks whether loop should continue
+Update| Changes the loop variable
+
+---
+
+3. Simple Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i <= 5; i++) {
+        cout << i << "\n";
+    }
+
+    return 0;
+}
+
+Output
+
+1
+2
+3
+4
+5
+
+---
+
+4. How It Works
+
+For:
+
+for (int i = 1; i <= 5; i++)
+
+Step 1 — Initialization
+
+int i = 1;
+
+Loop starts with "i = 1".
+
+Step 2 — Condition
+
+i <= 5
+
+If true, loop body executes.
+
+Step 3 — Execute
+
+cout << i;
+
+The value is printed.
+
+Step 4 — Update
+
+i++
+
+"i" increases by 1.
+
+Then the condition is checked again.
+
+Initialize → Check → Execute → Update → Check again
+
+---
+
+5. "i++"
+
+i++;
+
+means:
+
+i = i + 1;
+
+Example:
+
+1 → 2 → 3 → 4 → 5 → 6
+
+When "i = 6":
+
+6 <= 5 → false
+
+So the loop stops.
+
+---
+
+6. Printing Even Numbers
+
+for (int i = 2; i <= 10; i += 2) {
+    cout << i << " ";
+}
+
+Output:
+
+2 4 6 8 10
+
+Here:
+
+i += 2;
+
+means:
+
+i = i + 2;
+
+---
+
+7. Reverse "for" Loop
+
+We can also decrease the value.
+
+for (int i = 5; i >= 1; i--) {
+    cout << i << " ";
+}
+
+Output:
+
+5 4 3 2 1
+
+Here:
+
+i--
+
+means:
+
+i = i - 1;
+
+---
+
+8. Infinite "for" Loop
+
+A "for" loop can be written without a condition:
+
+for (;;) {
+    cout << "Hello";
+}
+
+This creates an infinite loop.
+
+It continues until something stops it.
+
+---
+
+9. Important Points
+
+- "for" loop is used for repetition.
+- It has three main parts:
+  - Initialization
+  - Condition
+  - Update
+- The condition is checked before each iteration.
+- If the condition is false initially, the loop body does not execute.
+- "i++" increases by 1.
+- "i--" decreases by 1.
+- "i += 2" increases by 2.
+
+---
+
+10. Memory Trick
+
+for (START; CHECK; CHANGE)
+
+Example:
+
+for (int i = 1; i <= 5; i++)
+
+1       → Start
+i <= 5  → Check
+i++     → Change
+
+One-Line Definition
+
+«A "for" loop is a control statement used to repeatedly execute code based on initialization, condition, and update.»
