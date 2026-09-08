@@ -1371,3 +1371,562 @@ Quick Revision
               FALSE      TRUE
                 ↓          ↓
               Skip       Execute
+              
+
+### topic:5 "else if" Statement
+
+What is an "else if" Statement?
+
+The "else if" statement is used when we need to check multiple conditions.
+
+Simple ga:
+
+«First condition false aithe → next condition check cheyyi.»
+
+Multiple conditions lo first true condition dorikina block execute avtundi.
+
+---
+
+Why do we use "else if"?
+
+Suppose we want to assign a grade based on marks.
+
+There are multiple possibilities:
+
+90 or above → Grade A
+75 or above → Grade B
+60 or above → Grade C
+40 or above → Grade D
+Below 40   → Fail
+
+Here, checking only one condition with "if" is not enough.
+
+So we use an "else if" chain.
+
+---
+
+Syntax
+
+if (condition1) {
+    // statements
+}
+else if (condition2) {
+    // statements
+}
+else if (condition3) {
+    // statements
+}
+else {
+    // statements when all conditions are false
+}
+
+How it works
+
+The program checks the conditions from top to bottom.
+
+Condition 1?
+     ↓
+   TRUE ─────→ Execute block → STOP
+     ↓
+   FALSE
+     ↓
+Condition 2?
+     ↓
+   TRUE ─────→ Execute block → STOP
+     ↓
+   FALSE
+     ↓
+Condition 3?
+     ↓
+   TRUE ─────→ Execute block → STOP
+     ↓
+   FALSE
+     ↓
+  else block
+
+---
+
+Example 1 — Grade System
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int marks = 82;
+
+    if (marks >= 90) {
+        cout << "Grade A";
+    }
+    else if (marks >= 75) {
+        cout << "Grade B";
+    }
+    else if (marks >= 60) {
+        cout << "Grade C";
+    }
+    else if (marks >= 40) {
+        cout << "Grade D";
+    }
+    else {
+        cout << "Fail";
+    }
+
+    return 0;
+}
+
+Output
+
+Grade B
+
+---
+
+How Does This Program Work?
+
+The value is:
+
+marks = 82
+
+Step 1
+
+82 >= 90
+    ↓
+ FALSE
+
+So the first "if" is skipped.
+
+Step 2
+
+82 >= 75
+    ↓
+ TRUE
+
+So:
+
+Grade B
+
+is printed.
+
+The program stops checking the remaining "else if" conditions.
+
+---
+
+⭐ Most Important Rule
+
+In an "else if" chain:
+
+«The first condition that becomes true is executed, and the remaining conditions are skipped.»
+
+Example:
+
+marks = 95
+
+95 >= 90 → TRUE
+       ↓
+    Grade A
+       ↓
+    STOP
+
+It will not check:
+
+95 >= 75
+95 >= 60
+95 >= 40
+
+because a matching condition has already been found.
+
+---
+
+Example 2 — All Conditions False
+
+int marks = 25;
+
+if (marks >= 90) {
+    cout << "Grade A";
+}
+else if (marks >= 75) {
+    cout << "Grade B";
+}
+else if (marks >= 60) {
+    cout << "Grade C";
+}
+else if (marks >= 40) {
+    cout << "Grade D";
+}
+else {
+    cout << "Fail";
+}
+
+Output
+
+Fail
+
+Why?
+
+25 >= 90 → FALSE
+25 >= 75 → FALSE
+25 >= 60 → FALSE
+25 >= 40 → FALSE
+             ↓
+           else
+             ↓
+           Fail
+
+Since all conditions are false, the "else" block executes.
+
+---
+
+Example 3 — Positive, Negative, or Zero
+
+We can use "else if" to classify a number.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int number = -5;
+
+    if (number > 0) {
+        cout << "Positive";
+    }
+    else if (number < 0) {
+        cout << "Negative";
+    }
+    else {
+        cout << "Zero";
+    }
+
+    return 0;
+}
+
+Output
+
+Negative
+
+Flow
+
+number > 0?
+     ↓
+   FALSE
+     ↓
+number < 0?
+     ↓
+   TRUE
+     ↓
+Negative
+
+---
+
+Example 4 — Age Category
+
+int age = 20;
+
+if (age < 13) {
+    cout << "Child";
+}
+else if (age < 20) {
+    cout << "Teenager";
+}
+else {
+    cout << "Adult";
+}
+
+Output
+
+Adult
+
+Because:
+
+20 < 13 → FALSE
+20 < 20 → FALSE
+          ↓
+        else
+          ↓
+        Adult
+
+---
+
+"if-else" vs "else if"
+
+"if-else"
+
+Used when there are mainly two possible outcomes.
+
+Condition
+   ↓
+TRUE  → if
+FALSE → else
+
+Example:
+
+if (marks >= 40) {
+    cout << "Pass";
+}
+else {
+    cout << "Fail";
+}
+
+---
+
+"else if"
+
+Used when there are multiple conditions or choices.
+
+Condition 1
+    ↓
+Condition 2
+    ↓
+Condition 3
+    ↓
+Condition 4
+    ↓
+else
+
+Example:
+
+if (marks >= 90) {
+    cout << "A";
+}
+else if (marks >= 75) {
+    cout << "B";
+}
+else if (marks >= 60) {
+    cout << "C";
+}
+else {
+    cout << "Fail";
+}
+
+---
+
+Important Difference
+
+if-else
+↓
+Two main choices
+
+else if
+↓
+Multiple choices
+
+---
+
+Order of Conditions Matters
+
+The order of conditions is important because C++ checks them from top to bottom.
+
+For example:
+
+int marks = 95;
+
+if (marks >= 40) {
+    cout << "D";
+}
+else if (marks >= 75) {
+    cout << "B";
+}
+else if (marks >= 90) {
+    cout << "A";
+}
+
+Output
+
+D
+
+Why?
+
+Because the first condition:
+
+95 >= 40
+    ↓
+  TRUE
+
+already matches.
+
+So the program doesn't reach the later conditions.
+
+Better order
+
+if (marks >= 90) {
+    cout << "A";
+}
+else if (marks >= 75) {
+    cout << "B";
+}
+else if (marks >= 40) {
+    cout << "D";
+}
+else {
+    cout << "Fail";
+}
+
+Now the most specific/highest range is checked first.
+
+---
+
+"else" is Optional
+
+An "else" block is not compulsory.
+
+We can write:
+
+if (marks >= 90) {
+    cout << "A";
+}
+else if (marks >= 75) {
+    cout << "B";
+}
+else if (marks >= 60) {
+    cout << "C";
+}
+
+If all conditions are false, nothing is printed.
+
+---
+
+"else if" Chain
+
+A complete structure looks like:
+
+       if
+        ↓
+   condition 1
+        ↓
+      false
+        ↓
+    else if
+        ↓
+   condition 2
+        ↓
+      false
+        ↓
+    else if
+        ↓
+   condition 3
+        ↓
+      false
+        ↓
+      else
+
+The program moves down the chain until it finds a true condition.
+
+---
+
+Real-Life Example
+
+Suppose a traffic signal has different actions:
+
+If signal is RED
+    Stop
+
+Else if signal is YELLOW
+    Wait
+
+Else if signal is GREEN
+    Go
+
+C++:
+
+if (signal == "red") {
+    cout << "Stop";
+}
+else if (signal == "yellow") {
+    cout << "Wait";
+}
+else if (signal == "green") {
+    cout << "Go";
+}
+
+This is a multiple-decision situation.
+
+---
+
+Common Mistake
+
+Do not forget that each "else if" needs a condition.
+
+Correct:
+
+if (x > 10) {
+    // code
+}
+else if (x > 5) {
+    // code
+}
+else {
+    // code
+}
+
+"else" alone does not have a condition.
+
+---
+
+Important Points
+
+1. "else if" is used for checking multiple conditions.
+2. Conditions are checked from top to bottom.
+3. The first true condition gets executed.
+4. After one condition is executed, the remaining conditions are skipped.
+5. "else" executes when all previous conditions are false.
+6. "else" is optional.
+7. The order of conditions is important.
+8. "else if" is useful when there are multiple possible outcomes.
+9. "else if" can be used with relational and logical operators.
+
+---
+
+Easy Memory Trick
+
+Remember:
+
+if
+↓
+First condition
+
+else if
+↓
+Try another condition
+
+else if
+↓
+Try another condition
+
+else
+↓
+Nothing above was true
+
+Super Simple Formula
+
+IF TRUE → Execute
+
+ELSE IF TRUE → Execute
+
+ELSE → All above are FALSE
+
+---
+
+One-Line Definition
+
+The "else if" statement is used to check multiple conditions one after another and execute the block of the first condition that is true.
+
+---
+
+Quick Revision
+
+             Start
+               ↓
+          Check if
+               ↓
+          TRUE? ── Yes → Execute → Stop
+            ↓ No
+        Check else if
+               ↓
+          TRUE? ── Yes → Execute → Stop
+            ↓ No
+        Check else if
+               ↓
+          TRUE? ── Yes → Execute → Stop
+            ↓ No
+            else
+             ↓
+          Execute
