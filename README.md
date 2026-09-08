@@ -4384,3 +4384,175 @@ i++     → Change
 One-Line Definition
 
 «A "for" loop is a control statement used to repeatedly execute code based on initialization, condition, and update.»
+
+
+### Topic 10 — while Loop
+
+1. What is a "while" Loop?
+
+A "while" loop is used to repeat a block of code as long as a condition is true.
+
+Simple Definition
+
+«A "while" loop repeatedly executes code while the given condition is true.»
+
+---
+
+2. Syntax
+
+while (condition) {
+    // code
+}
+
+Usually, initialization and update are written separately.
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i << "\n";
+    i++;
+}
+
+---
+
+3. Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    while (i <= 5) {
+        cout << i << "\n";
+        i++;
+    }
+
+    return 0;
+}
+
+Output
+
+1
+2
+3
+4
+5
+
+---
+
+4. How It Works
+
+Initialize
+    ↓
+Check condition
+    ↓
+True?
+ ↓      ↓
+Yes     No
+ ↓       ↓
+Execute  Stop
+ ↓
+Update
+ ↓
+Check again
+
+For example:
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i;
+    i++;
+}
+
+Execution:
+
+1 → 2 → 3 → 4 → 5 → 6
+
+When "i = 6":
+
+6 <= 5 → false
+
+So the loop stops.
+
+---
+
+5. Important Point
+
+"while" is an entry-controlled loop because the condition is checked before executing the loop body.
+
+Example:
+
+int i = 10;
+
+while (i < 5) {
+    cout << i;
+}
+
+Here:
+
+10 < 5 → false
+
+So the loop executes 0 times.
+
+---
+
+6. Infinite "while" Loop
+
+If the condition never becomes false, the loop can run forever.
+
+while (true) {
+    cout << "Hello";
+}
+
+This is an infinite loop.
+
+Always make sure the loop has a proper way to terminate when needed.
+
+---
+
+7. "while" vs "for"
+
+"for"
+
+Initialization, condition and update are usually written together:
+
+for (int i = 1; i <= 5; i++) {
+    cout << i;
+}
+
+"while"
+
+They are usually written separately:
+
+int i = 1;
+
+while (i <= 5) {
+    cout << i;
+    i++;
+}
+
+---
+
+8. Important Points
+
+- "while" is used for repetition.
+- Condition is checked before execution.
+- If the condition is initially false, the loop executes 0 times.
+- Initialization is generally done before the loop.
+- Update is generally done inside the loop.
+- Forgetting the update can cause an infinite loop.
+
+---
+
+9. Memory Trick
+
+«while = Check first → Execute if true → Update → Check again»
+
+CHECK → EXECUTE → UPDATE → CHECK → ...
+
+One-Line Definition
+
+«A "while" loop repeatedly executes a block of code as long as its condition remains true.»
