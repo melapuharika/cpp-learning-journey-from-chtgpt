@@ -288,3 +288,55 @@ Declaration → Exists
 Definition → Works
 
 Calling → Runs
+
+
+### topic :5 Functions — Parameters
+
+Definition
+
+Parameters are variables used inside a function to receive values from the function call.
+
+Syntax
+
+returnType functionName(parameter1, parameter2) {
+    // statements
+}
+
+Example
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int result = add(10, 20);
+
+Here:
+
+- "a" and "b" → Parameters
+- "10" and "20" → Arguments
+- "a = 10", "b = 20"
+- Result → "30"
+
+Parameters vs Arguments
+
+Parameters| Arguments
+Variables in function definition| Actual values passed during function call
+Receive values| Provide values
+Example: "int a"| Example: "10"
+
+Multiple Parameters
+
+int multiply(int a, int b, int c) {
+    return a * b * c;
+}
+
+Important Points
+
+- A function can have zero, one, or multiple parameters.
+- Parameters act like empty boxes that receive values.
+- Arguments are the actual values put into those boxes.
+
+Memory Trick
+
+Parameter = Empty box 📦
+Argument = Value placed inside the box 🎁
