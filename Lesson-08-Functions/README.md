@@ -340,3 +340,52 @@ Memory Trick
 
 Parameter = Empty box 📦
 Argument = Value placed inside the box 🎁
+
+## topic:6 Functions — Return Value
+
+Definition
+
+A return value is the result that a function sends back to the place where it was called.
+
+Syntax
+
+return value;
+
+Example
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int result = add(10, 20);
+
+Output
+
+30
+
+Here:
+
+- "int" → function returns an integer value.
+- "return a + b;" → sends the result back.
+- "result" → stores the returned value.
+
+Important Points
+
+- "return" ends the function.
+- It can send a value back to the caller.
+- The return type must match the returned value.
+- "void" functions normally do not return a value.
+
+Example
+
+int square(int n) {
+    return n * n;
+}
+
+int answer = square(5);
+
+Here, "25" is the return value.
+
+Memory Trick
+
+Function → Does the work → Returns the result 🔄
