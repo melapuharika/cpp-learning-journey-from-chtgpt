@@ -100,3 +100,191 @@ Important Function Concepts
 Memory Trick
 
 Function = Write once → Call whenever needed → Reuse code.
+
+
+
+### topic:2,3,4 Functions – Declaration, Definition and Calling
+
+What is a Function?
+
+A function is a reusable block of code created to perform a specific task.
+
+Example:
+
+void greet() {
+    cout << "Hello";
+}
+
+A function can be created once and called multiple times.
+
+---
+
+1. Function Declaration
+
+Definition
+
+A function declaration tells the compiler that a function exists.
+
+It gives information about the function's return type, name, and parameters.
+
+Syntax
+
+returnType functionName(parameters);
+
+Example
+
+int add(int a, int b);
+
+Here:
+
+- "int" → return type
+- "add" → function name
+- "int a, int b" → parameters
+- ";" → ends the declaration
+
+Simple Meaning
+
+Declaration = "This function exists."
+
+---
+
+2. Function Definition
+
+Definition
+
+A function definition contains the actual code that tells the function what to do.
+
+Syntax
+
+returnType functionName(parameters) {
+    // function body
+}
+
+Example
+
+int add(int a, int b) {
+    return a + b;
+}
+
+Here:
+
+- "int" → return type
+- "add" → function name
+- "int a, int b" → parameters
+- "{ }" → function body
+- "return a + b;" → actual work
+
+Simple Meaning
+
+Definition = "This is what the function does."
+
+---
+
+3. Function Calling
+
+Definition
+
+Function calling means asking the function to execute its code.
+
+Syntax
+
+functionName(arguments);
+
+Example
+
+add(10, 20);
+
+Here:
+
+- "add" → function name
+- "10, 20" → arguments
+
+The function receives these values and performs its work.
+
+10 + 20 = 30
+
+Simple Meaning
+
+Calling = "Function, do your work now."
+
+---
+
+Complete Example
+
+#include <iostream>
+using namespace std;
+
+// Function Declaration
+int add(int a, int b);
+
+int main() {
+
+    // Function Calling
+    int result = add(10, 20);
+
+    cout << result;
+
+    return 0;
+}
+
+// Function Definition
+int add(int a, int b) {
+    return a + b;
+}
+
+Output
+
+30
+
+---
+
+How It Works
+
+Declaration
+     ↓
+"add function exists"
+     ↓
+main()
+     ↓
+Calling: add(10, 20)
+     ↓
+Function Definition
+     ↓
+10 + 20
+     ↓
+30
+     ↓
+Return to main()
+
+---
+
+Declaration vs Definition vs Calling
+
+Concept| Meaning
+Declaration| Tells that the function exists
+Definition| Tells what the function does
+Calling| Executes the function
+
+Easy Memory Trick
+
+Declaration → Function undi
+
+Definition → Function em chestundo
+
+Calling → Function ni run cheyyi
+
+Real-life Example
+
+Think of a restaurant:
+
+- Declaration → "Biryani is available." 🍚
+- Definition → Recipe for making biryani. 👩‍🍳
+- Calling → "One biryani please!" 😋
+
+So:
+
+Declaration → Exists
+
+Definition → Works
+
+Calling → Runs
