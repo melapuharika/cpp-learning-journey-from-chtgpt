@@ -389,3 +389,57 @@ Here, "25" is the return value.
 Memory Trick
 
 Function → Does the work → Returns the result 🔄
+
+
+## topic:7 Functions — Pass by Value
+
+Definition
+
+Pass by Value means passing a copy of the value to a function.
+
+The function works on the copy, so the original variable is not changed.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void change(int a) {
+    a = 50;
+}
+
+int main() {
+    int x = 10;
+
+    change(x);
+
+    cout << x;
+
+    return 0;
+}
+
+Output
+
+10
+
+How It Works
+
+x = 10
+ ↓
+Copy of 10
+ ↓
+a = 10
+ ↓
+a = 50
+
+The original "x" remains "10".
+
+Important Points
+
+- A copy of the value is passed to the function.
+- Changes made to the parameter do not affect the original variable.
+- Original variable remains unchanged.
+
+Memory Trick
+
+Pass by Value = Copy → Function → Original Safe 🛡️
