@@ -702,3 +702,47 @@ Parameters are the same; only return type is different.
 Memory Trick
 
 Same Name + Different Parameters = Function Overloading 🔄
+
+
+## topic:12 Functions — Inline Function
+
+Definition
+
+An Inline Function is a function declared using the "inline" keyword. It suggests that the compiler may replace the function call with the function code at the place where it is called.
+
+Syntax
+
+inline returnType functionName(parameters) {
+    // statements
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+inline int square(int x) {
+    return x * x;
+}
+
+int main() {
+    cout << square(5);
+
+    return 0;
+}
+
+Output
+
+25
+
+Important Points
+
+- Uses the "inline" keyword.
+- Mainly useful for small and simple functions.
+- It can reduce function-call overhead.
+- "inline" is a request/suggestion to the compiler, not a guarantee.
+- The compiler decides whether to actually inline the function.
+
+Memory Trick
+
+"inline" = Small function → Possible code expansion at the call place ⚡
