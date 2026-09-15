@@ -580,3 +580,60 @@ Important Points
 Memory Trick
 
 Pointer = Address 📍 → Original Variable → Can Modify
+
+
+
+## topic: 10Functions — Default Arguments
+
+Definition
+
+A Default Argument is a predefined value used by a function when an argument is not provided during the function call.
+
+Syntax
+
+returnType functionName(dataType parameter = defaultValue) {
+    // statements
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void greet(string name = "Friend") {
+    cout << "Hello " << name;
+}
+
+int main() {
+    greet();
+    greet("Harika");
+
+    return 0;
+}
+
+Output
+
+Hello Friend
+Hello Harika
+
+How It Works
+
+greet()
+→ No argument
+→ Default value "Friend" is used
+
+greet("Harika")
+→ Argument is provided
+→ "Harika" is used
+
+Important Points
+
+- Default arguments are predefined values.
+- If an argument is not given, the default value is used.
+- If an argument is given, the given value is used.
+- Default arguments are written using "=".
+- They are useful when a function should have a backup value.
+
+Memory Trick
+
+No Argument → Default Value ✅
