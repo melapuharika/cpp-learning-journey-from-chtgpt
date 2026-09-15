@@ -511,3 +511,72 @@ Pass by Pointer| Address| ✅ Yes
 Memory Trick
 
 Reference = Original variable ka direct connection 🔗
+
+
+## topic:9 Functions — Pass by Pointer
+
+Definition
+
+Pass by Pointer means passing the address of a variable to a function using a pointer.
+
+The function can use the address to access or modify the original variable.
+
+Syntax
+
+void functionName(int *p) {
+    // statements
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void change(int *p) {
+    *p = 50;
+}
+
+int main() {
+    int x = 10;
+
+    change(&x);
+
+    cout << x;
+
+    return 0;
+}
+
+Output
+
+50
+
+How It Works
+
+x = 10
+ ↓
+&x → address of x
+ ↓
+p → stores address
+ ↓
+*p → accesses x
+ ↓
+x = 50
+
+Important Symbols
+
+Symbol| Meaning
+"&x"| Address of "x"
+"int *p"| Pointer storing an address
+"*p"| Value at the stored address
+
+Important Points
+
+- Passes the address, not a copy of the value.
+- Uses a pointer ("*").
+- The function can modify the original variable.
+- "&" is used when passing the variable's address.
+- "*" is used to access the value through the pointer.
+
+Memory Trick
+
+Pointer = Address 📍 → Original Variable → Can Modify
