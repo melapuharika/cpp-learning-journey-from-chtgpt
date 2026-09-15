@@ -829,4 +829,63 @@ Important Points
 
 Memory Trick
 
-Recursive Function = Self Call 🔁 + Base Case 🛑
+Recursive Function = Self Call 🔁 + Base Case 
+
+
+### topic: 14Functions — Lambda Function
+
+Definition
+
+A Lambda Function is a small anonymous function (a function without a name) used for quick tasks.
+
+Syntax
+
+[capture](parameters) {
+    // function body
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    auto add = [](int a, int b) {
+        return a + b;
+    };
+
+    cout << add(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+Parts of Lambda
+
+[]                  → Capture
+(int a, int b)      → Parameters
+{ return a + b; }   → Function body
+
+Lambda Without Parameters
+
+auto hello = []() {
+    cout << "Hello!";
+};
+
+hello();
+
+Important Points
+
+- Lambda functions usually do not have a function name.
+- They are useful for small and quick tasks.
+- "[]" is called the capture clause.
+- "auto" can be used to store a lambda in a variable.
+- Lambda functions can have parameters and return values.
+
+Memory Trick
+
+Lambda = Small + Anonymous Function ⚡
