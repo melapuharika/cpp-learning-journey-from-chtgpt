@@ -443,3 +443,71 @@ Important Points
 Memory Trick
 
 Pass by Value = Copy → Function → Original Safe 🛡️
+
+
+## topic:8 Functions — Pass by Reference
+
+Definition
+
+Pass by Reference means passing a reference to the original variable to a function.
+
+The function can directly modify the original variable.
+
+Syntax
+
+returnType functionName(dataType &parameter) {
+    // statements
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void change(int &a) {
+    a = 50;
+}
+
+int main() {
+    int x = 10;
+
+    change(x);
+
+    cout << x;
+
+    return 0;
+}
+
+Output
+
+50
+
+How It Works
+
+x = 10
+ ↓
+a refers to x
+ ↓
+a = 50
+ ↓
+x = 50
+
+Here, "a" is a reference to the original variable "x".
+
+Important Points
+
+- Uses "&" with the parameter.
+- No separate copy is created.
+- Changes made to the parameter affect the original variable.
+- Useful when a function needs to modify the original variable.
+
+Quick Comparison
+
+Method| What is passed?| Original changes?
+Pass by Value| Copy| ❌ No
+Pass by Reference| Reference| ✅ Yes
+Pass by Pointer| Address| ✅ Yes
+
+Memory Trick
+
+Reference = Original variable ka direct connection 🔗
