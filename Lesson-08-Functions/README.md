@@ -888,4 +888,71 @@ Important Points
 
 Memory Trick
 
-Lambda = Small + Anonymous Function ⚡
+Lambda = Small + Anonymous Function 
+
+
+### topic: 15 Advanced Functions — Function Pointer
+
+Definition
+
+A Function Pointer is a pointer that stores the address of a function and can be used to call that function.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int (*ptr)(int, int) = add;
+
+    cout << ptr(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+How It Works
+
+add()
+ ↓
+Function address
+ ↓
+ptr stores the address
+ ↓
+ptr(10, 20)
+ ↓
+add(10, 20)
+ ↓
+30
+
+Syntax
+
+returnType (*pointerName)(parameterTypes);
+
+Example:
+
+int (*ptr)(int, int);
+
+Here:
+
+- "int" → return type
+- "ptr" → function pointer name
+- "(int, int)" → parameter types
+
+Important Points
+
+- A function pointer stores a function's address.
+- It can be used to call the function.
+- The return type and parameter types must match the function.
+- Function pointers are useful for callbacks and passing functions to other functions.
+
+Memory Trick
+
+Function → Address → Function Pointer → Call Function 🔗
