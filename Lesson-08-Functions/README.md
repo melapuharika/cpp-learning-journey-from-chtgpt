@@ -1027,4 +1027,73 @@ Important Points
 
 Memory Trick
 
-Class + Member Function → Pointer to Member Function 📍
+Class + Member Function → Pointer to Member Function 
+
+
+## topic:18 Advanced Functions — "std::function"
+
+Definition
+
+"std::function" is a general-purpose function wrapper that can store and call different callable objects.
+
+Header
+
+#include <functional>
+
+Syntax
+
+std::function<returnType(parameters)> name;
+
+Example
+
+#include <iostream>
+#include <functional>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    function<int(int, int)> operation = add;
+
+    cout << operation(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+Lambda Example
+
+function<int(int, int)> operation =
+    [](int a, int b) {
+        return a * b;
+    };
+
+cout << operation(10, 20);
+
+Output:
+
+200
+
+How It Works
+
+std::function
+      ↓
+   Function Box 📦
+      ↓
+Normal Function / Lambda / Callable
+
+Important Points
+
+- "std::function" is available through "<functional>".
+- It can store normal functions, lambdas, functors, and other callable objects.
+- The return type and parameter types define what can be stored.
+- It provides a flexible way to store and call functions.
+
+Memory Trick
+
+"std::function" = Flexible Function Box 📦
