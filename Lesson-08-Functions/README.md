@@ -955,4 +955,76 @@ Important Points
 
 Memory Trick
 
-Function → Address → Function Pointer → Call Function 🔗
+Function → Address → Function Pointer → Call Function 
+
+
+## topic: 16 Advanced Functions — Pointer to Member Function
+
+Definition
+
+A Pointer to Member Function is a pointer that stores the address of a member function of a class.
+
+Syntax
+
+returnType (ClassName::*pointerName)(parameters);
+
+Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void study() {
+        cout << "Student is studying";
+    }
+};
+
+int main() {
+    Student s;
+
+    void (Student::*ptr)() = &Student::study;
+
+    (s.*ptr)();
+
+    return 0;
+}
+
+Output
+
+Student is studying
+
+How It Works
+
+Student class
+     ↓
+study() member function
+     ↓
+ptr stores its address
+     ↓
+(s.*ptr)()
+     ↓
+study() is called
+
+".*" and "->*"
+
+Situation| Operator
+Object| ".*"
+Object pointer| "->*"
+
+Example:
+
+(s.*ptr)();
+
+(p->*ptr)();
+
+Important Points
+
+- Used to point to a class member function.
+- The class name is required in the pointer declaration.
+- ".*" is used with an object.
+- "->*" is used with an object pointer.
+
+Memory Trick
+
+Class + Member Function → Pointer to Member Function 📍
