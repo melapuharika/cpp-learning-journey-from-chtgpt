@@ -637,3 +637,68 @@ Important Points
 Memory Trick
 
 No Argument → Default Value ✅
+
+
+### topic: 11Functions — Function Overloading
+
+Definition
+
+Function Overloading means having multiple functions with the same name but different parameters.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+int main() {
+    cout << add(10, 20) << endl;
+    cout << add(10, 20, 30);
+
+    return 0;
+}
+
+Output
+
+30
+60
+
+Here:
+
+add(int, int)
+add(int, int, int)
+
+Both have the same function name, but their parameters are different.
+
+Function Overloading Can Differ By
+
+- Number of parameters
+- Type of parameters
+- Order of parameters
+
+Example
+
+int show(int x);
+double show(double x);
+
+Important Point
+
+Return type alone cannot be used for function overloading.
+
+❌ Not valid:
+
+int add(int a, int b);
+double add(int a, int b);
+
+Parameters are the same; only return type is different.
+
+Memory Trick
+
+Same Name + Different Parameters = Function Overloading 🔄
