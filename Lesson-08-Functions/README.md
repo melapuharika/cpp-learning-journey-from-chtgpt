@@ -1096,4 +1096,68 @@ Important Points
 
 Memory Trick
 
-"std::function" = Flexible Function Box 📦
+"std::function" = Flexible Function Box 
+
+
+### topic 19:higer order function
+Advanced Functions — Higher-Order Function
+
+Definition
+
+A Higher-Order Function is a function that takes another function as an argument or returns a function.
+
+Example
+
+#include <iostream>
+#include <functional>
+using namespace std;
+
+int operate(int a, int b, function<int(int, int)> operation) {
+    return operation(a, b);
+}
+
+int main() {
+    cout << operate(10, 20, [](int a, int b) {
+        return a + b;
+    });
+
+    return 0;
+}
+
+Output
+
+30
+
+How It Works
+
+operate()
+   ↓
+10, 20 → Values
+lambda → Function
+   ↓
+10 + 20
+   ↓
+30
+
+Another Example
+
+operate(10, 20, [](int a, int b) {
+    return a * b;
+});
+
+Output:
+
+200
+
+The same "operate()" function can work with different functions.
+
+Important Points
+
+- A Higher-Order Function can take a function as an argument.
+- It can also return a function.
+- It is commonly used with lambdas and "std::function".
+- It makes code more flexible and reusable.
+
+Memory Trick
+
+Function + Another Function = Higher-Order Function 
