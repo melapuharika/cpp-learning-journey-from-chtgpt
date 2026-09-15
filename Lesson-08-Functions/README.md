@@ -746,3 +746,87 @@ Important Points
 Memory Trick
 
 "inline" = Small function → Possible code expansion at the call place ⚡
+
+
+## topic 13 Functions — Recursive Function
+
+Definition
+
+A Recursive Function is a function that calls itself to solve a problem.
+
+Two Important Parts
+
+1. Base Case → Stops the recursion.
+2. Recursive Case → Calls the function again.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void countDown(int n) {
+    if (n == 0) {
+        return;
+    }
+
+    cout << n << endl;
+    countDown(n - 1);
+}
+
+int main() {
+    countDown(5);
+
+    return 0;
+}
+
+Output
+
+5
+4
+3
+2
+1
+
+How It Works
+
+countDown(5)
+↓
+countDown(4)
+↓
+countDown(3)
+↓
+countDown(2)
+↓
+countDown(1)
+↓
+countDown(0)
+↓
+Base Case → STOP
+
+Factorial Example
+
+int factorial(int n) {
+    if (n == 1) {
+        return 1;
+    }
+
+    return n * factorial(n - 1);
+}
+
+factorial(5)
+→ 5 × factorial(4)
+→ 5 × 4 × factorial(3)
+→ 5 × 4 × 3 × factorial(2)
+→ 5 × 4 × 3 × 2 × factorial(1)
+→ 120
+
+Important Points
+
+- A recursive function calls itself.
+- Every recursion should have a base case.
+- Without a proper base case, recursion may continue indefinitely and cause stack overflow.
+- Recursion is useful for problems that can be divided into smaller similar problems.
+
+Memory Trick
+
+Recursive Function = Self Call 🔁 + Base Case 🛑
