@@ -410,9 +410,7 @@ Congratulations!
 Both statements execute because the condition is true.
 
 ---
-
 Conditions in "if"
-
 We can use relational operators to create conditions.
 
 Examples:
