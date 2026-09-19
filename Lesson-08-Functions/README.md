@@ -1,4 +1,4 @@
-# Lesson 08 — Functions
+### Lesson 08 — Functions
 
 1. Function
 2. Function Declaration
