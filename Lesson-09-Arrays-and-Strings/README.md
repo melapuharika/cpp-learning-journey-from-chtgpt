@@ -269,3 +269,202 @@ data_type array_name[size];
 Example:
 
 int numbers[5];
+
+
+### topic:3 2D Array
+
+What is a 2D Array?
+
+A 2D Array is an array that stores elements in rows and columns.
+
+It looks like a table or matrix.
+
+Example
+
+10  20  30
+40  50  60
+70  80  90
+
+Here:
+
+- 3 Rows
+- 3 Columns
+- Total elements = 9
+
+---
+
+Syntax
+
+data_type array_name[rows][columns];
+
+Example
+
+int numbers[3][3];
+
+Here:
+
+- "int" → Data type
+- "numbers" → Array name
+- First "[3]" → Number of rows
+- Second "[3]" → Number of columns
+
+---
+
+2D Array Initialization
+
+int numbers[3][3] = {
+    {10, 20, 30},
+    {40, 50, 60},
+    {70, 80, 90}
+};
+
+The array looks like:
+
+       Column
+        0   1   2
+      ┌───┬───┬───┐
+Row 0 │10 │20 │30 │
+      ├───┼───┼───┤
+Row 1 │40 │50 │60 │
+      ├───┼───┼───┤
+Row 2 │70 │80 │90 │
+      └───┴───┴───┘
+
+---
+
+Accessing Elements
+
+We access a 2D array using:
+
+array_name[row][column];
+
+Example
+
+cout << numbers[0][0];
+
+Output:
+
+10
+
+cout << numbers[1][2];
+
+Output:
+
+60
+
+Remember:
+
+- First index → Row
+- Second index → Column
+
+---
+
+Array Indexing
+
+Indexing starts from 0.
+
+For a "3 × 3" array:
+
+Rows    → 0, 1, 2
+Columns → 0, 1, 2
+
+So the last element is:
+
+numbers[2][2];
+
+---
+
+Printing a 2D Array
+
+We use nested for loops to print all elements.
+
+int numbers[3][3] = {
+    {10, 20, 30},
+    {40, 50, 60},
+    {70, 80, 90}
+};
+
+for(int i = 0; i < 3; i++)
+{
+    for(int j = 0; j < 3; j++)
+    {
+        cout << numbers[i][j] << " ";
+    }
+
+    cout << endl;
+}
+
+Output
+
+10 20 30
+40 50 60
+70 80 90
+
+---
+
+Why Nested Loops?
+
+A 2D array has rows and columns.
+
+So:
+
+- Outer loop → handles rows
+- Inner loop → handles columns
+
+Outer loop
+   ↓
+Row 0 → 10 20 30
+Row 1 → 40 50 60
+Row 2 → 70 80 90
+              ↑
+         Inner loop
+
+---
+
+Real-Life Examples
+
+2D arrays can be used to store:
+
+- Student marks of multiple subjects
+- Matrix values
+- Seating arrangements
+- Game boards
+- Tables of numbers
+
+Example: Student Marks
+
+int marks[3][3] = {
+    {80, 85, 90},
+    {75, 88, 92},
+    {90, 95, 89}
+};
+
+Here:
+
+- 3 students → Rows
+- 3 subjects → Columns
+
+---
+
+Important Points
+
+- 2D Array stores data in rows and columns.
+- It is also called a matrix.
+- Indexing starts from "0".
+- First index represents the row.
+- Second index represents the column.
+- Nested loops are commonly used with 2D arrays.
+- A normal C++ 2D array has a fixed size.
+
+Quick Difference
+
+1D Array → One line
+2D Array → Rows + Columns
+
+1D Array
+
+int a[5];
+
+2D Array
+
+int a[3][3];
