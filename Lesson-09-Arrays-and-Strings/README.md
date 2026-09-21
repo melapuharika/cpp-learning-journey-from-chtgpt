@@ -1744,3 +1744,327 @@ Array: A collection of elements of the same data type stored under one name.
 
 Pointer: A variable that stores the memory address of another variable.
 
+
+### topic:11 Strings – C++ Notes
+
+1. What is a String?
+
+A string is a collection of characters used to store text such as names, words, and sentences.
+
+Examples
+
+"Harika"
+"Hello"
+"I love C++"
+
+String = Collection of characters/text.
+
+---
+
+2. Character vs String
+
+Character
+
+A character stores a single character.
+
+char grade = 'A';
+
+Characters use single quotes.
+
+String
+
+A string stores multiple characters.
+
+string name = "Harika";
+
+Strings use double quotes.
+
+'A'       → Character
+"Harika"  → String
+
+---
+
+3. Creating a String
+
+Modern C++ uses the "string" data type.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+
+    string name = "Harika";
+
+    cout << name;
+
+    return 0;
+}
+
+Output
+
+Harika
+
+---
+
+4. C-Style String
+
+A string can also be created using a character array.
+
+char name[] = "Harika";
+
+Internally, it contains a null character "\0" at the end.
+
+H  a  r  i  k  a  \0
+
+"'\0'" is called the null character and marks the end of a C-style string.
+
+---
+
+5. String Input Using "cin"
+
+string name;
+
+cin >> name;
+
+If the input is:
+
+Harika
+
+It reads "Harika".
+
+Important
+
+"cin >>" stops reading when it encounters a space.
+
+If input is:
+
+Harika Melapu
+
+Only "Harika" is read.
+
+---
+
+6. String Input Using "getline()"
+
+"getline()" is used to read a complete line, including spaces.
+
+string name;
+
+getline(cin, name);
+
+Input:
+
+Harika Melapu
+
+Output:
+
+Harika Melapu
+
+Easy Trick
+
+cin >>       → One word
+getline()    → Complete line
+
+---
+
+7. String Indexing
+
+Strings use indexes to access individual characters.
+
+string name = "Harika";
+
+H   a   r   i   k   a
+0   1   2   3   4   5
+
+Example:
+
+cout << name[0];
+
+Output:
+
+H
+
+cout << name[3];
+
+Output:
+
+i
+
+Important
+
+String indexing starts from 0.
+
+---
+
+8. Finding String Length
+
+Use "length()" or "size()".
+
+string name = "Harika";
+
+cout << name.length();
+
+Output:
+
+6
+
+Both can be used:
+
+name.length();
+name.size();
+
+---
+
+9. Combining Strings
+
+Strings can be joined using the "+" operator.
+
+string firstName = "Harika";
+string lastName = "Melapu";
+
+string fullName = firstName + " " + lastName;
+
+cout << fullName;
+
+Output
+
+Harika Melapu
+
+---
+
+10. Comparing Strings
+
+Strings can be compared using comparison operators.
+
+string a = "Hello";
+string b = "Hello";
+
+if (a == b) {
+    cout << "Same";
+}
+
+Output
+
+Same
+
+Common operators:
+
+==  → Equal
+!=  → Not equal
+<   → Less than
+>   → Greater than
+
+---
+
+11. Changing Characters
+
+Individual characters can be changed using their index.
+
+string name = "Harika";
+
+name[0] = 'M';
+
+cout << name;
+
+Output
+
+Marika
+
+---
+
+12. Traversing a String
+
+A string can be traversed using a loop.
+
+string name = "Harika";
+
+for (int i = 0; i < name.length(); i++) {
+    cout << name[i] << endl;
+}
+
+Output
+
+H
+a
+r
+i
+k
+a
+
+---
+
+13. Important String Concepts
+
+Concept| Meaning
+"string"| Stores text
+"char"| Stores one character
+"cin >>"| Reads one word
+"getline()"| Reads a complete line
+"str[index]"| Accesses a character
+"length()"| Returns string length
+"size()"| Returns string length
+"+"| Combines strings
+"=="| Compares strings
+"\0"| Null character in C-style strings
+
+---
+
+14. Simple Example
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+
+    string name;
+
+    cout << "Enter your name: ";
+    getline(cin, name);
+
+    cout << "Your name is: " << name << endl;
+    cout << "Length: " << name.length() << endl;
+
+    return 0;
+}
+
+Example Output
+
+Enter your name: Harika Melapu
+Your name is: Harika Melapu
+Length: 13
+
+---
+
+15. Easy Trick to Remember
+
+char
+ ↓
+One character
+'A'
+
+string
+ ↓
+Multiple characters/text
+"Harika"
+
+char array
+ ↓
+C-style string
+char name[] = "Harika";
+
+Final Definition
+
+«String is a sequence or collection of characters used to represent text.»
+
+Most Important Points
+
+- String indexing starts from "0".
+- "cin >>" reads one word.
+- "getline()" reads a complete line.
+- "length()" and "size()" return the string length.
+- "+" can combine strings.
+- "string" is the convenient modern C++ way to work with text.
+- C-style strings are stored using character arrays and end with "\0".
+
