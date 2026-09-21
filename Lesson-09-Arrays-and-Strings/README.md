@@ -148,3 +148,124 @@ Important Points
 Memory Trick
 
 Array = One Name + Many Same-Type Values + Index
+
+
+### topic :2 1D Array
+
+What is an Array?
+
+An array is a collection of multiple values of the same data type stored under a single variable name.
+
+Example
+
+int marks[5] = {80, 75, 90, 85, 95};
+
+Here:
+
+- "int" → Data type
+- "marks" → Array name
+- "[5]" → Number of elements
+- "{80, 75, 90, 85, 95}" → Array values
+
+---
+
+Array Index
+
+Array indexing always starts from 0.
+
+Index:   0   1   2   3   4
+Value:  80  75  90  85  95
+
+For example:
+
+cout << marks[0];  // 80
+cout << marks[2];  // 90
+cout << marks[4];  // 95
+
+---
+
+Array Declaration
+
+We can declare an array like this:
+
+int numbers[5];
+
+This creates an integer array that can store 5 values.
+
+---
+
+Array Initialization
+
+We can declare and initialize an array at the same time:
+
+int numbers[5] = {10, 20, 30, 40, 50};
+
+---
+
+Accessing Array Elements
+
+We can access an element using its index.
+
+int numbers[5] = {10, 20, 30, 40, 50};
+
+cout << numbers[0];
+cout << numbers[1];
+cout << numbers[4];
+
+Output:
+
+10
+20
+50
+
+---
+
+Using Loop with Array
+
+A "for" loop can be used to access all elements of an array.
+
+int numbers[5] = {10, 20, 30, 40, 50};
+
+for(int i = 0; i < 5; i++)
+{
+    cout << numbers[i] << " ";
+}
+
+Output:
+
+10 20 30 40 50
+
+---
+
+Real-Life Example
+
+Suppose we want to store the marks of 5 students.
+
+Without an array:
+
+int mark1, mark2, mark3, mark4, mark5;
+
+Using an array:
+
+int marks[5] = {85, 90, 78, 88, 95};
+
+The array makes it easier to store and access multiple values.
+
+---
+
+Important Points
+
+- An array stores multiple values of the same data type.
+- Array indexing starts from 0.
+- The last index is size - 1.
+- Array elements are accessed using their index.
+- A "for" loop can be used to traverse an array.
+- A normal C++ array has a fixed size.
+
+Syntax
+
+data_type array_name[size];
+
+Example:
+
+int numbers[5];
