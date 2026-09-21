@@ -5958,3 +5958,659 @@ One-line memory trick:
 «0 = Same, Negative = Before, Positive = After»
 
 
+### topic:30 std::string c_str()
+
+1. What is c_str()?
+
+"c_str()" is used to get a C-style string from a C++ "std::string".
+
+Simple ga:
+
+«"std::string" ni C-style string ("const char*") format lo access cheyyadaniki "c_str()" use chestam.»
+
+---
+
+2. Syntax
+
+string.c_str();
+
+Example:
+
+std::string name = "Harika";
+
+std::cout << name.c_str();
+
+Output:
+
+Harika
+
+---
+
+3. How does c_str() work?
+
+std::string
+    ↓
+  c_str()
+    ↓
+const char*
+
+Example:
+
+std::string name = "Harika";
+const char* ptr = name.c_str();
+
+Here:
+
+- "name" → "std::string"
+- "name.c_str()" → C-style string
+- "ptr" → pointer to the C-style string
+
+---
+
+4. What is a C-style string?
+
+C-style string is a sequence of characters ending with a special character called null character ("\0").
+
+Example:
+
+H  a  r  i  k  a  \0
+
+"\0" tells the program:
+
+«"String ikkada end ayyindi."»
+
+---
+
+5. Why do we use c_str()?
+
+Some old C functions and C-style APIs expect a:
+
+const char*
+
+But "std::string" is a different type.
+
+So we can use:
+
+name.c_str()
+
+to provide the C-style representation.
+
+Example:
+
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name = "Harika";
+
+    const char* ptr = name.c_str();
+
+    std::cout << ptr;
+
+    return 0;
+}
+
+Output:
+
+Harika
+
+---
+
+6. c_str() does not modify the string
+
+std::string name = "Harika";
+
+name.c_str();
+
+"c_str()" original "std::string" ni change cheyyadu.
+
+It only provides access to its C-style representation.
+
+---
+
+7. Important: const char*
+
+"c_str()" returns:
+
+const char*
+
+"const" means we should not modify the characters through this pointer.
+
+❌ Wrong:
+
+std::string name = "Harika";
+
+name.c_str()[0] = 'X';
+
+Don't modify the returned C-style string through the pointer.
+
+---
+
+8. c_str() vs std::string
+
+"std::string"| "c_str()"
+C++ string| C-style string representation
+Modern C++| Useful with C-style APIs
+String object| Returns "const char*"
+Can use string functions| Used when "const char*" is required
+
+---
+
+9. Simple Real-Life Example
+
+Think of:
+
+std::string = Modern language
+C-style string = Old language
+c_str() = Translator
+
+So:
+
+std::string
+     ↓
+   c_str()
+     ↓
+C-style string
+
+---
+
+10. Easy Trick
+
+Remember:
+
+«c_str() = C String»
+
+Whenever you need a C-style string from a "std::string", think:
+
+name.c_str()
+
+One-line memory trick:
+
+std::string → c_str() → const char*
+
+---
+
+11. Complete Example
+
+#include <iostream>
+#include <string>
+
+int main() {
+
+    std::string name = "Harika";
+
+    const char* cString = name.c_str();
+
+    std::cout << "C++ String: " << name << std::endl;
+    std::cout << "C-style String: " << cString << std::endl;
+
+    return 0;
+}
+
+Output:
+
+C++ String: Harika
+C-style String: Harika
+
+Important Points
+
+- "c_str()" belongs to "std::string".
+- It provides the C-style string representation.
+- Return type is "const char*".
+- C-style string ends with "\0".
+- It does not modify the original string.
+- It is useful when a C-style API expects "const char*".
+- Don't modify the characters through the returned "const char*".
+
+Final Memory
+
+c_str()
+   ↓
+C-style string
+   ↓
+const char*
+   ↓
+characters ending with \0
+
+### topic 31 Modern Strings in C++
+
+1. What are Modern Strings?
+
+Modern C++ lo strings ni handle cheyyadaniki "std::string" use chestam.
+
+Example:
+
+std::string name = "Harika";
+
+"std::string" is the modern and convenient way to work with text in C++.
+
+---
+
+2. C-style String vs Modern String
+
+C-style String
+
+char name[] = "Harika";
+
+Modern C++ String
+
+std::string name = "Harika";
+
+Simple ga:
+
+char[]       → C-style string
+std::string  → Modern C++ string
+
+---
+
+3. Header File
+
+"std::string" use cheyyadaniki:
+
+#include <string>
+
+Example:
+
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name = "Harika";
+
+    std::cout << name;
+
+    return 0;
+}
+
+Output
+
+Harika
+
+---
+
+4. Why use Modern Strings?
+
+"std::string" tho strings ni easy ga manage cheyyachu.
+
+For example:
+
+std::string name = "Harika";
+
+name.length();
+name.size();
+name.append(" Kumar");
+name.insert(0, "Ms. ");
+name.erase(0, 4);
+name.replace(0, 6, "Hello");
+name.substr(0, 5);
+name.find("ri");
+name.compare("Harika");
+name.c_str();
+
+---
+
+5. Main Advantages
+
+1. Easy to use
+
+std::string name = "Harika";
+
+String create cheyyadam simple.
+
+2. Many built-in functions
+
+"std::string" provides useful functions like:
+
+length()
+size()
+append()
+insert()
+erase()
+replace()
+substr()
+find()
+compare()
+c_str()
+
+3. Dynamic size
+
+String size avasaraniki taggattu grow or shrink avvagaladu.
+
+std::string text = "Hello";
+
+text.append(" World");
+
+Result:
+
+Hello World
+
+4. Easy modification
+
+String ni easily add, remove, replace cheyyachu.
+
+---
+
+6. Modern String Example
+
+#include <iostream>
+#include <string>
+
+int main() {
+
+    std::string name = "Harika";
+
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Length: " << name.length() << std::endl;
+
+    return 0;
+}
+
+Output
+
+Name: Harika
+Length: 6
+
+---
+
+7. Modern String Operations
+
+std::string
+     |
+     |-- Create
+     |-- Input / Output
+     |-- length()
+     |-- size()
+     |-- append()
+     |-- insert()
+     |-- erase()
+     |-- replace()
+     |-- substr()
+     |-- find()
+     |-- compare()
+     |-- c_str()
+
+These operations help us create, access, search, modify and compare strings.
+
+---
+
+8. Modern String vs C-style String
+
+C-style String| Modern String
+"char[]"| "std::string"
+C-style| C++ style
+More manual handling| Easier handling
+Uses "\0" terminator| Internally manages string data
+Limited built-in operations| Many useful member functions
+Older/common C approach| Preferred modern C++ approach
+
+---
+
+9. Important Point
+
+"std::string" is a class provided by the C++ Standard Library.
+
+Example:
+
+std::string name = "Harika";
+
+Here:
+
+std::string → string type/class
+name        → string object
+"Harika"    → string data
+
+---
+
+10. Easy Trick
+
+Remember:
+
+C-style string
+      ↓
+char[]
+
+Modern C++ string
+      ↓
+std::string
+
+One-line memory trick:
+
+«Modern String = "std::string"»
+
+"std::string" makes working with text easier, safer, and more convenient in modern C++.
+
+### topic:32 String Views in C++
+
+1. What is String View?
+
+"std::string_view" is a C++ type used to view an existing string without creating a copy of the string data.
+
+Simple ga:
+
+«String View = Existing string ni just view cheyyadam, own cheyyakunda.»
+
+---
+
+2. Header File
+
+"std::string_view" use cheyyadaniki:
+
+#include <string_view>
+
+---
+
+3. Basic Syntax
+
+std::string_view view = string;
+
+Example:
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+int main() {
+    std::string name = "Harika";
+
+    std::string_view view = name;
+
+    std::cout << view;
+
+    return 0;
+}
+
+Output
+
+Harika
+
+---
+
+4. How String View Works?
+
+std::string
+    ↓
+  "Harika"
+    ↓
+std::string_view
+    ↓
+   view
+
+"view" separate copy of ""Harika"" create cheyyadu.
+
+It refers to the characters already stored in the original string.
+
+---
+
+5. Why Use String View?
+
+Main purpose:
+
+«Unnecessary string copies ni avoid cheyyadam.»
+
+Especially functions ki strings ni pass chesetappudu "std::string_view" useful.
+
+Example:
+
+void print(std::string_view text) {
+    std::cout << text;
+}
+
+Call:
+
+print("Hello World");
+
+---
+
+6. Function Example
+
+#include <iostream>
+#include <string_view>
+
+void print(std::string_view text) {
+    std::cout << text;
+}
+
+int main() {
+    print("Hello World");
+
+    return 0;
+}
+
+Output
+
+Hello World
+
+---
+
+7. String View Can View Part of a String
+
+"std::string_view" can represent only a part of an existing string.
+
+Example:
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+int main() {
+    std::string text = "Hello World";
+
+    std::string_view view(text.data() + 6, 5);
+
+    std::cout << view;
+
+    return 0;
+}
+
+Output
+
+World
+
+Here:
+
+H e l l o   W o r l d
+0 1 2 3 4 5 6 7 8 9 10
+          ↑
+        World
+
+---
+
+8. String View Does Not Own the Data
+
+This is an important point.
+
+std::string text = "Hello";
+
+std::string_view view = text;
+
+Here:
+
+text  → owns the actual string data
+view  → only views the data
+
+"std::string_view" itself does not own the characters it refers to.
+
+---
+
+9. String vs String View
+
+"std::string"| "std::string_view"
+Owns its string data| Does not own the data
+Can modify the string| Cannot modify characters through the view
+Stores/manages string data| Refers to existing characters
+Can involve copying| Helps avoid unnecessary copying
+Good for storing strings| Good for viewing/reading strings
+
+---
+
+10. Important Lifetime Rule
+
+A "std::string_view" should not be used after the original string it refers to is destroyed.
+
+Example:
+
+std::string_view view;
+
+{
+    std::string text = "Hello";
+    view = text;
+}
+
+After the block:
+
+text → destroyed
+view → refers to invalid data
+
+So using "view" after "text" is destroyed can cause undefined behavior.
+
+---
+
+11. Real-Life Example
+
+Think of:
+
+std::string
+= Original book
+
+std::string_view
+= Window through which we read the book
+
+The window lets us see the content, but it does not own the book.
+
+---
+
+12. Easy Trick
+
+Remember:
+
+std::string
+     ↓
+   OWNS
+     ↓
+Actual string data
+
+
+std::string_view
+     ↓
+   VIEWS
+     ↓
+Existing string data
+
+One-line Memory Trick
+
+«"string" = Own the data
+
+"string_view" = View the data»
+
+---
+
+Important Points
+
+- "std::string_view" is a modern C++ type.
+- Header: "<string_view>"
+- It does not own the string data.
+- It can avoid unnecessary string copies.
+- It is especially useful for function parameters.
+- It can represent the whole string or only a part of it.
+- The original string must remain alive while the "string_view" is being used.
+
