@@ -196,3 +196,47 @@ Both indicate that the pointer does not point to a valid object.
 Key Point
 
 In modern C++, prefer "nullptr" instead of "NULL".
+
+### topic:6 Pointer Arithmetic
+
+Definition
+
+Pointer arithmetic means performing arithmetic operations on pointers to move between memory locations, especially array elements.
+
+Example
+
+int arr[] = {10, 20, 30, 40};
+
+int* ptr = arr;
+
+Here, "ptr" points to the first element of the array.
+
+Operations
+
+ptr++;      // Move to the next element
+ptr--;      // Move to the previous element
+ptr + 2;    // Move 2 elements forward
+ptr - 2;    // Move 2 elements backward
+
+Example
+
+int arr[] = {10, 20, 30};
+
+int* ptr = arr;
+
+cout << *(ptr + 2);
+
+Output:
+
+30
+
+Key Point
+
+Pointer arithmetic moves the pointer according to the size of the data type it points to.
+
+Easy Trick
+
+- "ptr++" → Next element
+- "ptr--" → Previous element
+- "ptr + n" → "n" elements forward
+- "ptr - n" → "n" elements backward
