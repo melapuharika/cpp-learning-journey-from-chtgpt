@@ -317,3 +317,44 @@ Simple Definition
 
 A pointer to an array stores the address of an entire array.
 
+### topic 9 Array of Pointers
+
+Definition
+
+An array of pointers is an array whose elements are pointers that store memory addresses.
+
+Syntax
+
+data_type* array_name[size];
+
+Example
+
+int a = 10;
+int b = 20;
+int c = 30;
+
+int* ptr[3] = {&a, &b, &c};
+
+Meaning
+
+- "a", "b", "c" → store values
+- "ptr[0]" → stores the address of "a"
+- "ptr[1]" → stores the address of "b"
+- "ptr[2]" → stores the address of "c"
+- "*ptr[0]" → gives "10"
+- "*ptr[1]" → gives "20"
+- "*ptr[2]" → gives "30"
+
+Example
+
+cout << *ptr[0];  // 10
+cout << *ptr[1];  // 20
+cout << *ptr[2];  // 30
+
+Key Point
+
+An array of pointers stores multiple addresses in an array.
+
+Simple Definition
+
+An array of pointers is an array that contains multiple pointer variables.
