@@ -1019,3 +1019,60 @@ Taking a room and not vacating it after use is like a memory leak because the ro
 
 One-line:
 A memory leak occurs when dynamically allocated memory is not released after use.
+
+### topic 25 Dangling Pointer
+
+Definition:
+A dangling pointer is a pointer that refers to memory that has already been released or is no longer valid.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int;
+
+    *ptr = 50;
+
+    delete ptr;
+
+    // ptr is now a dangling pointer
+
+    return 0;
+}
+
+After "delete ptr", the allocated memory is released, but "ptr" may still contain the old memory address.
+
+Problem
+
+cout << *ptr;  // ❌ Wrong
+
+Accessing the memory through a dangling pointer can cause undefined behavior.
+
+How to Avoid It
+
+int* ptr = new int;
+
+*ptr = 50;
+
+delete ptr;
+
+ptr = nullptr;
+
+After releasing the memory, setting the pointer to "nullptr" helps prevent accidental use of the old address.
+
+Key Points
+
+- A dangling pointer points to invalid or released memory.
+- It can occur after "delete".
+- Dereferencing it is unsafe.
+- Setting the pointer to "nullptr" after releasing memory helps avoid accidental use.
+
+Real-Life Example
+
+A room has been vacated, but you still have its old address.
+The old address is like a dangling pointer.
+
+One-line:
+A dangling pointer points to memory that is no longer valid.
