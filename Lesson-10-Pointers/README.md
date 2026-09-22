@@ -799,4 +799,58 @@ One-line:
 Heap memory is dynamically allocated memory that is managed using "new" and "delete".
 
 
+### topic 21 "delete" Operator
 
+Definition:
+"delete" is used to release a single block of dynamically allocated memory created using "new".
+
+Syntax
+
+delete pointer;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int;
+
+    *ptr = 50;
+
+    cout << *ptr;
+
+    delete ptr;
+
+    return 0;
+}
+
+Explanation
+
+int* ptr = new int;
+
+Creates memory dynamically in the heap.
+
+*ptr = 50;
+
+Stores "50" in the allocated memory.
+
+delete ptr;
+
+Releases the memory allocated using "new".
+
+Key Points
+
+- "delete" releases dynamically allocated memory.
+- It is used with "new".
+- It is used for a single object.
+- It helps prevent unnecessary memory usage.
+- "new" and "delete" should be used as a matching pair.
+
+Remember
+
+new    → Allocate memory
+delete → Release memory
+
+One-line:
+"delete" releases a single dynamically allocated memory block created using "new".
