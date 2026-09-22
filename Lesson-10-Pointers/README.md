@@ -799,4 +799,4 @@ One-line:
 Heap memory is dynamically allocated memory that is managed using "new" and "delete".
 
 
-### topic 20 
+
