@@ -797,3 +797,6 @@ We take the room when we need it and release it when our work is finished.
 
 One-line:
 Heap memory is dynamically allocated memory that is managed using "new" and "delete".
+
+
+### topic 20 
