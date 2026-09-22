@@ -29,3 +29,34 @@ Lesson 10 - Pointers
 - Dangling Pointer
 - Wild Pointer
 - Double Deletion
+
+
+ ### topic 1 Pointers
+
+Definition
+
+A pointer is a variable that stores the memory address of another variable.
+
+Syntax
+
+data_type* pointer_name;
+
+Example
+
+int number = 100;
+int* ptr = &number;
+
+Meaning
+
+- "number" → stores the value "100"
+- "&number" → gives the address of "number"
+- "ptr" → stores the address of "number"
+
+Key Point
+
+- Normal variable → stores a value
+- Pointer → stores an address
+
+Simple Definition
+
+A pointer is a variable that stores the address of another variable.
