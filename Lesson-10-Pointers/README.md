@@ -278,3 +278,42 @@ age  → Value
 ptr  → Address of age
 pptr → Address of ptr
 
+### topic 8 Pointer to Array
+
+Definition
+
+A pointer to an array is a pointer that stores the address of an entire array.
+
+Syntax
+
+data_type (*pointer_name)[size];
+
+Example
+
+int arr[3] = {10, 20, 30};
+
+int (*ptr)[3] = &arr;
+
+Meaning
+
+- "arr" → an array of 3 elements
+- "&arr" → address of the entire array
+- "ptr" → points to the entire array
+- "(*ptr)[0]" → first element
+- "(*ptr)[1]" → second element
+- "(*ptr)[2]" → third element
+
+Example
+
+cout << (*ptr)[0];  // 10
+cout << (*ptr)[1];  // 20
+cout << (*ptr)[2];  // 30
+
+Key Point
+
+Parentheses in "int (*ptr)[3]" are important.
+
+Simple Definition
+
+A pointer to an array stores the address of an entire array.
+
