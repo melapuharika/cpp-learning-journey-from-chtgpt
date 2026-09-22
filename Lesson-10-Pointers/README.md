@@ -444,3 +444,48 @@ ptr->age;
 Key Point
 
 The "->" operator is used to access object members through a pointer.
+
+
+### topic 12 Pointer to Class Member
+
+Definition
+
+A pointer to a class member is a pointer used to refer to a specific member of a class.
+
+Example
+
+class Student {
+public:
+    int age;
+};
+
+int Student::* ptr = &Student::age;
+
+Meaning
+
+- "Student" → class
+- "age" → class member
+- "ptr" → pointer to class member
+- "&Student::age" → refers to the "age" member
+
+Using Pointer to Class Member
+
+Student s;
+
+s.*ptr = 20;
+
+cout << s.*ptr;
+
+Output:
+
+20
+
+Important Operator
+
+The ".*" operator is used to access a class member through a pointer to member.
+
+Key Point
+
+int Student::* ptr = &Student::age;
+
+"ptr" refers to the "age" member of the "Student" class.
