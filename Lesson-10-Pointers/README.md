@@ -653,3 +653,48 @@ Key Point
 Simple Definition
 
 A const pointer to const does not allow changing the pointer address or the pointed value through the pointer.
+
+
+### topic 17 Dynamic Memory
+
+Definition
+
+Dynamic memory is memory that is allocated and managed during program execution.
+
+Dynamic Memory Allocation
+
+Dynamic memory allocation allows us to allocate memory at runtime.
+
+"new" Operator
+
+The "new" operator is used to allocate memory dynamically.
+
+Example
+
+int* ptr = new int;
+
+*ptr = 50;
+
+cout << *ptr;
+
+Output:
+
+50
+
+- "new int" → allocates memory for an integer
+- "ptr" → stores the address of the allocated memory
+
+"delete" Operator
+
+The "delete" operator is used to release dynamically allocated memory.
+
+delete ptr;
+
+Key Point
+
+- "new" → Allocates memory
+- "delete" → Releases memory
+
+Simple Definition
+
+Dynamic memory allows memory to be allocated and released during program execution.
