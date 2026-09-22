@@ -156,3 +156,43 @@ Key Point
 
 - NULL pointer → does not point to a valid memory location
 - "nullptr" → modern C++ way to represent no pointer target
+
+### topic 5 nullptr
+
+Definition
+
+"nullptr" is a special value used to indicate that a pointer does not point to any object or valid memory location.
+
+Example
+
+int* ptr = nullptr;
+
+Here, "ptr" is not pointing to any valid memory location.
+
+Example with Condition
+
+int* ptr = nullptr;
+
+if (ptr == nullptr) {
+    cout << "Pointer is empty";
+}
+
+Important Point
+
+A "nullptr" pointer should not be dereferenced.
+
+int* ptr = nullptr;
+
+// Wrong
+cout << *ptr;
+
+NULL vs nullptr
+
+- "NULL" → older style
+- "nullptr" → modern C++ way
+
+Both indicate that the pointer does not point to a valid object.
+
+Key Point
+
+In modern C++, prefer "nullptr" instead of "NULL".
