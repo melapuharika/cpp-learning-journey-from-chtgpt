@@ -698,3 +698,48 @@ Key Point
 Simple Definition
 
 Dynamic memory allows memory to be allocated and released during program execution.
+
+
+### topic 18 Stack Memory
+
+Definition:
+Stack memory is the memory used for local variables and function-related data. It is managed automatically by the program.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age = 20;
+    cout << age;
+    return 0;
+}
+
+Here, "age" is a local variable, so it is typically stored in stack memory.
+
+Function Example
+
+void test() {
+    int x = 10;
+}
+
+- When "test()" starts, memory for "x" is created.
+- When "test()" ends, the memory for "x" is automatically released.
+- We don't need to use "delete".
+
+Key Points
+
+- Used for local variables.
+- Memory is managed automatically.
+- Memory is released when the variable's lifetime ends.
+- Generally fast.
+- No manual "delete" is required for automatic local variables.
+
+Real-Life Example
+
+Stack memory is like a temporary table.
+We use it while working, and when the work is finished, the table is automatically cleared.
+
+One-line:
+Stack memory stores local variables and function-related data and is managed automatically.
