@@ -964,3 +964,58 @@ Key Points
 
 One-line:
 "delete[]" is used to release an array allocated using "new[]".
+
+### topic:24 Memory Leak
+
+Definition:
+A memory leak occurs when dynamically allocated memory is not released after use, causing memory to be wasted.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int;
+
+    *ptr = 50;
+
+    // Memory is not released ❌
+
+    return 0;
+}
+
+Here, memory is allocated using "new", but "delete" is not used. The allocated memory cannot be properly reclaimed while the program is running.
+
+Correct Way
+
+int* ptr = new int;
+
+*ptr = 50;
+
+delete ptr;
+
+Here, the allocated memory is released using "delete".
+
+Array Example
+
+int* arr = new int[5];
+
+// Use the array
+
+delete[] arr;
+
+Key Points
+
+- Memory leak happens when allocated memory is not released.
+- It wastes available memory.
+- It commonly occurs with dynamic memory allocation.
+- Use "delete" for memory allocated with "new".
+- Use "delete[]" for memory allocated with "new[]".
+
+Real-Life Example
+
+Taking a room and not vacating it after use is like a memory leak because the room remains unavailable for others.
+
+One-line:
+A memory leak occurs when dynamically allocated memory is not released after use.
