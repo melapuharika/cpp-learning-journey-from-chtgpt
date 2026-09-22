@@ -743,3 +743,57 @@ We use it while working, and when the work is finished, the table is automatical
 
 One-line:
 Stack memory stores local variables and function-related data and is managed automatically.
+
+
+### topic:19 Heap Memory
+
+Definition:
+Heap memory is the memory that is dynamically allocated during program execution. In C++, it is commonly managed using "new" and "delete".
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int;
+
+    *ptr = 50;
+
+    cout << *ptr;
+
+    delete ptr;
+
+    return 0;
+}
+
+Explanation
+
+int* ptr = new int;
+
+Creates memory for an "int" in the heap and stores its address in "ptr".
+
+*ptr = 50;
+
+Stores "50" in the allocated heap memory.
+
+delete ptr;
+
+Releases the allocated heap memory.
+
+Key Points
+
+- Memory is allocated dynamically.
+- Created during program execution.
+- Accessed using pointers.
+- "new" is used to allocate memory.
+- "delete" is used to release memory.
+- Memory must be properly released after use.
+
+Real-Life Example
+
+Heap memory is like a room rented when needed.
+We take the room when we need it and release it when our work is finished.
+
+One-line:
+Heap memory is dynamically allocated memory that is managed using "new" and "delete".
