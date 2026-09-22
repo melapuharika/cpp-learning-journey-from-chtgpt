@@ -90,3 +90,36 @@ Key Point
 Simple Definition
 
 An address is the location of a variable in computer memory.
+
+### topic 3 Dereferencing
+
+Definition
+
+Dereferencing means accessing the value stored at the memory address held by a pointer.
+
+Dereferencing Operator ("*")
+
+The "*" operator is used to access the value stored at the address pointed to by a pointer.
+
+Example
+
+int age = 20;
+int* ptr = &age;
+
+cout << ptr;   // Address
+cout << *ptr;  // Value
+
+Meaning
+
+- "ptr" → stores the address of "age"
+- "*ptr" → gives the value stored at that address
+- "&age" → gives the address of "age"
+
+Key Point
+
+- "&" → gets the address
+- "*" → gets the value from the address
+
+Simple Definition
+
+Dereferencing a pointer means accessing the value using the address stored in the pointer.
