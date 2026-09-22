@@ -489,3 +489,43 @@ Key Point
 int Student::* ptr = &Student::age;
 
 "ptr" refers to the "age" member of the "Student" class.
+
+
+### topic 13 this Pointer
+
+Definition
+
+The "this" pointer is a pointer that stores the address of the current object.
+
+Example
+
+class Student {
+public:
+    int age;
+
+    void setAge(int age) {
+        this->age = age;
+    }
+};
+
+Meaning
+
+- "this" → points to the current object
+- "this->age" → accesses the current object's "age"
+- "age" → function parameter
+
+Example
+
+Student s;
+
+s.setAge(20);
+
+Here, "this" points to the object "s".
+
+Key Point
+
+"this" → current object
+
+"this->member" → current object's member
+
+
