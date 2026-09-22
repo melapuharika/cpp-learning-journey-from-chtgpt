@@ -358,3 +358,41 @@ An array of pointers stores multiple addresses in an array.
 Simple Definition
 
 An array of pointers is an array that contains multiple pointer variables.
+
+
+### topic 10 Function Pointer
+
+Definition
+
+A function pointer is a pointer that stores the address of a function and can be used to call that function.
+
+Syntax
+
+return_type (*pointer_name)(parameters);
+
+Example
+
+void greet() {
+    cout << "Hello!";
+}
+
+void (*ptr)() = greet;
+
+Calling the Function
+
+ptr();
+
+Output:
+
+Hello!
+
+Meaning
+
+- "greet" → function
+- "ptr" → function pointer
+- "ptr" stores the address of "greet"
+- "ptr()" → calls the "greet" function
+
+Key Point
+
+A function pointer stores the address of a function and allows the function to be called through the pointer.
