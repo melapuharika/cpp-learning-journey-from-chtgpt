@@ -609,3 +609,47 @@ Key Point
 Simple Definition
 
 A pointer to const allows reading the value but does not allow modifying it through the pointer.
+
+
+### topic 16 Const Pointer to Const
+
+Definition
+
+A const pointer to const is a pointer whose address and pointed value cannot be changed through the pointer.
+
+Syntax
+
+const data_type* const pointer_name = &variable;
+
+Example
+
+int a = 10;
+int b = 20;
+
+const int* const ptr = &a;
+
+Not Allowed
+
+The pointed value cannot be changed.
+
+*ptr = 30;  // Not allowed
+
+The pointer cannot point to another address.
+
+ptr = &b;   // Not allowed
+
+Allowed
+
+The value can be read.
+
+cout << *ptr;
+
+Key Point
+
+- Pointer address → Cannot change
+- Pointed value → Cannot change
+- Value reading → Allowed
+
+Simple Definition
+
+A const pointer to const does not allow changing the pointer address or the pointed value through the pointer.
