@@ -529,3 +529,40 @@ Key Point
 "this->member" → current object's member
 
 
+### topic 14 Const Pointer
+
+Definition
+
+A const pointer is a pointer whose stored address cannot be changed after initialization.
+
+Syntax
+
+data_type* const pointer_name = &variable;
+
+Example
+
+int a = 10;
+int b = 20;
+
+int* const ptr = &a;
+
+Allowed
+
+The value pointed to by the pointer can be changed.
+
+*ptr = 50;  // Allowed
+
+Not Allowed
+
+The pointer cannot be changed to point to another address.
+
+ptr = &b;   // Not allowed
+
+Key Point
+
+- Pointer address → Cannot change
+- Pointed value → Can change
+
+Simple Definition
+
+A const pointer is a pointer whose address remains fixed after initialization.
