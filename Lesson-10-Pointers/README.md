@@ -1076,3 +1076,53 @@ The old address is like a dangling pointer.
 
 One-line:
 A dangling pointer points to memory that is no longer valid.
+
+
+### topic 26 Wild Pointer
+
+Definition:
+A wild pointer is an uninitialized pointer that does not contain a valid memory address.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr;   // Wild pointer
+
+    // cout << *ptr;  // ❌ Dangerous
+
+    return 0;
+}
+
+Here, "ptr" is not initialized with a valid address.
+
+Correct Way
+
+int x = 10;
+
+int* ptr = &x;
+
+cout << *ptr;
+
+Here, "ptr" contains the valid address of "x".
+
+If the pointer is not being used yet:
+
+int* ptr = nullptr;
+
+Key Points
+
+- A wild pointer is an uninitialized pointer.
+- It does not contain a valid address.
+- Dereferencing a wild pointer is unsafe.
+- Always initialize pointers before using them.
+- Use "nullptr" when the pointer does not point to an object yet.
+
+Real-Life Example
+
+Giving someone an unknown or incorrect address and asking them to go there is like using a wild pointer.
+
+One-line:
+A wild pointer is an uninitialized pointer that does not point to a valid memory location.
