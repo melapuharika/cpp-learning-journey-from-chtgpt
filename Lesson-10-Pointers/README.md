@@ -396,3 +396,51 @@ Meaning
 Key Point
 
 A function pointer stores the address of a function and allows the function to be called through the pointer.
+
+
+### topic 11 Pointer to Object
+
+Definition
+
+A pointer to object is a pointer that stores the address of an object and is used to access its members.
+
+Example
+
+class Student {
+public:
+    int age;
+};
+
+Student s;
+Student* ptr = &s;
+
+Meaning
+
+- "s" → object
+- "&s" → address of the object
+- "ptr" → stores the address of the object
+- "ptr->age" → accesses the object's member
+
+Example
+
+ptr->age = 20;
+
+cout << ptr->age;
+
+Output:
+
+20
+
+Member Access
+
+Normal object:
+
+s.age;
+
+Pointer to object:
+
+ptr->age;
+
+Key Point
+
+The "->" operator is used to access object members through a pointer.
