@@ -913,3 +913,54 @@ delete[] → Release array memory
 
 One-line:
 "new[]" is used to dynamically allocate memory for an array in the heap.
+
+### topic 23 "delete[]" Operator
+
+Definition:
+"delete[]" is used to release the array memory dynamically allocated using "new[]".
+
+Syntax
+
+delete[] pointer;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* arr = new int[3];
+
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+
+    delete[] arr;
+
+    return 0;
+}
+
+Explanation
+
+int* arr = new int[3];
+
+Creates memory for 3 integers in the heap.
+
+delete[] arr;
+
+Releases the entire array memory.
+
+Important Rule
+
+new[]    → Allocate array memory
+delete[] → Release array memory
+
+Key Points
+
+- "delete[]" releases dynamically allocated array memory.
+- It is used with "new[]".
+- It releases the entire allocated array.
+- "new[]" and "delete[]" should be used as a matching pair.
+
+One-line:
+"delete[]" is used to release an array allocated using "new[]".
