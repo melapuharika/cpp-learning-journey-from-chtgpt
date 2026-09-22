@@ -1,1 +1,31 @@
+### topics
+Lesson 10 - Pointers
 
+- Pointers
+- Address
+- Pointer
+- Dereferencing
+- NULL Pointer
+- nullptr
+- Pointer Arithmetic
+- Pointer to Pointer
+- Pointer to Array
+- Array of Pointers
+- Function Pointer
+- Pointer to Object
+- Pointer to Class Member
+- this Pointer
+- Const Pointer
+- Pointer to Const
+- Const Pointer to Const
+- Dynamic Memory
+- Stack Memory
+- Heap Memory
+- new
+- delete
+- new[]
+- delete[]
+- Memory Leak
+- Dangling Pointer
+- Wild Pointer
+- Double Deletion
