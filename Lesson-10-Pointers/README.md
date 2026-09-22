@@ -240,3 +240,41 @@ Easy Trick
 - "ptr--" → Previous element
 - "ptr + n" → "n" elements forward
 - "ptr - n" → "n" elements backward
+
+### topic:7 Pointer to Pointer
+
+Definition
+
+A pointer to pointer is a pointer that stores the address of another pointer.
+
+Syntax
+
+data_type** pointer_name;
+
+Example
+
+int age = 20;
+
+int* ptr = &age;
+int** pptr = &ptr;
+
+Meaning
+
+- "age" → stores the value "20"
+- "ptr" → stores the address of "age"
+- "pptr" → stores the address of "ptr"
+- "*ptr" → gives the value of "age"
+- "**pptr" → gives the value of "age"
+
+Example
+
+cout << age;      // 20
+cout << *ptr;     // 20
+cout << **pptr;   // 20
+
+Key Point
+
+age  → Value
+ptr  → Address of age
+pptr → Address of ptr
+
