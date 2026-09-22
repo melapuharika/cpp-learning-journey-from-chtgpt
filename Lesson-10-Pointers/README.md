@@ -1126,3 +1126,62 @@ Giving someone an unknown or incorrect address and asking them to go there is li
 
 One-line:
 A wild pointer is an uninitialized pointer that does not point to a valid memory location.
+
+
+### topic 27 Double Deletion
+
+Definition:
+Double deletion occurs when the same dynamically allocated memory is released more than once.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int;
+
+    *ptr = 50;
+
+    delete ptr;
+
+    // delete ptr;  // ❌ Double deletion
+
+    return 0;
+}
+
+Explanation
+
+delete ptr;
+
+The allocated memory is released.
+
+If we try to release the same memory again:
+
+delete ptr;   // ❌
+
+It causes undefined behavior.
+
+Correct Way
+
+int* ptr = new int;
+
+*ptr = 50;
+
+delete ptr;
+
+ptr = nullptr;
+
+After setting the pointer to "nullptr", it no longer contains the old memory address.
+
+delete ptr;   // Safe: delete nullptr does nothing
+
+Key Points
+
+- Double deletion means releasing the same memory more than once.
+- It can cause undefined behavior.
+- It commonly happens when "delete" is called twice on the same pointer.
+- Set the pointer to "nullptr" after "delete" to help prevent accidental repeated deletion.
+
+One-line:
+Double deletion means trying to release the same dynamically allocated memory more than once.
