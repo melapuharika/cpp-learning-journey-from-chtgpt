@@ -1185,3 +1185,57 @@ Key Points
 
 One-line:
 Double deletion means trying to release the same dynamically allocated memory more than once.
+
+
+### topic 28 Ownership
+
+Definition:
+Ownership means having responsibility for managing and releasing a resource.
+
+In C++, a resource can be dynamically allocated heap memory.
+
+Example
+
+int* ptr = new int(50);
+
+cout << *ptr;
+
+delete ptr;
+ptr = nullptr;
+
+Explanation
+
+int* ptr = new int(50);
+
+Creates memory in the heap.
+
+delete ptr;
+
+Releases the memory that "ptr" is responsible for managing.
+
+Real-Life Example
+
+A rented room is a resource.
+
+- Room → Resource
+- Person responsible for the room → Owner
+- Vacating the room → Releasing the resource
+
+Similarly, dynamically allocated memory needs clear ownership and proper release.
+
+Why Ownership Is Important
+
+Clear ownership helps prevent:
+
+- Memory leaks
+- Double deletion
+- Invalid memory access
+
+Remember
+
+Resource → What we need to manage
+Ownership → Who is responsible
+Release → Giving the resource back
+
+One-line:
+Ownership means responsibility for managing and releasing a resource.
