@@ -854,3 +854,62 @@ delete → Release memory
 
 One-line:
 "delete" releases a single dynamically allocated memory block created using "new".
+
+### topic 22 "new[]" Operator
+
+Definition:
+"new[]" is used to dynamically allocate memory for an array in the heap.
+
+Syntax
+
+pointer = new data_type[size];
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* arr = new int[3];
+
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+
+    cout << arr[1];
+
+    delete[] arr;
+
+    return 0;
+}
+
+Explanation
+
+int* arr = new int[3];
+
+Creates memory for 3 integers in the heap.
+
+arr[0] = 10;
+arr[1] = 20;
+arr[2] = 30;
+
+Stores values in the dynamically allocated array.
+
+delete[] arr;
+
+Releases the entire array memory created using "new[]".
+
+Key Points
+
+- "new[]" dynamically allocates memory for an array.
+- Memory is allocated in the heap.
+- It returns the address of the first element.
+- The matching operator "delete[]" is used to release the array memory.
+
+Remember
+
+new[]    → Allocate array memory
+delete[] → Release array memory
+
+One-line:
+"new[]" is used to dynamically allocate memory for an array in the heap.
