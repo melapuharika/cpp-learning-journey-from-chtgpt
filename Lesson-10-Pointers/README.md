@@ -60,3 +60,33 @@ Key Point
 Simple Definition
 
 A pointer is a variable that stores the address of another variable.
+
+### topic:2 Address
+
+Definition
+
+An address is the memory location where a variable is stored.
+
+Address-of Operator ("&")
+
+The "&" operator is used to find the memory address of a variable.
+
+Example
+
+int age = 20;
+
+cout << age;   // Value
+cout << &age;  // Address
+
+Meaning
+
+- "age" → stores the value "20"
+- "&age" → gives the memory address of "age"
+
+Key Point
+
+"&" → Address-of operator
+
+Simple Definition
+
+An address is the location of a variable in computer memory.
