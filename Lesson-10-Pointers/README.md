@@ -123,3 +123,36 @@ Key Point
 Simple Definition
 
 Dereferencing a pointer means accessing the value using the address stored in the pointer.
+
+
+### topic 4 NULL Pointer
+
+Definition
+
+A NULL pointer is a pointer that does not point to a valid memory location.
+
+Example
+
+int* ptr = NULL;
+
+Here, "ptr" is not pointing to any valid memory location.
+
+nullptr
+
+In modern C++, "nullptr" is used to represent a pointer that points to nothing.
+
+int* ptr = nullptr;
+
+Important Point
+
+A NULL pointer should not be dereferenced.
+
+int* ptr = nullptr;
+
+// Wrong
+cout << *ptr;
+
+Key Point
+
+- NULL pointer → does not point to a valid memory location
+- "nullptr" → modern C++ way to represent no pointer target
