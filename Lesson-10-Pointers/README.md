@@ -1,7 +1,5 @@
 ### topics
 Lesson 10 - Pointers
-
-- Pointers
 - Address
 - Pointer
 - Dereferencing
