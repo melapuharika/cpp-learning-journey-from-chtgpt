@@ -80,5 +80,68 @@ One-Line Definition
 
 «A reference in C++ is another name (alias) for an existing variable.»
 
+## topic:2
+2. Reference Initialization
 
+Definition
 
+Reference Initialization ante reference create chesetappudu, adi ye existing variable ni refer cheyyalo specify cheyyadam.
+
+Syntax
+
+dataType& referenceName = existingVariable;
+
+Example
+
+int age = 20;
+
+int& myAge = age;
+
+Here:
+
+- "age" → original variable
+- "myAge" → reference
+- "= age" → "myAge" ni "age" ki connect chestundi.
+
+Both "age" and "myAge" refer to the same variable.
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int& ref = number;
+
+    ref = 50;
+
+    cout << number << endl;
+
+    return 0;
+}
+
+Output
+
+50
+
+Important Points
+
+- A reference must be initialized when it is declared.
+- A reference must refer to an existing object/variable.
+- A reference cannot be left uninitialized.
+- Once a reference is bound to a variable, it cannot be changed to refer to another variable.
+- Changing the reference changes the original variable.
+
+Remember
+
+int number = 10;
+int& ref = number;
+
+"ref" is another name for "number".
+
+One-Line Definition:
+
+«Reference Initialization is the process of binding a reference to an existing variable when the reference is declared.»
