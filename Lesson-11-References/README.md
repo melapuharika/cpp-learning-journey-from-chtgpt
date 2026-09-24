@@ -9,4 +9,76 @@
 7. L-value Reference
 8. R-value Reference
 9. Reference Collapsing
-10. Forwarding Reference 
+10. Forwarding Reference
+
+## topic :1 
+Lesson 11 – References
+
+1. Reference
+
+A reference is another name (alias) for an existing variable.
+
+Syntax
+
+dataType& referenceName = variableName;
+
+Example
+
+int age = 20;
+int& myAge = age;
+
+Here:
+
+- "age" → original variable
+- "myAge" → reference to "age"
+- "&" → used to create a reference
+
+Both "age" and "myAge" refer to the same variable.
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 20;
+
+    int& myAge = age;
+
+    myAge = 25;
+
+    cout << age << endl;
+    cout << myAge << endl;
+
+    return 0;
+}
+
+Output
+
+25
+25
+
+When "myAge" is changed, "age" is also changed because both refer to the same variable.
+
+Important Points
+
+- A reference is an alias (another name) for an existing variable.
+- It does not create a separate variable for the referred object.
+- A reference must be initialized when it is declared.
+- Once a reference is bound to a variable, it cannot be made to refer to another variable.
+- Changes made through the reference affect the original variable.
+
+Remember
+
+Original Variable → age
+Reference          → myAge
+
+age and myAge refer to the same variable.
+
+One-Line Definition
+
+«A reference in C++ is another name (alias) for an existing variable.»
+
+
+
