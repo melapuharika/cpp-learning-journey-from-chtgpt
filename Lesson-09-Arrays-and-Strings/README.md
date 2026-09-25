@@ -18,7 +18,6 @@ Part 1: Arrays
 Part 2: Strings
 
 C-Style Strings
-
 11. Character Array
 12. "strlen()"
 13. "strcpy()"
