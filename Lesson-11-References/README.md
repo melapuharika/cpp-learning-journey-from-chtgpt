@@ -145,3 +145,89 @@ int& ref = number;
 One-Line Definition:
 
 «Reference Initialization is the process of binding a reference to an existing variable when the reference is declared.»
+
+
+### topic:3 
+Reference vs Pointer
+
+Reference mariyu Pointer rendu existing variable ni access cheyyadaniki use chestam, kani rendu different concepts.
+
+Reference
+
+Reference ante existing variable ki inko peru (alias).
+
+int number = 10;
+
+int& ref = number;
+
+"ref" anedi "number" ki another name.
+
+ref = 20;
+
+Ippudu "number" value "20" avutundi.
+
+---
+
+Pointer
+
+Pointer ante oka variable yokka memory address ni store chese variable.
+
+int number = 10;
+
+int* ptr = &number;
+
+Ikkada:
+
+- "ptr" → pointer
+- "&number" → "number" yokka address
+- "*ptr" → aa address daggara unna value
+
+*ptr = 30;
+
+Ippudu "number" value "30" avutundi.
+
+---
+
+Reference vs Pointer
+
+Reference| Pointer
+Variable ki another name| Memory address ni store chestundi
+"int& ref = number;"| "int* ptr = &number;"
+Direct ga use cheyyachu| Value kosam "*" use cheyyali
+Declaration time lo initialize cheyyali| Initialize cheyyakapothe uninitialized pointer avvachu
+"nullptr" ga undadu| "nullptr" ga undavachu
+Vere variable ki rebind cheyyalem| Vere address ni point cheyyagaladu
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int& ref = number;
+    int* ptr = &number;
+
+    ref = 20;
+    *ptr = 30;
+
+    cout << number << endl;
+
+    return 0;
+}
+
+Output
+
+30
+
+Remember
+
+Reference → Variable ki another name
+
+Pointer → Variable yokka address ni store chestundi
+
+One-Line Definition
+
+«A reference is another name for an existing variable, while a pointer stores the memory address of a variable.»
