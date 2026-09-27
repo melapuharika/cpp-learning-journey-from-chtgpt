@@ -511,3 +511,108 @@ Modify through reference → ❌
 One-Line Definition
 
 «A const reference is a reference that allows access to an existing variable but does not allow modification through that reference.»
+
+
+### topic 7
+7. L-value Reference
+
+L-value
+
+L-value ante memory lo identifiable location unna expression or value.
+
+Example
+
+int number = 10;
+
+Ikkada "number" oka L-value, endukante "number" ki memory lo oka location untundi.
+
+Kabatti:
+
+number = 20;
+
+ani cheyyachu.
+
+---
+
+L-value Reference
+
+L-value Reference ante oka L-value ni refer chese reference.
+
+Syntax
+
+dataType& referenceName = lvalue;
+
+Example
+
+int number = 10;
+
+int& ref = number;
+
+Ikkada:
+
+- "number" → L-value
+- "ref" → L-value Reference
+
+"ref" mariyu "number" same variable ni refer chestayi.
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int& ref = number;
+
+    ref = 50;
+
+    cout << number << endl;
+
+    return 0;
+}
+
+Output
+
+50
+
+"ref" dwara "number" value change ayyindi.
+
+---
+
+L-value Reference ki L-value kavali
+
+Correct
+
+int number = 10;
+
+int& ref = number;   // ✅
+
+Wrong
+
+int& ref = 10;       // ❌
+
+"10" oka temporary value kabatti normal L-value kaadu.
+
+---
+
+Important Points
+
+- L-value ki memory lo identifiable location untundi.
+- L-value Reference oka L-value ni refer chestundi.
+- L-value Reference ni "&" symbol tho declare chestam.
+- L-value Reference dwara original variable ni modify cheyyachu.
+- Normal non-const L-value Reference ni temporary value ki bind cheyyalem.
+
+Remember
+
+L-value
+→ Memory lo identifiable location unna value/expression
+
+L-value Reference
+→ L-value ni refer chese reference
+
+One-Line Definition
+
+«An L-value reference is a reference that refers to an L-value.»
