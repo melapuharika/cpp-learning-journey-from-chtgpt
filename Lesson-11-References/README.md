@@ -231,3 +231,103 @@ Pointer → Variable yokka address ni store chestundi
 One-Line Definition
 
 «A reference is another name for an existing variable, while a pointer stores the memory address of a variable.»
+
+
+### topic:4. Reference as Parameter
+
+Definition
+
+Reference as Parameter ante function parameter ni reference ga declare chesi, function ki original variable ni directly access cheyyadam.
+
+Syntax
+
+returnType functionName(dataType& parameter)
+{
+    // code
+}
+
+Example
+
+void change(int& x)
+{
+    x = 50;
+}
+
+Ikkada "x" anedi function ki pass chesina original variable ki reference.
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+void change(int& x)
+{
+    x = 50;
+}
+
+int main()
+{
+    int number = 10;
+
+    change(number);
+
+    cout << number << endl;
+
+    return 0;
+}
+
+Output
+
+50
+
+How It Works
+
+number = 10
+
+change(number)
+      ↓
+x refers to number
+      ↓
+x = 50
+      ↓
+number = 50
+
+Normal Parameter vs Reference Parameter
+
+Normal Parameter
+
+void change(int x)
+{
+    x = 50;
+}
+
+Ikkada "x" ki original value yokka copy vastundi.
+
+Original variable change avvadu.
+
+Reference Parameter
+
+void change(int& x)
+{
+    x = 50;
+}
+
+Ikkada "x" original variable ni direct ga refer chestundi.
+
+Original variable change avutundi.
+
+Advantages
+
+- Original variable ni directly modify cheyyachu.
+- Unnecessary copy create avvadu.
+- Large objects ni efficient ga function ki pass cheyyadaniki useful.
+
+Remember
+
+Normal Parameter → Copy
+
+Reference Parameter → Original variable ni refer chestundi
+
+One-Line Definition
+
+«Reference as Parameter allows a function to access and modify the original variable directly through a reference.»
