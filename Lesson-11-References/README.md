@@ -433,3 +433,81 @@ Reference Return
 One-Line Definition
 
 «Reference as Return Value allows a function to return a reference to an existing variable.»
+
+
+### topic:6
+6. Const Reference
+
+Definition
+
+Const Reference ante existing variable ni reference dwara access cheyyachu, kani aa reference dwara variable value ni modify cheyyalem.
+
+Syntax
+
+const dataType& referenceName = variable;
+
+Example
+
+int number = 10;
+
+const int& ref = number;
+
+Ikkada "ref" anedi "number" ni refer chestundi, kani "ref" dwara "number" value ni change cheyyalem.
+
+ref = 20;   // ❌ Error
+
+Kani original variable ni direct ga change cheyyachu:
+
+number = 20;   // ✅
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    const int& ref = number;
+
+    cout << ref << endl;
+
+    return 0;
+}
+
+Output
+
+10
+
+Const Reference as Function Parameter
+
+Const references functions lo chala useful.
+
+void display(const string& name)
+{
+    cout << name;
+}
+
+Ikkada:
+
+- "name" original string ni refer chestundi.
+- String copy create avvadu.
+- "name" ni function lopala modify cheyyalem.
+
+Advantages
+
+- Unnecessary copy create avvadu.
+- Original data ni modify cheyyakunda access cheyyachu.
+- Large objects ni function ki efficiently pass cheyyadaniki useful.
+
+Remember
+
+const reference
+      ↓
+Read / Access → ✅
+Modify through reference → ❌
+
+One-Line Definition
+
+«A const reference is a reference that allows access to an existing variable but does not allow modification through that reference.»
