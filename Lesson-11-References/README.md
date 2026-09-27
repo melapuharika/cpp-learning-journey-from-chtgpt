@@ -814,3 +814,127 @@ Easy Memory Trick
 One-Line Definition
 
 «Reference collapsing is the process by which multiple reference types are reduced to a single valid reference type according to C++ rules.»
+
+
+### topic:10 
+10. Forwarding Reference
+
+Definition
+
+Forwarding Reference ante L-value mariyu R-value rendu ni accept cheyyagalige reference. Argument yokka original value category ni preserve chesi next function ki forward cheyyadaniki idi useful.
+
+Forwarding references mostly templates lo use chestam.
+
+Syntax
+
+template <typename T>
+void show(T&& value)
+{
+    // code
+}
+
+Ikkada "T&&" type deduction context lo unte, adi Forwarding Reference ga work chestundi.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void show(T&& value)
+{
+    cout << value << endl;
+}
+
+int main()
+{
+    int number = 10;
+
+    show(number);   // L-value
+    show(20);       // R-value
+
+    return 0;
+}
+
+Output
+
+10
+20
+
+How It Works
+
+L-value Pass Chesthe
+
+int number = 10;
+
+show(number);
+
+"number" L-value kabatti reference collapsing jarugutundi:
+
+T = int&
+T&&
+ ↓
+int& &&
+ ↓
+int&
+
+So final ga "T&&" → "int&" avutundi.
+
+R-value Pass Chesthe
+
+show(20);
+
+"20" R-value kabatti:
+
+T = int
+
+T&&
+ ↓
+int&&
+
+So final ga "T&&" → "int&&" avutundi.
+
+std::forward()
+
+Argument ni original value category tho next function ki forward cheyyadaniki "std::forward<T>()" use chestam.
+
+template <typename T>
+void process(T&& value)
+{
+    anotherFunction(std::forward<T>(value));
+}
+
+- L-value → L-value ga forward avutundi.
+- R-value → R-value ga forward avutundi.
+
+Forwarding Reference vs R-value Reference
+
+Forwarding Reference| R-value Reference
+Usually type deduction context lo untundi| Specific type tho declare chestam
+L-values and R-values rendu accept cheyyagaladu| Mainly R-values kosam
+Example: "template<typename T> void f(T&& x)"| Example: "void f(int&& x)"
+Perfect forwarding lo useful| Move semantics lo useful
+
+Important Point
+
+Prathi "T&&" Forwarding Reference kaadu.
+
+template <typename T>
+void func(T&& value);   // Forwarding Reference ✅
+
+But:
+
+void func(int&& value); // R-value Reference
+
+Idi Forwarding Reference kaadu.
+
+Remember
+
+Forwarding Reference
+        ↓
+L-value → L-value laga handle/forward
+R-value → R-value laga handle/forward
+
+One-Line Definition
+
+«A forwarding reference can bind to both L-values and R-values and is used to preserve their value category during forwarding.»
