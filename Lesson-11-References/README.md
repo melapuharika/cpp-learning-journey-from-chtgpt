@@ -616,3 +616,114 @@ L-value Reference
 One-Line Definition
 
 «An L-value reference is a reference that refers to an L-value.»
+
+
+### topic 8
+8. R-value Reference
+
+R-value
+
+R-value ante usually temporary value or temporary expression.
+
+Example
+
+int result = 10 + 20;
+
+Ikkada "10 + 20" oka temporary value, kabatti idi R-value.
+
+---
+
+R-value Reference
+
+R-value Reference ante R-value or temporary value ni refer cheyyadaniki use chese reference.
+
+R-value Reference ni "&&" symbol tho declare chestam.
+
+Syntax
+
+dataType&& referenceName = rvalue;
+
+Example
+
+int&& ref = 10;
+
+Ikkada:
+
+- "10" → R-value
+- "ref" → R-value Reference
+- "&&" → R-value Reference operator
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int&& ref = 10;
+
+    cout << ref << endl;
+
+    return 0;
+}
+
+Output
+
+10
+
+L-value vs R-value Reference
+
+L-value Reference
+
+int number = 20;
+int& ref = number;
+
+"number" → L-value
+
+"ref" → L-value Reference
+
+R-value Reference
+
+int&& ref = 20;
+
+"20" → R-value
+
+"ref" → R-value Reference
+
+Difference
+
+L-value Reference| R-value Reference
+Uses "&"| Uses "&&"
+Refers to L-values| Can bind to R-values
+Example: "int& ref = number;"| Example: "int&& ref = 20;"
+Commonly used to access existing variables| Important for move semantics
+
+Why R-value References Are Useful
+
+R-value references are important in C++ for:
+
+- Move semantics
+- Move constructors
+- Move assignment operators
+- Avoiding unnecessary copying
+- Efficient handling of temporary objects
+
+Important Point
+
+A normal non-const L-value reference cannot bind to a temporary R-value.
+
+int& ref = 10;     // ❌
+
+But an R-value reference can:
+
+int&& ref = 10;    // ✅
+
+Remember
+
+&  → L-value Reference
+
+&& → R-value Reference
+
+One-Line Definition
+
+«An R-value reference is a reference that can bind to an R-value or temporary value.»
