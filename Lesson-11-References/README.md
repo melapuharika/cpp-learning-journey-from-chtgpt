@@ -727,3 +727,90 @@ Remember
 One-Line Definition
 
 «An R-value reference is a reference that can bind to an R-value or temporary value.»
+
+
+### topic 9
+9. Reference Collapsing
+
+Definition
+
+Reference Collapsing ante C++ lo multiple references kalisinappudu, avi oka single valid reference type ga convert avvadam.
+
+C++ lo references to references direct ga create cheyyalem, kani type aliases mariyu templates lo ilaanti situations vastayi.
+
+Basic Rules
+
+Reference collapsing ki main rules:
+
+T&  &   → T&
+T&  &&  → T&
+T&& &   → T&
+T&& &&  → T&&
+
+Easy Rule
+
+«Oka combination lo "&" unte final result "&" avutundi.»
+
+Only:
+
+&& + && → &&
+
+avutundi.
+
+Examples
+
+Example 1
+
+int& & ref;
+
+Direct ga ila declare cheyyadam valid kaadu. Conceptually idi:
+
+int&
+
+ga collapse avutundi.
+
+Example 2
+
+int& + &&
+     ↓
+   int&
+
+Example 3
+
+int&& + &
+     ↓
+   int&
+
+Example 4
+
+int&& + &&
+      ↓
+   int&&
+
+Why Reference Collapsing Is Useful
+
+Reference collapsing mainly:
+
+- Templates
+- Type aliases
+- Perfect forwarding
+- Forwarding references
+
+lo important role play chestundi.
+
+Remember
+
+T&  &   → T&
+T&  &&  → T&
+T&& &   → T&
+T&& &&  → T&&
+
+Easy Memory Trick
+
+«"&" kanipiste result "&"»
+
+«Only "&& + &&" → "&&"»
+
+One-Line Definition
+
+«Reference collapsing is the process by which multiple reference types are reduced to a single valid reference type according to C++ rules.»
