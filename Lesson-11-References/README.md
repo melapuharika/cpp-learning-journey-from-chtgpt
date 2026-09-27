@@ -331,3 +331,105 @@ Reference Parameter → Original variable ni refer chestundi
 One-Line Definition
 
 «Reference as Parameter allows a function to access and modify the original variable directly through a reference.»
+
+### topic 5 
+5. Reference as Return Value
+
+Definition
+
+Reference as Return Value ante function oka existing variable yokka reference ni return cheyyadam.
+
+Syntax
+
+dataType& functionName()
+{
+    return variable;
+}
+
+Example
+
+int number = 10;
+
+int& getNumber()
+{
+    return number;
+}
+
+Ikkada "getNumber()" function "number" yokka reference ni return chestundi.
+
+Example Program
+
+#include <iostream>
+using namespace std;
+
+int number = 10;
+
+int& getNumber()
+{
+    return number;
+}
+
+int main()
+{
+    getNumber() = 50;
+
+    cout << number << endl;
+
+    return 0;
+}
+
+Output
+
+50
+
+How It Works
+
+number = 10
+    ↑
+    │
+getNumber()
+    │
+    ↓
+returns reference to number
+
+getNumber() = 50
+    ↓
+number = 50
+
+Because the function returns a reference, we can directly modify the original variable.
+
+Important Point
+
+Function nunchi local variable yokka reference ni return cheyyakudadhu.
+
+Wrong
+
+int& getNumber()
+{
+    int number = 10;
+
+    return number;   // ❌
+}
+
+Function complete ayyaka local variable destroy avutundi. Kabatti dani reference ni return cheyyadam unsafe.
+
+Safe
+
+int number = 10;
+
+int& getNumber()
+{
+    return number;   // ✅
+}
+
+Remember
+
+Normal Return
+→ Value ni return chestundi
+
+Reference Return
+→ Existing variable yokka reference ni return chestundi
+
+One-Line Definition
+
+«Reference as Return Value allows a function to return a reference to an existing variable.»
