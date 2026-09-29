@@ -975,3 +975,62 @@ TrafficLight light = Green;
 Remember
 
 "enum" = Named constants for a fixed set of related choices.
+
+
+### topic 12
+
+enum class in C++
+
+Definition
+
+"enum class" is a strongly typed and scoped enumeration in C++.
+
+It is a safer version of the traditional "enum".
+
+Syntax
+
+enum class Color {
+    Red,
+    Green,
+    Blue
+};
+
+Using enum class
+
+Color c = Color::Red;
+
+We use "Color::" to access the values.
+
+Normal enum
+
+enum Color {
+    Red,
+    Green
+};
+
+Color c = Red;
+
+enum class
+
+enum class Color {
+    Red,
+    Green
+};
+
+Color c = Color::Red;
+
+Advantages
+
+- Type-safe
+- Scoped — values are accessed using "EnumName::value"
+- Prevents name conflicts
+- Makes code safer and easier to understand
+
+Remember
+
+Normal enum → "Red"
+
+enum class → "Color::Red"
+
+"enum class" = Scoped + Strongly Typed enum
+
