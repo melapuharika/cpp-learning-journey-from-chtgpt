@@ -370,3 +370,40 @@ Remember
 - protected → Accessible inside the class and derived classes
 
 Access Specifiers = Rules that control access to class members.
+
+
+### topic 7
+
+Public in C++
+
+Definition
+
+"public" is an access specifier that allows class members to be accessed from outside the class.
+
+Example
+
+class Student {
+public:
+    string name;
+
+    void study() {
+        cout << "Student is studying";
+    }
+};
+
+Accessing Public Members
+
+Student s1;
+
+s1.name = "Harika";
+s1.study();
+
+"name" and "study()" can be accessed because they are "public".
+
+Important Point
+
+In a C++ "class", members are private by default if no access specifier is written.
+
+Remember
+
+"public" → Members can be accessed from outside the class.
