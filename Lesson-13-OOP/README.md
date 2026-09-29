@@ -2,7 +2,7 @@ Lesson 13 — OOP
 
 Topics
 
-1. POP
+1. OOP
 2. Class and Object
 3. Class
 4. Object
