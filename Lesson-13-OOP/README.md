@@ -665,4 +665,60 @@ Remember
 
 Copy Constructor → Existing Object → New Object
 
+### topic 16
+
+Move Constructor in C++
+
+Definition
+
+A Move Constructor creates a new object by moving resources/ownership from an existing object instead of copying them.
+
+Example
+
+class Student {
+public:
+    string name;
+
+    Student(string n) {
+        name = n;
+    }
+
+    Student(Student&& s) {
+        name = move(s.name);
+    }
+};
+
+int main() {
+    Student s1("Harika");
+    Student s2(std::move(s1));
+}
+
+Here, the resource from "s1" is moved to "s2".
+
+Syntax
+
+ClassName(ClassName&& object)
+
+"&&" represents an rvalue reference.
+
+Copy vs Move
+
+Copy Constructor| Move Constructor
+Copies resources| Moves resources
+Can require extra resources| Avoids unnecessary copying
+Original remains unchanged| Original is left in a valid but unspecified state
+
+Key Points
+
+- Uses an rvalue reference ("&&").
+- Transfers resources/ownership instead of copying them.
+- Helps improve performance.
+- Commonly used with resource-owning objects.
+
+Remember
+
+Copy → Copy the resource
+
+Move → Transfer the resource/ownership
+
 
