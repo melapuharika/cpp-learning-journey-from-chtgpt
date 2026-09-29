@@ -417,3 +417,57 @@ Important Points
 - The "." operator is used to call a structure function using an object.
 
 Structure Function = A function defined inside a structure.
+
+
+### topic 8
+
+Union
+
+A Union is a user-defined data type that allows different data types to share the same memory location.
+
+Syntax
+
+union Data
+{
+    int number;
+    float decimal;
+    char letter;
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+union Data
+{
+    int number;
+    float decimal;
+    char letter;
+};
+
+int main()
+{
+    Data d;
+
+    d.number = 10;
+    cout << d.number << endl;
+
+    d.decimal = 5.5;
+    cout << d.decimal << endl;
+
+    return 0;
+}
+
+Structure vs Union
+
+Structure| Union
+Each member has separate memory| Members share the same memory
+Multiple members can hold values at the same time| One member's value is normally meaningful at a time
+Uses more memory| Can save memory
+
+Important Point
+
+Union members share the same memory location. Therefore, assigning a value to one member can overwrite the value stored by another member.
+
+Union = Different data types sharing the same memory location.
