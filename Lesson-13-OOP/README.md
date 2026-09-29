@@ -721,4 +721,53 @@ Copy → Copy the resource
 
 Move → Transfer the resource/ownership
 
+### topic 17
+
+Constructor Overloading in C++
+
+Definition
+
+Constructor Overloading means having multiple constructors in the same class with different parameter lists.
+
+Example
+
+class Student {
+public:
+
+    Student() {
+        cout << "Default Constructor";
+    }
+
+    Student(string name) {
+        cout << "Name: " << name;
+    }
+
+    Student(string name, int age) {
+        cout << "Name: " << name << ", Age: " << age;
+    }
+};
+
+Here, the class has three constructors:
+
+Student()
+Student(string)
+Student(string, int)
+
+Creating Objects
+
+Student s1;
+Student s2("Harika");
+Student s3("Harika", 20);
+
+The correct constructor is selected based on the arguments passed.
+
+Key Points
+
+- Multiple constructors can exist in one class.
+- Constructors must have different parameter lists.
+- Helps initialize objects in different ways.
+
+Remember
+
+Constructor Overloading = One Class + Multiple Constructors + Different Parameters
 
