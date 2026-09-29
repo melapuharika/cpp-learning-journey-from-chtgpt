@@ -529,3 +529,40 @@ Rules
 Remember
 
 Constructor → Object creation → Automatic call → Initialization
+
+
+### topic 13
+
+Default Constructor in C++
+
+Definition
+
+A Default Constructor is a constructor that has no parameters.
+
+It is automatically called when an object is created without arguments.
+
+Example
+
+class Student {
+public:
+    Student() {
+        cout << "Student created";
+    }
+};
+
+int main() {
+    Student s1;
+}
+
+Here, "Student()" is a Default Constructor because it has no parameters.
+
+Key Points
+
+- Has no parameters.
+- Has no return type.
+- Called automatically when an object is created without arguments.
+- Used to initialize an object with default values or perform initial setup.
+
+Remember
+
+Default Constructor = Constructor with no parameters.
