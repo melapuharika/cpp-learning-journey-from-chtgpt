@@ -327,3 +327,46 @@ Data Member → What an object has
 Method → What an object does
 
 Method = Function inside a class
+
+
+### topic 7
+
+Access Specifiers in C++
+
+Definition
+
+Access Specifiers control where the members of a class can be accessed.
+
+C++ has three main access specifiers:
+
+1. "public"
+2. "private"
+3. "protected"
+
+Example
+
+class Student {
+public:
+    string name;
+
+private:
+    int age;
+
+protected:
+    string grade;
+};
+
+Access Table
+
+Access Specifier| Class| Outside Class| Derived Class
+"public"| ✅| ✅| ✅
+"private"| ✅| ❌| ❌
+"protected"| ✅| ❌| ✅
+
+Remember
+
+- public → Accessible from anywhere
+- private → Accessible only inside the class
+- protected → Accessible inside the class and derived classes
+
+Access Specifiers = Rules that control access to class members.
