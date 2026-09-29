@@ -449,3 +449,44 @@ public:
 Remember
 
 "private" → Members can be accessed inside the class but not directly from outside the class.
+
+
+### topic 10
+
+Protected in C++
+
+Definition
+
+"protected" is an access specifier that allows members to be accessed inside the class and its derived classes.
+
+Example
+
+class Parent {
+protected:
+    int age;
+};
+
+class Child : public Parent {
+public:
+    void showAge() {
+        age = 20;
+        cout << age;
+    }
+};
+
+Here, "age" can be accessed by:
+
+- "Parent" class → ✅
+- "Child" (derived class) → ✅
+- Outside the class → ❌
+
+Access Table
+
+Access Specifier| Class| Outside Class| Derived Class
+"public"| ✅| ✅| ✅
+"private"| ✅| ❌| ❌
+"protected"| ✅| ❌| ✅
+
+Remember
+
+"protected" → Accessible inside the class and derived classes, but not directly from outside.
