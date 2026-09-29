@@ -964,3 +964,59 @@ Remember
 Constructor → Forward Order
 
 Destructor → Reverse Order
+
+### topic 22
+
+Virtual Destructor in C++
+
+Definition
+
+A Virtual Destructor is a destructor declared with the "virtual" keyword in a base class.
+
+It is important when using inheritance and polymorphism.
+
+Example
+
+class Parent {
+public:
+    virtual ~Parent() {
+        cout << "Parent Destructor";
+    }
+};
+
+class Child : public Parent {
+public:
+    ~Child() {
+        cout << "Child Destructor";
+    }
+};
+
+Using a Base Class Pointer
+
+Parent* p = new Child();
+
+delete p;
+
+With a virtual destructor, destruction happens correctly:
+
+delete p
+   ↓
+Child Destructor
+   ↓
+Parent Destructor
+
+Key Points
+
+- Declared using the "virtual" keyword.
+- Used in a base class when objects may be deleted through a base-class pointer.
+- Ensures the derived-class destructor is called before the base-class destructor.
+- Helps perform proper cleanup of derived objects.
+
+Syntax
+
+virtual ~ClassName() {
+}
+
+Remember
+
+Virtual Destructor → Properly destroys a derived object through a base-class pointer.
