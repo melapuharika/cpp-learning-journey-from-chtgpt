@@ -23,3 +23,49 @@ Topics
 19. Destructor
 20. Destructor Order
 21. Virtual Destructor
+
+
+### topic 1
+
+OOP — Object-Oriented Programming
+
+Definition
+
+OOP stands for Object-Oriented Programming.
+
+It is a programming approach where programs are designed using classes and objects.
+
+Example
+
+class Car {
+public:
+    string color;
+
+    void start() {
+        cout << "Car started";
+    }
+};
+
+Here:
+
+- "Car" → Class
+- "color" → Data member
+- "start()" → Method
+- Object can be created from the class.
+
+Main Features
+
+1. Encapsulation – Data and methods are combined into one unit.
+2. Abstraction – Unnecessary details are hidden.
+3. Inheritance – Existing class features can be reused.
+4. Polymorphism – Same interface can behave in different ways.
+
+POP vs OOP
+
+POP → Functions / Procedures
+
+OOP → Classes / Objects
+
+Remember
+
+«OOP = Object + Data + Methods»
