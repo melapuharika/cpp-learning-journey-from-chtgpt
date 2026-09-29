@@ -178,3 +178,60 @@ Remember
 «Class = Blueprint / Design»
 
 «Class defines Data + Methods»
+
+### topic 4
+
+Object in C++
+
+Definition
+
+An Object is an instance of a class.
+
+- Class → Blueprint / template
+- Object → Real instance created from the class
+
+Example
+
+class Car {
+public:
+    string color;
+
+    void start() {
+        cout << "Car started";
+    }
+};
+
+Car car1;
+Car car2;
+
+Here:
+
+- "Car" → Class
+- "car1" → Object
+- "car2" → Object
+
+Accessing Object Members
+
+We use the dot (".") operator to access an object's data members and methods.
+
+car1.color = "Red";
+car1.start();
+
+Multiple Objects
+
+One class can create multiple objects.
+
+Car car1;
+Car car2;
+
+car1.color = "Red";
+car2.color = "Blue";
+
+Each object can have its own data values.
+
+Remember
+
+Class = Blueprint
+Object = Instance of the Class
+
+Object = A real instance created from a class.
