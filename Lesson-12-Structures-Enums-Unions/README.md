@@ -471,3 +471,152 @@ Important Point
 Union members share the same memory location. Therefore, assigning a value to one member can overwrite the value stored by another member.
 
 Union = Different data types sharing the same memory location.
+
+
+### topic 9
+
+Memory Sharing in C++
+
+1. What is Memory Sharing?
+
+Memory Sharing means allowing multiple variables, references, or pointers to access or use the same memory location.
+
+Normally, different variables have different memory locations.
+
+int a = 10;
+int b = 20;
+
+Here, "a" and "b" normally have separate memory locations.
+
+In memory sharing, two or more ways of accessing data can refer to the same memory location.
+
+---
+
+2. Memory Sharing using Reference
+
+A reference can act as another name for an existing variable.
+
+int a = 10;
+int &b = a;
+
+Here:
+
+- "a" is the original variable.
+- "b" is a reference to "a".
+- "a" and "b" refer to the same memory location.
+- A separate integer memory location is not created for "b".
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int &b = a;
+
+    b = 50;
+
+    cout << a;
+
+    return 0;
+}
+
+Output
+
+50
+
+When "b" is changed, "a" also changes because both refer to the same memory location.
+
+---
+
+3. Memory Sharing using Pointer
+
+A pointer can also access the memory of another variable.
+
+int a = 10;
+int *p = &a;
+
+Here:
+
+- "a" stores the value "10".
+- "&a" gives the address of "a".
+- "p" stores the address of "a".
+- "*p" accesses the value stored at that address.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int *p = &a;
+
+    *p = 50;
+
+    cout << a;
+
+    return 0;
+}
+
+Output
+
+50
+
+Because "p" points to "a"'s memory location, changing "*p" changes the value of "a".
+
+---
+
+4. Simple Memory Diagram
+
+Reference
+
+        ┌──────────┐
+a ─────►│    50    │
+        └──────────┘
+b ─────►
+
+"a" and "b" refer to the same memory location.
+
+Pointer
+
+p ─────► Address of a
+              │
+              ▼
+        ┌──────────┐
+a ─────►│    50    │
+        └──────────┘
+
+"p" stores the address of "a" and can access its value using "*p".
+
+---
+
+5. Reference vs Pointer
+
+Reference| Pointer
+Another name for a variable| Stores a memory address
+Uses "&" while declaring| Uses "*" while declaring
+Accessed directly| Usually accessed using "*"
+Must normally be initialized when declared| Can be initialized later
+Cannot normally be made to refer to another variable after initialization| Can point to different variables
+
+---
+
+6. Key Points
+
+- Memory sharing means multiple ways of accessing the same memory.
+- References can provide another name for an existing variable.
+- Pointers can store the address of an existing variable.
+- Changing the value through a reference or pointer can change the original variable.
+- Memory sharing can reduce unnecessary copying and can be useful when working with functions, arrays, objects, and dynamic memory.
+
+Remember
+
+Reference → another name for the same variable
+
+Pointer → stores the address of a variable
+
+Memory Sharing → multiple ways of accessing the same memory
+
+
