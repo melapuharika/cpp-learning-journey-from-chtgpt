@@ -490,3 +490,42 @@ Access Specifier| Class| Outside Class| Derived Class
 Remember
 
 "protected" → Accessible inside the class and derived classes, but not directly from outside.
+
+
+### topic 11
+
+Constructors in C++
+
+Definition
+
+A Constructor is a special member function that is automatically called when an object is created.
+
+Example
+
+class Student {
+public:
+    Student() {
+        cout << "Student object created";
+    }
+};
+
+int main() {
+    Student s1;
+}
+
+Output
+
+Student object created
+
+When "s1" is created, the constructor "Student()" is automatically called.
+
+Rules
+
+1. Constructor name must be the same as the class name.
+2. A constructor has no return type.
+3. It is called automatically when an object is created.
+4. It is used to initialize an object.
+
+Remember
+
+Constructor → Object creation → Automatic call → Initialization
