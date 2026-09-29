@@ -348,3 +348,72 @@ Important Points
 - "(*ptr).member" is another way to access the member.
 
 Structure Pointer = Pointer that stores the address of a structure object.
+
+
+### topic 7
+
+Structure Functions
+
+A Structure Function is a function defined inside a structure.
+
+Example
+
+struct Student
+{
+    string name;
+    int age;
+
+    void display()
+    {
+        cout << name << endl;
+        cout << age << endl;
+    }
+};
+
+Here:
+
+- "name" and "age" → Structure Members
+- "display()" → Structure Function
+
+Complete Example
+
+#include <iostream>
+using namespace std;
+
+struct Student
+{
+    string name;
+    int age;
+
+    void display()
+    {
+        cout << name << endl;
+        cout << age << endl;
+    }
+};
+
+int main()
+{
+    Student s1;
+
+    s1.name = "Harika";
+    s1.age = 23;
+
+    s1.display();
+
+    return 0;
+}
+
+Calling the Structure Function
+
+s1.display();
+
+The "." operator is used to call a structure function through an object.
+
+Important Points
+
+- A structure can contain functions.
+- Structure functions can work with the structure's members.
+- The "." operator is used to call a structure function using an object.
+
+Structure Function = A function defined inside a structure.
