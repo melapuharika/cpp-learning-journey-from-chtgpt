@@ -821,4 +821,44 @@ Remember
 
 Delegating Constructor → One constructor delegates initialization to another constructor of the same class.
 
+### topic 19 
+Constructor Initialization List in C++
 
+Definition
+
+A Constructor Initialization List is used to initialize class members before the constructor body executes.
+
+Example
+
+class Student {
+public:
+    string name;
+    int age;
+
+    Student(string n, int a) : name(n), age(a) {
+    }
+};
+
+Here:
+
+: name(n), age(a)
+
+is the Constructor Initialization List.
+
+- "name(n)" → Initializes "name"
+- "age(a)" → Initializes "age"
+
+Syntax
+
+Constructor() : member1(value1), member2(value2) {
+}
+
+Key Points
+
+- Initializes members before the constructor body runs.
+- Provides direct initialization of member variables.
+- Important for "const" members, references, and members that cannot be default-constructed.
+
+Remember
+
+Initialization List → Initialize members before the constructor body executes.
