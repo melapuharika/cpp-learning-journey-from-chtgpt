@@ -222,3 +222,55 @@ Important Points
 Structure = Blueprint/Design
 
 Structure Object = Actual instance created from the structure
+
+
+### topic 5
+
+Nested Structure
+
+A Nested Structure is a structure defined or used inside another structure.
+
+Example
+
+struct Address
+{
+    string city;
+    int pincode;
+};
+
+struct Student
+{
+    string name;
+    int age;
+    Address address;
+};
+
+Here:
+
+- "Address" → Inner structure
+- "Student" → Outer structure
+- "address" → Member of "Student"
+
+Accessing Nested Structure Members
+
+Student s1;
+
+s1.name = "Harika";
+s1.age = 23;
+s1.address.city = "Vizag";
+s1.address.pincode = 530012;
+
+Structure
+
+Student
+ ├── name
+ ├── age
+ └── address
+      ├── city
+      └── pincode
+
+Important Point
+
+The "." operator is used to access nested structure members.
+
+Nested Structure = One structure inside another structure.
