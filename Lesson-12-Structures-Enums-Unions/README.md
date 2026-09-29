@@ -917,3 +917,61 @@ Union → All members share the same memory.
 Structure = Separate storage
 
 Union = Shared storage
+
+
+### topic 11
+
+Enumeration (enum) in C++
+
+Definition
+
+Enumeration ("enum") is a user-defined data type used to create a set of named constant values.
+
+Syntax
+
+enum Day {
+    Monday,
+    Tuesday,
+    Wednesday
+};
+
+Default Values
+
+By default:
+
+Monday    → 0
+Tuesday   → 1
+Wednesday → 2
+
+Custom Values
+
+enum Level {
+    Easy = 1,
+    Medium = 2,
+    Hard = 3
+};
+
+Using enum
+
+Level gameLevel = Hard;
+
+Uses
+
+- Makes code easier to read.
+- Represents a fixed set of choices.
+- Avoids using unexplained numbers.
+- Commonly used with "switch".
+
+Example
+
+enum TrafficLight {
+    Red,
+    Yellow,
+    Green
+};
+
+TrafficLight light = Green;
+
+Remember
+
+"enum" = Named constants for a fixed set of related choices.
