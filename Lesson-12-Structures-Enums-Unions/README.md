@@ -1096,3 +1096,44 @@ Scoped Enum = Enum values stay inside their enum scope.
 
 "enum class Color" → "Color::Red"
 
+### topic 14
+
+Underlying Type in C++
+
+Definition
+
+Underlying type is the integral data type used to represent the values of an "enum" or "enum class" internally.
+
+Example
+
+enum class Color : int {
+    Red,
+    Green,
+    Blue
+};
+
+Here:
+
+- "Color" → enum type
+- "int" → underlying type
+- "Red", "Green", "Blue" → enumerators
+
+Other Example
+
+enum class Status : char {
+    Start = 'S',
+    Stop = 'P'
+};
+
+Here, "char" is the underlying type.
+
+Common Underlying Types
+
+- "int"
+- "char"
+- "short"
+- "unsigned int"
+
+Remember
+
+Underlying Type = Data type used to represent enum values internally.
