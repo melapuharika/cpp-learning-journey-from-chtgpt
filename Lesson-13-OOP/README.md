@@ -235,3 +235,51 @@ Class = Blueprint
 Object = Instance of the Class
 
 Object = A real instance created from a class.
+
+
+### topic 5
+Members in C++
+
+Definition
+
+Members are the variables and functions declared inside a class.
+
+There are mainly two types:
+
+1. Data Members → Variables inside a class
+2. Member Functions → Functions inside a class
+
+Example
+
+class Car {
+public:
+    string color;     // Data Member
+    int speed;        // Data Member
+
+    void start() {    // Member Function
+        cout << "Car started";
+    }
+};
+
+Data Members
+
+- "color"
+- "speed"
+
+These store the data/state of the object.
+
+Member Functions
+
+- "start()"
+
+These define the actions/behavior of the object.
+
+Remember
+
+Members = Data Members + Member Functions
+
+Class
+  ↓
+Members
+ ├── Data Members
+ └── Member Functions
