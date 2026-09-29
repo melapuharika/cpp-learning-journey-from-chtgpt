@@ -916,3 +916,51 @@ Destructor  → Object Destruction & Cleanup
 Remember
 
 Destructor → Automatically called when an object is destroyed.
+
+### topic 21
+
+Destructor Order in C++
+
+Definition
+
+Destructor Order refers to the order in which destructors are called when multiple objects are destroyed.
+
+Rule
+
+Objects are generally destroyed in the reverse order of their creation within the same scope.
+
+Create:
+Object 1 → Object 2 → Object 3
+
+Destroy:
+Object 3 → Object 2 → Object 1
+
+Example
+
+class Student {
+public:
+    Student(int n) {
+        cout << "Constructor " << n << endl;
+    }
+
+    ~Student() {
+        cout << "Destructor" << endl;
+    }
+};
+
+int main() {
+    Student s1(1);
+    Student s2(2);
+    Student s3(3);
+}
+
+Order
+
+Creation:   s1 → s2 → s3
+Destruction: s3 → s2 → s1
+
+Remember
+
+Constructor → Forward Order
+
+Destructor → Reverse Order
