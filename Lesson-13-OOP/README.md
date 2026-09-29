@@ -771,3 +771,54 @@ Remember
 
 Constructor Overloading = One Class + Multiple Constructors + Different Parameters
 
+
+### topic 18
+
+Delegating Constructor in C++
+
+Definition
+
+A Delegating Constructor is a constructor that calls another constructor of the same class to perform initialization.
+
+Example
+
+class Student {
+public:
+    string name;
+    int age;
+
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+
+    Student() : Student("Unknown", 0) {
+    }
+};
+
+Here:
+
+Student() : Student("Unknown", 0)
+
+The "Student()" constructor delegates its initialization to "Student(string, int)".
+
+Flow
+
+Student()
+   ↓
+Student("Unknown", 0)
+   ↓
+name = "Unknown"
+age = 0
+
+Key Points
+
+- One constructor calls another constructor in the same class.
+- Helps avoid repeating initialization code.
+- Uses the constructor initialization list.
+
+Remember
+
+Delegating Constructor → One constructor delegates initialization to another constructor of the same class.
+
+
