@@ -566,3 +566,47 @@ Key Points
 Remember
 
 Default Constructor = Constructor with no parameters.
+
+
+### topic 14
+
+Parameterized Constructor in C++
+
+Definition
+
+A Parameterized Constructor is a constructor that accepts parameters to initialize an object with specific values.
+
+Example
+
+class Student {
+public:
+    string name;
+    int age;
+
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+};
+
+int main() {
+    Student s1("Harika", 20);
+}
+
+Here:
+
+- "Student(string n, int a)" → Parameterized Constructor
+- ""Harika"" → Passed to "n"
+- "20" → Passed to "a"
+
+Key Points
+
+- Has one or more parameters.
+- Has no return type.
+- Called automatically when an object is created with arguments.
+- Used to initialize objects with specific values.
+
+Remember
+
+Parameterized Constructor = Constructor that accepts parameters.
+
