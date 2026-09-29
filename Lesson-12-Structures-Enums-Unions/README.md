@@ -1034,3 +1034,65 @@ enum class → "Color::Red"
 
 "enum class" = Scoped + Strongly Typed enum
 
+
+### topic 13
+
+
+Scoped Enums in C++
+
+Definition
+
+A Scoped Enum is an enumeration whose values are kept inside the enum's own scope.
+
+In C++, "enum class" is commonly used to create scoped enums.
+
+Example
+
+enum class Color {
+    Red,
+    Green,
+    Blue
+};
+
+Values are accessed using the enum name:
+
+Color::Red;
+Color::Green;
+Color::Blue;
+
+Why Scoped?
+
+The enum values are not placed directly in the surrounding scope.
+
+Color
+ ├── Red
+ ├── Green
+ └── Blue
+
+So:
+
+Red;          // ❌
+Color::Red;   // ✅
+
+Advantage
+
+Scoped enums help avoid name conflicts.
+
+enum class TrafficLight {
+    Red,
+    Green
+};
+
+enum class Color {
+    Red,
+    Blue
+};
+
+Both can have "Red" because they belong to different scopes.
+
+Remember
+
+Scoped Enum = Enum values stay inside their enum scope.
+
+"enum class Color" → "Color::Red"
+
