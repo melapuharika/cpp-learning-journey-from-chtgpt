@@ -283,3 +283,47 @@ Class
 Members
  ├── Data Members
  └── Member Functions
+
+
+### topic 6 
+Methods in C++
+
+Definition
+
+A Method is a function defined inside a class.
+
+Methods represent the actions or behavior of an object.
+
+Example
+
+class Car {
+public:
+    string color;
+
+    void start() {
+        cout << "Car started";
+    }
+};
+
+- "color" → Data Member
+- "start()" → Method
+
+Calling a Method
+
+Car car1;
+
+car1.start();
+
+Output:
+
+Car started
+
+The dot (".") operator is used to call a method using an object.
+
+Remember
+
+Data Member → What an object has
+
+Method → What an object does
+
+Method = Function inside a class
