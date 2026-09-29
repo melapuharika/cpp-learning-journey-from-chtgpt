@@ -862,3 +862,57 @@ Key Points
 Remember
 
 Initialization List → Initialize members before the constructor body executes.
+
+### topic 20
+
+Destructor in C++
+
+Definition
+
+A Destructor is a special member function that is automatically called when an object is destroyed.
+
+Example
+
+class Student {
+public:
+    Student() {
+        cout << "Constructor called\n";
+    }
+
+    ~Student() {
+        cout << "Destructor called\n";
+    }
+};
+
+int main() {
+    Student s1;
+}
+
+Output
+
+Constructor called
+Destructor called
+
+Syntax
+
+~ClassName() {
+    // cleanup code
+}
+
+Rules
+
+- Destructor name is the class name preceded by "~".
+- Has no return type.
+- Takes no parameters.
+- A class can have only one destructor.
+- Called automatically when an object is destroyed.
+- Used for cleanup and releasing resources.
+
+Constructor vs Destructor
+
+Constructor → Object Creation & Initialization
+Destructor  → Object Destruction & Cleanup
+
+Remember
+
+Destructor → Automatically called when an object is destroyed.
