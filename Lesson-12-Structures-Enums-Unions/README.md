@@ -620,3 +620,300 @@ Pointer → stores the address of a variable
 Memory Sharing → multiple ways of accessing the same memory
 
 
+### topic 10
+
+Union vs Structure in C++
+
+1. Introduction
+
+Structure and Union are user-defined data types in C++.
+
+They are used to group different types of data members under one name.
+
+The main difference between them is memory allocation.
+
+- Structure → Separate memory for each member
+- Union → Same memory shared by all members
+
+---
+
+2. Structure
+
+A structure is a user-defined data type that groups different data members together.
+
+Each member of a structure gets its own memory space.
+
+Syntax
+
+struct Student {
+    int age;
+    float marks;
+    char grade;
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+struct Student {
+    int age;
+    float marks;
+    char grade;
+};
+
+int main() {
+    Student s;
+
+    s.age = 20;
+    s.marks = 85.5;
+    s.grade = 'A';
+
+    cout << s.age << endl;
+    cout << s.marks << endl;
+    cout << s.grade << endl;
+
+    return 0;
+}
+
+Output
+
+20
+85.5
+A
+
+Here, all three values can exist at the same time.
+
+Memory
+
+Structure
+
+┌──────────────┐
+│ age          │
+├──────────────┤
+│ marks        │
+├──────────────┤
+│ grade        │
+└──────────────┘
+
+Each member has separate storage.
+
+---
+
+3. Union
+
+A union is also a user-defined data type.
+
+But in a union, all members share the same memory location.
+
+Syntax
+
+union Data {
+    int number;
+    float marks;
+    char grade;
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+union Data {
+    int number;
+    float marks;
+    char grade;
+};
+
+int main() {
+    Data d;
+
+    d.number = 100;
+    cout << d.number << endl;
+
+    d.marks = 25.5;
+    cout << d.marks << endl;
+
+    return 0;
+}
+
+Output
+
+100
+25.5
+
+Here, "number" and "marks" use the same storage.
+
+When a different member is written, it can overwrite the previous stored value.
+
+Memory
+
+Union
+
+       Same Memory
+┌─────────────────────┐
+│ number / marks /    │
+│ grade               │
+└─────────────────────┘
+
+---
+
+4. Memory Sharing in Union
+
+Consider:
+
+union Data {
+    int number;
+    float marks;
+};
+
+When:
+
+Data d;
+
+d.number = 100;
+
+The shared storage contains the representation of "number".
+
+Then:
+
+d.marks = 25.5;
+
+The same storage is used for "marks".
+
+So the previous "number" value is overwritten.
+
+Therefore, a union is useful when only one of several possible data members is needed at a particular time.
+
+---
+
+5. Structure vs Union
+
+Feature| Structure| Union
+Keyword| "struct"| "union"
+Memory allocation| Separate memory for members| Members share memory
+All members usable together| Yes| Normally one active member at a time
+Memory usage| Usually more| Usually less
+Effect of writing a member| Does not normally overwrite other members| Can overwrite shared storage
+Main purpose| Store related data together| Store one of several alternatives
+Memory sharing| No sharing between members| Members share storage
+
+---
+
+6. Simple Real-Life Example
+
+Structure = Separate Rooms
+
+Imagine a house with three separate rooms:
+
+🏠 House
+
+🛏️ Bedroom
+📚 Study Room
+🍳 Kitchen
+
+Each room has its own space.
+
+So all three can be used at the same time.
+
+Structure = Separate rooms
+
+---
+
+Union = One Shared Room
+
+Imagine there is only one room:
+
+🏠 One Room
+
+🛏️ Bedroom
+      OR
+📚 Study Room
+      OR
+🍳 Kitchen
+
+The same space is used for different purposes.
+
+Union = One shared room
+
+---
+
+7. When to Use Structure?
+
+Use a structure when you need to store multiple related values at the same time.
+
+Example:
+
+struct Student {
+    string name;
+    int age;
+    float marks;
+};
+
+A student can have:
+
+- Name
+- Age
+- Marks
+
+all at the same time.
+
+---
+
+8. When to Use Union?
+
+Use a union when a value can be one of several different types and you want those alternatives to share storage.
+
+Example:
+
+union Data {
+    int number;
+    float decimal;
+    char letter;
+};
+
+At a particular time, you may need one alternative.
+
+---
+
+9. Important Points
+
+- Both "struct" and "union" are user-defined data types.
+- Structure members have separate storage.
+- Union members share the same storage.
+- Structure can hold values for all members simultaneously.
+- Writing to one structure member does not normally affect the others.
+- Writing to a union member can overwrite the shared storage.
+- Union can reduce memory usage when only one alternative is needed at a time.
+- Structure is useful for grouping related information.
+- Union is useful for memory sharing between alternative data representations.
+
+---
+
+10. Easy Way to Remember
+
+Structure
+
+"Naaku anni values kavali."
+
+Age + Marks + Grade
+        ↓
+    STRUCTURE
+
+Union
+
+"Naaku options lo oka value chaalu."
+
+Age OR Marks OR Grade
+        ↓
+       UNION
+
+⭐ Final Definition
+
+Structure → Each member has separate memory.
+
+Union → All members share the same memory.
+
+Structure = Separate storage
+
+Union = Shared storage
