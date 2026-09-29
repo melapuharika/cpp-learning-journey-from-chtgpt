@@ -125,3 +125,48 @@ Important Points
 - The "." operator is used to access structure members.
 
 Struct = Keyword used to define a structure.
+
+### topic :3 
+
+Structure Members
+
+Structure members are the variables or data declared inside a structure.
+
+Example
+
+struct Student
+{
+    string name;
+    int age;
+    float marks;
+};
+
+Here:
+
+- "name" → Structure Member
+- "age" → Structure Member
+- "marks" → Structure Member
+
+Accessing Structure Members
+
+The "." operator is used to access structure members.
+
+Student s1;
+
+s1.name = "Harika";
+s1.age = 23;
+s1.marks = 85.5;
+
+Here:
+
+- "s1.name" → accesses "name"
+- "s1.age" → accesses "age"
+- "s1.marks" → accesses "marks"
+
+Important Points
+
+- Structure members are declared inside the structure.
+- Members can have different data types.
+- The "." operator is used to access members through an object.
+
+Structure Members = Variables/data declared inside a structure.
