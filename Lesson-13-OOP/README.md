@@ -407,3 +407,45 @@ In a C++ "class", members are private by default if no access specifier is writt
 Remember
 
 "public" → Members can be accessed from outside the class.
+
+
+### topic 9
+
+Private in C++
+
+Definition
+
+"private" is an access specifier that prevents class members from being accessed directly from outside the class.
+
+Example
+
+class Student {
+private:
+    int age;
+};
+
+Here, "age" is a private member.
+
+Student s1;
+
+s1.age = 20;   // ❌ Error
+
+"age" cannot be accessed directly from outside the class.
+
+Access Inside the Class
+
+Private members can be accessed inside the class.
+
+class Student {
+private:
+    int age;
+
+public:
+    void setAge() {
+        age = 20;
+    }
+};
+
+Remember
+
+"private" → Members can be accessed inside the class but not directly from outside the class.
