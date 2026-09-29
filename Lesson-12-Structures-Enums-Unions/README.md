@@ -170,3 +170,55 @@ Important Points
 - The "." operator is used to access members through an object.
 
 Structure Members = Variables/data declared inside a structure.
+
+
+### topic:4
+
+Structure Objects
+
+A Structure Object is a variable created using a structure type.
+
+Example
+
+struct Student
+{
+    string name;
+    int age;
+};
+
+Student s1;
+
+Here:
+
+- "Student" → Structure type
+- "s1" → Structure Object
+
+Multiple Objects
+
+We can create multiple objects from the same structure.
+
+Student s1;
+Student s2;
+Student s3;
+
+Each object has its own separate data.
+
+Example
+
+s1.name = "Harika";
+s1.age = 23;
+
+s2.name = "Ravi";
+s2.age = 22;
+
+Here, "s1" and "s2" are separate objects.
+
+Important Points
+
+- A structure can have multiple objects.
+- Each object stores its own values.
+- The "." operator is used to access object members.
+
+Structure = Blueprint/Design
+
+Structure Object = Actual instance created from the structure
