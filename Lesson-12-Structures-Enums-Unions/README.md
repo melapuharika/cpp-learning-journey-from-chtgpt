@@ -75,3 +75,53 @@ Student
  └── marks
 
 Structure = A group of different data types under one name.
+
+
+### topic 2
+
+Struct
+
+"struct" is a keyword in C++ used to define a structure.
+
+Syntax
+
+struct StructureName
+{
+    dataType member1;
+    dataType member2;
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+struct Student
+{
+    string name;
+    int age;
+};
+
+int main()
+{
+    Student s1;
+
+    s1.name = "Harika";
+    s1.age = 23;
+
+    cout << s1.name << endl;
+    cout << s1.age << endl;
+
+    return 0;
+}
+
+Important Points
+
+- "struct" is a C++ keyword.
+- It is used to define a structure.
+- "Student" is the structure name.
+- "name" and "age" are structure members.
+- "Student s1;" creates an object of the structure.
+- The "." operator is used to access structure members.
+
+Struct = Keyword used to define a structure.
