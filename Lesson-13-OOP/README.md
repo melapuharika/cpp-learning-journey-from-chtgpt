@@ -128,3 +128,53 @@ Remember
 «Class = Design / Blueprint»
 
 «Object = Instance of a class»
+
+
+## topic 3 
+
+Class in C++
+
+Definition
+
+A class is a user-defined data type that acts as a blueprint or template for creating objects.
+
+A class can contain:
+
+- Data Members → store data
+- Member Functions / Methods → perform actions
+
+Example
+
+class Car {
+public:
+    string color;
+    int speed;
+
+    void start() {
+        cout << "Car started";
+    }
+};
+
+Here:
+
+- "Car" → Class
+- "color", "speed" → Data members
+- "start()" → Member function / Method
+
+Creating an Object
+
+Car myCar;
+
+Here, "myCar" is an object of the "Car" class.
+
+Simple Example
+
+Class → Blueprint
+
+Object → Actual instance created from the blueprint
+
+Remember
+
+«Class = Blueprint / Design»
+
+«Class defines Data + Methods»
