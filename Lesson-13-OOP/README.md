@@ -610,3 +610,59 @@ Remember
 
 Parameterized Constructor = Constructor that accepts parameters.
 
+### topic 15
+Copy Constructor in C++
+
+Definition
+
+A Copy Constructor is a constructor used to create a new object by copying the values of an existing object.
+
+Example
+
+class Student {
+public:
+    string name;
+    int age;
+
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+
+    Student(const Student &s) {
+        name = s.name;
+        age = s.age;
+    }
+};
+
+int main() {
+    Student s1("Harika", 20);
+    Student s2 = s1;
+}
+
+Here, "s2" gets the values of "s1".
+
+s1
+name = Harika
+age  = 20
+   ↓ copy
+s2
+name = Harika
+age  = 20
+
+Common Syntax
+
+ClassName(const ClassName &object)
+
+Key Points
+
+- Creates a new object from an existing object.
+- Copies the values of the existing object.
+- Usually takes a const reference to the same class.
+- It is automatically called when an object is initialized from another object.
+
+Remember
+
+Copy Constructor → Existing Object → New Object
+
+
