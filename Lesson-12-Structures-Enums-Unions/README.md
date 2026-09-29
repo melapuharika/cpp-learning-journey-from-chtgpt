@@ -274,3 +274,77 @@ Important Point
 The "." operator is used to access nested structure members.
 
 Nested Structure = One structure inside another structure.
+
+
+### topic 6
+
+Structure Pointers
+
+A Structure Pointer is a pointer that stores the memory address of a structure object.
+
+Example
+
+struct Student
+{
+    string name;
+    int age;
+};
+
+Student s1;
+Student* ptr = &s1;
+
+Here:
+
+- "s1" → Structure Object
+- "&s1" → Address of "s1"
+- "ptr" → Structure Pointer
+
+Accessing Members Using Pointer
+
+The "->" operator is used to access structure members through a pointer.
+
+ptr->name = "Harika";
+ptr->age = 23;
+
+Complete Example
+
+#include <iostream>
+using namespace std;
+
+struct Student
+{
+    string name;
+    int age;
+};
+
+int main()
+{
+    Student s1;
+
+    Student* ptr = &s1;
+
+    ptr->name = "Harika";
+    ptr->age = 23;
+
+    cout << ptr->name << endl;
+    cout << ptr->age << endl;
+
+    return 0;
+}
+
+Equivalent Syntax
+
+ptr->name
+
+is equivalent to:
+
+(*ptr).name
+
+Important Points
+
+- A structure pointer stores the address of a structure object.
+- "&" is used to get the object's address.
+- "->" is used to access structure members through a pointer.
+- "(*ptr).member" is another way to access the member.
+
+Structure Pointer = Pointer that stores the address of a structure object.
