@@ -69,3 +69,62 @@ OOP → Classes / Objects
 Remember
 
 «OOP = Object + Data + Methods»
+
+
+### topic 2
+
+Class and Object in C++
+
+Class
+
+A class is a blueprint or template used to create objects.
+
+It defines the data and methods that its objects can have.
+
+Example
+
+class Car {
+public:
+    string color;
+
+    void start() {
+        cout << "Car started";
+    }
+};
+
+Here:
+
+- "Car" → Class
+- "color" → Data member
+- "start()" → Method
+
+---
+
+Object
+
+An object is an instance of a class.
+
+Objects are created using the class.
+
+Car myCar;
+
+Here, "myCar" is an object of the "Car" class.
+
+Multiple Objects
+
+Car myCar;
+Car yourCar;
+
+One class can create multiple objects.
+
+Easy Example
+
+Class → Blueprint
+
+Object → Actual thing created from the blueprint
+
+Remember
+
+«Class = Design / Blueprint»
+
+«Object = Instance of a class»
