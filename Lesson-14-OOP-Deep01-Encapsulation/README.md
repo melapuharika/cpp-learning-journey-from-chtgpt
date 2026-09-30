@@ -852,3 +852,94 @@ Two or More Inheritance Types
 One-Line Definition
 
 Hybrid Inheritance is the combination of two or more types of inheritance in a single inheritance structure.
+
+
+### topic 9
+
+Polymorphism
+
+Definition
+
+Polymorphism is an OOP concept that means “one name, multiple forms.”
+
+The same function, interface, or operation can behave differently in different situations.
+
+Meaning
+
+- Poly → Many
+- Morphism → Forms
+
+Therefore:
+
+Polymorphism = One thing/name with multiple forms or behaviors.
+
+Simple Example
+
+Suppose we have a "draw()" operation:
+
+draw()
+  ├── Circle → Draw Circle
+  ├── Rectangle → Draw Rectangle
+  └── Triangle → Draw Triangle
+
+The name "draw()" is the same, but the behavior can be different.
+
+Types of Polymorphism
+
+             Polymorphism
+                  │
+        ┌─────────┴─────────┐
+        ↓                   ↓
+ Compile-Time           Runtime
+ Polymorphism           Polymorphism
+
+1. Compile-Time Polymorphism
+
+The compiler determines which function or operation should be used during compilation.
+
+Common examples:
+
+- Function Overloading
+- Operator Overloading
+
+Example:
+
+void add(int a, int b);
+void add(double a, double b);
+
+The same function name "add()" has different parameter types.
+
+2. Runtime Polymorphism
+
+The appropriate overridden function is determined at runtime.
+
+Commonly achieved using:
+
+- Function Overriding
+- Virtual Functions
+
+Example structure:
+
+Animal
+   ↓
+  Dog
+
+A derived class such as "Dog" can provide its own implementation of a function defined in "Animal".
+
+Why Polymorphism?
+
+1. Allows one interface to represent different behaviors.
+2. Makes code more flexible.
+3. Supports code reusability.
+4. Makes OOP programs easier to design and maintain.
+5. Allows different objects to be handled through a common interface.
+
+Key Idea
+
+One Name / Interface
+        ↓
+Different Behaviors
+
+One-Line Definition
+
+Polymorphism is the ability of one name, interface, or operation to have multiple forms or behaviors.
