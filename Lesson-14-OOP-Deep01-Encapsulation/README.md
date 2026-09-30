@@ -728,3 +728,127 @@ Key Idea
 One-Line Definition
 
 Hierarchical Inheritance is a type of inheritance in which multiple derived classes inherit from a single base class.
+
+### topic 8
+
+Hybrid Inheritance
+
+Definition
+
+Hybrid Inheritance is a type of inheritance that combines two or more types of inheritance.
+
+It is a combination of different inheritance structures such as:
+
+- Hierarchical Inheritance
+- Multiple Inheritance
+- Multilevel Inheritance
+
+Structure
+
+Example of Hierarchical + Multiple Inheritance:
+
+          A
+        /   \
+       B     C
+        \   /
+          D
+
+Here:
+
+- "A → B" and "A → C" → Hierarchical Inheritance
+- "B + C → D" → Multiple Inheritance
+- Combination → Hybrid Inheritance
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+    void showA()
+    {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : virtual public A
+{
+public:
+    void showB()
+    {
+        cout << "Class B" << endl;
+    }
+};
+
+class C : virtual public A
+{
+public:
+    void showC()
+    {
+        cout << "Class C" << endl;
+    }
+};
+
+class D : public B, public C
+{
+public:
+    void showD()
+    {
+        cout << "Class D" << endl;
+    }
+};
+
+int main()
+{
+    D obj;
+
+    obj.showA();
+    obj.showB();
+    obj.showC();
+    obj.showD();
+
+    return 0;
+}
+
+Explanation
+
+- "A" → Base class.
+- "B" and "C" → Derived classes of "A".
+- "D" → Inherits from both "B" and "C".
+- "A → B" and "A → C" → Hierarchical inheritance.
+- "B + C → D" → Multiple inheritance.
+- The combination forms Hybrid Inheritance.
+- "virtual" inheritance helps avoid duplicate copies of "A" in "D".
+
+Structure
+
+             A
+           /   \
+          B     C
+           \   /
+             D
+
+Advantages
+
+1. Combines different inheritance types.
+2. Allows complex class relationships.
+3. Provides code reusability.
+4. Allows functionality from multiple inheritance paths.
+
+Important Point
+
+Hybrid inheritance can lead to the Diamond Problem.
+
+Virtual Inheritance can be used to solve this problem.
+
+Key Idea
+
+Two or More Inheritance Types
+            ↓
+     Hybrid Inheritance
+
+One-Line Definition
+
+Hybrid Inheritance is the combination of two or more types of inheritance in a single inheritance structure.
