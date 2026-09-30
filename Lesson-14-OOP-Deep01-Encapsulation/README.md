@@ -309,3 +309,97 @@ Reuse / Extend Features
 One-Line Definition
 
 Inheritance is the mechanism by which a derived class reuses and extends the features of a base class.
+
+
+### topic 4
+
+Single Inheritance
+
+Definition
+
+Single Inheritance is a type of inheritance in which one derived class inherits from one base class.
+
+Structure
+
+Base Class
+    ↓
+Derived Class
+
+Only one parent class → one child class.
+
+Simple Example
+
+Animal
+  ↓
+ Dog
+
+"Animal" is the Base Class.
+
+"Dog" is the Derived Class.
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+    void eat()
+    {
+        cout << "Animal is eating" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void bark()
+    {
+        cout << "Dog is barking" << endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}
+
+Explanation
+
+- "Animal" → Base class.
+- "Dog" → Derived class.
+- "Dog : public Animal" → "Dog" inherits from "Animal".
+- "eat()" → Function inherited from "Animal".
+- "bark()" → Function defined in "Dog".
+- "d.eat()" → Calls the inherited function.
+- "d.bark()" → Calls the derived class function.
+
+Syntax
+
+class DerivedClass : public BaseClass
+{
+    // members
+};
+
+Advantages
+
+1. Code reusability.
+2. Reduces duplicate code.
+3. Easy to understand.
+4. Allows the derived class to extend the base class functionality.
+
+Key Idea
+
+One Base Class
+      ↓
+One Derived Class
+
+One-Line Definition
+
+Single Inheritance is the inheritance of one base class by one derived class.
