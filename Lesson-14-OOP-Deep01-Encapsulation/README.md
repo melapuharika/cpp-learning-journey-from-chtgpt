@@ -193,3 +193,119 @@ Essential Features
 One-Line Definition
 
 Abstraction is the process of hiding unnecessary implementation details and showing only the essential features to the user.
+
+### topic 3
+
+Inheritance
+
+Definition
+
+Inheritance is an OOP concept in which a derived class acquires or reuses the properties and methods of an existing base class.
+
+It helps in code reusability and allows us to extend existing functionality.
+
+Important Terms
+
+- Base Class → Parent class
+- Derived Class → Child class
+- Inheritance → Reusing features of a base class in a derived class
+
+Simple Example
+
+Base Class
+    ↓
+Derived Class
+
+For example:
+
+Animal
+  ↓
+ Dog
+
+"Dog" can inherit features from "Animal".
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+    void eat()
+    {
+        cout << "Animal is eating";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void bark()
+    {
+        cout << "Dog is barking";
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}
+
+Explanation
+
+- "Animal" → Base class.
+- "Dog" → Derived class.
+- "Dog : public Animal" → "Dog" inherits from "Animal".
+- "eat()" → Function inherited from "Animal".
+- "bark()" → Function belonging to "Dog".
+- "d.eat()" → Uses the inherited function.
+- "d.bark()" → Uses the derived class function.
+
+Syntax
+
+class DerivedClass : accessSpecifier BaseClass
+{
+    // members
+};
+
+Example:
+
+class Dog : public Animal
+{
+};
+
+Advantages of Inheritance
+
+1. Code Reusability – Existing code can be reused.
+2. Less Duplication – Avoids writing the same code again.
+3. Extensibility – New classes can extend existing functionality.
+4. Maintainability – Common functionality can be kept in the base class.
+5. Supports OOP Relationships – Represents relationships between classes.
+
+Types of Inheritance
+
+1. Single Inheritance
+2. Multiple Inheritance
+3. Multilevel Inheritance
+4. Hierarchical Inheritance
+5. Hybrid Inheritance
+
+Key Idea
+
+Existing Class
+      ↓
+Base Class
+      ↓
+Derived Class
+      ↓
+Reuse / Extend Features
+
+One-Line Definition
+
+Inheritance is the mechanism by which a derived class reuses and extends the features of a base class.
