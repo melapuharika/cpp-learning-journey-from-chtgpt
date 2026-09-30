@@ -618,3 +618,113 @@ Another Derived Class
 One-Line Definition
 
 Multilevel Inheritance is a type of inheritance in which inheritance occurs through multiple levels, forming a chain of classes.
+
+### topic 7
+
+
+Hierarchical Inheritance
+
+Definition
+
+Hierarchical Inheritance is a type of inheritance in which multiple derived classes inherit from a single base class.
+
+Structure
+
+          Base Class
+          /       \
+         ↓         ↓
+    Derived 1   Derived 2
+
+It represents a one parent → many children relationship.
+
+Simple Example
+
+          Animal
+         /      \
+        Dog     Cat
+
+- "Animal" → Base class
+- "Dog" → Derived class
+- "Cat" → Derived class
+
+Both "Dog" and "Cat" inherit common features from "Animal".
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+    void eat()
+    {
+        cout << "Animal is eating" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void bark()
+    {
+        cout << "Dog is barking" << endl;
+    }
+};
+
+class Cat : public Animal
+{
+public:
+    void meow()
+    {
+        cout << "Cat is meowing" << endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+    Cat c;
+
+    d.eat();
+    d.bark();
+
+    c.eat();
+    c.meow();
+
+    return 0;
+}
+
+Explanation
+
+- "Animal" → Base class.
+- "Dog" → Inherits from "Animal".
+- "Cat" → Inherits from "Animal".
+- "eat()" → Common function inherited by both "Dog" and "Cat".
+- "bark()" → Function belonging to "Dog".
+- "meow()" → Function belonging to "Cat".
+
+Therefore:
+
+d.eat();
+c.eat();
+
+Both objects can access "eat()" because it is inherited from "Animal".
+
+Advantages
+
+1. Reuses common functionality.
+2. Reduces duplicate code.
+3. Allows different derived classes to have their own functionality.
+4. Makes class relationships easier to organize.
+
+Key Idea
+
+          One Base Class
+             /     \
+            ↓       ↓
+      Derived 1   Derived 2
+
+One-Line Definition
+
+Hierarchical Inheritance is a type of inheritance in which multiple derived classes inherit from a single base class.
