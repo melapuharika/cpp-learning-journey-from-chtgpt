@@ -943,3 +943,100 @@ Different Behaviors
 One-Line Definition
 
 Polymorphism is the ability of one name, interface, or operation to have multiple forms or behaviors.
+
+### topic 10
+
+Compile-Time Polymorphism
+
+Definition
+
+Compile-Time Polymorphism is a type of polymorphism in which the compiler determines which function or operation to use during compilation.
+
+It is also called Static Polymorphism.
+
+Simple Example
+
+             add()
+              │
+       ┌──────┴──────┐
+       ↓             ↓
+   int, int      double, double
+       ↓             ↓
+  add(int,int)  add(double,double)
+
+The function name is the same, but the parameters are different.
+
+The compiler selects the appropriate function based on the arguments.
+
+Main Types
+
+Compile-Time Polymorphism is commonly achieved using:
+
+1. Function Overloading
+2. Operator Overloading
+
+1. Function Overloading
+
+Function overloading means having multiple functions with the same name but different parameter lists.
+
+Example
+
+void add(int a, int b)
+{
+    cout << a + b;
+}
+
+void add(double a, double b)
+{
+    cout << a + b;
+}
+
+Function calls:
+
+add(10, 20);       // Calls int version
+add(10.5, 20.5);   // Calls double version
+
+The compiler selects the correct function based on the arguments.
+
+2. Operator Overloading
+
+Operator overloading allows operators to have a specific meaning for user-defined types such as classes.
+
+For example:
+
++  → Addition for numbers
++  → Can be defined for objects
+
+The behavior of an operator can be defined according to the requirements of a class.
+
+Working
+
+Function / Operator Call
+          ↓
+Compiler checks arguments
+          ↓
+Finds matching function/operator
+          ↓
+Decision made during compilation
+
+Advantages
+
+1. Faster decision because selection happens at compile time.
+2. Supports function overloading.
+3. Supports operator overloading.
+4. Improves code readability.
+5. Allows the same function name to perform different tasks.
+
+Key Idea
+
+Same Name / Operator
+        ↓
+Different Parameters / Forms
+        ↓
+Compiler Selects
+        ↓
+Compile-Time Polymorphism
+
+One-Line Definition
+
+Compile-Time Polymorphism is polymorphism in which the compiler determines the appropriate function or operation during compilation.
