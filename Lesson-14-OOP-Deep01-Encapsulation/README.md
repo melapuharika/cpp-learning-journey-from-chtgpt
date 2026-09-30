@@ -119,3 +119,77 @@ Controlled Access
 One-Line Definition
 
 Encapsulation is the bundling of data and methods into a single class and restricting direct access to the data.
+
+
+### topic 2 
+Abstraction
+
+Definition
+
+Abstraction is the process of hiding unnecessary implementation details and showing only the essential features to the user.
+
+Simple Example
+
+Think about a car.
+
+When we drive a car, we use:
+
+- Steering → To turn the car
+- Brake → To stop the car
+- Accelerator → To increase speed
+
+We do not need to know all the internal details of how the engine works.
+
+This is Abstraction.
+
+Abstraction in C++
+
+Abstraction can be achieved using:
+
+- Abstract classes
+- Pure virtual functions
+
+Example
+
+class Vehicle
+{
+public:
+    virtual void start() = 0;
+};
+
+Explanation
+
+- "Vehicle" → Base class.
+- "start()" → Virtual function.
+- "= 0" → Makes it a pure virtual function.
+- The class hides the implementation of "start()".
+- Derived classes can provide their own implementation.
+
+Why Abstraction?
+
+1. Hides unnecessary implementation details.
+2. Shows only essential features.
+3. Reduces complexity.
+4. Makes code easier to use.
+5. Helps create a clear interface.
+
+Encapsulation vs Abstraction
+
+Encapsulation| Abstraction
+Protects data| Hides implementation details
+Bundles data and methods| Shows only essential features
+Uses classes and access specifiers| Uses abstract classes and pure virtual functions
+
+Key Idea
+
+Unnecessary Details
+        ↓
+      Hidden
+        ↓
+Essential Features
+        ↓
+       User
+
+One-Line Definition
+
+Abstraction is the process of hiding unnecessary implementation details and showing only the essential features to the user.
