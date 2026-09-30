@@ -504,3 +504,117 @@ Two or More Base Classes
 One-Line Definition
 
 Multiple Inheritance is a type of inheritance in which one derived class inherits from two or more base classes.
+
+
+### topic 6
+
+Multilevel Inheritance
+
+Definition
+
+Multilevel Inheritance is a type of inheritance in which a derived class becomes the base class for another class, creating a chain of inheritance.
+
+Structure
+
+Base Class
+    ↓
+Derived Class
+    ↓
+Further Derived Class
+
+Simple Example
+
+Person
+  ↓
+Employee
+  ↓
+Manager
+
+- "Person" → Base class
+- "Employee" → Derived class of "Person"
+- "Manager" → Derived class of "Employee"
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Person
+{
+public:
+    void speak()
+    {
+        cout << "Person can speak" << endl;
+    }
+};
+
+class Employee : public Person
+{
+public:
+    void work()
+    {
+        cout << "Employee is working" << endl;
+    }
+};
+
+class Manager : public Employee
+{
+public:
+    void manage()
+    {
+        cout << "Manager is managing" << endl;
+    }
+};
+
+int main()
+{
+    Manager m;
+
+    m.speak();
+    m.work();
+    m.manage();
+
+    return 0;
+}
+
+Explanation
+
+- "Person" → Base class.
+- "Employee" → Inherits from "Person".
+- "Manager" → Inherits from "Employee".
+- "speak()" → Comes from "Person".
+- "work()" → Comes from "Employee".
+- "manage()" → Belongs to "Manager".
+
+The "Manager" object can access all accessible inherited functions:
+
+m.speak();
+m.work();
+m.manage();
+
+Inheritance Chain
+
+Person
+  ↓
+Employee
+  ↓
+Manager
+
+Advantages
+
+1. Provides code reusability.
+2. Creates a clear inheritance hierarchy.
+3. Allows each level to add new functionality.
+4. Reduces duplicate code.
+
+Key Idea
+
+Base Class
+    ↓
+Derived Class
+    ↓
+Another Derived Class
+
+One-Line Definition
+
+Multilevel Inheritance is a type of inheritance in which inheritance occurs through multiple levels, forming a chain of classes.
