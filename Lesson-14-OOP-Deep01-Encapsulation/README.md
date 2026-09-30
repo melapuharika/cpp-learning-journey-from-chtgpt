@@ -403,3 +403,104 @@ One Derived Class
 One-Line Definition
 
 Single Inheritance is the inheritance of one base class by one derived class.
+
+### topic 5
+
+Multiple Inheritance
+
+Definition
+
+Multiple Inheritance is a type of inheritance in which one derived class inherits from two or more base classes.
+
+Structure
+
+Base Class 1 ──┐
+               ├──→ Derived Class
+Base Class 2 ──┘
+
+Simple Example
+
+      Father        Mother
+         ↓            ↓
+          \          /
+            Child
+
+The "Child" class inherits features from both "Father" and "Mother".
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Father
+{
+public:
+    void driving()
+    {
+        cout << "Driving" << endl;
+    }
+};
+
+class Mother
+{
+public:
+    void cooking()
+    {
+        cout << "Cooking" << endl;
+    }
+};
+
+class Child : public Father, public Mother
+{
+};
+
+int main()
+{
+    Child c;
+
+    c.driving();
+    c.cooking();
+
+    return 0;
+}
+
+Explanation
+
+- "Father" → First Base Class.
+- "Mother" → Second Base Class.
+- "Child" → Derived Class.
+- "Child : public Father, public Mother" → "Child" inherits from both classes.
+- "driving()" → Inherited from "Father".
+- "cooking()" → Inherited from "Mother".
+- "c.driving()" → Calls the inherited "Father" function.
+- "c.cooking()" → Calls the inherited "Mother" function.
+
+Syntax
+
+class DerivedClass : public BaseClass1, public BaseClass2
+{
+    // members
+};
+
+Advantages
+
+1. Allows a class to reuse features from multiple classes.
+2. Combines functionality from different classes.
+3. Reduces duplicate code.
+4. Useful when a class naturally needs features from multiple sources.
+
+Important Point
+
+Multiple Inheritance can lead to the Diamond Problem when the same base class is inherited through multiple paths.
+
+The Diamond Problem and Virtual Inheritance will be discussed separately.
+
+Key Idea
+
+Two or More Base Classes
+          ↓
+    One Derived Class
+
+One-Line Definition
+
+Multiple Inheritance is a type of inheritance in which one derived class inherits from two or more base classes.
