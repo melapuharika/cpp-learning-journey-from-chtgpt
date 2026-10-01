@@ -2864,3 +2864,127 @@ Example: "virtual void sound()"| Example: "void sound() override"
 7. One-Line Definition
 
 «"override" is a C++ specifier used to explicitly indicate that a derived-class function overrides a virtual function of the base class.»
+
+
+### topic 25
+
+"final" – C++ Notes
+
+1. Definition
+
+"final" is a C++ specifier used to prevent further overriding of a virtual function or prevent further inheritance of a class.
+
+---
+
+2. Uses of "final"
+
+"final" has two main uses:
+
+1. With a virtual function
+2. With a class
+
+---
+
+3. "final" with a Function
+
+A "final" virtual function cannot be overridden by a derived class.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() final {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    // void sound() override {
+    //     cout << "Dog barks";
+    // } // Error
+};
+
+int main() {
+
+    Animal a;
+    a.sound();
+
+    return 0;
+}
+
+Output
+
+Animal sound
+
+Here:
+
+virtual void sound() final
+
+means that "sound()" can be inherited, but it cannot be overridden further.
+
+---
+
+4. "final" with a Class
+
+A class declared with "final" cannot be inherited.
+
+Example
+
+class Animal final {
+};
+
+class Dog : public Animal {
+};
+
+This produces a compiler error because "Animal" is declared as "final".
+
+---
+
+5. Function "final" vs Class "final"
+
+Function
+
+virtual void sound() final;
+
+Means:
+
+«This function cannot be overridden further.»
+
+Class
+
+class Animal final {
+};
+
+Means:
+
+«This class cannot be inherited further.»
+
+---
+
+6. "override" vs "final"
+
+"override"| "final"
+Used in derived classes| Used with virtual functions or classes
+Indicates overriding| Prevents further overriding/inheritance
+Compiler checks the override| Compiler prevents further override/inheritance
+Example: "void sound() override"| Example: "void sound() final"
+
+---
+
+7. Important Points
+
+- "final" is a C++ specifier.
+- A "final" virtual function cannot be overridden further.
+- A "final" class cannot be inherited.
+- "final" helps restrict class design.
+- "final" is commonly used with virtual functions and inheritance.
+
+---
+
+8. One-Line Definition
+
+«"final" is a C++ specifier used to prevent further overriding of a virtual function or further inheritance of a class.»
