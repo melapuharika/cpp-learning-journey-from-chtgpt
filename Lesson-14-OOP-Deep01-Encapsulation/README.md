@@ -1481,3 +1481,112 @@ Operator Overloading is a type of Compile-Time Polymorphism.
 One-Line Definition
 
 «Operator Overloading allows existing C++ operators to work with user-defined objects.»
+
+
+### topic 14
+
+Function Overriding – C++ Notes
+
+1. Definition
+
+Function Overriding means redefining a function of the base class in the derived class using the same function signature.
+
+«Parent class function → Child class gives its own implementation.»
+
+Function overriding is mainly used for Runtime Polymorphism.
+
+---
+
+2. Simple Example
+
+Animal
+  ↓
+Dog
+
+"Animal" has:
+
+sound()
+
+"Dog" provides its own version:
+
+sound() → Dog barks
+
+---
+
+3. C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+
+    Dog d;
+    d.sound();
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+---
+
+4. "override" Keyword
+
+void sound() override
+
+"override" tells the compiler that the derived class function is overriding a base class function.
+
+It helps the compiler detect mistakes.
+
+---
+
+5. Function Overriding and Runtime Polymorphism
+
+For runtime polymorphism, the base class function is commonly declared using "virtual".
+
+virtual void sound()
+
+The derived class overrides it:
+
+void sound() override
+
+---
+
+6. Function Overloading vs Function Overriding
+
+Function Overloading| Function Overriding
+Usually in the same class| Base and derived classes
+Same function name| Same function name
+Different parameters| Same function signature
+Compile-time polymorphism| Runtime polymorphism
+Inheritance not required| Inheritance required
+
+---
+
+7. Important Points
+
+- Function overriding is related to inheritance.
+- Base and derived classes have the same function signature.
+- "virtual" is commonly used in the base class for runtime polymorphism.
+- "override" is used in the derived class.
+- It allows a child class to provide its own implementation of a parent function.
+
+One-Line Definition
+
+«Function Overriding is redefining a base class function in a derived class with the same function signature.»
