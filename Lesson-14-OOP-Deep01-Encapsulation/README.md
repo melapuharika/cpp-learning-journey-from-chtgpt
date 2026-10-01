@@ -2080,3 +2080,108 @@ Can provide some implementation| Derived classes provide the implementations
 One-Line Definition
 
 «An Interface-Like Class in C++ is an abstract class mainly made of pure virtual functions that defines a common contract for derived classes.»
+
+
+### topic 19
+
+Virtual Table (vtable) – C++ Notes
+
+1. Definition
+
+A Virtual Table (vtable) is a compiler-generated table commonly used to support virtual function dispatch and runtime polymorphism.
+
+«vtable = A table used to help find the correct virtual function at runtime.»
+
+---
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+
+    Animal* a = new Dog();
+
+    a->sound();
+
+    delete a;
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+---
+
+3. Conceptual Working
+
+When we write:
+
+Animal* a = new Dog();
+
+- Pointer type → "Animal*"
+- Actual object → "Dog"
+
+When we call:
+
+a->sound();
+
+Because "sound()" is virtual, runtime dispatch is used.
+
+Conceptually:
+
+Animal pointer
+      ↓
+Dog object
+      ↓
+vptr
+      ↓
+Dog's vtable
+      ↓
+Dog::sound()
+
+---
+
+4. vtable and Runtime Polymorphism
+
+The relationship can be understood as:
+
+Virtual Function
+      ↓
+Runtime Polymorphism
+      ↓
+Dynamic Dispatch
+      ↓
+vtable/vptr implementation
+
+---
+
+5. Important Points
+
+- vtable is usually created/managed by the compiler.
+- It is not a C++ keyword.
+- Programmers normally do not create or access the vtable directly.
+- It is commonly used to implement virtual function dispatch.
+- It helps select the correct overridden function at runtime.
+- The exact implementation of vtable is compiler-dependent and is not specified by the C++ standard.
+
+One-Line Definition
+
+«A vtable is a compiler-generated table commonly used to support virtual function dispatch and runtime polymorphism.»
