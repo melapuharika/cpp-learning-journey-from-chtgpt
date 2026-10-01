@@ -2339,3 +2339,159 @@ The time between creation and destruction is the object's lifetime.
 9. One-Line Definition
 
 «Object Lifetime is the period during which an object exists, from the beginning of its lifetime until its destruction.»
+
+
+### topic 13
+
+Temporary Objects – C++ Notes
+
+1. Definition
+
+A Temporary Object is a short-lived object that is usually created without giving it a name.
+
+It is commonly created as an intermediate result of an expression, conversion, function return, or similar operation.
+
+Object Created
+      ↓
+Used for a short time
+      ↓
+Temporary Object Destroyed
+
+---
+
+2. Basic Example
+
+Student(20);
+
+Here, a "Student" object is created without a variable name.
+
+Student(20)
+    ↓
+Temporary Object
+    ↓
+Work completed
+    ↓
+Object Destroyed
+
+---
+
+3. Named Object vs Temporary Object
+
+Named Object
+
+Student s(20);
+
+Here, "s" is the object's name.
+
+Student
+   ↓
+  s
+   ↓
+Named Object
+
+Temporary Object
+
+Student(20);
+
+There is no variable name.
+
+Student(20)
+     ↓
+Temporary Object
+
+---
+
+4. Temporary Object in an Expression
+
+Temporary objects can be created while evaluating expressions.
+
+Example:
+
+Student(20).display();
+
+A temporary "Student" object is created, "display()" is called on it, and it is then destroyed according to the applicable temporary-object lifetime rules.
+
+---
+
+5. Temporary Object in Function Return
+
+Student createStudent() {
+    return Student(20);
+}
+
+The expression "Student(20)" creates a temporary object that can be used as the return value.
+
+Modern C++ often uses copy elision to avoid unnecessary copying or moving.
+
+---
+
+6. Lifetime of Temporary Objects
+
+A temporary object's lifetime is usually very short.
+
+In general, a temporary object is destroyed at the end of the full-expression that created it, unless a C++ rule extends its lifetime.
+
+Example:
+
+Student(20).display();
+
+Conceptually:
+
+Temporary Object Created
+          ↓
+display() called
+          ↓
+Full-expression ends
+          ↓
+Temporary Object Destroyed
+
+---
+
+7. Simple Real-Life Example
+
+Think of using a calculator for one calculation.
+
+Calculator Used
+      ↓
+Calculation Completed
+      ↓
+No Longer Needed
+
+Similarly:
+
+Temporary Object Created
+      ↓
+Used for a short operation
+      ↓
+No Longer Needed
+      ↓
+Destroyed
+
+---
+
+8. Important Points
+
+- Temporary objects are usually unnamed.
+- They are generally short-lived.
+- They can be created as intermediate results of expressions.
+- They can appear during function return operations.
+- Their lifetime is usually until the end of the full-expression that created them.
+- Some C++ rules can extend a temporary's lifetime.
+- Modern C++ can eliminate unnecessary temporary copies through copy elision.
+- A temporary object is commonly called an unnamed object in informal C++ explanations.
+
+---
+
+9. Named Object vs Temporary Object
+
+Named Object| Temporary Object
+Has a name| Usually has no name
+Example: "Student s(20);"| Example: "Student(20);"
+Can be accessed using its name| Usually used directly in an expression
+Usually has a longer useful lifetime| Usually short-lived
+
+---
+
+10. One-Line Definition
+
+«A Temporary Object is a usually unnamed, short-lived object created for an expression, intermediate operation, conversion, or function result.»
