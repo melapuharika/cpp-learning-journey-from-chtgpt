@@ -1813,3 +1813,147 @@ Dog d;
 One-Line Definition
 
 «A pure virtual function is a virtual function declared with "= 0" that requires derived classes to provide an implementation.»
+
+### topic 17
+
+Abstract Class – C++ Notes
+
+1. Definition
+
+An Abstract Class is a class that cannot be instantiated directly and is mainly used as a base class for derived classes.
+
+«Abstract Class = Blueprint / Rule Book for Derived Classes»
+
+---
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void sound() override {
+        cout << "Cat meows" << endl;
+    }
+};
+
+int main() {
+
+    Dog d;
+    Cat c;
+
+    d.sound();
+    c.sound();
+
+    return 0;
+}
+
+Output
+
+Dog barks
+Cat meows
+
+---
+
+3. Why is "Animal" an Abstract Class?
+
+Because it contains a pure virtual function:
+
+virtual void sound() = 0;
+
+Therefore, we cannot create an object directly:
+
+Animal a;   // Not allowed
+
+But we can create objects of derived classes:
+
+Dog d;
+Cat c;
+
+---
+
+4. Why Use Abstract Classes?
+
+Abstract classes are useful when multiple derived classes must follow a common rule.
+
+Example:
+
+Shape
+ ├── Circle
+ ├── Rectangle
+ └── Triangle
+
+Every shape should have an "area()" function.
+
+So the abstract class can define:
+
+virtual void area() = 0;
+
+Each derived class provides its own implementation.
+
+---
+
+5. What Can an Abstract Class Contain?
+
+An abstract class can contain:
+
+- Normal functions
+- Data members
+- Constructors
+- Virtual functions
+- Pure virtual functions
+
+Example:
+
+class Animal {
+public:
+
+    void eat() {
+        cout << "Animal eats" << endl;
+    }
+
+    virtual void sound() = 0;
+};
+
+Here:
+
+- "eat()" → Normal function
+- "sound()" → Pure virtual function
+
+---
+
+6. Abstract Class vs Normal Class
+
+Normal Class| Abstract Class
+Object can be created| Direct object cannot be created
+Pure virtual function is not required| Contains at least one pure virtual function
+Can be used directly| Mainly used as a base class
+Can provide complete implementation| Can define common rules for derived classes
+
+---
+
+7. Important Points
+
+- An abstract class cannot be instantiated directly.
+- It is mainly used as a base class.
+- It contains at least one pure virtual function.
+- Derived classes can inherit from it.
+- Derived classes must implement inherited pure virtual functions to become concrete classes.
+- Abstract classes can contain both normal and virtual functions.
+
+One-Line Definition
+
+«An Abstract Class is a class that cannot be instantiated directly and is used as a base class to define common rules for derived classes.»
