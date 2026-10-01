@@ -1040,3 +1040,147 @@ Compile-Time Polymorphism
 One-Line Definition
 
 Compile-Time Polymorphism is polymorphism in which the compiler determines the appropriate function or operation during compilation.
+
+
+### topic 11
+
+Runtime Polymorphism
+
+Definition
+
+Runtime Polymorphism is a type of polymorphism in which the appropriate overridden function is selected during program execution (runtime).
+
+It is also called Dynamic Polymorphism.
+
+Simple Example
+
+Animal
+  ↓
+ Dog
+
+"Animal" has a "sound()" function.
+
+"Dog" overrides the "sound()" function with its own implementation.
+
+Animal::sound()
+      ↓
+Generic sound
+
+Dog::sound()
+      ↓
+Dog barks
+
+C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+    virtual void sound()
+    {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void sound() override
+    {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main()
+{
+    Animal* a = new Dog();
+
+    a->sound();
+
+    delete a;
+
+    return 0;
+}
+
+Explanation
+
+Base Class
+
+class Animal
+{
+public:
+    virtual void sound()
+
+"virtual" tells C++ that the function can be overridden and should support dynamic dispatch.
+
+Derived Class
+
+class Dog : public Animal
+{
+public:
+    void sound() override
+
+"Dog" provides its own implementation of "sound()".
+
+Important Line
+
+Animal* a = new Dog();
+
+Here:
+
+- "a" → Pointer of type "Animal".
+- Actual object → "Dog".
+
+When we call:
+
+a->sound();
+
+the virtual function mechanism selects "Dog::sound()" at runtime.
+
+Why "virtual"?
+
+The "virtual" keyword enables dynamic dispatch for the function.
+
+It allows a base-class pointer or reference to call the overridden function belonging to the actual derived object.
+
+Flow
+
+Base Class Pointer
+       ↓
+Actual Derived Object
+       ↓
+Runtime Selection
+       ↓
+Overridden Function
+       ↓
+Execution
+
+Characteristics
+
+1. Uses function overriding.
+2. Commonly uses virtual functions.
+3. Function selection happens at runtime.
+4. Supports dynamic dispatch.
+5. Works through base-class pointers or references.
+
+Compile-Time vs Runtime Polymorphism
+
+Compile-Time| Runtime
+Decision during compilation| Decision during execution
+Static polymorphism| Dynamic polymorphism
+Function/operator overloading| Function overriding
+Does not require virtual functions| Commonly uses virtual functions
+
+Key Idea
+
+Same Function
+     ↓
+Different Implementations
+     ↓
+Actual Object Decides at Runtime
+
+One-Line Definition
+
+Runtime Polymorphism is polymorphism in which an overridden function is selected based on the actual object during program execution.
