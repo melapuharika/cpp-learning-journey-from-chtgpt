@@ -1184,3 +1184,138 @@ Actual Object Decides at Runtime
 One-Line Definition
 
 Runtime Polymorphism is polymorphism in which an overridden function is selected based on the actual object during program execution.
+
+
+### topic 12
+
+Function Overloading
+
+Definition
+
+Function Overloading is an OOP feature in which multiple functions have the same name but different parameter lists.
+
+It is a form of Compile-Time Polymorphism.
+
+Simple Rule
+
+Same Function Name
+        +
+Different Parameters
+        ↓
+Function Overloading
+
+Example
+
+void add(int a, int b)
+{
+    cout << a + b;
+}
+
+void add(double a, double b)
+{
+    cout << a + b;
+}
+
+Both functions have the same name:
+
+add()
+
+But their parameter lists are different:
+
+add(int, int)
+add(double, double)
+
+Complete C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Calculator
+{
+public:
+    void add(int a, int b)
+    {
+        cout << "Integer sum: " << a + b << endl;
+    }
+
+    void add(double a, double b)
+    {
+        cout << "Double sum: " << a + b << endl;
+    }
+};
+
+int main()
+{
+    Calculator c;
+
+    c.add(10, 20);
+    c.add(10.5, 20.5);
+
+    return 0;
+}
+
+How It Works
+
+For:
+
+c.add(10, 20);
+
+The arguments are "int, int", so the compiler selects:
+
+add(int, int)
+
+For:
+
+c.add(10.5, 20.5);
+
+The arguments are "double, double", so the compiler selects:
+
+add(double, double)
+
+Valid Ways to Overload
+
+Different Number of Parameters
+
+add(int, int);
+add(int, int, int);
+
+Different Parameter Types
+
+add(int, int);
+add(double, double);
+
+Different Parameter Order
+
+add(int, double);
+add(double, int);
+
+Important Point
+
+Changing only the return type is not enough for function overloading.
+
+Invalid:
+
+int add(int a, int b);
+
+double add(int a, int b);
+
+The parameter lists are the same, so this is not valid function overloading.
+
+Advantages
+
+1. Improves code readability.
+2. Allows the same name to perform related operations.
+3. Supports compile-time polymorphism.
+4. Makes code easier to understand and use.
+
+Key Idea
+
+Same Name
+    ↓
+Different Parameter Lists
+    ↓
+Compiler Selects Matching Function
+
+One-Line Definition
+
+Function Overloading is defining multiple functions with the same name but different parameter lists.
