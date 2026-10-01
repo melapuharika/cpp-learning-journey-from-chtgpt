@@ -2589,3 +2589,173 @@ Conceptually
 One-Line Definition
 
 «The Diamond Problem is an ambiguity caused when a derived class inherits the same base class through two different intermediate classes.»
+
+
+### topic 23
+
+Virtual Inheritance – C++ Notes
+
+1. Definition
+
+Virtual Inheritance is a C++ technique mainly used to solve the Diamond Problem by allowing a common base class to be shared instead of creating separate base-class subobjects through different inheritance paths.
+
+«Virtual Inheritance → Shared common base → Helps solve Diamond Problem»
+
+---
+
+2. Diamond Structure
+
+        Person
+        /    \
+   Student   Employee
+        \    /
+        Manager
+
+Without virtual inheritance, "Manager" can have two "Person" base subobjects.
+
+---
+
+3. Syntax
+
+Normal inheritance:
+
+class Student : public Person
+
+Virtual inheritance:
+
+class Student : virtual public Person
+
+Similarly:
+
+class Employee : virtual public Person
+
+---
+
+4. Complete Example
+
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    int age = 20;
+};
+
+class Student : virtual public Person {
+};
+
+class Employee : virtual public Person {
+};
+
+class Manager : public Student, public Employee {
+};
+
+int main() {
+
+    Manager m;
+
+    cout << m.age << endl;
+
+    return 0;
+}
+
+Output
+
+20
+
+---
+
+5. How It Works
+
+Without Virtual Inheritance
+
+          Person
+         /      \
+    Student    Employee
+         \      /
+          Manager
+
+       2 Person copies
+
+This can cause ambiguity.
+
+With Virtual Inheritance
+
+          Person
+         /      \
+    Student    Employee
+         \      /
+          Manager
+
+       1 shared Person
+
+The common "Person" base is shared.
+
+---
+
+6. Most-Derived Class Initializes the Virtual Base
+
+When a virtual base class has a constructor, the most-derived class is responsible for initializing it.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    Person(int age) {
+        cout << "Person: " << age << endl;
+    }
+};
+
+class Student : virtual public Person {
+public:
+    Student() : Person(18) {
+    }
+};
+
+class Employee : virtual public Person {
+public:
+    Employee() : Person(25) {
+    }
+};
+
+class Manager : public Student, public Employee {
+public:
+    Manager() : Person(30) {
+    }
+};
+
+int main() {
+
+    Manager m;
+
+    return 0;
+}
+
+Here, "Manager" initializes the virtual base "Person".
+
+---
+
+7. Virtual Function vs Virtual Inheritance
+
+Virtual Function| Virtual Inheritance
+Used for runtime polymorphism| Used mainly to solve Diamond Problem
+Uses "virtual" with a function| Uses "virtual" in inheritance
+Supports dynamic dispatch| Helps share a common base
+Example: "virtual void sound()"| Example: "class B : virtual public A"
+
+---
+
+8. Important Points
+
+- Virtual inheritance is mainly used in multiple inheritance.
+- It helps solve the Diamond Problem.
+- It prevents separate copies of a common virtual base subobject through the inheritance paths.
+- The most-derived class initializes the virtual base.
+- Virtual inheritance and virtual functions are different concepts.
+
+One-Line Definition
+
+«Virtual Inheritance allows a common base class to be shared in a multiple-inheritance hierarchy, helping solve the Diamond Problem.»
