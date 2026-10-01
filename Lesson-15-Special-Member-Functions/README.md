@@ -848,3 +848,177 @@ It does not itself move the resource. It enables move semantics to be used.
 9. One-Line Definition
 
 «A move constructor creates a new object by efficiently transferring resources from another object instead of copying them.»
+
+
+### topic 5
+
+Move Assignment Operator – C++ Notes
+
+1. Definition
+
+The Move Assignment Operator transfers resources from one object to another already existing object, instead of copying those resources.
+
+---
+
+2. Syntax
+
+ClassName& operator=(ClassName&& other) {
+    // transfer resources
+    return *this;
+}
+
+The "&&" represents an rvalue reference.
+
+---
+
+3. Simple Example
+
+Student s1(20);
+
+Student s2;
+
+s2 = std::move(s1);
+
+Here:
+
+- "s1" already exists.
+- "s2" already exists.
+- Resources are transferred from "s1" to "s2".
+
+---
+
+4. Complete Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    Student& operator=(Student&& other) {
+
+        if (this != &other) {
+            delete age;
+
+            age = other.age;
+            other.age = nullptr;
+        }
+
+        return *this;
+    }
+
+    ~Student() {
+        delete age;
+    }
+};
+
+int main() {
+
+    Student s1(20);
+    Student s2(25);
+
+    s2 = std::move(s1);
+
+    cout << *s2.age << endl;
+
+    return 0;
+}
+
+Output
+
+20
+
+---
+
+5. How It Works
+
+Before moving:
+
+s1 → Memory A
+s2 → Memory B
+
+After:
+
+s2 = std::move(s1);
+
+The resource is transferred:
+
+s1 → nullptr
+s2 → Memory A
+
+---
+
+6. Why Delete Existing Resource?
+
+Before receiving the new resource, "s2" may already own a resource.
+
+delete age;
+
+This releases the resource currently owned by "s2".
+
+Otherwise, the old resource could become unreachable and cause a memory leak.
+
+---
+
+7. Self-Move Check
+
+if (this != &other)
+
+This checks whether the source and destination are the same object.
+
+It helps avoid problems in cases such as:
+
+s1 = std::move(s1);
+
+---
+
+8. "return *this"
+
+return *this;
+
+"this" points to the current object.
+
+"*this" represents the current object itself.
+
+Returning it allows assignment operations to be chained.
+
+---
+
+9. Move Constructor vs Move Assignment Operator
+
+Move Constructor| Move Assignment Operator
+Creates a new object| Works with an existing object
+"T(T&&)"| "T& operator=(T&&)"
+Destination does not exist before construction| Destination already exists
+"Student s2 = std::move(s1);"| "s2 = std::move(s1);"
+
+Easy Memory Trick
+
+Move Constructor
+NEW object ← MOVE
+
+Move Assignment
+EXISTING object ← MOVE
+
+---
+
+10. Important Points
+
+- Move assignment is a special member function.
+- It works with an already existing destination object.
+- It transfers resources instead of unnecessarily copying them.
+- It commonly takes an rvalue reference ("&&").
+- The existing destination resource should be handled safely before taking ownership of the new resource.
+- "return *this" commonly returns the current object.
+- "std::move()" enables move semantics; it does not itself perform the resource transfer.
+
+---
+
+11. One-Line Definition
+
+«The Move Assignment Operator transfers resources from one object to another already existing object efficiently.»
