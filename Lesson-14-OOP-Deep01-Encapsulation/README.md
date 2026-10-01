@@ -1590,3 +1590,114 @@ Inheritance not required| Inheritance required
 One-Line Definition
 
 «Function Overriding is redefining a base class function in a derived class with the same function signature.»
+
+
+### topic 15
+
+Virtual Function – C++ Notes
+
+1. Definition
+
+A Virtual Function is a base class function that allows the appropriate overridden derived-class function to be selected at runtime.
+
+«Virtual Function → Runtime Polymorphism → Dynamic Function Selection»
+
+---
+
+2. Why Virtual Function?
+
+When a base class pointer points to a derived class object, "virtual" allows the derived class's overridden function to be called.
+
+---
+
+3. C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+
+    Animal* a = new Dog();
+
+    a->sound();
+
+    delete a;
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+---
+
+4. How It Works
+
+Animal* a = new Dog();
+
+Here:
+
+- "a" is an Animal pointer.
+- The actual object is a Dog object.
+
+When we write:
+
+a->sound();
+
+because "sound()" is "virtual", C++ selects:
+
+Dog::sound()
+
+at runtime.
+
+---
+
+5. "virtual" Keyword
+
+Base class:
+
+virtual void sound()
+
+"virtual" tells C++ that the function can be overridden and that runtime function selection should be used.
+
+---
+
+6. "override" Keyword
+
+Derived class:
+
+void sound() override
+
+"override" tells the compiler that the derived class function is overriding a base class virtual function.
+
+It helps detect mistakes.
+
+---
+
+7. Important Points
+
+- Virtual functions are mainly used for Runtime Polymorphism.
+- They are declared in the base class using the "virtual" keyword.
+- Derived classes can override them.
+- Base class pointers/references can call the derived implementation.
+- Function selection happens at runtime.
+- "override" is recommended when overriding a virtual function.
+
+One-Line Definition
+
+«A virtual function enables runtime polymorphism by allowing a derived class's overridden function to be called through a base class pointer or reference.»
