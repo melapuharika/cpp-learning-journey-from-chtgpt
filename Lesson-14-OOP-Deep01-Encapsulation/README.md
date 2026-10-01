@@ -1319,3 +1319,165 @@ Compiler Selects Matching Function
 One-Line Definition
 
 Function Overloading is defining multiple functions with the same name but different parameter lists.
+
+
+### topic 13
+
+Operator Overloading – C++ Notes
+
+1. Definition
+
+Operator Overloading is the process of giving a special meaning to an existing operator for user-defined types such as classes.
+
+In simple words:
+
+«Operator Overloading = Making operators work with objects.»
+
+---
+
+2. Example
+
+Normally:
+
+int a = 10;
+int b = 20;
+
+int c = a + b;
+
+Here "+" adds two numbers.
+
+Using operator overloading, we can make "+" work with class objects.
+
+---
+
+3. C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Complex {
+public:
+    int real;
+    int imag;
+
+    Complex(int r, int i) {
+        real = r;
+        imag = i;
+    }
+
+    Complex operator+(Complex c) {
+        return Complex(real + c.real, imag + c.imag);
+    }
+};
+
+int main() {
+
+    Complex c1(2, 3);
+    Complex c2(4, 5);
+
+    Complex c3 = c1 + c2;
+
+    cout << c3.real << " + " << c3.imag << "i";
+
+    return 0;
+}
+
+Output
+
+6 + 8i
+
+---
+
+4. How It Works
+
+When we write:
+
+Complex c3 = c1 + c2;
+
+C++ treats it approximately as:
+
+c1.operator+(c2);
+
+The function:
+
+Complex operator+(Complex c)
+
+defines what "+" should do for "Complex" objects.
+
+---
+
+5. Why Operator Overloading?
+
+It makes code easier and more natural to read.
+
+Without operator overloading:
+
+Complex c3 = c1.add(c2);
+
+With operator overloading:
+
+Complex c3 = c1 + c2;
+
+---
+
+6. Operators That Can Be Overloaded
+
+Examples:
+
++
+-
+*
+/
+%
+==
+!=
+<
+>
+<=
+>=
+++
+--
+
+---
+
+7. Operators That Cannot Be Overloaded
+
+Some operators cannot be overloaded:
+
+::
+.
+.*
+?:
+sizeof
+
+---
+
+8. Important Rules
+
+Rule 1
+
+Operator overloading does not create a new operator.
+
+It gives a new meaning to an existing operator for user-defined types.
+
+Rule 2
+
+At least one operand must be a user-defined type such as a class or struct.
+
+Rule 3
+
+Operator precedence cannot be changed.
+
+Rule 4
+
+The number of operands cannot be changed.
+
+---
+
+9. Key Point
+
+Operator Overloading is a type of Compile-Time Polymorphism.
+
+One-Line Definition
+
+«Operator Overloading allows existing C++ operators to work with user-defined objects.»
