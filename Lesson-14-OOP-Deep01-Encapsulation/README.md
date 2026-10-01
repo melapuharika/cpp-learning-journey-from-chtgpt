@@ -1701,3 +1701,115 @@ It helps detect mistakes.
 One-Line Definition
 
 «A virtual function enables runtime polymorphism by allowing a derived class's overridden function to be called through a base class pointer or reference.»
+
+
+### topic 16
+
+Pure Virtual Function – C++ Notes
+
+1. Definition
+
+A Pure Virtual Function is a virtual function declared with "= 0" that must be implemented by a derived class.
+
+Syntax
+
+virtual void sound() = 0;
+
+«Pure Virtual Function = Child class must implement this function.»
+
+---
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+
+    Dog d;
+    d.sound();
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+---
+
+3. Meaning of "= 0"
+
+virtual void sound() = 0;
+
+The "= 0" makes the function a pure virtual function.
+
+It means the base class does not provide a normal implementation, and derived classes are expected to implement it.
+
+---
+
+4. Normal Virtual vs Pure Virtual Function
+
+Normal Virtual Function
+
+virtual void sound() {
+    cout << "Animal sound";
+}
+
+- Has an implementation.
+- Derived class can override it.
+
+Pure Virtual Function
+
+virtual void sound() = 0;
+
+- Has no normal implementation in the base class.
+- Derived class must implement it to become a concrete class.
+
+---
+
+5. Abstract Class
+
+A class containing at least one pure virtual function becomes an Abstract Class.
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+"Animal" is an abstract class.
+
+We cannot directly create its object:
+
+Animal a;   // Not allowed
+
+But we can create an object of a derived class that implements the pure virtual function:
+
+Dog d;
+
+---
+
+6. Important Points
+
+- Pure virtual functions use "= 0".
+- They are declared using the "virtual" keyword.
+- They are mainly used to define a common interface/rule for derived classes.
+- A class containing a pure virtual function is an abstract class.
+- An abstract class cannot be instantiated directly.
+- Derived classes must implement all inherited pure virtual functions to become concrete.
+
+One-Line Definition
+
+«A pure virtual function is a virtual function declared with "= 0" that requires derived classes to provide an implementation.»
