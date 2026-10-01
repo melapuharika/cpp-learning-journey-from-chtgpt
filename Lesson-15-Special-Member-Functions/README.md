@@ -1965,3 +1965,201 @@ s2 → Memory B
 9. One-Line Definition
 
 «Shallow Copy copies the pointer/address rather than creating a separate copy of the dynamically allocated data.»
+
+
+### topic 11
+
+Deep Copy – C++ Notes
+
+1. Definition
+
+Deep Copy means creating a separate memory location for the copied object's dynamically allocated data and copying the actual value into that new memory.
+
+The original and copied objects become independent.
+
+---
+
+2. Simple Representation
+
+Original Object
+      |
+   Pointer
+      |
+   Memory A
+
+
+Copied Object
+      |
+   Pointer
+      |
+   Memory B
+
+Memory A and Memory B are different.
+
+---
+
+3. Example
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    // Deep Copy
+    Student(const Student& other) {
+        age = new int(*other.age);
+    }
+};
+
+Now:
+
+Student s1(20);
+Student s2 = s1;
+
+Memory looks like:
+
+s1 → Memory A → 20
+
+s2 → Memory B → 20
+
+The values are the same, but the memory is different.
+
+---
+
+4. Important Line
+
+age = new int(*other.age);
+
+This line performs the deep copy.
+
+Step-by-step
+
+other.age
+   ↓
+Original pointer
+
+*other.age
+   ↓
+Value stored in original memory
+
+new int(...)
+   ↓
+Create new memory
+
+age = ...
+   ↓
+Store the new memory address
+
+---
+
+5. Checking Deep Copy
+
+Suppose:
+
+Student s1(20);
+Student s2 = s1;
+
+Check addresses:
+
+s1.age == s2.age
+
+Output:
+
+false
+
+Because they point to different memory.
+
+Check values:
+
+*s1.age == *s2.age
+
+Output:
+
+true
+
+Because both contain the value "20".
+
+---
+
+6. Independence of Objects
+
+Suppose:
+
+*s1.age = 25;
+
+Then:
+
+cout << *s2.age;
+
+Output:
+
+20
+
+The change in "s1" does not affect "s2".
+
+---
+
+7. Shallow Copy vs Deep Copy
+
+Shallow Copy| Deep Copy
+Copies the pointer/address| Creates new memory
+Same memory may be shared| Separate memory is created
+Data may be shared| Data is independently copied
+Changes may affect both objects| Changes are independent
+Can cause ownership problems| Avoids shared ownership of copied resource
+
+Shallow Copy
+
+s1 → Memory A
+s2 → Memory A
+
+Deep Copy
+
+s1 → Memory A
+s2 → Memory B
+
+---
+
+8. Deep Copy with Destructor
+
+When using a raw owning pointer, the class should also release its allocated memory.
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    Student(const Student& other) {
+        age = new int(*other.age);
+    }
+
+    ~Student() {
+        delete age;
+    }
+};
+
+Each object owns its own memory.
+
+---
+
+9. Important Points
+
+- Deep Copy creates separate memory for the copied data.
+- The actual value is copied into the new memory.
+- Original and copied objects are independent.
+- Changing one object does not affect the other.
+- Deep copy is useful when a class owns a resource that should not be shared by copies.
+- Raw owning pointers require careful resource management.
+- Modern C++ often prefers RAII types such as "std::string", "std::vector", and smart pointers instead of manually managing raw memory.
+
+---
+
+10. One-Line Definition
+
+«Deep Copy creates separate memory for the copied resource and copies the actual data, making the original and copied objects independent.»
