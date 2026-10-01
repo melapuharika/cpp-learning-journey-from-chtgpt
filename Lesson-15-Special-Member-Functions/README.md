@@ -1022,3 +1022,167 @@ EXISTING object ← MOVE
 11. One-Line Definition
 
 «The Move Assignment Operator transfers resources from one object to another already existing object efficiently.»
+
+
+### topic 6
+
+Destructor – C++ Notes
+
+1. Definition
+
+A Destructor is a special member function that is automatically called when an object is destroyed.
+
+«Constructor → Creates/initializes an object
+Destructor → Cleans up when an object is destroyed»
+
+---
+
+2. Syntax
+
+~ClassName() {
+    // cleanup code
+}
+
+A destructor uses the "~" symbol before the class name.
+
+---
+
+3. Simple Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+
+    Student() {
+        cout << "Student created" << endl;
+    }
+
+    ~Student() {
+        cout << "Student destroyed" << endl;
+    }
+};
+
+int main() {
+
+    Student s;
+
+    return 0;
+}
+
+Output
+
+Student created
+Student destroyed
+
+---
+
+4. How It Works
+
+Student s;
+
+The object "s" is created, so the constructor is called.
+
+When "s" reaches the end of its lifetime, the destructor is automatically called.
+
+Object Created
+      ↓
+Constructor
+      ↓
+Object Lifetime
+      ↓
+Object Destroyed
+      ↓
+Destructor
+
+---
+
+5. Destructor for Resource Cleanup
+
+A destructor is especially useful when an object owns a resource such as dynamically allocated memory.
+
+Example:
+
+class Student {
+public:
+    int* age;
+
+    Student() {
+        age = new int(20);
+    }
+
+    ~Student() {
+        delete age;
+    }
+};
+
+Here:
+
+age = new int(20);
+
+allocates memory.
+
+The destructor:
+
+delete age;
+
+releases that memory when the object is destroyed.
+
+---
+
+6. Destructor with Local Object
+
+{
+    Student s;
+}
+
+When execution reaches:
+
+}
+
+the local object "s" is destroyed and its destructor is called.
+
+---
+
+7. Destructor with Dynamic Object
+
+Student* s = new Student();
+
+delete s;
+
+When:
+
+delete s;
+
+is executed, the destructor is called and the dynamically allocated object is destroyed.
+
+---
+
+8. Important Rules
+
+- A destructor is a special member function.
+- Its name is the class name preceded by "~".
+- It has no return type.
+- It does not take parameters.
+- A class normally has only one destructor.
+- It is automatically called when an object's lifetime ends.
+- It is commonly used for resource cleanup.
+- A destructor can be declared "virtual" in a base class when objects may be deleted through a base-class pointer.
+
+---
+
+9. Constructor vs Destructor
+
+Constructor| Destructor
+Creates/initializes an object| Destroys/cleans up an object
+Called when object is created| Called when object is destroyed
+Class name| "~" + class name
+Can have parameters| Cannot have parameters
+Can have multiple overloaded constructors| Only one destructor per class
+
+---
+
+10. One-Line Definition
+
+«A destructor is a special member function that is automatically called when an object is destroyed and is commonly used for resource cleanup.»
