@@ -1814,3 +1814,154 @@ Avoid manually writing special member functions
 10. One-Line Definition
 
 «Rule of 0 means designing a class so that it does not need to manually define special member functions because resource management is handled by other RAII-based objects.»
+
+
+### topic 10
+
+Shallow Copy – C++ Notes
+
+1. Definition
+
+Shallow Copy means copying an object in such a way that a pointer member's address is copied, but the dynamically allocated data is not separately copied.
+
+As a result, two objects can point to the same memory location.
+
+---
+
+2. Simple Representation
+
+Original Object
+      |
+   Pointer
+      |
+   Memory A
+
+
+Copied Object
+      |
+   Pointer
+      |
+   Memory A
+
+Both objects point to the same memory.
+
+---
+
+3. Example
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+};
+
+Now:
+
+Student s1(20);
+Student s2 = s1;
+
+The default copy can result in:
+
+s1.age ──→ Memory A ←── s2.age
+             |
+             20
+
+Both pointers contain the same address.
+
+---
+
+4. What Happens During Shallow Copy?
+
+Suppose:
+
+*s1.age = 25;
+
+Because "s1" and "s2" point to the same memory:
+
+cout << *s2.age;
+
+Output:
+
+25
+
+The change made through "s1" is visible through "s2".
+
+---
+
+5. Main Problem
+
+If both objects believe they own the same dynamically allocated memory, problems can occur.
+
+For example:
+
+s1 → Memory A
+s2 → Memory A
+
+If both destructors try to:
+
+delete age;
+
+the same memory may be deleted twice.
+
+This can cause double deletion and undefined behavior.
+
+---
+
+6. Shallow Copy Diagram
+
+Before Copy:
+
+s1 → Memory A
+      |
+      20
+
+
+After Shallow Copy:
+
+s1 → Memory A ← s2
+      |
+      20
+
+The memory is shared.
+
+---
+
+7. Shallow Copy vs Deep Copy
+
+Shallow Copy| Deep Copy
+Pointer/address is copied| Actual data is copied
+Both objects may point to same memory| Each object gets separate memory
+Memory can be shared| Memory is independent
+Can cause resource-management problems| Safer for unique ownership
+"s1.age == s2.age" may be true| "s1.age != s2.age"
+
+Shallow Copy
+
+s1 → Memory A
+s2 → Memory A
+
+Deep Copy
+
+s1 → Memory A
+s2 → Memory B
+
+---
+
+8. Important Points
+
+- Shallow copy copies the pointer/address.
+- The pointed-to data is not separately copied.
+- Two objects can point to the same memory.
+- Changes through one object can affect the other.
+- It can cause problems such as double deletion and dangling pointers when ownership is involved.
+- Shallow copy is not automatically wrong; it depends on what the pointer represents and who owns the resource.
+- For owning raw pointers, deep copy or a suitable RAII type is usually needed.
+
+---
+
+9. One-Line Definition
+
+«Shallow Copy copies the pointer/address rather than creating a separate copy of the dynamically allocated data.»
