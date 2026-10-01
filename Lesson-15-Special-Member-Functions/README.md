@@ -2495,3 +2495,153 @@ Usually has a longer useful lifetime| Usually short-lived
 10. One-Line Definition
 
 «A Temporary Object is a usually unnamed, short-lived object created for an expression, intermediate operation, conversion, or function result.»
+
+
+### topic 14
+
+Anonymous Objects – C++ Notes
+
+1. Definition
+
+An Anonymous Object is an object that is created without giving it a name.
+
+In C++ teaching, the term usually refers to an unnamed temporary object.
+
+---
+
+2. Named Object
+
+Student s(20);
+
+Here:
+
+s
+↓
+Object Name
+
+So "s" is a Named Object.
+
+---
+
+3. Anonymous Object
+
+Student(20);
+
+Here, the object does not have a variable name.
+
+Student(20)
+     ↓
+No name
+     ↓
+Anonymous / Unnamed Object
+
+---
+
+4. Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int age;
+
+    Student(int a) {
+        age = a;
+    }
+
+    void display() {
+        cout << age << endl;
+    }
+};
+
+int main() {
+
+    Student s(20);        // Named object
+
+    Student(20).display(); // Anonymous/temporary object
+
+    return 0;
+}
+
+Output:
+
+20
+20
+
+---
+
+5. How Anonymous Objects Work
+
+Consider:
+
+Student(20).display();
+
+Step-by-step:
+
+Student(20)
+     ↓
+Object created without a name
+     ↓
+display() is called
+     ↓
+Temporary object is no longer needed
+     ↓
+Object is destroyed according to its lifetime rules
+
+---
+
+6. Named Object vs Anonymous Object
+
+Named Object
+
+Student s(20);
+
+Object
+  ↓
+ s
+  ↓
+Name available
+
+Anonymous Object
+
+Student(20);
+
+Object
+  ↓
+No name
+  ↓
+Usually temporary
+
+---
+
+7. Anonymous Object and Temporary Object
+
+In informal C++ terminology:
+
+Anonymous Object
+       ≈
+Unnamed Temporary Object
+
+The more precise standard C++ terminology is generally temporary object.
+
+---
+
+8. Important Points
+
+- An anonymous object has no variable name.
+- It is commonly used for short operations.
+- It is usually a temporary object.
+- It can be used directly to call a member function.
+- Example:
+
+Student(20).display();
+
+- The object has a limited lifetime.
+- "Anonymous object" is a common teaching term; temporary object is the more precise C++ terminology.
+
+---
+
+9. One-Line Definition
+
+«An Anonymous Object is an unnamed object, usually a temporary object, created for direct or short-term use.»
