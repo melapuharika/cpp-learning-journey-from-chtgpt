@@ -2163,3 +2163,179 @@ Each object owns its own memory.
 10. One-Line Definition
 
 «Deep Copy creates separate memory for the copied resource and copies the actual data, making the original and copied objects independent.»
+
+
+### topic 12
+Object Lifetime – C++ Notes
+
+1. Definition
+
+Object Lifetime means the period from when an object is created and its lifetime begins until its lifetime ends and the object is destroyed.
+
+Object Created
+      ↓
+Object is Alive
+      ↓
+Object Destroyed
+      ↓
+Lifetime Ends
+
+---
+
+2. Local Object Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    Student() {
+        cout << "Created" << endl;
+    }
+
+    ~Student() {
+        cout << "Destroyed" << endl;
+    }
+};
+
+int main() {
+
+    Student s;
+
+    return 0;
+}
+
+Here:
+
+Student s;
+
+creates the object.
+
+When "main()" ends, the local object is destroyed and its destructor is called.
+
+---
+
+3. Object Lifetime Inside a Block
+
+int main() {
+
+    {
+        Student s;
+    }
+
+    return 0;
+}
+
+The object is created here:
+
+Student s;
+
+Its lifetime ends when the block ends:
+
+}
+
+{
+    Student s;  ← Object created
+
+}              ← Object destroyed
+
+---
+
+4. Dynamic Object Lifetime
+
+Dynamic objects are created using "new".
+
+Student* s = new Student();
+
+The object remains alive until it is destroyed using "delete".
+
+delete s;
+
+new Student()
+      ↓
+Object Created
+      ↓
+Object is Alive
+      ↓
+delete s
+      ↓
+Destructor Called
+      ↓
+Lifetime Ends
+
+---
+
+5. Destructor and Object Lifetime
+
+A destructor is called when an object's lifetime ends.
+
+~Student() {
+    cout << "Object destroyed";
+}
+
+For a normal local object, the destructor is automatically called when the object goes out of its lifetime.
+
+For a dynamically allocated object, "delete" is used to end its lifetime.
+
+---
+
+6. Scope vs Lifetime
+
+Scope
+
+Scope tells us where a name can be accessed in the program.
+
+Lifetime
+
+Lifetime tells us how long the object itself exists.
+
+Scope
+  ↓
+Where can I access the name?
+
+Lifetime
+  ↓
+How long does the object exist?
+
+They are related, but they are not the same concept.
+
+---
+
+7. Simple Real-Life Example
+
+Think about a student entering and leaving a classroom.
+
+Enters Classroom
+       ↓
+Student is present
+       ↓
+Leaves Classroom
+
+Similarly:
+
+Object Created
+       ↓
+Object is Alive
+       ↓
+Object Destroyed
+
+The time between creation and destruction is the object's lifetime.
+
+---
+
+8. Important Points
+
+- Object lifetime starts when the object's lifetime begins after proper initialization.
+- Object lifetime ends when the object is destroyed.
+- Local objects normally have automatic lifetime.
+- Dynamic objects created with "new" remain alive until they are properly destroyed.
+- Destructors are involved in object destruction.
+- Scope means where a name can be accessed.
+- Lifetime means how long an object exists.
+- Scope and lifetime are related but not identical.
+
+---
+
+9. One-Line Definition
+
+«Object Lifetime is the period during which an object exists, from the beginning of its lifetime until its destruction.»
