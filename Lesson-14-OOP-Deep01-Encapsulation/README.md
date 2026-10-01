@@ -1957,3 +1957,126 @@ Can provide complete implementation| Can define common rules for derived classes
 One-Line Definition
 
 «An Abstract Class is a class that cannot be instantiated directly and is used as a base class to define common rules for derived classes.»
+
+
+### topic 18
+
+Interface-Like Classes – C++ Notes
+
+1. Definition
+
+C++ does not have a separate "interface" keyword like Java.
+
+Instead, an abstract class containing mostly or entirely pure virtual functions can be used as an interface-like class.
+
+«Interface-Like Class = A class that defines rules/contract that derived classes must follow.»
+
+---
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+class Payment {
+public:
+    virtual void pay() = 0;
+};
+
+class UPI : public Payment {
+public:
+    void pay() override {
+        cout << "Payment using UPI" << endl;
+    }
+};
+
+class CreditCard : public Payment {
+public:
+    void pay() override {
+        cout << "Payment using Credit Card" << endl;
+    }
+};
+
+int main() {
+
+    UPI u;
+    CreditCard c;
+
+    u.pay();
+    c.pay();
+
+    return 0;
+}
+
+Output
+
+Payment using UPI
+Payment using Credit Card
+
+---
+
+3. How It Works
+
+The base class defines a rule:
+
+virtual void pay() = 0;
+
+It means:
+
+«Every derived payment class must provide its own "pay()" implementation.»
+
+UPI:
+
+void pay() override
+
+provides the UPI implementation.
+
+Credit Card:
+
+void pay() override
+
+provides the Credit Card implementation.
+
+---
+
+4. Why Use Interface-Like Classes?
+
+They are useful when different classes should follow the same set of rules but have different implementations.
+
+Example:
+
+Payment
+ ├── UPI
+ ├── CreditCard
+ └── NetBanking
+
+All classes must have:
+
+pay()
+
+But each class can implement it differently.
+
+---
+
+5. Abstract Class vs Interface-Like Class
+
+Abstract Class| Interface-Like Class
+Can contain normal functions| Usually contains mostly/all pure virtual functions
+Can contain data members| Mainly defines a contract
+Can contain virtual functions| Mainly uses pure virtual functions
+Can provide some implementation| Derived classes provide the implementations
+
+---
+
+6. Important Points
+
+- C++ does not have a separate "interface" keyword.
+- Interface-like behavior is achieved using abstract classes and pure virtual functions.
+- It defines a common contract for derived classes.
+- It cannot be instantiated directly.
+- Derived classes implement the required functions.
+- It is useful for achieving abstraction and runtime polymorphism.
+
+One-Line Definition
+
+«An Interface-Like Class in C++ is an abstract class mainly made of pure virtual functions that defines a common contract for derived classes.»
