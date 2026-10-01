@@ -1624,3 +1624,193 @@ s2 = std::move(s1);
 13. One-Line Definition
 
 «Rule of 5 says that a resource-managing C++ class may need five special member functions: destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator.»
+
+
+### topic 9
+
+Rule of 0 – C++ Notes
+
+1. Definition
+
+The Rule of 0 is a C++ guideline that says:
+
+«If a class does not directly manage resources, it should usually not manually define special member functions.»
+
+Instead, use resource-managing C++ types such as:
+
+- "std::string"
+- "std::vector"
+- "std::unique_ptr"
+- Other RAII-based classes
+
+---
+
+2. Why Rule of 0?
+
+In older-style code, a class may manually manage memory:
+
+int* age;
+
+Then we may need to manually write:
+
+- Destructor
+- Copy Constructor
+- Copy Assignment Operator
+- Move Constructor
+- Move Assignment Operator
+
+This can make the code complicated and error-prone.
+
+With the Rule of 0, we let standard C++ classes manage resources for us.
+
+---
+
+3. Example
+
+#include <string>
+#include <vector>
+
+class Student {
+public:
+    std::string name;
+    std::vector<int> marks;
+};
+
+Here:
+
+- "std::string" manages the memory for "name".
+- "std::vector" manages the memory for "marks".
+- We don't need to manually write a destructor.
+- We don't need to manually write copy/move operations.
+
+---
+
+4. What We Avoid
+
+With Rule of 0, we generally avoid manually writing:
+
+~Student();
+
+Student(const Student& other);
+
+Student& operator=(const Student& other);
+
+Student(Student&& other);
+
+Student& operator=(Student&& other);
+
+The compiler can generate the appropriate special member functions.
+
+---
+
+5. Simple Comparison
+
+Manual Resource Management
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    ~Student() {
+        delete age;
+    }
+};
+
+Here the class directly manages dynamic memory.
+
+Rule of 0
+
+#include <memory>
+
+class Student {
+public:
+    std::unique_ptr<int> age;
+
+    Student(int value)
+        : age(std::make_unique<int>(value)) {}
+};
+
+Here "std::unique_ptr" manages the memory automatically.
+
+---
+
+6. Common Resource-Managing Types
+
+std::string
+    ↓
+Manages string memory
+
+std::vector
+    ↓
+Manages dynamic array memory
+
+std::unique_ptr
+    ↓
+Manages dynamically allocated object
+
+std::shared_ptr
+    ↓
+Manages shared ownership
+
+---
+
+7. Rule of 0 vs Rule of 3 vs Rule of 5
+
+Rule of 3
+    ↓
+Custom resource management
+    ↓
+Destructor
+Copy Constructor
+Copy Assignment
+
+
+Rule of 5
+    ↓
+Custom resource management + move operations
+    ↓
+Destructor
+Copy Constructor
+Copy Assignment
+Move Constructor
+Move Assignment
+
+
+Rule of 0
+    ↓
+Use RAII/resource-managing types
+    ↓
+Avoid manually writing special member functions
+
+---
+
+8. Advantages of Rule of 0
+
+- Less code
+- Fewer bugs
+- Automatic resource management
+- Easier maintenance
+- Safer memory management
+- Works well with modern C++
+
+---
+
+9. Important Points
+
+- Rule of 0 is a C++ design guideline.
+- Avoid manually managing resources when possible.
+- Prefer standard resource-managing types.
+- "std::string", "std::vector", and smart pointers are common examples.
+- The compiler can generate special member functions automatically.
+- Rule of 0 is closely related to RAII.
+- Modern C++ generally encourages this style.
+
+---
+
+10. One-Line Definition
+
+«Rule of 0 means designing a class so that it does not need to manually define special member functions because resource management is handled by other RAII-based objects.»
