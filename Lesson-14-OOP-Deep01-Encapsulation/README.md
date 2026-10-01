@@ -2445,3 +2445,147 @@ This can cause ambiguity and duplicate base-class data.
 One-Line Definition
 
 «Advanced Multiple Inheritance deals with issues such as ambiguity and repeated base-class members when a class inherits from multiple base classes.»
+
+### topic 22
+
+Diamond Problem – C++ Notes
+
+1. Definition
+
+The Diamond Problem is an ambiguity problem that can occur in multiple inheritance when two classes inherit from the same base class and another class inherits from both of them.
+
+Structure
+
+        A
+       / \
+      B   C
+       \ /
+        D
+
+It is called the Diamond Problem because the inheritance structure looks like a diamond.
+
+---
+
+2. Real-Life Example
+
+        Person
+        /    \
+   Student   Employee
+        \    /
+        Manager
+
+Here:
+
+- "Student" inherits from "Person".
+- "Employee" inherits from "Person".
+- "Manager" inherits from both "Student" and "Employee".
+
+So "Manager" can receive two paths to "Person".
+
+---
+
+3. C++ Example
+
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    int age = 20;
+};
+
+class Student : public Person {
+};
+
+class Employee : public Person {
+};
+
+class Manager : public Student, public Employee {
+};
+
+int main() {
+
+    Manager m;
+
+    // cout << m.age;   // ❌ Ambiguous
+
+    cout << m.Student::age << endl;
+    cout << m.Employee::age << endl;
+
+    return 0;
+}
+
+Why is "m.age" ambiguous?
+
+"Manager" has two paths to "Person":
+
+Manager
+  ├── Student → Person
+  └── Employee → Person
+
+Therefore, C++ does not know which "Person::age" should be accessed.
+
+---
+
+4. Problem Without Virtual Inheritance
+
+Conceptually:
+
+          Person
+         /      \
+    Student    Employee
+         \      /
+          Manager
+
+"Manager" can contain two "Person" base subobjects.
+
+This can cause:
+
+- Ambiguity
+- Duplicate base-class data
+- Unnecessary duplication
+
+---
+
+5. Solution
+
+The common solution is Virtual Inheritance.
+
+Instead of:
+
+class Student : public Person
+
+we use:
+
+class Student : virtual public Person
+
+And:
+
+class Employee : virtual public Person
+
+This allows the final derived class to share a single "Person" base subobject.
+
+Conceptually
+
+          Person
+         /      \
+    Student    Employee
+         \      /
+          Manager
+
+        One Person
+
+---
+
+6. Important Points
+
+- The Diamond Problem occurs in a particular form of multiple inheritance.
+- It happens when the same base class is inherited through multiple paths.
+- It can result in multiple copies of the common base class.
+- Accessing common base-class members can become ambiguous.
+- Scope resolution can specify a particular path.
+- Virtual inheritance is the common solution for sharing one common base subobject.
+
+One-Line Definition
+
+«The Diamond Problem is an ambiguity caused when a derived class inherits the same base class through two different intermediate classes.»
