@@ -270,3 +270,152 @@ Anonymous Object| Object without a named variable
 One-Line Summary
 
 «Lesson 15 covers C++ special member functions, copying, moving, resource management, object lifetime, and temporary/anonymous objects.»
+
+
+### topic 1
+
+Special Member Functions – C++ Notes
+
+1. Definition
+
+Special Member Functions are special functions associated with a C++ class that help in creating, copying, moving, assigning, and destroying objects.
+
+---
+
+2. Main Special Member Functions
+
+The important special member functions are:
+
+1. Default Constructor
+2. Destructor
+3. Copy Constructor
+4. Copy Assignment Operator
+5. Move Constructor
+6. Move Assignment Operator
+
+---
+
+3. Default Constructor
+
+A default constructor is a constructor that can be called without arguments.
+
+class Student {
+public:
+    Student() {
+        cout << "Student created";
+    }
+};
+
+Student s;
+
+When "s" is created, the constructor is called.
+
+---
+
+4. Destructor
+
+A destructor is automatically called when an object is destroyed.
+
+class Student {
+public:
+    ~Student() {
+        cout << "Student destroyed";
+    }
+};
+
+A destructor uses "~" before the class name.
+
+---
+
+5. Copy Constructor
+
+A copy constructor creates a new object by copying an existing object.
+
+Student s1;
+Student s2 = s1;
+
+Here, "s2" is a new object created using "s1".
+
+---
+
+6. Copy Assignment Operator
+
+The copy assignment operator copies data from one already existing object to another already existing object.
+
+Student s1;
+Student s2;
+
+s2 = s1;
+
+Both "s1" and "s2" already exist.
+
+---
+
+7. Move Constructor
+
+A move constructor creates a new object by transferring resources from another object instead of making a full copy.
+
+Student s2 = std::move(s1);
+
+It can improve performance when working with resources such as dynamically allocated memory.
+
+---
+
+8. Move Assignment Operator
+
+The move assignment operator transfers resources from one existing object to another existing object.
+
+s2 = std::move(s1);
+
+---
+
+9. Copy vs Move
+
+Copy| Move
+Copies data/resources| Transfers resources
+Can require additional resource allocation| Can avoid unnecessary allocation
+Useful when both objects need independent data| Useful when the source can give up its resources
+
+---
+
+10. Constructor vs Destructor
+
+Constructor| Destructor
+Used when object is created| Used when object is destroyed
+Initializes an object| Cleans up an object
+Class name is used| "~" + class name is used
+Can have parameters| Cannot have parameters
+
+---
+
+11. Easy Revision
+
+Default Constructor
+        ↓
+Creates/initializes object
+
+Copy Constructor
+        ↓
+New object ← Copy
+
+Copy Assignment
+        ↓
+Existing object ← Copy
+
+Move Constructor
+        ↓
+New object ← Move resources
+
+Move Assignment
+        ↓
+Existing object ← Move resources
+
+Destructor
+        ↓
+Object destroyed
+
+---
+
+12. One-Line Definition
+
+«Special Member Functions are C++ class functions that manage object creation, copying, moving, assignment, and destruction.»
