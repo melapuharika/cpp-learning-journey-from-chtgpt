@@ -567,3 +567,138 @@ Existing Object ← Existing Object
 9. One-Line Definition
 
 «A copy constructor is a special member function that creates a new object by copying an existing object.»
+
+
+### topic 3
+Assignment Operator – C++ Notes
+
+1. Definition
+
+The Assignment Operator is used to assign or copy the data of one object to another already existing object.
+
+The assignment operator is:
+
+=
+
+---
+
+2. Simple Example
+
+Student s1(20);
+Student s2(25);
+
+s2 = s1;
+
+Here:
+
+- "s1" already exists.
+- "s2" already exists.
+- "s1" data is copied into "s2".
+
+Before Assignment
+
+s1 → age = 20
+s2 → age = 25
+
+After Assignment
+
+s1 → age = 20
+s2 → age = 20
+
+---
+
+3. Copy Constructor vs Assignment Operator
+
+Copy Constructor
+
+Student s1(20);
+Student s2 = s1;
+
+A new object "s2" is created.
+
+New Object ← Existing Object
+
+Assignment Operator
+
+Student s1(20);
+Student s2(25);
+
+s2 = s1;
+
+" s2" already exists.
+
+Existing Object ← Existing Object
+
+---
+
+4. Custom Assignment Operator
+
+We can define our own assignment operator using "operator=".
+
+class Student {
+public:
+    int age;
+
+    Student(int a) {
+        age = a;
+    }
+
+    Student& operator=(const Student& other) {
+        age = other.age;
+        return *this;
+    }
+};
+
+Usage:
+
+Student s1(20);
+Student s2(25);
+
+s2 = s1;
+
+---
+
+5. "operator="
+
+Student& operator=(const Student& other)
+
+Here:
+
+- "operator=" → defines the assignment operator.
+- "const Student& other" → receives the source object.
+- "Student&" → returns a reference to the current object.
+
+---
+
+6. "return *this"
+
+Inside a member function:
+
+return *this;
+
+means returning the current object.
+
+"this" points to the current object.
+
+"*this" represents the current object itself.
+
+It also allows chained assignment:
+
+s3 = s2 = s1;
+
+---
+
+7. Important Points
+
+- Assignment operator is represented by "=".
+- It works with already existing objects.
+- C++ can automatically provide a copy assignment operator.
+- A custom "operator=" can be defined when special resource management is required.
+- It is different from the copy constructor.
+- A correctly designed assignment operator commonly returns "*this".
+
+---
+
+8. One-Line Definition
+
+«The assignment operator copies or assigns data from one existing object to another existing object.»
