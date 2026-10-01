@@ -419,3 +419,151 @@ Object destroyed
 12. One-Line Definition
 
 «Special Member Functions are C++ class functions that manage object creation, copying, moving, assignment, and destruction.»
+
+
+### topic 2
+
+Copy Constructor – C++ Notes
+
+1. Definition
+
+A Copy Constructor is a special member function that creates a new object by copying the data of an existing object.
+
+---
+
+2. Syntax
+
+ClassName(const ClassName& other) {
+    // copy data
+}
+
+---
+
+3. Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int age;
+
+    Student(int a) {
+        age = a;
+    }
+
+    Student(const Student& other) {
+        age = other.age;
+    }
+};
+
+int main() {
+
+    Student s1(20);
+
+    Student s2 = s1;
+
+    cout << s2.age << endl;
+
+    return 0;
+}
+
+Output
+
+20
+
+---
+
+4. How It Works
+
+Student s1(20);
+
+A "Student" object named "s1" is created.
+
+Student s2 = s1;
+
+A new object "s2" is created by copying "s1".
+
+s1 → age = 20
+s2 → age = 20
+
+Both objects are separate objects.
+
+---
+
+5. Copy Constructor Syntax Explained
+
+Student(const Student& other)
+
+"Student"
+
+The constructor has the same name as the class.
+
+"const"
+
+The original object should not be modified during copying.
+
+"Student&"
+
+The object is passed by reference, avoiding another unnecessary copy.
+
+"other"
+
+This represents the existing object being copied.
+
+---
+
+6. When Is a Copy Constructor Used?
+
+A copy constructor can be used when:
+
+- A new object is initialized from an existing object.
+- An object is passed by value to a function.
+- An object is returned by value from a function, subject to copy elision and move semantics.
+
+Example:
+
+Student s1(20);
+Student s2 = s1;
+
+---
+
+7. Copy Constructor vs Copy Assignment
+
+Copy Constructor
+
+Student s1(20);
+Student s2 = s1;
+
+Here, "s2" is a new object.
+
+New Object ← Existing Object
+
+Copy Assignment
+
+Student s1(20);
+Student s2(25);
+
+s2 = s1;
+
+Here, "s2" already exists.
+
+Existing Object ← Existing Object
+
+---
+
+8. Important Points
+
+- A copy constructor is a special member function.
+- It creates a new object from an existing object.
+- It normally takes the source object by "const" reference.
+- It has the same name as the class.
+- It does not have a return type.
+- C++ can automatically generate a copy constructor if one is not provided.
+- For classes that manage resources such as dynamic memory, a custom copy constructor may be needed to perform a deep copy.
+
+---
+
+9. One-Line Definition
+
+«A copy constructor is a special member function that creates a new object by copying an existing object.»
