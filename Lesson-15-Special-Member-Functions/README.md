@@ -1186,3 +1186,200 @@ Can have multiple overloaded constructors| Only one destructor per class
 10. One-Line Definition
 
 «A destructor is a special member function that is automatically called when an object is destroyed and is commonly used for resource cleanup.»
+
+
+### topic 7
+
+Rule of 3 – C++ Notes
+
+1. Definition
+
+The Rule of 3 is a C++ guideline for classes that manually manage resources such as dynamically allocated memory.
+
+If a class needs to define one of the three special member functions below, it often needs to define all three:
+
+1. Destructor
+2. Copy Constructor
+3. Copy Assignment Operator
+
+---
+
+2. The Three Functions
+
+Rule of 3
+   │
+   ├── Destructor
+   ├── Copy Constructor
+   └── Copy Assignment Operator
+
+---
+
+3. Why Rule of 3?
+
+Consider a class that manually allocates memory:
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+};
+
+If the default copy behavior is used, the pointer itself may be copied:
+
+s1 → Memory A
+
+s2 → Memory A
+
+Now both objects may refer to the same dynamically allocated memory.
+
+This can lead to problems such as:
+
+- Double deletion
+- Dangling pointers
+- Unintended modification
+- Resource-management errors
+
+---
+
+4. Copy Constructor
+
+The copy constructor should create an independent copy of the resource.
+
+Student(const Student& other) {
+    age = new int(*other.age);
+}
+
+Here, new memory is allocated for the copied object.
+
+s1 → Memory A
+
+s2 → Memory B
+
+---
+
+5. Copy Assignment Operator
+
+The copy assignment operator should safely replace the existing resource.
+
+Student& operator=(const Student& other) {
+
+    if (this != &other) {
+        delete age;
+        age = new int(*other.age);
+    }
+
+    return *this;
+}
+
+---
+
+6. Destructor
+
+The destructor releases the resource owned by the object.
+
+~Student() {
+    delete age;
+}
+
+---
+
+7. Complete Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    // Copy Constructor
+    Student(const Student& other) {
+        age = new int(*other.age);
+    }
+
+    // Copy Assignment Operator
+    Student& operator=(const Student& other) {
+
+        if (this != &other) {
+            delete age;
+            age = new int(*other.age);
+        }
+
+        return *this;
+    }
+
+    // Destructor
+    ~Student() {
+        delete age;
+    }
+};
+
+int main() {
+
+    Student s1(20);
+
+    Student s2 = s1;   // Copy Constructor
+
+    Student s3(25);
+
+    s3 = s1;           // Copy Assignment
+
+    return 0;
+}
+
+---
+
+8. Easy Memory Trick
+
+Copy Constructor
+       ↓
+How to COPY the resource?
+
+Copy Assignment
+       ↓
+How to ASSIGN the resource?
+
+Destructor
+       ↓
+How to CLEAN UP the resource?
+
+---
+
+9. Rule of 3 vs Rule of 0
+
+The Rule of 3 is mainly relevant when a class manually manages resources.
+
+Modern C++ often prefers using resource-managing types such as:
+
+std::string
+std::vector
+std::unique_ptr
+
+This can allow the class to follow the Rule of 0, avoiding manually written special member functions.
+
+---
+
+10. Important Points
+
+- Rule of 3 applies especially to resource-owning classes.
+- The three functions are:
+  - Destructor
+  - Copy Constructor
+  - Copy Assignment Operator
+- It helps prevent resource-management problems.
+- It is closely related to shallow copy and deep copy.
+- It is a guideline, not a compiler-enforced rule.
+- Modern C++ often prefers RAII and the Rule of 0 when possible.
+
+---
+
+11. One-Line Definition
+
+«Rule of 3 says that when a resource-managing C++ class needs a custom destructor, copy constructor, or copy assignment operator, it often needs all three.»
