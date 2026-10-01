@@ -2759,3 +2759,108 @@ Example: "virtual void sound()"| Example: "class B : virtual public A"
 One-Line Definition
 
 «Virtual Inheritance allows a common base class to be shared in a multiple-inheritance hierarchy, helping solve the Diamond Problem.»
+
+
+### topic 24
+
+"override" – C++ Notes
+
+1. Definition
+
+"override" is a C++ specifier used in a derived class to indicate that a function is overriding a virtual function from the base class.
+
+It also asks the compiler to check whether the function is actually overriding the base-class function.
+
+---
+
+2. Syntax
+
+return_type function_name(parameters) override {
+    // function body
+}
+
+---
+
+3. Example
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+
+    Dog d;
+    d.sound();
+
+    return 0;
+}
+
+Output
+
+Dog barks
+
+---
+
+4. Why Use "override"?
+
+"override" helps the compiler detect mistakes in the function signature.
+
+Example:
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sounds() override {
+        cout << "Dog barks";
+    }
+};
+
+Here, "sounds()" does not match the base-class function "sound()".
+
+Because we used "override", the compiler gives an error.
+
+---
+
+5. "virtual" vs "override"
+
+"virtual"| "override"
+Usually used in the base class| Used in the derived class
+Declares a virtual function| Confirms that a function is overriding
+Enables runtime polymorphism| Helps compiler check overriding
+Example: "virtual void sound()"| Example: "void sound() override"
+
+---
+
+6. Important Points
+
+- "override" is a specifier, not a function.
+- It is used mainly with inherited virtual functions.
+- It must match a virtual function in the base class.
+- It helps catch spelling and signature mistakes.
+- It makes the programmer's intention clear.
+- It is useful for safer and easier-to-maintain code.
+
+---
+
+7. One-Line Definition
+
+«"override" is a C++ specifier used to explicitly indicate that a derived-class function overrides a virtual function of the base class.»
