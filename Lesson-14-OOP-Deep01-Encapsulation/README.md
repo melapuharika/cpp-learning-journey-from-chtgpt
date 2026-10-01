@@ -2299,3 +2299,149 @@ Helps locate virtual-function information| Helps select the appropriate virtual 
 One-Line Definition
 
 «vptr is a hidden implementation detail commonly used to connect an object to its virtual function table for runtime dispatch.»
+
+
+### topic 21
+
+Multiple Inheritance – Advanced – C++ Notes
+
+1. Definition
+
+Multiple Inheritance means a derived class inherits from two or more base classes.
+
+Father ──┐
+         ├── Child
+Mother ──┘
+
+Syntax
+
+class Child : public Father, public Mother {
+};
+
+---
+
+2. Simple Example
+
+#include <iostream>
+using namespace std;
+
+class Father {
+public:
+    void fatherSkill() {
+        cout << "Father's skill" << endl;
+    }
+};
+
+class Mother {
+public:
+    void motherSkill() {
+        cout << "Mother's skill" << endl;
+    }
+};
+
+class Child : public Father, public Mother {
+public:
+    void childSkill() {
+        cout << "Child's skill" << endl;
+    }
+};
+
+int main() {
+
+    Child c;
+
+    c.fatherSkill();
+    c.motherSkill();
+    c.childSkill();
+
+    return 0;
+}
+
+Output
+
+Father's skill
+Mother's skill
+Child's skill
+
+---
+
+3. Ambiguity in Multiple Inheritance
+
+If two base classes have functions with the same name:
+
+class Father {
+public:
+    void show() {
+        cout << "Father" << endl;
+    }
+};
+
+class Mother {
+public:
+    void show() {
+        cout << "Mother" << endl;
+    }
+};
+
+And:
+
+class Child : public Father, public Mother {
+};
+
+Then:
+
+Child c;
+c.show();
+
+causes ambiguity because C++ does not know which "show()" function should be called.
+
+---
+
+4. Solving Ambiguity
+
+Use the scope resolution operator "::":
+
+c.Father::show();
+
+or:
+
+c.Mother::show();
+
+This tells C++ exactly which base-class function to call.
+
+---
+
+5. Diamond Problem
+
+Multiple inheritance can also create the Diamond Problem.
+
+        A
+       / \
+      B   C
+       \ /
+        D
+
+Here:
+
+- "B" inherits from "A".
+- "C" inherits from "A".
+- "D" inherits from both "B" and "C".
+
+As a result, "D" can receive two copies of "A".
+
+This can cause ambiguity and duplicate base-class data.
+
+---
+
+6. Important Points
+
+- Multiple inheritance allows one class to inherit from multiple base classes.
+- Members from all accessible base classes can be used by the derived class.
+- Same-named members in different base classes can cause ambiguity.
+- Scope resolution "::" can be used to specify the required base class.
+- Multiple inheritance can lead to the Diamond Problem.
+- Virtual inheritance is used to solve the repeated common-base-class problem.
+
+One-Line Definition
+
+«Advanced Multiple Inheritance deals with issues such as ambiguity and repeated base-class members when a class inherits from multiple base classes.»
