@@ -1383,3 +1383,244 @@ This can allow the class to follow the Rule of 0, avoiding manually written spec
 11. One-Line Definition
 
 «Rule of 3 says that when a resource-managing C++ class needs a custom destructor, copy constructor, or copy assignment operator, it often needs all three.»
+
+
+### topic 8
+
+Rule of 5 – C++ Notes
+
+1. Definition
+
+The Rule of 5 is a C++ guideline for classes that manually manage resources such as dynamically allocated memory.
+
+It extends the Rule of 3 by adding two move operations.
+
+The five special member functions are:
+
+1. Destructor
+2. Copy Constructor
+3. Copy Assignment Operator
+4. Move Constructor
+5. Move Assignment Operator
+
+---
+
+2. Five Functions
+
+Rule of 5
+   │
+   ├── Destructor
+   ├── Copy Constructor
+   ├── Copy Assignment Operator
+   ├── Move Constructor
+   └── Move Assignment Operator
+
+---
+
+3. Rule of 3 + Move Operations
+
+Rule of 3
+   +
+Move Constructor
+   +
+Move Assignment Operator
+   =
+Rule of 5
+
+The Rule of 5 is especially important when a class directly manages a resource.
+
+---
+
+4. Copy vs Move
+
+Copy
+
+Copying creates a separate copy of the resource.
+
+Box A → Books
+         ↓ copy
+Box B → Books
+
+Move
+
+Moving transfers the resource from one object to another.
+
+Box A → Books
+         ↓ move
+Box B → Books
+
+Move operations can avoid unnecessary resource copying.
+
+---
+
+5. Copy Constructor
+
+Creates a new object by copying another object.
+
+Student(const Student& other) {
+    age = new int(*other.age);
+}
+
+Usage:
+
+Student s2 = s1;
+
+---
+
+6. Copy Assignment Operator
+
+Copies data into an already existing object.
+
+Student& operator=(const Student& other) {
+    if (this != &other) {
+        int* newAge = new int(*other.age);
+        delete age;
+        age = newAge;
+    }
+
+    return *this;
+}
+
+Usage:
+
+s2 = s1;
+
+---
+
+7. Move Constructor
+
+Creates a new object by transferring the resource from another object.
+
+Student(Student&& other) noexcept {
+    age = other.age;
+    other.age = nullptr;
+}
+
+Usage:
+
+Student s2 = std::move(s1);
+
+---
+
+8. Move Assignment Operator
+
+Transfers a resource to an already existing object.
+
+Student& operator=(Student&& other) noexcept {
+    if (this != &other) {
+        delete age;
+        age = other.age;
+        other.age = nullptr;
+    }
+
+    return *this;
+}
+
+Usage:
+
+s2 = std::move(s1);
+
+---
+
+9. Destructor
+
+Releases the resource when the object is destroyed.
+
+~Student() {
+    delete age;
+}
+
+---
+
+10. Complete Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+    int* age;
+
+public:
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    // Copy Constructor
+    Student(const Student& other) {
+        age = new int(*other.age);
+    }
+
+    // Copy Assignment Operator
+    Student& operator=(const Student& other) {
+        if (this != &other) {
+            int* newAge = new int(*other.age);
+            delete age;
+            age = newAge;
+        }
+
+        return *this;
+    }
+
+    // Move Constructor
+    Student(Student&& other) noexcept {
+        age = other.age;
+        other.age = nullptr;
+    }
+
+    // Move Assignment Operator
+    Student& operator=(Student&& other) noexcept {
+        if (this != &other) {
+            delete age;
+            age = other.age;
+            other.age = nullptr;
+        }
+
+        return *this;
+    }
+
+    // Destructor
+    ~Student() {
+        delete age;
+    }
+};
+
+---
+
+11. Quick Identification
+
+Student s2 = s1;
+
+→ Copy Constructor
+
+s2 = s1;
+
+→ Copy Assignment Operator
+
+Student s2 = std::move(s1);
+
+→ Move Constructor
+
+s2 = std::move(s1);
+
+→ Move Assignment Operator
+
+---
+
+12. Important Points
+
+- Rule of 5 extends the Rule of 3.
+- It contains five special member functions.
+- Copy operations duplicate resources.
+- Move operations transfer resources.
+- Move operations can improve performance by avoiding unnecessary copies.
+- "std::move()" enables move semantics; it does not itself perform the resource transfer.
+- "noexcept" is commonly used with move operations.
+- Rule of 5 is mainly relevant to resource-managing classes.
+- We do not always need to manually write all five functions.
+
+---
+
+13. One-Line Definition
+
+«Rule of 5 says that a resource-managing C++ class may need five special member functions: destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator.»
