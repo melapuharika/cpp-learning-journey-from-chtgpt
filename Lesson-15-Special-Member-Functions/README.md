@@ -1,1 +1,272 @@
+Lesson 15 – Special Member Functions & Object Management
 
+Topics
+
+1. Special Member Functions
+2. Copy Constructor
+3. Assignment Operator
+4. Move Constructor
+5. Move Assignment Operator
+6. Destructor
+7. Rule of 3
+8. Rule of 5
+9. Rule of 0
+10. Shallow Copy
+11. Deep Copy
+12. Object Lifetime
+13. Temporary Objects
+14. Anonymous Objects
+
+---
+
+1. Special Member Functions
+
+Special member functions are functions that the compiler can automatically provide for a class.
+
+Main special member functions include:
+
+- Default Constructor
+- Destructor
+- Copy Constructor
+- Copy Assignment Operator
+- Move Constructor
+- Move Assignment Operator
+
+---
+
+2. Copy Constructor
+
+A copy constructor creates a new object by copying an existing object.
+
+Syntax
+
+ClassName(const ClassName& other);
+
+Example
+
+class Student {
+public:
+    int age;
+
+    Student(int a) {
+        age = a;
+    }
+
+    Student(const Student& other) {
+        age = other.age;
+    }
+};
+
+---
+
+3. Assignment Operator
+
+The assignment operator "=" copies the value from an existing object into an already existing object.
+
+Student s1(20);
+Student s2(25);
+
+s2 = s1;
+
+Here, "s2" already exists. Its data is replaced with the data of "s1".
+
+---
+
+4. Move Constructor
+
+A move constructor transfers resources from a temporary or expiring object instead of making a new copy.
+
+Syntax
+
+ClassName(ClassName&& other);
+
+It is useful for efficient resource management.
+
+---
+
+5. Move Assignment Operator
+
+Move assignment transfers resources from one existing object to another existing object.
+
+Syntax
+
+ClassName& operator=(ClassName&& other);
+
+It is different from move construction because the destination object already exists.
+
+---
+
+6. Destructor
+
+A destructor is a special member function that is automatically called when an object is destroyed.
+
+Syntax
+
+~ClassName() {
+    // cleanup
+}
+
+Example
+
+class Student {
+public:
+    ~Student() {
+        cout << "Object destroyed";
+    }
+};
+
+A destructor is commonly used for cleanup of resources owned by an object.
+
+---
+
+7. Rule of 3
+
+The Rule of 3 states that if a class needs to define any one of these three special member functions, it often needs all three:
+
+1. Destructor
+2. Copy Constructor
+3. Copy Assignment Operator
+
+This is especially important when a class manually manages a resource such as dynamically allocated memory.
+
+---
+
+8. Rule of 5
+
+The Rule of 5 extends the Rule of 3 by adding move operations.
+
+The five functions are:
+
+1. Destructor
+2. Copy Constructor
+3. Copy Assignment Operator
+4. Move Constructor
+5. Move Assignment Operator
+
+The Rule of 5 is important for classes that manage resources and want efficient move operations.
+
+---
+
+9. Rule of 0
+
+The Rule of 0 says that if a class does not directly manage resources, it should generally avoid manually defining special member functions.
+
+Instead, use resource-managing standard library types such as:
+
+std::string
+std::vector
+std::unique_ptr
+
+This allows the compiler-generated special member functions to work correctly.
+
+---
+
+10. Shallow Copy
+
+A shallow copy copies the values of data members directly.
+
+If a class contains a pointer, the pointer value itself is copied.
+
+Example:
+
+int* p;
+
+After a shallow copy, two objects may contain pointers pointing to the same memory.
+
+Object 1 → Memory
+Object 2 → Memory
+
+This can cause problems such as:
+
+- Double deletion
+- Unintended modification
+- Dangling pointers
+
+---
+
+11. Deep Copy
+
+A deep copy creates a separate copy of dynamically allocated data.
+
+Object 1 → Memory A
+
+Object 2 → Memory B
+
+The two objects have their own separate resources.
+
+Deep copy is useful when each object must independently own its dynamically allocated data.
+
+---
+
+12. Object Lifetime
+
+Object lifetime is the period during which an object exists.
+
+It begins when the object's initialization is completed and ends when its destruction is completed.
+
+Example:
+
+{
+    Student s;
+    
+} // s is destroyed here
+
+The lifetime of "s" is limited to the scope in which it exists.
+
+---
+
+13. Temporary Objects
+
+A temporary object is an object created for a short period, usually to perform an operation or hold an intermediate result.
+
+Example:
+
+Student s = Student(20);
+
+The temporary "Student(20)" may exist only for a short time.
+
+Modern C++ often eliminates unnecessary temporary objects through copy elision.
+
+---
+
+14. Anonymous Objects
+
+An anonymous object is an object created without giving it a named variable.
+
+Example:
+
+Student(20);
+
+There is no variable name such as "s".
+
+Another example:
+
+Student(20).display();
+
+The object is created and used directly.
+
+---
+
+Quick Revision
+
+Topic| Main Idea
+Special Member Functions| Important automatically generated/member functions
+Copy Constructor| Creates a new object from another object
+Assignment Operator| Copies data into an existing object
+Move Constructor| Transfers resources while creating an object
+Move Assignment| Transfers resources into an existing object
+Destructor| Cleans up when an object is destroyed
+Rule of 3| Destructor + Copy Constructor + Copy Assignment
+Rule of 5| Rule of 3 + Move Constructor + Move Assignment
+Rule of 0| Prefer no manual special member functions when possible
+Shallow Copy| Copies pointer/value directly
+Deep Copy| Creates independent resource copies
+Object Lifetime| Period during which an object exists
+Temporary Object| Short-lived object
+Anonymous Object| Object without a named variable
+
+---
+
+One-Line Summary
+
+«Lesson 15 covers C++ special member functions, copying, moving, resource management, object lifetime, and temporary/anonymous objects.»
