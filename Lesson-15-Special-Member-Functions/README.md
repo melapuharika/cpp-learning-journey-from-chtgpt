@@ -702,3 +702,149 @@ s3 = s2 = s1;
 8. One-Line Definition
 
 «The assignment operator copies or assigns data from one existing object to another existing object.»
+
+
+### topic 4
+
+Move Constructor – C++ Notes
+
+1. Definition
+
+A Move Constructor is a special member function that creates a new object by transferring resources from another object, instead of unnecessarily copying those resources.
+
+«Copy → Duplicate resources
+Move → Transfer resources»
+
+---
+
+2. Syntax
+
+ClassName(ClassName&& other) {
+    // transfer resources
+}
+
+The "&&" represents an rvalue reference.
+
+---
+
+3. Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int* age;
+
+    Student(int value) {
+        age = new int(value);
+    }
+
+    Student(Student&& other) {
+        age = other.age;
+        other.age = nullptr;
+    }
+
+    ~Student() {
+        delete age;
+    }
+};
+
+int main() {
+
+    Student s1(20);
+
+    Student s2 = std::move(s1);
+
+    cout << *s2.age << endl;
+
+    return 0;
+}
+
+Output
+
+20
+
+---
+
+4. How It Works
+
+Initially:
+
+s1 → Memory
+
+When moving:
+
+Student s2 = std::move(s1);
+
+The resource is transferred:
+
+s1 → nullptr
+
+s2 → Memory
+
+The move constructor does:
+
+age = other.age;
+
+The resource address is transferred to "s2".
+
+Then:
+
+other.age = nullptr;
+
+The source object is left without ownership of that resource.
+
+---
+
+5. Why Use a Move Constructor?
+
+Move constructors are useful for improving performance when objects manage resources such as:
+
+- Dynamic memory
+- File handles
+- Large buffers
+- Other owned resources
+
+Instead of allocating and copying a large resource again, ownership can be transferred.
+
+---
+
+6. Copy Constructor vs Move Constructor
+
+Copy Constructor| Move Constructor
+Creates a copy| Transfers resources
+Usually copies the data| Usually transfers ownership
+May require new resource allocation| Can avoid unnecessary allocation
+Commonly uses "const T&"| Commonly uses "T&&"
+Source keeps its own resources| Source may be left in a valid but moved-from state
+
+---
+
+7. "std::move()"
+
+"std::move()" is commonly used to allow an object to be treated as an rvalue so that move operations can be selected.
+
+Example:
+
+Student s2 = std::move(s1);
+
+It does not itself move the resource. It enables move semantics to be used.
+
+---
+
+8. Important Points
+
+- Move constructor is a special member function.
+- It creates a new object.
+- It transfers resources from another object.
+- It commonly takes an rvalue reference ("&&").
+- It can avoid unnecessary copying.
+- The source object remains valid but its exact state after moving is generally not something to rely on unless specified.
+- Move constructors are especially useful for resource-owning classes.
+
+---
+
+9. One-Line Definition
+
+«A move constructor creates a new object by efficiently transferring resources from another object instead of copying them.»
