@@ -1710,3 +1710,84 @@ Remember
 
 - "cout <<" → Output
 - "cin >>" → Input
+
+
+### topic 12
+
+Friend Operators
+
+Definition
+
+A Friend Operator is an operator function declared as a "friend" inside a class.
+
+It is not a member function of the class, but it can access the class's private and protected members.
+
+Syntax
+
+class ClassName
+{
+private:
+    int value;
+
+public:
+    friend ClassName operator+(ClassName obj1, ClassName obj2);
+};
+
+Example
+
+#include <iostream>
+using namespace std;
+
+class Number
+{
+private:
+    int value;
+
+public:
+    Number(int v)
+    {
+        value = v;
+    }
+
+    friend Number operator+(Number n1, Number n2);
+};
+
+Number operator+(Number n1, Number n2)
+{
+    Number result(0);
+
+    result.value = n1.value + n2.value;
+
+    return result;
+}
+
+int main()
+{
+    Number a(10);
+    Number b(20);
+
+    Number c = a + b;
+
+    return 0;
+}
+
+How It Works
+
+friend Number operator+(Number n1, Number n2);
+
+- "friend" → gives permission to access private/protected members.
+- "operator+" → overloaded "+" operator function.
+- "n1", "n2" → objects passed to the function.
+- The function can access "value" even though "value" is private.
+
+Important Points
+
+1. A friend operator is not a member function.
+2. It is declared inside the class using the "friend" keyword.
+3. It can access private and protected members.
+4. It is defined outside the class like a normal function.
+5. Friend operators are commonly used for operator overloading.
+
+Remember
+
+Friend Operator = Non-member operator function + Access to private/protected members
