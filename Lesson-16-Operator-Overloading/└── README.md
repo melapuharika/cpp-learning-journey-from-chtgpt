@@ -401,3 +401,151 @@ a * b
 11. One-Line Definition
 
 «A Unary Operator is an operator that works on only one operand.»
+
+
+### topic 3
+
+Binary Operators – C++ Notes
+
+1. Definition
+
+A Binary Operator is an operator that works on two operands.
+
+Binary = 2
+
+Example:
+
+a + b
+
+Here:
+
+- "a" → First operand
+- "+" → Operator
+- "b" → Second operand
+
+---
+
+2. Common Binary Operators
+
++     Addition
+-     Subtraction
+*     Multiplication
+/     Division
+%     Modulus
+==    Equal to
+!=    Not equal to
+>     Greater than
+<     Less than
+>=    Greater than or equal to
+<=    Less than or equal to
+
+---
+
+3. Examples
+
+a + b;
+a - b;
+a * b;
+a / b;
+a == b;
+a > b;
+
+All these operators work with two operands, so they are binary operators.
+
+---
+
+4. Binary Operator Overloading
+
+In C++, we can overload binary operators to define how they should work with class objects.
+
+Example:
+
+class Number {
+public:
+    int value;
+
+    Number(int v) {
+        value = v;
+    }
+
+    Number operator+(Number n) {
+        Number temp(0);
+        temp.value = value + n.value;
+        return temp;
+    }
+};
+
+Usage:
+
+Number n1(10);
+Number n2(20);
+
+Number n3 = n1 + n2;
+
+Output:
+
+30
+
+---
+
+5. How It Works
+
+When we write:
+
+n1 + n2
+
+It can be understood as:
+
+n1.operator+(n2);
+
+Here:
+
+- "n1" → First object
+- "+" → Binary operator
+- "n2" → Second object
+
+The "operator+()" function performs the addition.
+
+---
+
+6. Unary vs Binary
+
+Unary Operator| Binary Operator
+Works on 1 operand| Works on 2 operands
+"-a"| "a + b"
+"++a"| "a - b"
+"!a"| "a * b"
+
+---
+
+7. Real-Life Example
+
+Suppose:
+
+Student 1 marks = 50
+Student 2 marks = 30
+
+We can add them:
+
+50 + 30
+
+Result:
+
+80
+
+The "+" operator works on two values, so it is a binary operator.
+
+---
+
+8. Important Points
+
+- Binary means two operands.
+- Binary operators work on two values or objects.
+- "+", "-", "*", "/", "%" are common binary operators.
+- Comparison operators such as "==", "!=", "<", and ">" are also binary operators.
+- Binary operators can be overloaded for class objects.
+- "operator+()" can define how "+" works between objects.
+
+One-line Definition
+
+A binary operator is an operator that works on two operands, and operator overloading allows us to define its behavior for class objects.
