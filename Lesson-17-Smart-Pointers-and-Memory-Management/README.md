@@ -201,3 +201,111 @@ Key Points
 Remember
 
 "unique_ptr" = Single Ownership + Automatic Memory Management
+
+
+### topic 3
+
+"shared_ptr"
+
+Definition
+
+"shared_ptr" is a smart pointer in C++ that allows multiple pointers to share ownership of the same dynamically allocated object.
+
+It is available in the "<memory>" header.
+
+#include <memory>
+
+Syntax
+
+shared_ptr<Type> pointer;
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    shared_ptr<int> ptr1 = make_shared<int>(10);
+
+    shared_ptr<int> ptr2 = ptr1;
+
+    cout << *ptr1 << endl;
+    cout << *ptr2 << endl;
+
+    return 0;
+}
+
+Output
+
+10
+10
+
+Here, "ptr1" and "ptr2" share ownership of the same object.
+
+Reference Counting
+
+"shared_ptr" maintains a reference count to keep track of how many "shared_ptr" objects own the same object.
+
+One Owner
+
+shared_ptr<int> ptr1 = make_shared<int>(10);
+
+Reference count:
+
+1
+
+Two Owners
+
+shared_ptr<int> ptr2 = ptr1;
+
+Reference count:
+
+2
+
+Now both "ptr1" and "ptr2" own the same object.
+
+"use_count()"
+
+We can check the number of owners using "use_count()".
+
+cout << ptr1.use_count();
+
+Example:
+
+shared_ptr<int> ptr1 = make_shared<int>(10);
+
+shared_ptr<int> ptr2 = ptr1;
+
+cout << ptr1.use_count();
+
+Output:
+
+2
+
+Automatic Memory Management
+
+When a "shared_ptr" is destroyed, the reference count decreases.
+
+When the reference count becomes 0, the managed object is automatically destroyed and its memory is released.
+
+Advantages
+
+- Allows multiple owners
+- Uses reference counting
+- Automatically manages memory
+- Reduces the need for manual "delete"
+- Helps prevent many memory-management errors
+
+Difference from "unique_ptr"
+
+"unique_ptr"| "shared_ptr"
+Single owner| Multiple owners
+Cannot be copied| Can be copied
+Ownership can be moved| Ownership can be shared
+No reference counting| Uses reference counting
+
+Key Point
+
+"shared_ptr" = Multiple Ownership + Reference Counting + Automatic Memory Management
