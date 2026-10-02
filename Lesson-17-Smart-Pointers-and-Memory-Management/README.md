@@ -576,3 +576,94 @@ Important Point
 Remember
 
 "make_unique()" → Creates "unique_ptr" → Single ownership → Automatic memory management
+
+### topic 7
+
+"make_shared"
+
+Definition
+
+"make_shared()" is a C++ function used to create a "shared_ptr" and dynamically allocate an object.
+
+It is available in the "<memory>" header.
+
+#include <memory>
+
+Syntax
+
+auto ptr = make_shared<Type>(value);
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    auto ptr = make_shared<int>(10);
+
+    cout << *ptr;
+
+    return 0;
+}
+
+Output
+
+10
+
+How It Works
+
+auto ptr = make_shared<int>(10);
+
+- "make_shared<int>" → dynamically creates an "int" object.
+- "10" → value stored in the object.
+- "ptr" → "shared_ptr<int>" that manages the object.
+- "auto" → automatically determines the type as "shared_ptr<int>".
+
+Sharing Ownership
+
+Multiple "shared_ptr"s can share the same object.
+
+auto ptr1 = make_shared<int>(10);
+
+auto ptr2 = ptr1;
+
+Here:
+
+ptr1 → owns object
+ptr2 → shares ownership
+
+The "shared_ptr" uses reference counting to manage the shared ownership.
+
+Without "make_shared()"
+
+We can create a "shared_ptr" using "new":
+
+shared_ptr<int> ptr(new int(10));
+
+Modern C++ generally prefers:
+
+auto ptr = make_shared<int>(10);
+
+because it is simpler and avoids directly using "new".
+
+Advantages
+
+- Creates "shared_ptr" easily.
+- Supports shared ownership.
+- Provides automatic memory management.
+- Avoids direct use of "new".
+- Makes code simpler and safer.
+
+Difference
+
+"make_unique()"| "make_shared()"
+Creates "unique_ptr"| Creates "shared_ptr"
+Single ownership| Shared ownership
+No shared ownership| Multiple owners
+No reference counting| Uses reference counting
+
+Key Point
+
+"make_shared()" → Creates "shared_ptr" → Shared ownership → Automatic memory management
