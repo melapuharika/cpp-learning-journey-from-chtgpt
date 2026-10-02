@@ -902,3 +902,354 @@ Since "50" is greater than or equal to "40", the result is "true".
 One-line Definition
 
 Comparison operators are used to compare two values and produce a Boolean result ("true" or "false").
+
+
+### topic 6
+
+Assignment Operators – C++ Notes
+
+1. Definition
+
+Assignment Operators are used to assign a value to a variable or update its existing value.
+
+The basic assignment operator is:
+
+=
+
+Example:
+
+int age = 20;
+
+Here, "20" is assigned to "age".
+
+---
+
+2. Main Assignment Operators
+
+Operator| Meaning| Example| Same As
+"="| Assignment| "a = 10"| —
+"+="| Add and assign| "a += 5"| "a = a + 5"
+"-="| Subtract and assign| "a -= 5"| "a = a - 5"
+"*="| Multiply and assign| "a *= 5"| "a = a * 5"
+"/="| Divide and assign| "a /= 5"| "a = a / 5"
+"%="| Modulus and assign| "a %= 5"| "a = a % 5"
+
+---
+
+3. Assignment "="
+
+Used to assign a value to a variable.
+
+int a = 10;
+
+Meaning:
+
+«Store "10" in "a".»
+
+---
+
+4. Add and Assign "+="
+
+int a = 10;
+
+a += 5;
+
+Same as:
+
+a = a + 5;
+
+Result:
+
+15
+
+---
+
+5. Subtract and Assign "-="
+
+int a = 10;
+
+a -= 3;
+
+Same as:
+
+a = a - 3;
+
+Result:
+
+7
+
+---
+
+6. Multiply and Assign "*="
+
+int a = 10;
+
+a *= 2;
+
+Same as:
+
+a = a * 2;
+
+Result:
+
+20
+
+---
+
+7. Divide and Assign "/="
+
+int a = 20;
+
+a /= 5;
+
+Same as:
+
+a = a / 5;
+
+Result:
+
+4
+
+---
+
+8. Modulus and Assign "%="
+
+int a = 10;
+
+a %= 3;
+
+Same as:
+
+a = a % 3;
+
+Since "10 % 3 = 1":
+
+a = 1
+
+---
+
+9. Real-Life Example
+
+Suppose you have ₹500 in your wallet.
+
+int money = 500;
+
+You spend ₹100:
+
+money -= 100;
+
+This is the same as:
+
+money = money - 100;
+
+Now:
+
+money = ₹400
+
+---
+
+10. Assignment Operator Overloading
+
+The assignment operator can also be overloaded for class objects.
+
+Example:
+
+Student s1;
+Student s2;
+
+s1 = s2;
+
+An "operator=" function can define how values or resources should be assigned from one object to another.
+
+---
+
+11. Important Points
+
+- Assignment operators assign values to variables.
+- "=" is the basic assignment operator.
+- "+=" adds and assigns.
+- "-=" subtracts and assigns.
+- "*=" multiplies and assigns.
+- "/=" divides and assigns.
+- "%=" finds the remainder and assigns.
+- Assignment operators can also be overloaded for class objects.
+
+One-line Definition
+
+Assignment operators are used to assign or update values stored in variables.
+
+
+### topic 6
+
+Increment and Decrement Operators – C++ Notes
+
+1. Definition
+
+Increment and Decrement Operators are used to increase or decrease a variable's value by 1.
+
+- "++" → Increment operator
+- "--" → Decrement operator
+
+2. Increment Operator "++"
+
+The increment operator increases a variable's value by 1.
+
+Example:
+
+int a = 10;
+a++;
+cout << a;
+
+Output:
+
+11
+
+Both "a++" and "++a" can increase the value of "a" by 1.
+
+3. Decrement Operator "--"
+
+The decrement operator decreases a variable's value by 1.
+
+Example:
+
+int a = 10;
+a--;
+cout << a;
+
+Output:
+
+9
+
+Both "a--" and "--a" can decrease the value of "a" by 1.
+
+4. Prefix Increment "++a"
+
+In prefix increment, the variable is increased first, and then its new value is used.
+
+Example:
+
+int a = 10;
+int b = ++a;
+
+cout << a << endl;
+cout << b;
+
+Output:
+
+11
+11
+
+Explanation:
+
+- Initially, "a = 10".
+- "++a" increases "a" to "11".
+- The new value "11" is assigned to "b".
+
+5. Postfix Increment "a++"
+
+In postfix increment, the old value is used first, and then the variable is increased.
+
+Example:
+
+int a = 10;
+int b = a++;
+
+cout << a << endl;
+cout << b;
+
+Output:
+
+11
+10
+
+Explanation:
+
+- Initially, "a = 10".
+- The old value "10" is assigned to "b".
+- Then "a" is increased to "11".
+
+6. Prefix Decrement "--a"
+
+In prefix decrement, the variable is decreased first, and then its new value is used.
+
+int a = 10;
+int b = --a;
+
+Result:
+
+a = 9
+b = 9
+
+7. Postfix Decrement "a--"
+
+In postfix decrement, the old value is used first, and then the variable is decreased.
+
+int a = 10;
+int b = a--;
+
+Result:
+
+a = 9
+b = 10
+
+8. Prefix vs Postfix
+
+Prefix| Postfix
+Operator comes before the variable| Operator comes after the variable
+Changes the value before using it| Uses the old value before changing it
+Example: "++a"| Example: "a++"
+Example: "--a"| Example: "a--"
+
+9. Real-Life Example
+
+In a game, suppose a player has 10 points.
+
+int score = 10;
+score++;
+
+The score becomes "11".
+
+If the player has 3 lives and loses one life:
+
+int lives = 3;
+lives--;
+
+The number of lives becomes "2".
+
+10. Increment and Decrement Operator Overloading
+
+Increment and decrement operators can be overloaded to work with class objects.
+
+Example:
+
+class Number {
+public:
+    int value;
+
+    Number(int v) {
+        value = v;
+    }
+
+    Number operator++() {
+        ++value;
+        return *this;
+    }
+};
+
+Here, "operator++()" defines how prefix increment works for a "Number" object.
+
+11. Important Points
+
+- "++" increases a value by 1.
+- "--" decreases a value by 1.
+- Prefix increment: "++a".
+- Postfix increment: "a++".
+- Prefix decrement: "--a".
+- Postfix decrement: "a--".
+- Prefix uses the updated value.
+- Postfix uses the old value before updating.
+- Increment and decrement operators can be overloaded for class objects.
+
+One-Line Definition
+
+Increment and decrement operators are unary operators used to increase or decrease a variable's value by 1.
