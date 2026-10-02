@@ -753,3 +753,90 @@ RAII             → Automatic resource management
 Key Point
 
 Smart Pointers = Ownership + Automatic Memory Management + RAII
+
+
+### topic 9
+
+Ownership
+
+Definition
+
+Ownership means knowing who is responsible for managing a dynamically allocated object or memory.
+
+The owner is responsible for managing the lifetime of the object.
+
+"unique_ptr" — Single Ownership
+
+"unique_ptr" provides single ownership.
+
+auto p = make_unique<int>(10);
+
+Here, "p" is the only owner of the object.
+
+p → Object
+
+When "p" is destroyed, the object is also destroyed.
+
+"shared_ptr" — Shared Ownership
+
+"shared_ptr" allows multiple owners.
+
+auto p1 = make_shared<int>(10);
+auto p2 = p1;
+
+Both "p1" and "p2" share ownership of the same object.
+
+p1 ──┐
+     ├──> Object
+p2 ──┘
+
+The object is destroyed when the last owning "shared_ptr" is destroyed.
+
+"weak_ptr" — No Ownership
+
+"weak_ptr" provides a non-owning reference.
+
+auto p = make_shared<int>(10);
+weak_ptr<int> w = p;
+
+Here:
+
+- "p" → owns the object
+- "w" → observes the object but does not own it
+
+p ──> Object
+w - - > Object
+
+Ownership Transfer
+
+"unique_ptr" ownership can be transferred using "std::move()".
+
+auto p1 = make_unique<int>(10);
+
+auto p2 = move(p1);
+
+After the transfer:
+
+p1 → No longer owns the object
+p2 → Owns the object
+
+Ownership Comparison
+
+Smart Pointer| Ownership
+"unique_ptr"| Single ownership
+"shared_ptr"| Shared ownership
+"weak_ptr"| No ownership
+
+Important Points
+
+- Ownership determines who manages an object's lifetime.
+- "unique_ptr" has one owner.
+- "shared_ptr" can have multiple owners.
+- "weak_ptr" does not own the object.
+- "unique_ptr" ownership can be transferred using "move()".
+
+Remember
+
+unique_ptr → One owner
+shared_ptr → Multiple owners
+weak_ptr   → Non-owner
