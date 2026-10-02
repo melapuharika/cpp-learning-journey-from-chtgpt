@@ -707,3 +707,198 @@ Result:
 One-line Definition
 
 Arithmetic operators are operators used to perform mathematical calculations such as addition, subtraction, multiplication, division, and finding the remainder.
+
+
+### topic 5
+
+Comparison Operators – C++ Notes
+
+1. Definition
+
+Comparison Operators are used to compare two values.
+
+They usually produce a Boolean result:
+
+true  →  1
+false →  0
+
+---
+
+2. Main Comparison Operators
+
+Operator| Meaning| Example| Result
+"=="| Equal to| "10 == 10"| "true"
+"!="| Not equal to| "10 != 5"| "true"
+">"| Greater than| "10 > 5"| "true"
+"<"| Less than| "5 < 10"| "true"
+">="| Greater than or equal to| "10 >= 10"| "true"
+"<="| Less than or equal to| "5 <= 10"| "true"
+
+---
+
+3. Equal to "=="
+
+Checks whether two values are equal.
+
+int a = 10;
+int b = 10;
+
+cout << (a == b);
+
+Output:
+
+1
+
+Because both values are equal.
+
+---
+
+4. Not Equal to "!="
+
+Checks whether two values are different.
+
+int a = 10;
+int b = 5;
+
+cout << (a != b);
+
+Output:
+
+1
+
+---
+
+5. Greater Than ">"
+
+Checks whether the first value is greater than the second value.
+
+10 > 5
+
+Result:
+
+true
+
+---
+
+6. Less Than "<"
+
+Checks whether the first value is smaller than the second value.
+
+5 < 10
+
+Result:
+
+true
+
+---
+
+7. Greater Than or Equal to ">="
+
+Checks whether a value is either greater than or equal to another value.
+
+10 >= 10
+
+Result:
+
+true
+
+---
+
+8. Less Than or Equal to "<="
+
+Checks whether a value is either smaller than or equal to another value.
+
+5 <= 10
+
+Result:
+
+true
+
+---
+
+9. Example
+
+int marks = 50;
+
+cout << (marks >= 40);
+
+Output:
+
+1
+
+Because:
+
+50 >= 40
+
+is true.
+
+---
+
+10. Difference Between "=" and "=="
+
+"=" Assignment Operator
+
+Used to assign a value.
+
+int age;
+age = 20;
+
+Meaning:
+
+«Store "20" in "age".»
+
+"==" Comparison Operator
+
+Used to compare two values.
+
+age == 20;
+
+Meaning:
+
+«Is "age" equal to "20"?»
+
+---
+
+11. Comparison Operator Overloading
+
+Comparison operators can be overloaded to work with class objects.
+
+Example:
+
+Student s1;
+Student s2;
+
+s1 == s2;
+
+We can define an "operator==()" function to decide whether two "Student" objects are equal.
+
+---
+
+12. Real-Life Example
+
+Suppose the pass mark is "40".
+
+int marks = 50;
+
+cout << (marks >= 40);
+
+Since "50" is greater than or equal to "40", the result is "true".
+
+---
+
+13. Important Points
+
+- Comparison operators compare two values.
+- They generally return a Boolean result.
+- "==" checks equality.
+- "!=" checks inequality.
+- ">" checks greater than.
+- "<" checks less than.
+- ">=" checks greater than or equal to.
+- "<=" checks less than or equal to.
+- "=" and "==" have different purposes.
+- Comparison operators can be overloaded for class objects.
+
+One-line Definition
+
+Comparison operators are used to compare two values and produce a Boolean result ("true" or "false").
