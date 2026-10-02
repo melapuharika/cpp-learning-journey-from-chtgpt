@@ -399,3 +399,108 @@ Uses shared ownership| Provides non-owning access
 Key Point
 
 "weak_ptr" = Non-owning reference to an object managed by "shared_ptr".
+
+### topic 5
+
+Functions with Smart Pointers
+
+Definition
+
+A function is a reusable block of code that performs a specific task.
+
+Smart pointers can be passed to functions as arguments.
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+void display(shared_ptr<int> ptr)
+{
+    cout << *ptr;
+}
+
+int main()
+{
+    shared_ptr<int> p = make_shared<int>(10);
+
+    display(p);
+
+    return 0;
+}
+
+Output
+
+10
+
+Here, the "shared_ptr" "p" is passed to the "display()" function.
+
+"shared_ptr" with Functions
+
+A "shared_ptr" can be passed to a function because it supports shared ownership.
+
+void display(shared_ptr<int> ptr)
+{
+    cout << *ptr;
+}
+
+When passed by value, another "shared_ptr" owner is created temporarily, increasing the reference count.
+
+"unique_ptr" with Functions
+
+A "unique_ptr" cannot be copied.
+
+If ownership needs to be transferred to a function, use "std::move()".
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+void display(unique_ptr<int> ptr)
+{
+    cout << *ptr;
+}
+
+int main()
+{
+    unique_ptr<int> p = make_unique<int>(10);
+
+    display(move(p));
+
+    return 0;
+}
+
+Here, ownership of the object is transferred from "p" to the function.
+
+After:
+
+move(p);
+
+"p" no longer owns the object.
+
+"weak_ptr" with Functions
+
+A "weak_ptr" does not own the object.
+
+To safely access the object, use "lock()" to obtain a temporary "shared_ptr".
+
+void display(weak_ptr<int> weak)
+{
+    if (auto ptr = weak.lock())
+    {
+        cout << *ptr;
+    }
+}
+
+Important Points
+
+- Smart pointers can be passed to functions.
+- "shared_ptr" supports shared ownership.
+- "unique_ptr" cannot be copied.
+- "unique_ptr" ownership can be transferred using "move()".
+- "weak_ptr" can be accessed using "lock()".
+
+Key Point
+
+Smart pointers can be used with functions, but the way they are passed depends on their ownership model.
