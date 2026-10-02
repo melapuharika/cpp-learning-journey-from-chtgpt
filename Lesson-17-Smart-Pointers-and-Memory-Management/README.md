@@ -504,3 +504,75 @@ Important Points
 Key Point
 
 Smart pointers can be used with functions, but the way they are passed depends on their ownership model.
+
+### topic 6
+
+"make_unique"
+
+Definition
+
+"make_unique()" is a C++ function used to create a "unique_ptr" and dynamically allocate an object.
+
+It is available in the "<memory>" header.
+
+#include <memory>
+
+Syntax
+
+auto ptr = make_unique<Type>(value);
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    auto ptr = make_unique<int>(10);
+
+    cout << *ptr;
+
+    return 0;
+}
+
+Output
+
+10
+
+How It Works
+
+auto ptr = make_unique<int>(10);
+
+- "make_unique<int>" → dynamically creates an "int" object.
+- "10" → value stored in the object.
+- "ptr" → "unique_ptr" that owns the object.
+- "auto" → automatically determines the type as "unique_ptr<int>".
+
+Without "make_unique()"
+
+We can create a "unique_ptr" using "new":
+
+unique_ptr<int> ptr(new int(10));
+
+But modern C++ prefers:
+
+auto ptr = make_unique<int>(10);
+
+because it is simpler and avoids directly using "new".
+
+Advantages
+
+- Creates "unique_ptr" easily.
+- Supports automatic memory management.
+- Avoids direct use of "new".
+- Makes code simpler and safer.
+- Commonly used in modern C++.
+
+Important Point
+
+"make_unique()" creates a "unique_ptr", not a "shared_ptr".
+
+Remember
+
+"make_unique()" → Creates "unique_ptr" → Single ownership → Automatic memory management
