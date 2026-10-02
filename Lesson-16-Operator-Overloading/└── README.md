@@ -1791,3 +1791,129 @@ Important Points
 Remember
 
 Friend Operator = Non-member operator function + Access to private/protected members
+
+
+### topic 13
+
+Member vs Non-Member Operator
+
+In C++, an overloaded operator function can be written in two ways:
+
+1. Member Operator
+2. Non-Member Operator
+
+---
+
+1. Member Operator
+
+A Member Operator is an operator function defined as a member function inside a class.
+
+Example
+
+class Number
+{
+public:
+    Number operator+(Number n)
+    {
+        // code
+    }
+};
+
+Here, "operator+()" is a member of the "Number" class.
+
+When we write:
+
+a + b;
+
+It works approximately as:
+
+a.operator+(b);
+
+The left-side object calls the member operator function.
+
+---
+
+2. Non-Member Operator
+
+A Non-Member Operator is an operator function that is not a member of the class.
+
+It is usually defined outside the class.
+
+Example
+
+class Number
+{
+public:
+    int value;
+};
+
+Number operator+(Number a, Number b)
+{
+    Number result;
+
+    result.value = a.value + b.value;
+
+    return result;
+}
+
+Here, "operator+()" is not a member of the "Number" class.
+
+When we write:
+
+a + b;
+
+It works approximately as:
+
+operator+(a, b);
+
+---
+
+Friend Non-Member Operator
+
+A non-member operator can be declared as a "friend" if it needs access to private or protected members.
+
+class Number
+{
+private:
+    int value;
+
+public:
+    friend Number operator+(Number a, Number b);
+};
+
+Important:
+
+Every non-member operator is NOT automatically a friend.
+
+"friend" is needed only when the non-member function needs access to private/protected members.
+
+---
+
+Difference Between Member and Non-Member Operator
+
+Member Operator| Non-Member Operator
+Member function of the class| Not a member of the class
+Defined inside the class| Usually defined outside the class
+Left operand calls the function| Operands are passed as arguments
+"a.operator+(b)"| "operator+(a, b)"
+"friend" is not required| Can be declared "friend" if needed
+
+Easy Way to Remember
+
+Member:
+
+a + b;
+
+→ "a.operator+(b);"
+
+Non-Member:
+
+a + b;
+
+→ "operator+(a, b);"
+
+Key Point
+
+Member operator = operator function belongs to the class.
+
+Non-member operator = operator function does not belong to the class.
