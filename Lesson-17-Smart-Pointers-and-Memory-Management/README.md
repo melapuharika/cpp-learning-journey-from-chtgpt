@@ -667,3 +667,89 @@ No reference counting| Uses reference counting
 Key Point
 
 "make_shared()" → Creates "shared_ptr" → Shared ownership → Automatic memory management
+
+
+### topic 8
+
+Smart Pointer Concepts
+
+Smart pointers ni understand cheskovadaniki konni important concepts telusukovali.
+
+1. Ownership
+
+Ownership ante oka object or memory ni evaru manage chestunnaru ani meaning.
+
+- "unique_ptr" → One owner
+- "shared_ptr" → Multiple owners
+- "weak_ptr" → Does not own
+
+2. Reference Counting
+
+"shared_ptr" oka object ni entha mandi "shared_ptr"s own chestunnayo track cheyyadaniki reference count use chestundi.
+
+auto p1 = make_shared<int>(10);
+auto p2 = p1;
+
+Ippudu reference count:
+
+2
+
+3. Automatic Memory Management
+
+Smart pointers memory ni automatically manage chestayi.
+
+Object ki ownership unna smart pointer scope nundi bayataki vellinappudu, appropriate conditions lo memory automatically release avtundi.
+
+Manual memory management lo:
+
+delete ptr;
+
+use cheyyali.
+
+Smart pointers valla manual "delete" requirement chala varaku avoid cheyyachu.
+
+4. RAII
+
+RAII stands for:
+
+Resource Acquisition Is Initialization
+
+RAII principle prakaram, resource object lifetime tho tied ga untundi.
+
+- Object create → Resource acquire
+- Object destroy → Resource release
+
+Smart pointers RAII principle ni use chestayi.
+
+5. Cyclic Reference
+
+Two objects "shared_ptr" tho okadanini okati own cheskunte cyclic reference create avvachu.
+
+Object A → Object B
+Object B → Object A
+
+Reference count "0" ki raakapovachu, so memory release avvakapovachu.
+
+"weak_ptr" use cheyyadam cyclic ownership ni avoid cheyyadaniki help chestundi.
+
+6. Memory Management
+
+Memory management ante memory ni properly:
+
+1. Allocate cheyyadam
+2. Use cheyyadam
+3. Deallocate cheyyadam
+
+Smart pointers memory management ni safer and easier ga cheyyadaniki help chestayi.
+
+Quick Summary
+
+Ownership        → Evaru memory ni manage chestunnaru?
+Reference Count  → Entha mandi owners unnaru?
+weak_ptr         → Non-owning reference
+Cyclic Reference → Circular ownership
+RAII             → Automatic resource management
+
+Key Point
+
+Smart Pointers = Ownership + Automatic Memory Management + RAII
