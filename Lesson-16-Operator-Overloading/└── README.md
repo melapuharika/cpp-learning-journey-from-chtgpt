@@ -1585,3 +1585,58 @@ Similarly, an object can be designed to behave like an array using "operator[]".
 One-Line Definition
 
 The subscript operator "[]" is used to access elements by index, and operator overloading allows a class object to behave like an array.
+
+### topic 10
+
+Insertion Operator ("<<")
+
+Definition
+
+The "<<" operator is called the Insertion Operator in C++.
+
+It is mainly used with "cout" to send data to the output screen.
+
+Syntax
+
+cout << data;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello World";
+    return 0;
+}
+
+Output
+
+Hello World
+
+How It Works
+
+cout << "Hello World";
+
+- "cout" → output stream
+- "<<" → sends/inserts data into the output stream
+- ""Hello World"" → data to be displayed
+
+So, "<<" means send the data to "cout" for display.
+
+Multiple Values
+
+We can use "<<" multiple times in one statement.
+
+int age = 20;
+
+cout << "Age: " << age;
+
+Output
+
+Age: 20
+
+Key Point
+
+"cout << data;" → displays data on the screen.
