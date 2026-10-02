@@ -927,3 +927,78 @@ Important Points
 Key Point
 
 Reference Counting = Tracking the number of "shared_ptr" owners of an object.
+
+
+### topic 11
+
+Cyclic Reference
+
+Definition
+
+A Cyclic Reference occurs when two or more objects hold "shared_ptr" references to each other, creating a cycle.
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+class Node {
+public:
+    shared_ptr<Node> next;
+
+    ~Node() {
+        cout << "Node destroyed" << endl;
+    }
+};
+
+int main() {
+    auto a = make_shared<Node>();
+    auto b = make_shared<Node>();
+
+    a->next = b;
+    b->next = a;
+}
+
+How the Cycle Happens
+
+A → B
+↑   ↓
+└───┘
+
+- "A" has a "shared_ptr" to "B".
+- "B" has a "shared_ptr" to "A".
+- Both objects keep each other alive.
+- Their reference counts never become "0".
+- Therefore, the objects may not be destroyed.
+
+Problem
+
+Cyclic references can cause a memory leak because the memory remains allocated even when the external "shared_ptr"s are destroyed.
+
+Solution
+
+Use "weak_ptr" for one side of the relationship.
+
+class Node {
+public:
+    shared_ptr<Node> next;
+    weak_ptr<Node> previous;
+};
+
+"weak_ptr" does not increase the reference count, so it can break the cycle.
+
+Key Points
+
+- Cyclic Reference means references form a cycle.
+- It commonly happens with "shared_ptr".
+- A cycle can cause a memory leak.
+- "weak_ptr" can be used to break the cycle.
+- "shared_ptr" owns the object.
+- "weak_ptr" observes the object without owning it.
+
+Remember
+
+shared_ptr + shared_ptr → Cyclic Reference → Memory Leak
+
+shared_ptr + weak_ptr → Cycle can be broken
