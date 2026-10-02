@@ -15,3 +15,211 @@
 11. `<<` and `>>` Operators
 12. Friend Operators
 13. Member vs Non-Member Operators
+
+
+### topic 1
+
+Operator Overloading – C++ Notes
+
+1. Definition
+
+Operator Overloading means giving a special meaning to an existing operator when it is used with objects of a class.
+
+«It allows operators such as "+", "-", "==", "<", etc. to work with user-defined objects.»
+
+---
+
+2. What is an Operator?
+
+An operator is a symbol that performs an operation.
+
+Examples:
+
++
+-
+*
+/
+==
+<
+>
+=
+
+Example:
+
+int a = 10;
+int b = 20;
+
+cout << a + b;
+
+Here, "+" is an operator.
+
+---
+
+3. Why Operator Overloading?
+
+Normally, C++ knows how to use operators with built-in data types such as:
+
+int
+float
+double
+
+But C++ does not automatically know what something like this should mean:
+
+Student s3 = s1 + s2;
+
+So, we can define what "+" should do for "Student" objects.
+
+---
+
+4. Example
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int marks;
+
+    Student operator+(Student s) {
+        Student temp;
+        temp.marks = marks + s.marks;
+        return temp;
+    }
+};
+
+int main() {
+
+    Student s1;
+    Student s2;
+
+    s1.marks = 80;
+    s2.marks = 90;
+
+    Student s3 = s1 + s2;
+
+    cout << s3.marks;
+
+    return 0;
+}
+
+Output
+
+170
+
+---
+
+5. How It Works
+
+When we write:
+
+Student s3 = s1 + s2;
+
+C++ calls the overloaded "+" operator:
+
+s1 + s2
+   ↓
+operator+()
+   ↓
+80 + 90
+   ↓
+170
+
+---
+
+6. Operator Overloading Function
+
+General syntax:
+
+return_type operator symbol(parameters) {
+    // logic
+}
+
+Example:
+
+Student operator+(Student s) {
+    Student temp;
+
+    temp.marks = marks + s.marks;
+
+    return temp;
+}
+
+Here:
+
+Student
+   ↓
+Return type
+
+operator+
+   ↓
+Operator being overloaded
+
+(Student s)
+   ↓
+Parameter
+
+---
+
+7. Important Point
+
+Operator overloading does not create a new operator.
+
+It gives an existing operator a special meaning for a user-defined type.
+
+For example:
+
+Existing operators:
++
+-
+*
+/
+==
+<
+>
+
+We can define how these operators behave with our class objects.
+
+---
+
+8. Real-Life Example
+
+Suppose:
+
+Student 1 → 80 marks
+Student 2 → 90 marks
+
+We want:
+
+s1 + s2
+
+to mean:
+
+80 + 90 = 170
+
+Operator overloading allows us to define this behavior.
+
+---
+
+9. Advantages
+
+- Makes code easier to read.
+- Makes object operations more natural.
+- Allows existing operators to work with user-defined types.
+- Can reduce the need for separate function names for simple operations.
+
+---
+
+10. Important Points
+
+- Operator overloading is a form of compile-time polymorphism.
+- It works with user-defined types such as classes.
+- It gives an existing operator a special meaning.
+- It does not create a new operator.
+- The keyword "operator" is used to define an overloaded operator function.
+- Examples include "operator+", "operator-", "operator==", and "operator<".
+
+---
+
+11. One-Line Definition
+
+«Operator Overloading is the process of giving an existing C++ operator a special meaning for user-defined objects.»
