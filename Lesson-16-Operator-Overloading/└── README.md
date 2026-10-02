@@ -223,3 +223,181 @@ Operator overloading allows us to define this behavior.
 11. One-Line Definition
 
 «Operator Overloading is the process of giving an existing C++ operator a special meaning for user-defined objects.»
+
+
+### topic 2
+
+Unary Operators – C++ Notes
+
+1. Definition
+
+A Unary Operator is an operator that works on only one operand.
+
+Unary Operator
+      ↓
+  1 Operand
+
+Example:
+
+++a;
+
+Here:
+
+- "++" → Operator
+- "a" → Operand
+
+---
+
+2. Common Unary Operators
+
+++    Increment
+--    Decrement
+-     Unary Minus
+!     Logical NOT
+~     Bitwise NOT
+&     Address-of
+*     Dereference
+
+---
+
+3. Increment Operator "++"
+
+The increment operator increases a value by "1".
+
+int a = 10;
+
+++a;
+
+Now:
+
+a = 11
+
+---
+
+4. Decrement Operator "--"
+
+The decrement operator decreases a value by "1".
+
+int a = 10;
+
+--a;
+
+Now:
+
+a = 9
+
+---
+
+5. Unary Minus "-"
+
+The unary minus operator changes the sign of a value.
+
+int a = 10;
+
+cout << -a;
+
+Output:
+
+-10
+
+---
+
+6. Logical NOT "!"
+
+The logical NOT operator reverses a Boolean value.
+
+bool a = true;
+
+cout << !a;
+
+Output:
+
+0
+
+Because:
+
+true  → false
+false → true
+
+---
+
+7. Unary Operator Overloading
+
+Unary operators can also be overloaded for class objects.
+
+Example:
+
+class Number {
+public:
+    int value;
+
+    Number(int v) {
+        value = v;
+    }
+
+    void operator-() {
+        value = -value;
+    }
+};
+
+Usage:
+
+Number n(10);
+
+-n;
+
+The "-" operator is overloaded for the "Number" object.
+
+---
+
+8. How It Works
+
+n
+↓
+value = 10
+
+-n
+↓
+operator-()
+↓
+value = -10
+
+---
+
+9. Unary vs Binary Operators
+
+Unary Operator
+
+Works on one operand.
+
+-a
+++a
+!a
+
+1 operand
+
+Binary Operator
+
+Works on two operands.
+
+a + b
+a - b
+a * b
+
+2 operands
+
+---
+
+10. Important Points
+
+- Unary operators work on one operand.
+- Common unary operators include "++", "--", "-", "!", "~", "&", and "*".
+- Unary operators can be overloaded for user-defined classes.
+- The "operator" keyword is used when defining an overloaded operator function.
+- Unary operator overloading is part of operator overloading in C++.
+
+---
+
+11. One-Line Definition
+
+«A Unary Operator is an operator that works on only one operand.»
