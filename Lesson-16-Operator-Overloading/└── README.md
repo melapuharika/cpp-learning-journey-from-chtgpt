@@ -549,3 +549,161 @@ The "+" operator works on two values, so it is a binary operator.
 One-line Definition
 
 A binary operator is an operator that works on two operands, and operator overloading allows us to define its behavior for class objects.
+
+
+### topic 4
+
+Arithmetic Operators – C++ Notes
+
+1. Definition
+
+Arithmetic Operators are operators used to perform mathematical calculations in C++.
+
+Examples:
+
+Addition
+Subtraction
+Multiplication
+Division
+Remainder
+
+---
+
+2. Main Arithmetic Operators
+
+Operator| Meaning| Example| Result
+"+"| Addition| "10 + 5"| "15"
+"-"| Subtraction| "10 - 5"| "5"
+"*"| Multiplication| "10 * 5"| "50"
+"/"| Division| "10 / 5"| "2"
+"%"| Modulus / Remainder| "10 % 3"| "1"
+
+---
+
+3. Addition "+"
+
+Used to add two values.
+
+int a = 10;
+int b = 20;
+
+cout << a + b;
+
+Output:
+
+30
+
+---
+
+4. Subtraction "-"
+
+Used to subtract one value from another.
+
+int a = 20;
+int b = 10;
+
+cout << a - b;
+
+Output:
+
+10
+
+---
+
+5. Multiplication "*"
+
+Used to multiply two values.
+
+int a = 5;
+int b = 4;
+
+cout << a * b;
+
+Output:
+
+20
+
+---
+
+6. Division "/"
+
+Used to divide one value by another.
+
+int a = 20;
+int b = 5;
+
+cout << a / b;
+
+Output:
+
+4
+
+---
+
+7. Modulus "%"
+
+The "%" operator gives the remainder after division.
+
+Example:
+
+cout << 10 % 3;
+
+Output:
+
+1
+
+Because:
+
+10 ÷ 3 = 3 remainder 1
+
+---
+
+8. Arithmetic Operator Overloading
+
+Arithmetic operators can be overloaded to work with class objects.
+
+Example:
+
+Number n3 = n1 + n2;
+
+Here, "+" can be overloaded using:
+
+Number operator+(Number n)
+
+This defines how two "Number" objects should be added.
+
+---
+
+9. Real-Life Example
+
+Suppose there are 10 chocolates and 3 people.
+
+Each person gets 3 chocolates:
+
+3 × 3 = 9
+
+One chocolate remains.
+
+The "%" operator can find that remaining chocolate:
+
+10 % 3
+
+Result:
+
+1
+
+---
+
+10. Important Points
+
+- Arithmetic operators are used for mathematical calculations.
+- "+" is used for addition.
+- "-" is used for subtraction.
+- "*" is used for multiplication.
+- "/" is used for division.
+- "%" is used to find the remainder.
+- Arithmetic operators can be overloaded for class objects.
+
+One-line Definition
+
+Arithmetic operators are operators used to perform mathematical calculations such as addition, subtraction, multiplication, division, and finding the remainder.
