@@ -104,3 +104,100 @@ Main Types
 unique_ptr → One owner
 shared_ptr → Multiple owners
 weak_ptr   → Non-owning reference
+
+
+### topic 2
+
+"unique_ptr"
+
+Definition
+
+"unique_ptr" is a smart pointer in C++ that provides single ownership of a dynamically allocated object.
+
+It is available in the "<memory>" header.
+
+#include <memory>
+
+Syntax
+
+unique_ptr<Type> pointer;
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    unique_ptr<int> ptr = make_unique<int>(10);
+
+    cout << *ptr;
+
+    return 0;
+}
+
+Output
+
+10
+
+How It Works
+
+unique_ptr<int> ptr = make_unique<int>(10);
+
+- "unique_ptr<int>" → smart pointer that manages an "int"
+- "ptr" → name of the smart pointer
+- "make_unique<int>(10)" → creates an integer dynamically
+- "ptr" → becomes the owner of that memory
+
+When "ptr" goes out of scope, the memory is automatically released.
+
+Single Ownership
+
+A "unique_ptr" has only one owner.
+
+unique_ptr<int> ptr1 = make_unique<int>(10);
+
+Here, "ptr1" owns the object.
+
+Copying Is Not Allowed
+
+A "unique_ptr" cannot be copied.
+
+unique_ptr<int> ptr1 = make_unique<int>(10);
+
+// unique_ptr<int> ptr2 = ptr1;  // ❌ Error
+
+Copying is not allowed because it would create two owners.
+
+Moving Ownership
+
+Ownership can be transferred using "std::move()".
+
+unique_ptr<int> ptr1 = make_unique<int>(10);
+
+unique_ptr<int> ptr2 = move(ptr1);
+
+After this:
+
+ptr1 → No longer owns the object
+ptr2 → Owns the object
+
+Advantages
+
+- Provides single ownership
+- Automatically releases memory
+- Reduces the need for "delete"
+- Helps prevent memory leaks
+- Prevents accidental copying of ownership
+
+Key Points
+
+- "unique_ptr" → single owner
+- Copying → Not allowed
+- Moving → Allowed
+- Memory cleanup → Automatic
+
+Remember
+
+"unique_ptr" = Single Ownership + Automatic Memory Management
