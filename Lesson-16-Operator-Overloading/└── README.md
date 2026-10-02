@@ -1253,3 +1253,174 @@ Here, "operator++()" defines how prefix increment works for a "Number" object.
 One-Line Definition
 
 Increment and decrement operators are unary operators used to increase or decrease a variable's value by 1.
+
+
+### topic 11
+
+Function Call Operator "()" – C++ Notes
+
+1. Definition
+
+The "()" operator is called the Function Call Operator.
+
+It is normally used to call a function.
+
+Example:
+
+greet();
+
+Here, "()" calls the "greet()" function.
+
+---
+
+2. Normal Function
+
+void greet() {
+    cout << "Hello";
+}
+
+Calling the function:
+
+greet();
+
+Output:
+
+Hello
+
+---
+
+3. Function with Parameters
+
+A function can receive values through "()".
+
+int add(int a, int b) {
+    return a + b;
+}
+
+Calling the function:
+
+int result = add(10, 20);
+
+Here:
+
+add       → Function name
+10, 20    → Arguments
+()        → Function call
+
+The result is:
+
+30
+
+---
+
+4. "()" Operator Overloading
+
+C++ allows us to overload the "()" operator.
+
+This allows a class object to behave like a function.
+
+Example:
+
+class Calculator {
+public:
+    int operator()(int a, int b) {
+        return a + b;
+    }
+};
+
+Create an object:
+
+Calculator calc;
+
+Now we can use the object like a function:
+
+cout << calc(10, 20);
+
+Output:
+
+30
+
+---
+
+5. How It Works
+
+When we write:
+
+calc(10, 20);
+
+It can be understood as:
+
+calc.operator()(10, 20);
+
+The overloaded "operator()" function performs the calculation.
+
+---
+
+6. Complete Example
+
+#include <iostream>
+using namespace std;
+
+class Calculator {
+public:
+    int operator()(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Calculator calc;
+
+    cout << calc(10, 20);
+
+    return 0;
+}
+
+Output:
+
+30
+
+---
+
+7. Function Object / Functor
+
+A class object that overloads the "()" operator can be used like a function.
+
+Such an object is commonly called a Function Object or Functor.
+
+Example:
+
+Calculator calc;
+
+calc(10, 20);
+
+Here, "calc" is an object behaving like a function.
+
+---
+
+8. Real-Life Example
+
+Imagine a calculator machine.
+
+Normally, we use buttons to perform calculations.
+
+In C++, we can create a "Calculator" object and use it like:
+
+calc(10, 20);
+
+The object receives the two values and performs the calculation.
+
+---
+
+9. Important Points
+
+- "()" is called the Function Call Operator.
+- It is normally used to call functions.
+- Arguments can be passed inside "()".
+- "operator()" can be overloaded.
+- Overloading "()" allows an object to behave like a function.
+- Such objects are called Function Objects or Functors.
+
+One-Line Definition
+
+The "()" operator is used to call functions, and operator overloading allows a class object to behave like a function.
