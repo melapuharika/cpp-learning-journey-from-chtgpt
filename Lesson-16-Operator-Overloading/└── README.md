@@ -1079,7 +1079,7 @@ One-line Definition
 Assignment operators are used to assign or update values stored in variables.
 
 
-### topic 6
+### topic 7
 
 Increment and Decrement Operators – C++ Notes
 
