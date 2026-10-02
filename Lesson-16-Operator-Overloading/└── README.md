@@ -1424,3 +1424,164 @@ The object receives the two values and performs the calculation.
 One-Line Definition
 
 The "()" operator is used to call functions, and operator overloading allows a class object to behave like a function.
+
+
+### topic 9
+
+Subscript Operator "[]" – C++ Notes
+
+1. Definition
+
+The "[]" operator is called the Subscript Operator or Array Indexing Operator.
+
+It is used to access an element using its index.
+
+Example:
+
+marks[0];
+
+---
+
+2. Normal Array
+
+int marks[3] = {80, 90, 70};
+
+Array:
+
+Index:   0    1    2
+Value:  80   90   70
+
+Accessing elements:
+
+cout << marks[0];
+cout << marks[1];
+cout << marks[2];
+
+Output:
+
+80
+90
+70
+
+---
+
+3. Index
+
+An index tells us the position of an element in an array.
+
+In C++, array indexing normally starts from 0.
+
+For example:
+
+marks[0]  // First element
+marks[1]  // Second element
+marks[2]  // Third element
+
+---
+
+4. Subscript Operator Overloading
+
+C++ allows us to overload the "[]" operator.
+
+This allows a class object to behave like an array.
+
+Example:
+
+class Numbers {
+    int arr[3];
+
+public:
+    int& operator[](int index) {
+        return arr[index];
+    }
+};
+
+---
+
+5. Using the Overloaded Operator
+
+Create an object:
+
+Numbers n;
+
+Now we can use the object like an array:
+
+n[0] = 10;
+n[1] = 20;
+n[2] = 30;
+
+Here:
+
+n[0]
+
+calls the overloaded "operator[]".
+
+---
+
+6. How It Works
+
+When we write:
+
+n[1]
+
+it can be understood as:
+
+n.operator[](1);
+
+The value "1" is passed as the index.
+
+---
+
+7. Why Return "int&"?
+
+Example:
+
+int& operator[](int index)
+
+The "&" means the function returns a reference.
+
+Because of this, we can both:
+
+- Read a value
+- Modify a value
+
+Example:
+
+n[0] = 100;
+
+The original array element is changed.
+
+---
+
+8. Real-Life Example
+
+Imagine a classroom where students have roll numbers:
+
+Roll 0 → Student A
+Roll 1 → Student B
+Roll 2 → Student C
+
+If we write:
+
+students[1]
+
+we are asking for the student at index "1".
+
+Similarly, an object can be designed to behave like an array using "operator[]".
+
+---
+
+9. Important Points
+
+- "[]" is called the Subscript Operator.
+- It is also called the Array Indexing Operator.
+- It is used to access elements using an index.
+- Array indexing normally starts from "0".
+- "operator[]" can be overloaded for class objects.
+- Overloading "[]" allows an object to behave like an array.
+- "operator[]" commonly takes an index as a parameter.
+- Returning a reference allows the element to be modified.
+
+One-Line Definition
+
+The subscript operator "[]" is used to access elements by index, and operator overloading allows a class object to behave like an array.
