@@ -309,3 +309,93 @@ No reference counting| Uses reference counting
 Key Point
 
 "shared_ptr" = Multiple Ownership + Reference Counting + Automatic Memory Management
+
+
+### topic 4 
+
+"weak_ptr"
+
+Definition
+
+"weak_ptr" is a smart pointer in C++ that provides a non-owning reference to an object managed by "shared_ptr".
+
+It is available in the "<memory>" header.
+
+#include <memory>
+
+Simple Meaning
+
+- "shared_ptr" → Owns the object
+- "weak_ptr" → Observes the object but does not own it
+
+Syntax
+
+weak_ptr<Type> pointer;
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    shared_ptr<int> ptr = make_shared<int>(10);
+
+    weak_ptr<int> weak = ptr;
+
+    cout << *ptr;
+
+    return 0;
+}
+
+Here:
+
+weak_ptr<int> weak = ptr;
+
+"weak" refers to the object managed by "ptr", but it does not own the object.
+
+Why Do We Need "weak_ptr"?
+
+"shared_ptr" uses reference counting.
+
+Sometimes two or more objects can keep "shared_ptr"s to each other, creating a cyclic reference.
+
+This can prevent the reference count from becoming "0", causing the memory to remain allocated.
+
+"weak_ptr" can be used to refer to an object without increasing its ownership/reference count.
+
+"lock()"
+
+A "weak_ptr" cannot be directly dereferenced.
+
+We use "lock()" to temporarily obtain a "shared_ptr".
+
+if (auto temp = weak.lock())
+{
+    cout << *temp;
+}
+
+If the object still exists, "lock()" returns a valid "shared_ptr".
+
+If the object has already been destroyed, "lock()" returns an empty "shared_ptr".
+
+Important Points
+
+1. "weak_ptr" does not own the object.
+2. It does not increase the "shared_ptr" ownership count.
+3. It cannot be directly dereferenced.
+4. "lock()" is used to safely access the object.
+5. It helps prevent problems caused by cyclic references.
+
+Difference
+
+"shared_ptr"| "weak_ptr"
+Owns the object| Does not own the object
+Increases ownership count| Does not increase ownership count
+Can be directly dereferenced| Cannot be directly dereferenced
+Uses shared ownership| Provides non-owning access
+
+Key Point
+
+"weak_ptr" = Non-owning reference to an object managed by "shared_ptr".
