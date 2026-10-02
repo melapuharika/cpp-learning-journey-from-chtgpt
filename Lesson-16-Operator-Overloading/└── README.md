@@ -1640,3 +1640,73 @@ Age: 20
 Key Point
 
 "cout << data;" → displays data on the screen.
+
+
+### topic 11
+Extraction Operator (">>")
+
+Definition
+
+The ">>" operator is called the Extraction Operator in C++.
+
+It is mainly used with "cin" to take input from the user.
+
+Syntax
+
+cin >> variable;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age;
+
+    cin >> age;
+
+    cout << "Your age is: " << age;
+
+    return 0;
+}
+
+Input
+
+20
+
+Output
+
+Your age is: 20
+
+How It Works
+
+cin >> age;
+
+- "cin" → input stream used to take input from the keyboard
+- ">>" → extracts the input from "cin"
+- "age" → variable where the input is stored
+
+Multiple Inputs
+
+We can use ">>" multiple times in one statement.
+
+int age;
+float marks;
+
+cin >> age >> marks;
+
+The user can enter:
+
+20 85.5
+
+The values are stored in "age" and "marks".
+
+Key Point
+
+"cin >> variable;" → takes input from the user and stores it in the variable.
+
+Remember
+
+- "cout <<" → Output
+- "cin >>" → Input
