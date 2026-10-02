@@ -840,3 +840,90 @@ Remember
 unique_ptr → One owner
 shared_ptr → Multiple owners
 weak_ptr   → Non-owner
+
+### topic 10
+
+Reference Counting
+
+Definition
+
+Reference Counting is a technique used by "shared_ptr" to keep track of how many "shared_ptr" objects own the same object.
+
+It is mainly used for shared ownership.
+
+Example
+
+auto p1 = make_shared<int>(10);
+
+Reference count:
+
+1
+
+Here, only "p1" owns the object.
+
+Creating Another Owner
+
+auto p2 = p1;
+
+Now both "p1" and "p2" share ownership.
+
+p1 ──┐
+     ├──> Object
+p2 ──┘
+
+Reference count:
+
+2
+
+"use_count()"
+
+We can check the current reference count using "use_count()".
+
+cout << p1.use_count();
+
+Output:
+
+2
+
+When an Owner Is Destroyed
+
+{
+    auto p1 = make_shared<int>(10);
+
+    {
+        auto p2 = p1;
+
+        cout << p1.use_count(); // 2
+    }
+
+    cout << p1.use_count(); // 1
+}
+
+When "p2" goes out of scope:
+
+2 → 1
+
+When "p1" is also destroyed:
+
+1 → 0
+
+When the reference count becomes 0, the managed object is automatically destroyed.
+
+Simple Example
+
+1 owner → Count = 1
+2 owners → Count = 2
+3 owners → Count = 3
+Last owner destroyed → Count = 0
+
+Important Points
+
+- Reference counting is mainly associated with "shared_ptr".
+- It tracks the number of owning "shared_ptr"s.
+- Copying a "shared_ptr" increases the count.
+- Destroying an owning "shared_ptr" decreases the count.
+- When the count becomes "0", the managed object is destroyed.
+
+Key Point
+
+Reference Counting = Tracking the number of "shared_ptr" owners of an object.
