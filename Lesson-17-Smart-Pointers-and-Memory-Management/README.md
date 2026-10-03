@@ -1515,3 +1515,86 @@ Key Points
 Remember
 
 Automatic Storage = Object lifetime is automatically tied to its scope/block execution.
+
+
+### topic 18
+
+Dynamic Storage
+
+Definition
+
+Dynamic Storage Duration means an object is created through dynamic allocation during program execution and can have a lifetime independent of the scope where it was created.
+
+Dynamic Allocation
+
+Using "new":
+
+int* p = new int(10);
+
+Here:
+
+- "p" is a pointer.
+- "new int(10)" dynamically creates an "int" object.
+- The object has dynamic storage duration.
+
+Memory Representation
+
+Pointer                 Dynamic Object
+  p  ─────────────────→    10
+
+Releasing Dynamic Memory
+
+With a raw pointer:
+
+delete p;
+
+The dynamically allocated object is destroyed and its storage is released.
+
+Smart Pointers
+
+Modern C++ provides smart pointers for safer management of dynamically allocated objects.
+
+"unique_ptr"
+
+#include <memory>
+using namespace std;
+
+auto p = make_unique<int>(10);
+
+"unique_ptr" owns the dynamically allocated object and automatically destroys it when its lifetime ends.
+
+"shared_ptr"
+
+auto p = make_shared<int>(10);
+
+"shared_ptr" manages shared ownership and automatically destroys the object when the last owning "shared_ptr" is gone.
+
+Automatic vs Dynamic Storage
+
+Automatic:
+Scope begins → Object created
+Scope ends   → Object lifetime ends
+
+Dynamic:
+Allocate → Object created
+              ↓
+          Object exists
+              ↓
+       Deallocate/Destroy
+
+Important Point
+
+Dynamic storage duration describes the lifetime of an object, not simply the name of a physical memory area.
+
+Key Points
+
+- Dynamic storage is used for objects allocated during program execution.
+- "new" can create objects with dynamic storage duration.
+- "delete" releases objects created with "new".
+- "make_unique()" and "make_shared()" are modern C++ approaches.
+- Smart pointers help manage dynamic objects automatically.
+- Dynamic objects can have lifetimes independent of the local scope where they were created.
+
+Remember
+
+Dynamic Storage = Runtime lo dynamically create chesi, appropriate lifetime/deallocation tho manage chese object storage.
