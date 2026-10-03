@@ -1598,3 +1598,108 @@ Key Points
 Remember
 
 Dynamic Storage = Runtime lo dynamically create chesi, appropriate lifetime/deallocation tho manage chese object storage.
+
+
+### topic 19
+
+Allocation & Deallocation
+
+Definition
+
+Allocation means reserving memory for an object or data.
+
+Deallocation means releasing that memory when it is no longer needed.
+
+Basic Process
+
+Need memory
+    ↓
+Allocation
+    ↓
+Use memory
+    ↓
+Work complete
+    ↓
+Deallocation
+
+Allocation Using "new"
+
+int* p = new int(10);
+
+Here:
+
+- "new" dynamically allocates storage.
+- An "int" object with value "10" is created.
+- "p" stores its address.
+
+p ─────────→ 10
+
+Deallocation Using "delete"
+
+delete p;
+
+"delete" destroys the dynamically allocated object and releases its storage.
+
+Array Allocation
+
+For dynamically allocating an array:
+
+int* arr = new int[5];
+
+For releasing it:
+
+delete[] arr;
+
+Matching Rules
+
+new       → delete
+new[]     → delete[]
+
+Using the correct matching form is important.
+
+Smart Pointers
+
+Modern C++ uses smart pointers to manage dynamically allocated objects automatically.
+
+#include <memory>
+using namespace std;
+
+auto p = make_unique<int>(10);
+
+When "p" reaches the end of its lifetime, the managed object is automatically destroyed.
+
+Memory Leak
+
+If dynamically allocated memory is not released when needed, it can remain occupied and cause a memory leak.
+
+Memory allocated
+      ↓
+Memory used
+      ↓
+No deallocation
+      ↓
+Memory remains occupied
+      ↓
+Memory Leak
+
+Key Points
+
+- Allocation means reserving memory.
+- Deallocation means releasing memory.
+- "new" performs dynamic allocation.
+- "delete" releases a single dynamically allocated object.
+- "new[]" allocates a dynamic array.
+- "delete[]" releases a dynamic array.
+- "new" must match "delete".
+- "new[]" must match "delete[]".
+- Smart pointers can automatically manage dynamic objects.
+- Failing to release required memory can cause memory leaks.
+
+Remember
+
+Allocation = Memory reserve cheyyadam
+
+Deallocation = Memory release cheyyadam
+
+new   → delete
+new[] → delete[]
