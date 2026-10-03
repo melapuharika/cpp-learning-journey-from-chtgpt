@@ -1894,3 +1894,85 @@ Key Points
 Remember
 
 Dangling Pointer = Pointer pointing to an object/memory that is no longer valid.
+
+
+### topic 22
+
+Ownership
+
+Definition
+
+Ownership means identifying who is responsible for managing and releasing a resource or object.
+
+In simple words:
+
+«“Ee resource ni evaru own chestunnaru?” → Ownership»
+
+1. "unique_ptr" — Single Ownership
+
+auto p = std::make_unique<int>(10);
+
+"p" is the single owner of the object.
+
+p ─────→ [10]
+
+A "unique_ptr" cannot be copied:
+
+auto p2 = p;   // ❌
+
+But ownership can be transferred using "std::move":
+
+auto p2 = std::move(p);   // ✅
+
+After the move:
+
+p2 ─────→ [10]
+p  ─────→ nullptr
+
+2. "shared_ptr" — Shared Ownership
+
+auto p1 = std::make_shared<int>(10);
+auto p2 = p1;
+
+Both "p1" and "p2" own the same object.
+
+p1 ──┐
+     ├──→ [10]
+p2 ──┘
+
+The object is destroyed when the last owning "shared_ptr" is gone.
+
+3. "weak_ptr" — No Ownership
+
+auto p = std::make_shared<int>(10);
+std::weak_ptr<int> w = p;
+
+"weak_ptr" observes the object but does not own it.
+
+p ─────→ [10]
+w - - -→ [10]
+
+A "weak_ptr" does not increase the "shared_ptr" reference count.
+
+Ownership Comparison
+
+Pointer| Ownership
+"unique_ptr"| Single owner
+"shared_ptr"| Multiple owners
+"weak_ptr"| No ownership
+
+Key Points
+
+- Ownership means responsibility for managing a resource.
+- "unique_ptr" provides single ownership.
+- "shared_ptr" provides shared ownership.
+- "weak_ptr" does not own the object.
+- "unique_ptr" ownership can be transferred using "std::move".
+- The last owning "shared_ptr" controls the destruction of the shared object.
+- "weak_ptr" does not increase the reference count.
+
+Remember
+
+unique_ptr → One owner
+shared_ptr → Many owners
+weak_ptr   → No owner
