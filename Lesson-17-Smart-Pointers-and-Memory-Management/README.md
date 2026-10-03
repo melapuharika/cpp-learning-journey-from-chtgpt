@@ -1154,3 +1154,87 @@ Key Points
 Remember
 
 Memory Management = Allocate + Use + Release memory correctly.
+
+
+### topic 14
+
+Stack
+
+Definition
+
+The Stack is a memory area used by a program to manage things such as local variables, function parameters, and function call information.
+
+LIFO
+
+Stack follows the LIFO (Last In, First Out) principle.
+
+Plate 3  ← removed first
+Plate 2
+Plate 1  ← added first
+
+The last item added is the first item removed.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void test() {
+    int x = 10;
+    int y = 20;
+}
+
+int main() {
+    int a = 5;
+    test();
+
+    return 0;
+}
+
+Here:
+
+- "a" is a local variable in "main()".
+- "x" and "y" are local variables in "test()".
+- When "test()" finishes, its local variables are automatically cleaned up.
+
+Commonly Managed on the Stack
+
+- Local variables
+- Function parameters
+- Function call information
+- Temporary data
+
+Important Example
+
+int x = 10;
+
+A local variable such as "x" generally has automatic storage duration and is commonly implemented using stack storage.
+
+int* p = new int(10);
+
+Here:
+
+- "p" is a pointer variable.
+- The dynamically allocated "int" has dynamic storage duration.
+- The pointer and the object it points to are separate things.
+
+Stack vs Heap
+
+Stack| Heap
+Commonly used for local/function data| Used for dynamic allocation
+Automatically managed| Dynamically managed
+Closely related to function calls and scope| Can outlive a function when properly managed
+Usually fast| More flexible for dynamic memory
+
+Key Points
+
+- Stack is a memory area used during program execution.
+- It follows LIFO.
+- Local variables and function call information are commonly managed using stack storage.
+- Local variables are automatically cleaned up when their lifetime ends.
+- Stack and heap are different concepts.
+- A pointer can be on the stack while the object it points to is in dynamic storage.
+
+Remember
+
+Stack = Memory commonly used for function calls and local/automatic data.
