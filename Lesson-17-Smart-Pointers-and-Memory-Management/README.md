@@ -1797,3 +1797,100 @@ Memory Leak = Memory is allocated but not released when it is no longer needed.
 new → use → delete   ✅
 
 new → use → no delete ❌ Memory Leak
+
+
+### topic 21
+
+Dangling Pointers
+
+Definition
+
+A Dangling Pointer is a pointer that points to an object or memory whose lifetime has already ended or is no longer valid.
+
+In simple words:
+
+Pointer daggara address untundi, kani aa address lo valid object/memory undadu.
+
+Example: "delete" After Pointer
+
+int* p = new int(10);
+
+delete p;
+
+cout << *p;   // ❌ Dangerous
+
+Before "delete":
+
+p ─────→ [10]
+
+After "delete":
+
+p ─────→ [released memory]
+
+"p" may still contain the old address, but the object has been destroyed.
+
+Dereferencing "p" after "delete" causes undefined behavior.
+
+Solution
+
+Set the pointer to "nullptr" after deleting the object:
+
+int* p = new int(10);
+
+delete p;
+p = nullptr;
+
+Now:
+
+p → nullptr
+
+We can safely check it:
+
+if (p != nullptr) {
+    cout << *p;
+}
+
+Local Variable Example
+
+int* getPointer() {
+    int x = 10;
+
+    return &x;   // ❌
+}
+
+When "getPointer()" finishes, the lifetime of local variable "x" ends.
+
+The returned pointer can then refer to an object that no longer exists.
+
+Therefore, it can become a dangling pointer.
+
+Real-Life Example
+
+Imagine you have an address written on a paper, but the house at that address has already been demolished.
+
+Pointer → Old address
+Memory  → No longer valid
+
+The address exists, but the valid object does not.
+
+Problems Caused
+
+Using a dangling pointer can cause:
+
+- Undefined behavior
+- Incorrect results
+- Program crashes
+- Unexpected behavior
+
+Key Points
+
+- A dangling pointer refers to an object whose lifetime has ended or memory that is no longer valid.
+- Dereferencing a dangling pointer is unsafe.
+- A pointer can become dangling after "delete".
+- A pointer can also become dangling when a local object goes out of scope.
+- Setting a pointer to "nullptr" after "delete" helps avoid accidental use of that pointer.
+- Smart pointers help reduce common lifetime-management errors.
+
+Remember
+
+Dangling Pointer = Pointer pointing to an object/memory that is no longer valid.
