@@ -1074,3 +1074,83 @@ Key Points
 Remember
 
 Custom Deleter = Custom cleanup function used by a smart pointer.
+
+
+### topic 13
+
+Memory Management
+
+Definition
+
+Memory Management is the process of allocating, using, and releasing memory while a program is running.
+
+Basic Process
+
+Memory needed
+     ↓
+Allocate memory
+     ↓
+Use memory
+     ↓
+Release memory
+
+Real-Life Example
+
+Think of memory like a room:
+
+- Room kavali → Allocate memory
+- Room lo things use cheyyadam → Use memory
+- Work complete → Release memory
+
+Memory Areas in C++
+
+C++ program memory can be managed in different areas:
+
+Memory
+│
+├── Stack
+├── Heap
+├── Static Storage
+└── Dynamic Storage
+
+Example of Dynamic Memory
+
+int* p = new int(20);
+
+delete p;
+
+- "new" → allocates memory.
+- "p" → stores the address.
+- "delete" → releases the allocated memory.
+
+Smart Pointer Example
+
+#include <memory>
+using namespace std;
+
+unique_ptr<int> p = make_unique<int>(20);
+
+Here, "unique_ptr" automatically releases the memory when it goes out of scope.
+
+Why Memory Management Is Important
+
+Proper memory management helps to:
+
+- Avoid unnecessary memory usage.
+- Release unused memory.
+- Prevent memory leaks.
+- Prevent dangling pointers.
+- Make programs safer and more efficient.
+
+Key Points
+
+- Memory Management means managing program memory.
+- Memory can be allocated, used, and released.
+- "new" is used for dynamic memory allocation.
+- "delete" releases dynamically allocated memory.
+- Smart pointers can manage memory automatically.
+- Poor memory management can cause memory leaks and dangling pointers.
+
+Remember
+
+Memory Management = Allocate + Use + Release memory correctly.
