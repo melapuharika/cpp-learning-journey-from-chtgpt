@@ -1238,3 +1238,78 @@ Key Points
 Remember
 
 Stack = Memory commonly used for function calls and local/automatic data.
+
+
+### topic 15
+
+Heap
+
+Definition
+
+The Heap is commonly used to refer to the memory area used for dynamic memory allocation.
+
+In C++, the more precise concept is dynamic storage duration.
+
+Dynamic Memory Allocation
+
+Dynamic memory is allocated while the program is running.
+
+int* p = new int(10);
+
+Here:
+
+- "p" is a pointer.
+- "new int(10)" dynamically creates an "int" object.
+- The object has dynamic storage duration.
+
+Memory Representation
+
+Stack              Dynamic Storage
+------             ----------------
+p  ─────────────→       10
+
+The pointer and the object it points to are separate things.
+
+Releasing Dynamic Memory
+
+With a raw pointer:
+
+delete p;
+
+After "delete", the dynamically allocated object is destroyed.
+
+Smart Pointers
+
+Modern C++ recommends smart pointers for managing dynamic memory.
+
+#include <memory>
+using namespace std;
+
+auto p = make_unique<int>(10);
+
+When "p" goes out of scope, "unique_ptr" automatically releases the managed object.
+
+Stack vs Heap
+
+Stack| Heap / Dynamic Storage
+Commonly used for local/automatic data| Used for dynamically allocated objects
+Automatically managed| Dynamically managed
+Related to function calls and local variables| Objects can have lifetimes independent of a particular function
+Usually fast| Flexible for dynamic allocation
+
+Important Note
+
+C++ does not require a specific physical memory area called a heap. The term is commonly used to describe dynamic allocation.
+
+Key Points
+
+- Heap commonly refers to dynamically allocated memory.
+- Dynamic memory is allocated during program execution.
+- "new" can allocate dynamic memory.
+- "delete" releases memory allocated with "new".
+- "make_unique()" and "make_shared()" are safer modern C++ approaches.
+- Smart pointers automatically manage dynamically allocated objects.
+
+Remember
+
+Heap = Common term for memory used for dynamic allocation.
