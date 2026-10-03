@@ -1002,3 +1002,75 @@ Remember
 shared_ptr + shared_ptr → Cyclic Reference → Memory Leak
 
 shared_ptr + weak_ptr → Cycle can be broken
+
+
+### topic 12
+
+Custom Deleters
+
+Definition
+
+A Custom Deleter is a user-defined cleanup function that tells a smart pointer how to destroy or release a resource.
+
+Normally, smart pointers automatically clean up their resources.
+
+When special cleanup is required, we can use a custom deleter.
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+void myDeleter(int* p) {
+    cout << "Custom cleanup" << endl;
+    delete p;
+}
+
+int main() {
+    shared_ptr<int> p(new int(10), myDeleter);
+
+    cout << *p << endl;
+}
+
+How It Works
+
+shared_ptr<int> p(new int(10), myDeleter);
+
+Here:
+
+- "new int(10)" creates an integer dynamically.
+- "p" manages that memory.
+- "myDeleter" is the custom cleanup function.
+- When "p" is destroyed, "myDeleter" is called.
+
+Real-Life Example
+
+Normal cleaning → Normal cleaner
+
+Special cleaning → Special cleaner
+
+Similarly:
+
+Normal resource → Normal deleter
+Special resource → Custom deleter
+
+Uses
+
+Custom deleters can be useful for managing:
+
+- Dynamic memory
+- Files
+- Sockets
+- Other resources that require special cleanup
+
+Key Points
+
+- Custom Deleter provides a user-defined cleanup operation.
+- It can be used with smart pointers.
+- It is useful when normal destruction is not enough.
+- The deleter is automatically called when the smart pointer needs to release the resource.
+
+Remember
+
+Custom Deleter = Custom cleanup function used by a smart pointer.
