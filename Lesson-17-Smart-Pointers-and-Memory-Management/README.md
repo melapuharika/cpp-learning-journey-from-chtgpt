@@ -1313,3 +1313,95 @@ Key Points
 Remember
 
 Heap = Common term for memory used for dynamic allocation.
+
+
+### topic 16
+
+Static Storage
+
+Definition
+
+Static Storage Duration means an object exists for the entire lifetime of the program.
+
+A variable with static storage duration is created/initialized before or during program execution and remains available until the program ends.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void counter() {
+    static int count = 0;
+    count++;
+
+    cout << count << endl;
+}
+
+int main() {
+    counter();
+    counter();
+    counter();
+
+    return 0;
+}
+
+Output
+
+1
+2
+3
+
+Why Does This Happen?
+
+Normally:
+
+int count = 0;
+
+A local variable is created when the function is called and its lifetime ends when the function exits.
+
+But:
+
+static int count = 0;
+
+The variable retains its value between function calls.
+
+1st call → count = 1
+2nd call → count = 2
+3rd call → count = 3
+
+Lifetime
+
+Program starts
+      ↓
+Static object exists
+      ↓
+Program runs
+      ↓
+Program ends
+      ↓
+Static object's lifetime ends
+
+Important Point
+
+Static storage duration does not mean only variables declared with the "static" keyword.
+
+Global variables can also have static storage duration.
+
+Static vs Automatic Storage
+
+Static Storage| Automatic Storage
+Exists for the program's lifetime| Exists for its block/function lifetime
+Value can persist between function calls| Local value normally does not persist
+Example: "static int count"| Example: "int count" inside a function
+
+Key Points
+
+- Static storage duration means an object exists for the entire program lifetime.
+- A local "static" variable retains its value between function calls.
+- Global variables generally have static storage duration.
+- "static" keyword can give a local variable static storage duration.
+- Storage duration describes an object's lifetime, not necessarily its exact physical memory location.
+
+Remember
+
+Static Storage = Object lifetime is associated with the entire program.
