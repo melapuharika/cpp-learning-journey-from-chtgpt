@@ -1703,3 +1703,97 @@ Deallocation = Memory release cheyyadam
 
 new   → delete
 new[] → delete[]
+
+
+### topic 20
+
+Memory Leaks
+
+Definition
+
+A Memory Leak occurs when a program allocates memory but fails to release it after the memory is no longer needed.
+
+Basic Idea
+
+Memory allocated
+      ↓
+Memory used
+      ↓
+Memory not released
+      ↓
+Memory remains occupied
+      ↓
+Memory Leak
+
+Example
+
+int* p = new int(10);
+
+Memory is dynamically allocated.
+
+If we do not release it:
+
+// delete p;  ← missing
+
+the allocated memory can remain occupied.
+
+Correct Way
+
+int* p = new int(10);
+
+cout << *p << endl;
+
+delete p;
+p = nullptr;
+
+Here:
+
+new    → Allocate
+use    → Use memory
+delete → Release
+
+Smart Pointers
+
+Modern C++ smart pointers help prevent memory leaks.
+
+#include <memory>
+
+auto p = std::make_unique<int>(10);
+
+When "p" reaches the end of its lifetime, "unique_ptr" automatically destroys the managed object.
+
+Manual "delete" is not required.
+
+Why Memory Leaks Are a Problem
+
+Repeated memory leaks can:
+
+- Reduce available memory.
+- Increase program memory usage.
+- Cause problems in long-running programs.
+- Eventually lead to memory exhaustion.
+
+Real-Life Example
+
+Imagine renting a room.
+
+You stop using the room but never properly vacate it. The room remains occupied and cannot be used by someone else.
+
+Similarly, leaked memory remains occupied even though the program no longer needs it.
+
+Key Points
+
+- Memory leak occurs when allocated memory is not properly released.
+- Dynamic memory allocated with "new" should be properly released.
+- "delete" releases a single object allocated with "new".
+- Smart pointers can automatically manage memory.
+- "unique_ptr" helps prevent many common memory leaks.
+- Repeated memory leaks can cause memory exhaustion.
+
+Remember
+
+Memory Leak = Memory is allocated but not released when it is no longer needed.
+
+new → use → delete   ✅
+
+new → use → no delete ❌ Memory Leak
