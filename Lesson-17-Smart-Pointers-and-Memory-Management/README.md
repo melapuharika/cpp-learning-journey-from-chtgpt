@@ -1976,3 +1976,117 @@ Remember
 unique_ptr → One owner
 shared_ptr → Many owners
 weak_ptr   → No owner
+
+
+### topic 23
+
+RAII
+
+Full Form
+
+RAII = Resource Acquisition Is Initialization
+
+RAII is an important C++ resource-management technique.
+
+Definition
+
+RAII means connecting the lifetime of a resource to the lifetime of an object.
+
+The resource is acquired when the object is initialized and released automatically when the object's lifetime ends.
+
+Basic Idea
+
+Object created
+      ↓
+Resource acquired
+      ↓
+Resource used
+      ↓
+Object destroyed
+      ↓
+Resource released
+
+Smart Pointer Example
+
+#include <memory>
+
+void test() {
+    auto p = std::make_unique<int>(10);
+
+    // Use p
+}
+
+Here:
+
+- "p" is created.
+- "unique_ptr" manages the dynamically allocated object.
+- "test()" ends.
+- "p" is automatically destroyed.
+- The managed object is automatically released.
+
+No manual "delete" is required.
+
+RAII and Smart Pointers
+
+Smart pointers are an important example of RAII.
+
+auto p = std::make_unique<int>(10);
+
+The "unique_ptr" destructor automatically performs the required cleanup.
+
+RAII Is Not Only for Memory
+
+RAII can manage many types of resources:
+
+- Dynamic memory
+- Files
+- Locks
+- Sockets
+- Other resources that need cleanup
+
+File Example — Concept
+
+Object created
+      ↓
+File opened
+      ↓
+File used
+      ↓
+Object destroyed
+      ↓
+File automatically closed
+
+Benefits of RAII
+
+RAII helps to:
+
+- Reduce manual cleanup.
+- Prevent resource leaks.
+- Make resource management safer.
+- Handle cleanup automatically when an object's lifetime ends.
+- Make code easier to maintain.
+- Support reliable cleanup during exceptions.
+
+Constructor and Destructor
+
+RAII is commonly implemented using constructors and destructors.
+
+Constructor → Acquire resource
+Destructor  → Release resource
+
+Key Points
+
+- RAII stands for Resource Acquisition Is Initialization.
+- It connects resource lifetime with object lifetime.
+- Resources are acquired during object initialization.
+- Resources are released when the object is destroyed.
+- Smart pointers are common examples of RAII.
+- RAII can manage memory, files, locks, sockets, and other resources.
+- RAII reduces the need for manual cleanup.
+
+Remember
+
+RAII = Resource lifetime follows object lifetime.
+
+Object created → Resource acquired
+Object destroyed → Resource released
