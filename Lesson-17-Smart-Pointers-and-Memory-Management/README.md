@@ -1405,3 +1405,113 @@ Key Points
 Remember
 
 Static Storage = Object lifetime is associated with the entire program.
+
+
+### topic 17
+
+Automatic Storage
+
+Definition
+
+Automatic Storage Duration means an object's lifetime is automatically connected to the execution of its block or function.
+
+The object is created when execution enters its scope and its lifetime ends when execution leaves that scope.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void test() {
+    int x = 10;
+
+    cout << x << endl;
+}
+
+int main() {
+    test();
+
+    return 0;
+}
+
+Here:
+
+int x = 10;
+
+"x" is a local variable with automatic storage duration.
+
+test() starts
+     ↓
+x is created
+     ↓
+x is used
+     ↓
+test() ends
+     ↓
+x's lifetime ends
+
+Block Example
+
+{
+    int a = 10;
+
+    cout << a << endl;
+}
+
+"a" exists while execution is inside the block.
+
+When the block ends, "a"'s lifetime ends.
+
+Automatic vs Static
+
+void test() {
+    int a = 0;          // Automatic
+    static int b = 0;  // Static
+}
+
+Each function call:
+
+Automatic a → New lifetime
+Static b    → Same object, value retained
+
+Example
+
+void test() {
+    int a = 0;
+    static int b = 0;
+
+    a++;
+    b++;
+
+    cout << a << " " << b << endl;
+}
+
+Output:
+
+1 1
+1 2
+1 3
+
+Why?
+
+- "a" is recreated for each function call.
+- "b" retains its previous value between function calls.
+
+Important Point
+
+Automatic storage duration should not be confused with the stack.
+
+Local automatic variables are commonly implemented using stack storage, but automatic storage duration describes the lifetime of an object, not a guaranteed physical memory location.
+
+Key Points
+
+- Automatic storage duration is connected to a block or function scope.
+- Local variables commonly have automatic storage duration.
+- The object is created when execution enters its scope.
+- Its lifetime ends when execution leaves its scope.
+- Automatic variables normally do not retain their value between separate function calls.
+- Automatic storage duration is different from static storage duration.
+
+Remember
+
+Automatic Storage = Object lifetime is automatically tied to its scope/block execution.
