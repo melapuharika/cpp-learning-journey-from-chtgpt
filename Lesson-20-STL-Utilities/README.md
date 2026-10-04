@@ -425,3 +425,51 @@ After "move()", "p2" becomes the owner and "p1" becomes empty.
 Key Point
 
 "unique_ptr" = Single ownership + Automatic memory management + No copying.
+
+### topic 11
+
+std::shared_ptr
+
+"std::shared_ptr" is a smart pointer that allows multiple pointers to share ownership of the same dynamically allocated object.
+
+Features
+
+- Multiple "shared_ptr"s can own the same object.
+- Uses reference counting.
+- Automatically releases memory when the reference count becomes "0".
+- Can be copied.
+- "make_shared()" → creates a "shared_ptr".
+- "use_count()" → returns the number of owners.
+- "reset()" → releases ownership.
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    shared_ptr<int> p1 = make_shared<int>(10);
+    shared_ptr<int> p2 = p1;
+
+    cout << *p1 << endl;
+    cout << p1.use_count();
+}
+
+Output:
+
+10
+2
+
+Here, "p1" and "p2" share ownership of the same object.
+
+Unique vs Shared
+
+- "unique_ptr" → One owner
+- "shared_ptr" → Multiple owners
+- "unique_ptr" → Cannot be copied
+- "shared_ptr" → Can be copied
+
+Key Point
+
+"shared_ptr" = Shared ownership + Reference counting + Automatic memory management.
