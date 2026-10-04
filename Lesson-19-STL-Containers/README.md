@@ -672,3 +672,43 @@ Data:
 Key Point
 
 "map" → Unique Keys + Key-Value Pairs + Sorted by Key
+
+### topic 16
+
+std::multimap
+
+"std::multimap" is an STL associative container that stores data as key-value pairs and allows duplicate keys.
+
+Elements are automatically sorted by key.
+
+Features
+
+- Stores key-value pairs.
+- Allows duplicate keys.
+- Elements are sorted by key.
+- "insert()" → adds a key-value pair.
+- "erase()" → removes elements.
+- "find()" → searches for a key.
+- "count()" → returns the number of elements with a key.
+- "equal_range()" → returns the range of elements with the same key.
+- Searching, insertion, and deletion are typically "O(log n)".
+
+Example
+
+multimap<int, string> students;
+
+students.insert({101, "Harika"});
+students.insert({101, "Anu"});
+students.insert({102, "Ravi"});
+
+Output:
+
+101 -> Harika
+101 -> Anu
+102 -> Ravi
+
+Difference
+
+"map" → Unique Keys + Sorted
+
+"multimap" → Duplicate Keys + Sorted
