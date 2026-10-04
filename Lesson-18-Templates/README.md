@@ -760,3 +760,57 @@ Key Points:
 
 Key Point:
 Fold expression = Parameter pack + Operator → Combined result.
+
+
+### topic 16
+
+Template Argument Deduction
+
+- Template argument deduction means the compiler automatically determines the template parameter type from the function arguments.
+
+- We do not always need to explicitly specify the template type.
+
+Example:
+
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+Function call:
+
+add(10, 20);
+
+Here:
+T = int
+
+The compiler automatically deduces T as int.
+
+Another example:
+
+add(10.5, 20.5);
+
+Here:
+T = double
+
+This:
+
+add(10, 20);
+
+is similar to:
+
+add<int>(10, 20);
+
+Important Point:
+
+add(10, 20.5);
+
+may fail with a simple single-type template because the arguments have different types.
+
+Advantages:
+- Reduces code.
+- No need to specify template types manually.
+- Makes function calls shorter and easier to use.
+
+Key Point:
+Template argument deduction = Compiler automatically determines template arguments from function arguments.
