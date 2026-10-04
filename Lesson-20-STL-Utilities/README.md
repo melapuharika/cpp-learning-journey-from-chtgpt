@@ -173,3 +173,54 @@ If no value exists, "value_or(0)" returns "0".
 Key Point
 
 "optional" = A value may or may not exist.
+
+
+### topic 5
+
+std::variant
+
+"std::variant" is an STL utility that can store a value of one of several different data types.
+
+Features
+
+- Can store different possible data types.
+- Only one value is active at a time.
+- Provides type-safe access to stored values.
+- "get<>" → accesses the stored value.
+- "holds_alternative<>" → checks which type is currently stored.
+
+Example
+
+#include <iostream>
+#include <variant>
+using namespace std;
+
+int main() {
+    variant<int, string> data;
+
+    data = 100;
+    cout << get<int>(data) << endl;
+
+    data = "Harika";
+    cout << get<string>(data) << endl;
+}
+
+Output:
+
+100
+Harika
+
+Accessing Values
+
+get<int>(data);
+get<0>(data);
+
+Checking the Type
+
+holds_alternative<int>(data);
+
+Returns "true" if the current value is an "int".
+
+Key Point
+
+"variant" = One active value from multiple possible types.
