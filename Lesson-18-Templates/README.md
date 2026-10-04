@@ -568,3 +568,49 @@ Partial Specialization:
 
 Key Point:
 Partial specialization = Specialize some parameters + Keep the remaining parameters generic.
+
+
+### topic 12
+
+Non-Type Template Parameters
+
+- Non-Type Template Parameters (NTTPs) allow values to be passed as template parameters instead of data types.
+
+Example:
+
+template <typename T, int size>
+class Array {
+    T data[size];
+
+public:
+    void display() {
+        cout << "Array size: " << size << endl;
+    }
+};
+
+Creating objects:
+
+Array<int, 5> a1;
+Array<double, 10> a2;
+
+Here:
+- `T` → Type template parameter.
+- `size` → Non-type template parameter.
+- `int` and `double` are data types.
+- `5` and `10` are values.
+
+For:
+
+Array<int, 5>
+
+T = int
+size = 5
+
+Key Points:
+- NTTPs pass values to templates.
+- The value is generally known at compile time.
+- They are useful for fixed-size arrays and compile-time configurations.
+
+Key Point:
+Type parameter → represents a data type.
+Non-type parameter → represents a compile-time value.
