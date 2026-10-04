@@ -649,3 +649,51 @@ Advantages:
 
 Key Point:
 Variadic templates = Templates that can accept a variable number of parameters.
+
+
+### topic 14
+
+Parameter Packs
+
+- A parameter pack represents zero or more parameters as a group.
+
+- Parameter packs are mainly used with variadic templates.
+
+Syntax:
+
+template <typename... Args>
+void print(Args... args) {
+}
+
+- `Args...` → Template parameter pack.
+- `args...` → Function parameter pack.
+- `...` → Indicates a parameter pack.
+
+Example:
+
+template <typename... Args>
+void print(Args... args) {
+    cout << sizeof...(args) << endl;
+}
+
+Usage:
+
+print(10);
+print(10, 20, 30);
+print(10, 20, 30, 40, 50);
+
+Output:
+
+1
+3
+5
+
+- `sizeof...(args)` gives the number of parameters in the pack.
+
+Key Points:
+- A parameter pack can contain zero or more parameters.
+- It allows functions/templates to handle a variable number of arguments.
+- It is an important part of variadic templates.
+
+Key Point:
+Parameter pack = A group of zero or more template/function parameters.
