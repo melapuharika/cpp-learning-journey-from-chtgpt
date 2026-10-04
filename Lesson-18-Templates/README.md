@@ -842,3 +842,22 @@ typename T::value_type
 
 Here:
 - `T::value_type` depends on the template
+
+
+### topic 18
+
+Dependent Names
+
+- A dependent name is a name whose meaning or type depends on a template parameter.
+
+- The compiler cannot know what the name represents until the template is instantiated with a specific type.
+
+Example:
+
+template <typename T>
+void display() {
+    typename T::value_type value;
+}
+
+Here:
+- `T` is a template
