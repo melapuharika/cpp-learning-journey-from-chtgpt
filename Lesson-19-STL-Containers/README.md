@@ -154,3 +154,50 @@ Example
 vector<int> numbers = {10, 20, 30, 40};
 
 Here, "vector" is the container and it stores multiple integer values.
+
+
+### topic 3
+
+Sequence Containers
+
+Sequence containers are STL containers that store elements in a linear sequence.
+
+Types of Sequence Containers
+
+1. array
+
+- Fixed-size container.
+- Size cannot be changed after creation.
+
+2. vector
+
+- Dynamic array.
+- Size can grow or shrink.
+- Provides fast random access.
+
+3. deque
+
+- Double-ended queue.
+- Supports fast insertion and deletion at both front and back.
+
+4. list
+
+- Doubly linked list.
+- Supports fast insertion and deletion when the position is known.
+
+5. forward_list
+
+- Singly linked list.
+- Elements can be traversed only in the forward direction.
+
+Example
+
+vector<int> numbers = {10, 20, 30, 40};
+
+Here, "vector" is a sequence container and the elements are stored in a linear sequence.
+
+Key Point
+
+Sequence Containers:
+
+"array → vector → deque → list → forward_list"
