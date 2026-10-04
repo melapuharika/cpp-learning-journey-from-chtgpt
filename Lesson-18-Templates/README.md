@@ -814,3 +814,31 @@ Advantages:
 
 Key Point:
 Template argument deduction = Compiler automatically determines template arguments from function arguments.
+
+
+### topic 17
+
+`typename` Keyword
+
+- `typename` is a C++ keyword mainly used in templates.
+
+- It is used to tell the compiler that a dependent name represents a type.
+
+Common Uses:
+
+1. Declaring a Template Type Parameter
+
+template <typename T>
+class Box {
+};
+
+Here:
+- `T` is a type parameter.
+- `typename` tells the compiler that T represents a type.
+
+2. Identifying a Dependent Type
+
+typename T::value_type
+
+Here:
+- `T::value_type` depends on the template
