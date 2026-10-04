@@ -322,3 +322,59 @@ Box<double>
 ## Key Point
 
 Class Template = One Generic Class + Different Data Types
+
+
+### topic 7
+
+Basic Class Templates
+
+- A class template is a blueprint for creating classes that can work with different data types.
+
+- It allows us to write the class code only once and use it with multiple data types.
+
+- Syntax:
+
+template <typename T>
+class ClassName {
+    T data;
+};
+
+- `template` → Used to define a template.
+- `typename T` → T is a type parameter.
+- `T` → Placeholder for a data type.
+
+Example:
+
+template <typename T>
+class Box {
+    T value;
+
+public:
+    Box(T v) {
+        value = v;
+    }
+
+    void display() {
+        cout << value << endl;
+    }
+};
+
+Creating objects:
+
+Box<int> b1(100);
+Box<double> b2(25.5);
+Box<string> b3("Hello");
+
+Here:
+- For b1, T = int
+- For b2, T = double
+- For b3, T = string
+
+Advantages:
+- Code reusability
+- Avoids duplicate code
+- Supports multiple data types
+- Makes programs more flexible
+
+Key Point:
+One class template can be used to create classes for different data types.
