@@ -221,3 +221,46 @@ U = double
 ## Key Point
 
 Multiple Template Parameters = One Template + Multiple Type Parameters
+
+
+### topic 5
+
+# Template Overloading – Notes
+
+## Definition
+
+Template Overloading means defining multiple function templates with the same function name but different parameters.
+
+## Example
+
+template <typename T>
+void display(T value)
+{
+    cout << value;
+}
+
+template <typename T>
+void display(T a, T b)
+{
+    cout << a << " " << b;
+}
+
+## Usage
+
+display(10);        // 1 parameter
+display(10, 20);    // 2 parameters
+
+## How It Works
+
+The compiler checks the arguments and selects the matching template.
+
+## Advantages
+
+- Same function name can be used
+- Supports different parameter lists
+- Improves code readability
+- Provides code flexibility
+
+## Key Point
+
+Template Overloading = Same Function Name + Different Parameters
