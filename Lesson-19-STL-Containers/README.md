@@ -565,3 +565,37 @@ Key Points
 
 Simple ga:
 Associative containers → data ni keys/value relationships tho organized ga store chestayi.
+
+
+### topic 13
+
+std::set
+
+"std::set" is an STL associative container that stores unique elements in sorted order.
+
+Features
+
+- Stores unique elements.
+- Duplicate values are not allowed.
+- Elements are automatically sorted.
+- Searching, insertion, and deletion are typically "O(log n)".
+- "insert()" → adds an element.
+- "erase()" → removes an element.
+- "find()" → searches for an element.
+- "count()" → checks whether an element exists.
+- "size()" → returns the number of elements.
+- "empty()" → checks whether the set is empty.
+
+Example
+
+set<int> numbers = {30, 10, 20, 10};
+
+Output:
+
+10 20 30
+
+The duplicate "10" is stored only once.
+
+Key Point
+
+"set" → Unique + Sorted
