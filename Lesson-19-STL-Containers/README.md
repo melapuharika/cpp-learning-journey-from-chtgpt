@@ -599,3 +599,36 @@ The duplicate "10" is stored only once.
 Key Point
 
 "set" → Unique + Sorted
+
+
+### topic 14
+
+std::multiset
+
+"std::multiset" is an STL associative container that stores elements in sorted order and allows duplicate values.
+
+Features
+
+- Allows duplicate elements.
+- Elements are automatically sorted.
+- Searching, insertion, and deletion are typically "O(log n)".
+- "insert()" → adds an element.
+- "erase()" → removes element(s).
+- "find()" → searches for an element.
+- "count()" → returns the number of occurrences.
+- "size()" → returns the number of elements.
+- "empty()" → checks whether the multiset is empty.
+
+Example
+
+multiset<int> numbers = {30, 10, 20, 10, 30};
+
+Output:
+
+10 10 20 30 30
+
+Difference
+
+"set" → Unique + Sorted
+
+"multiset" → Duplicates + Sorted
