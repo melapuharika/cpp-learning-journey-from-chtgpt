@@ -128,3 +128,48 @@ Pair vs Tuple
 Key Point
 
 "tuple" = Multiple values stored together.
+
+### topic 4
+
+std::optional
+
+"std::optional" is an STL utility that represents a value that may or may not exist.
+
+Features
+
+- Can contain a value or be empty.
+- Useful when a value is not always available.
+- "has_value()" → checks whether a value exists.
+- "value()" → accesses the stored value.
+- "value_or()" → returns the value or a default value.
+- "reset()" → removes the stored value.
+
+Example
+
+#include <iostream>
+#include <optional>
+using namespace std;
+
+int main() {
+    optional<int> age = 23;
+
+    if (age.has_value()) {
+        cout << age.value();
+    }
+}
+
+Output:
+
+23
+
+Empty Optional
+
+optional<int> age;
+
+cout << age.value_or(0);
+
+If no value exists, "value_or(0)" returns "0".
+
+Key Point
+
+"optional" = A value may or may not exist.
