@@ -25,3 +25,56 @@
 18. Modern Concepts
 19. requires
 20. Constraints
+
+
+### topic 1
+
+# Templates – Short Notes
+
+## Definition
+
+Template is a C++ feature used to write generic and reusable code that works with different data types.
+
+## Syntax
+
+template <typename T>
+
+Here:
+- template → C++ keyword
+- typename → specifies a type parameter
+- T → type placeholder
+
+## Example
+
+template <typename T>
+T add(T a, T b)
+{
+    return a + b;
+}
+
+cout << add(10, 20);      // int
+cout << add(2.5, 3.5);    // double
+
+## Advantages
+
+- Code reusability
+- Reduces code duplication
+- Works with different data types
+- Makes code flexible and maintainable
+
+## Template Instantiation
+
+Creating a specific version of a template for a particular data type.
+
+Example:
+
+add(10, 20) → T becomes int
+add(2.5, 3.5) → T becomes double
+
+## Important Point
+
+The operations used inside a template must be valid for the selected data type.
+
+## Key Point
+
+Template = Generic Code + Different Data Types
