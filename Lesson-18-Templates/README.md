@@ -378,3 +378,47 @@ Advantages:
 
 Key Point:
 One class template can be used to create classes for different data types.
+
+
+### topic 8
+
+Multiple Template Parameters
+
+- Multiple template parameters allow a class template to work with two or more different data types.
+
+- Syntax:
+
+template <typename T, typename U>
+class ClassName {
+    T first;
+    U second;
+};
+
+- `T` → First type parameter.
+- `U` → Second type parameter.
+
+Example:
+
+template <typename T, typename U>
+class Pair {
+    T first;
+    U second;
+};
+
+Creating objects:
+
+Pair<int, string> p1(10, "Hello");
+Pair<string, double> p2("Price", 99.5);
+
+Here:
+- For p1, T = int and U = string.
+- For p2, T = string and U = double.
+
+Advantages:
+- Supports multiple data types.
+- Improves code reusability.
+- Avoids writing separate classes for different type combinations.
+- Makes classes more flexible.
+
+Key Point:
+A class template can have multiple type parameters such as T, U, V, etc.
