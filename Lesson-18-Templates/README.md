@@ -422,3 +422,41 @@ Advantages:
 
 Key Point:
 A class template can have multiple type parameters such as T, U, V, etc.
+
+### topic 9
+
+Advanced Templates
+
+- Advanced templates are powerful features of C++ templates used to create more flexible, reusable, and generic code.
+
+Important Advanced Template Concepts:
+
+1. Template Specialization
+   - Allows us to provide a special implementation for a specific data type.
+
+2. Partial Specialization
+   - Provides a specialized implementation for some template parameters.
+
+3. Non-Type Template Parameters
+   - Allows values such as integers or constants to be passed as template parameters.
+
+4. Default Template Parameters
+   - Provides default values for template parameters.
+
+5. Variadic Templates
+   - Allows a template to accept a variable number of parameters.
+
+6. Template Template Parameters
+   - Allows a template itself to be passed as a template parameter.
+
+7. Type Traits
+   - Used to obtain information or properties about data types at compile time.
+
+8. `if constexpr`
+   - Allows compile-time conditional logic inside templates.
+
+9. Concepts and Constraints
+   - Used to restrict which types can be used with a template.
+
+Key Point:
+Advanced templates provide more control and flexibility when writing generic C++ programs.
