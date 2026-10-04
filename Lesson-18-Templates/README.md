@@ -614,3 +614,38 @@ Key Points:
 Key Point:
 Type parameter → represents a data type.
 Non-type parameter → represents a compile-time value.
+
+
+### topic 13
+
+Variadic Templates
+
+- Variadic templates allow a function or class template to accept a variable number of parameters.
+
+- They are useful when we do not know in advance how many arguments will be passed.
+
+Syntax:
+
+template <typename... Args>
+void print(Args... args) {
+    // code
+}
+
+- `Args...` → Represents multiple template parameters.
+- `args...` → Represents multiple function arguments.
+
+Example:
+
+print(10);
+print(10, 20);
+print(10, 20, 30, 40);
+
+Here, different numbers of arguments can be passed.
+
+Advantages:
+- Supports a variable number of arguments.
+- Provides flexible and reusable code.
+- Useful for generic functions and libraries.
+
+Key Point:
+Variadic templates = Templates that can accept a variable number of parameters.
