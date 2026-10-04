@@ -235,3 +235,43 @@ cout << numbers.size();
 Key Point
 
 "std::array" = Fixed-size array + STL features
+
+
+### topic 5
+
+std::vector
+
+"std::vector" is an STL sequence container that works like a dynamic array.
+
+Unlike "array", a vector can grow or shrink during runtime.
+
+Syntax
+
+#include <vector>
+
+vector<int> numbers = {10, 20, 30};
+
+Features
+
+- Dynamic size.
+- Stores elements of the same data type.
+- Supports random access using index.
+- Elements are stored contiguously in memory.
+- "push_back()" adds an element at the end.
+- "pop_back()" removes the last element.
+- "size()" returns the number of elements.
+- "capacity()" returns the currently allocated storage capacity.
+
+Example
+
+vector<int> numbers;
+
+numbers.push_back(10);
+numbers.push_back(20);
+numbers.push_back(30);
+
+Key Point
+
+"array" → Fixed size
+"vector" → Dynamic size
+
