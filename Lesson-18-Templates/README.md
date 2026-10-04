@@ -897,3 +897,56 @@ Important Modern Template Features:
 
 Key Point:
 Modern C++ templates make generic programming more powerful, readable, and type-safe.
+
+
+### topic 20
+
+Concepts
+
+- Concepts are a Modern C++ feature introduced in C++20.
+
+- Concepts are used to specify requirements or restrictions for template parameters.
+
+- Simple meaning:
+  Concept = Rules or conditions for template types.
+
+Example:
+
+#include <concepts>
+
+template <typename T>
+requires std::integral<T>
+void print(T value) {
+    cout << value << endl;
+}
+
+Here:
+- `std::integral<T>` requires T to be an integer type.
+- `print(10)` → Valid.
+- `print(10.5)` → Not allowed.
+
+Creating a Custom Concept:
+
+template <typename T>
+concept Number = std::integral<T> || std::floating_point<T>;
+
+Using the Concept:
+
+template <Number T>
+void display(T value) {
+    cout << value << endl;
+}
+
+Here:
+- `T` can be an integer type.
+- `T` can be a floating-point type.
+- Other types are rejected.
+
+Advantages:
+- Restricts invalid template types.
+- Improves code readability.
+- Provides better compile-time error messages.
+- Makes generic programming safer.
+
+Key Point:
+Concepts = Compile-time rules or constraints for template parameters.
