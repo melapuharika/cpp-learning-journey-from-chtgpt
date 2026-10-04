@@ -275,7 +275,7 @@ Key Point
 "array" → Fixed size
 "vector" → Dynamic size
 
-### topic 5
+### topic 6
 
 std::deque
 
