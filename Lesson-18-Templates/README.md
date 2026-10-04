@@ -517,3 +517,54 @@ Advantages:
 
 Key Point:
 Template specialization = General template + Special implementation for a specific type.
+
+### topic 11
+
+Partial Template Specialization
+
+- Partial specialization means specializing only some template parameters while keeping the remaining parameters generic.
+
+Example:
+
+template <typename T, typename U>
+class Pair {
+public:
+    void display() {
+        cout << "General Pair" << endl;
+    }
+};
+
+Partial Specialization:
+
+template <typename T>
+class Pair<T, int> {
+public:
+    void display() {
+        cout << "Second type is int" << endl;
+    }
+};
+
+Here:
+- `U` is specialized as `int`.
+- `T` remains generic and can be any data type.
+- `Pair<T, int>` is a partial specialization.
+
+Example:
+
+Pair<double, string> p1;
+Pair<double, int> p2;
+
+p1 → Uses the general template.
+p2 → Uses the partial specialization.
+
+Difference:
+
+Full Specialization:
+- All template parameters are fixed.
+
+Partial Specialization:
+- Only some template parameters are fixed.
+- Remaining parameters stay generic.
+
+Key Point:
+Partial specialization = Specialize some parameters + Keep the remaining parameters generic.
