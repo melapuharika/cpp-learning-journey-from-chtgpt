@@ -865,3 +865,38 @@ Here:
 Key Point
 
 "unordered_map" → Key-Value + Unique Keys + Unsorted + Hashing + Average O(1)
+
+### topic 21
+
+std::unordered_multimap
+
+"std::unordered_multimap" is an STL unordered associative container that stores data in key-value pairs using a hash table.
+
+Features
+
+- Stores data as key-value pairs.
+- Duplicate keys are allowed.
+- Elements are not sorted.
+- Uses hashing.
+- Average insertion, search, and deletion: "O(1)".
+- Worst-case: "O(n)".
+- "insert()" → adds a key-value pair.
+- "erase()" → removes pair/pairs.
+- "find()" → searches for a key.
+- "count()" → returns how many times a key exists.
+- "equal_range()" → finds all pairs with the same key.
+- "size()" → returns the total number of key-value pairs.
+
+Example
+
+unordered_multimap<int, string> students;
+
+students.insert({101, "Harika"});
+students.insert({101, "Anu"});
+students.insert({102, "Ravi"});
+
+Here, key "101" appears multiple times.
+
+Key Point
+
+"unordered_multimap" → Key-Value + Duplicate Keys + Unsorted + Hashing + Average O(1)
