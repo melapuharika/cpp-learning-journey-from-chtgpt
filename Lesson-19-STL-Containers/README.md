@@ -827,3 +827,41 @@ Key Point
 
 "unordered_multiset" → Duplicates + Unsorted + Hashing + Average O(1)
 
+### topic 20
+
+std::unordered_map
+
+"std::unordered_map" is an STL unordered associative container that stores data in key-value pairs using a hash table.
+
+Features
+
+- Stores data as key-value pairs.
+- Keys must be unique.
+- Elements are not sorted.
+- Uses hashing.
+- Average insertion, search, and deletion: "O(1)".
+- Worst-case: "O(n)".
+- "insert()" → adds a key-value pair.
+- "erase()" → removes a pair.
+- "find()" → searches for a key.
+- "count()" → checks whether a key exists.
+- "at()" → accesses the value using a key.
+- "[]" → accesses or creates a value using a key.
+- "size()" → returns the number of key-value pairs.
+- "empty()" → checks whether the container is empty.
+
+Example
+
+unordered_map<int, string> students;
+
+students[101] = "Harika";
+students[102] = "Anu";
+
+Here:
+
+- "101", "102" → Keys
+- ""Harika"", ""Anu"" → Values
+
+Key Point
+
+"unordered_map" → Key-Value + Unique Keys + Unsorted + Hashing + Average O(1)
