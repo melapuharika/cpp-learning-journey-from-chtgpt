@@ -93,3 +93,64 @@ Advantages of STL
 In Simple Words
 
 STL = Containers + Iterators + Algorithms + Function Objects + Allocators
+
+
+### topic 2
+
+Containers
+
+Containers are STL components used to store and organize multiple values or objects.
+
+A container is like a box that stores data.
+
+Types of STL Containers
+
+1. Sequence Containers
+
+Store elements in a sequence.
+
+- "vector"
+- "deque"
+- "list"
+- "forward_list"
+- "array"
+
+2. Associative Containers
+
+Store data in an organized manner and support efficient searching.
+
+- "set"
+- "multiset"
+- "map"
+- "multimap"
+
+3. Unordered Containers
+
+Store elements using hashing and do not maintain a sorted order.
+
+- "unordered_set"
+- "unordered_multiset"
+- "unordered_map"
+- "unordered_multimap"
+
+4. Container Adapters
+
+Provide a specific way to access stored data.
+
+- "stack"
+- "queue"
+- "priority_queue"
+
+Advantages
+
+- Easy data storage and management.
+- Reusable and efficient.
+- Provides different containers for different requirements.
+- Reduces programming effort.
+- Works with STL algorithms and iterators.
+
+Example
+
+vector<int> numbers = {10, 20, 30, 40};
+
+Here, "vector" is the container and it stores multiple integer values.
