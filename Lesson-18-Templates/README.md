@@ -950,3 +950,61 @@ Advantages:
 
 Key Point:
 Concepts = Compile-time rules or constraints for template parameters.
+
+
+### topic 21
+
+`requires` Clause
+
+- `requires` is a C++20 feature used with templates and concepts.
+
+- It specifies conditions or requirements that template arguments must satisfy.
+
+Simple Meaning:
+
+requires = Conditions that a template type must satisfy.
+
+Example:
+
+#include <concepts>
+
+template <typename T>
+requires std::integral<T>
+void print(T value) {
+    cout << value << endl;
+}
+
+Here:
+- `requires std::integral<T>` requires T to be an integer type.
+- `print(10)` → Valid.
+- `print(10.5)` → Not allowed.
+
+Multiple Conditions:
+
+template <typename T>
+requires std::integral<T> && (sizeof(T) >= 4)
+void display(T value) {
+    cout << value << endl;
+}
+
+Both conditions must be satisfied.
+
+Requires Expression:
+
+template <typename T>
+concept Addable = requires(T a, T b) {
+    a + b;
+};
+
+Here:
+- `requires` checks whether `a + b` is a valid operation for T.
+- If the operation is supported, the requirement is satisfied.
+
+Advantages:
+- Restricts invalid template arguments.
+- Provides compile-time checking.
+- Improves code readability.
+- Makes generic code safer.
+
+Key Point:
+`requires` = Specifies compile-time requirements or conditions for templates.
