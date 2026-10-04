@@ -308,3 +308,44 @@ Here, "bitset<8>" means the bitset contains 8 fixed bits.
 Key Point
 
 "bitset" = Fixed-size collection of binary bits (0 and 1).
+
+### topic 8
+
+std::string_view
+
+"std::string_view" is an STL utility that provides a non-owning view of a string without copying its data.
+
+Features
+
+- Does not own the string data.
+- Avoids unnecessary string copying.
+- Lightweight and efficient.
+- Can access characters using "[]".
+- "size()" → returns the length.
+- "empty()" → checks whether the view is empty.
+- "substr()" → returns a part of the string.
+- The original string must remain alive while the "string_view" is being used.
+
+Example
+
+#include <iostream>
+#include <string>
+#include <string_view>
+using namespace std;
+
+int main() {
+    string name = "Harika";
+    string_view view = name;
+
+    cout << view;
+}
+
+Output:
+
+Harika
+
+Here, "view" does not create a copy of "name"; it only views the existing string.
+
+Key Point
+
+"string_view" = Lightweight, non-owning view of a string without copying its data.
