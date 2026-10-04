@@ -275,3 +275,46 @@ Key Point
 "array" → Fixed size
 "vector" → Dynamic size
 
+### topic 5
+
+std::deque
+
+"std::deque" stands for Double-Ended Queue.
+
+It is an STL sequence container that allows fast insertion and deletion at both the front and back.
+
+Syntax
+
+#include <deque>
+
+deque<int> numbers = {10, 20, 30};
+
+Features
+
+- Dynamic size.
+- Fast insertion at the front and back.
+- Fast deletion at the front and back.
+- Supports random access.
+- "push_front()" → adds an element at the front.
+- "push_back()" → adds an element at the back.
+- "pop_front()" → removes the front element.
+- "pop_back()" → removes the last element.
+- "front()" → accesses the first element.
+- "back()" → accesses the last element.
+
+Example
+
+deque<int> numbers = {20, 30};
+
+numbers.push_front(10);
+numbers.push_back(40);
+
+Result:
+
+10 20 30 40
+
+Key Point
+
+"vector" → efficient insertion/deletion mainly at the end.
+
+"deque" → efficient insertion/deletion at both ends.
