@@ -435,3 +435,44 @@ Key Point
 "queue" → FIFO
 
 "priority_queue" → Highest priority first
+
+### topic 10
+
+std::stack
+
+"std::stack" is an STL container adapter that follows the LIFO (Last In, First Out) principle.
+
+The element added last is removed first.
+
+Example
+
+stack<int> s;
+
+s.push(10);
+s.push(20);
+s.push(30);
+
+Stack:
+
+30 ← Top
+20
+10
+
+Important Functions
+
+- "push()" → adds an element to the top.
+- "pop()" → removes the top element.
+- "top()" → accesses the top element.
+- "empty()" → checks whether the stack is empty.
+- "size()" → returns the number of elements.
+
+Example
+
+cout << s.top();  // 30
+s.pop();          // removes 30
+
+Key Point
+
+"stack" → LIFO → Last In, First Out
+
+Real-life example: Stack of plates — the last plate placed is the first plate removed.
