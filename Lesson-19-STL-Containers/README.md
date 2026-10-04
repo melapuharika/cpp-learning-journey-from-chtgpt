@@ -519,3 +519,49 @@ Key Point
 "priority_queue" → Highest-priority element first
 
 Default → Largest element first
+
+
+### topic 12
+
+Associative Containers
+
+Associative containers are STL containers that store elements in an organized way and provide efficient searching, insertion, and deletion.
+
+They are generally based on keys and maintain elements in sorted order.
+
+Types
+
+1. "set"
+
+- Stores unique elements.
+- Elements are sorted.
+- Duplicate values are not allowed.
+
+2. "multiset"
+
+- Stores elements in sorted order.
+- Allows duplicate values.
+
+3. "map"
+
+- Stores data as key-value pairs.
+- Keys are unique.
+- Elements are sorted by key.
+
+4. "multimap"
+
+- Stores data as key-value pairs.
+- Allows duplicate keys.
+- Elements are sorted by key.
+
+Key Points
+
+- Associative containers generally maintain sorted order.
+- Searching, insertion, and deletion are typically O(log n).
+- "set" → unique values.
+- "multiset" → duplicate values allowed.
+- "map" → unique keys + values.
+- "multimap" → duplicate keys + values.
+
+Simple ga:
+Associative containers → data ni keys/value relationships tho organized ga store chestayi.
