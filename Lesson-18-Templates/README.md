@@ -1008,3 +1008,68 @@ Advantages:
 
 Key Point:
 `requires` = Specifies compile-time requirements or conditions for templates.
+
+
+### topic 22
+
+Constraints
+
+- Constraints are compile-time conditions or rules that template arguments must satisfy.
+
+- They are mainly used with Concepts in C++20.
+
+Simple Meaning:
+
+Constraint = Rule that a template type must satisfy.
+
+Example:
+
+#include <concepts>
+
+template <typename T>
+requires std::integral<T>
+void print(T value) {
+    cout << value << endl;
+}
+
+Here:
+- `std::integral<T>` is a constraint.
+- T must be an integer type.
+- `print(10)` → Valid.
+- `print(10.5)` → Not allowed.
+
+Named Constraint:
+
+template <typename T>
+concept Number = std::integral<T> || std::floating_point<T>;
+
+Here:
+- `Number` is a named constraint (concept).
+- It allows integer and floating-point types.
+
+Using the Constraint:
+
+template <Number T>
+void display(T value) {
+    cout << value << endl;
+}
+
+Multiple Constraints:
+
+template <typename T>
+requires std::integral<T> && (sizeof(T) >= 4)
+void display(T value) {
+    cout << value << endl;
+}
+
+Both conditions must be satisfied.
+
+Key Points:
+- Constraints are checked at compile time.
+- They restrict which types can be used with templates.
+- They improve type safety and readability.
+- `requires` can be used to specify constraints.
+- Concepts can be used to name and reuse constraints.
+
+Key Point:
+Constraints = Compile-time rules that template arguments must satisfy.
