@@ -81,3 +81,50 @@ Here:
 Key Point
 
 "pair" = Two values stored together.
+
+### topic 3
+
+std::tuple
+
+"std::tuple" is an STL utility used to store multiple values together in a single object.
+
+Features
+
+- Can store multiple values.
+- Values can have different data types.
+- Values are accessed using "get<index>()".
+- Index starts from 0.
+- "make_tuple()" → creates a tuple easily.
+
+Example
+
+#include <iostream>
+#include <tuple>
+using namespace std;
+
+int main() {
+    tuple<string, int, float> student = {"Harika", 23, 8.5};
+
+    cout << get<0>(student) << endl;
+    cout << get<1>(student) << endl;
+    cout << get<2>(student) << endl;
+}
+
+Accessing Values
+
+get<0>(student);  // First value
+get<1>(student);  // Second value
+get<2>(student);  // Third value
+
+Creating a Tuple
+
+auto student = make_tuple("Harika", 23, 8.5);
+
+Pair vs Tuple
+
+- "pair" → exactly 2 values
+- "tuple" → multiple values
+
+Key Point
+
+"tuple" = Multiple values stored together.
