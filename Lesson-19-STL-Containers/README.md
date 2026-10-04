@@ -632,3 +632,43 @@ Difference
 "set" → Unique + Sorted
 
 "multiset" → Duplicates + Sorted
+
+
+### topic 15
+
+std::map
+
+"std::map" is an STL associative container that stores data as key-value pairs.
+
+Each key is unique, and elements are automatically sorted by key.
+
+Features
+
+- Stores key-value pairs.
+- Keys must be unique.
+- Elements are sorted by key.
+- Searching, insertion, and deletion are typically "O(log n)".
+- "insert()" → adds a key-value pair.
+- "erase()" → removes an element.
+- "find()" → searches for a key.
+- "count()" → checks whether a key exists.
+- "size()" → returns the number of elements.
+- "empty()" → checks whether the map is empty.
+
+Example
+
+map<int, string> students;
+
+students[101] = "Harika";
+students[102] = "Anu";
+students[103] = "Ravi";
+
+Data:
+
+101 → Harika
+102 → Anu
+103 → Ravi
+
+Key Point
+
+"map" → Unique Keys + Key-Value Pairs + Sorted by Key
