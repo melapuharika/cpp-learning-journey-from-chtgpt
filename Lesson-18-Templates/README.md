@@ -697,3 +697,66 @@ Key Points:
 
 Key Point:
 Parameter pack = A group of zero or more template/function parameters.
+
+
+### topic 15
+
+Fold Expressions
+
+- Fold expressions are used to process or combine multiple values in a parameter pack using an operator.
+
+- They were introduced in C++17.
+
+- They are mainly used with variadic templates.
+
+Example:
+
+template <typename... Args>
+int sum(Args... args) {
+    return (args + ...);
+}
+
+Usage:
+
+cout << sum(10, 20, 30, 40);
+
+Output:
+
+100
+
+Here:
+
+(args + ...)
+
+means:
+
+10 + 20 + 30 + 40
+
+Fold expressions can use operators such as:
+- +
+- *
+- &&
+- ||
+- <<
+- -
+
+Example:
+
+return (args * ...);
+
+For:
+
+2, 3, 4
+
+Result:
+
+2 * 3 * 4 = 24
+
+Key Points:
+- Fold expressions work with parameter packs.
+- They simplify operations on multiple arguments.
+- They were introduced in C++17.
+- They can use many C++ operators.
+
+Key Point:
+Fold expression = Parameter pack + Operator → Combined result.
