@@ -476,3 +476,46 @@ Key Point
 "stack" → LIFO → Last In, First Out
 
 Real-life example: Stack of plates — the last plate placed is the first plate removed.
+
+
+### topic 11
+
+std::priority_queue
+
+"std::priority_queue" is an STL container adapter where the highest-priority element is accessed first.
+
+By default, the largest element has the highest priority.
+
+Example
+
+priority_queue<int> pq;
+
+pq.push(10);
+pq.push(30);
+pq.push(20);
+
+"top()" returns:
+
+30
+
+Important Functions
+
+- "push()" → adds an element.
+- "pop()" → removes the highest-priority element.
+- "top()" → accesses the highest-priority element.
+- "empty()" → checks whether the queue is empty.
+- "size()" → returns the number of elements.
+
+Min Priority Queue
+
+To make the smallest element have the highest priority:
+
+priority_queue<int, vector<int>, greater<int>> pq;
+
+Here, "10" will be accessed before "20" and "30".
+
+Key Point
+
+"priority_queue" → Highest-priority element first
+
+Default → Largest element first
