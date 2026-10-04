@@ -176,3 +176,48 @@ square(2.5)
 ## Key Point
 
 Basic Template = Same Code + Different Data Types
+
+### topic 4
+
+# Multiple Template Parameters – Notes
+
+## Definition
+
+Multiple Template Parameters allow us to use more than one type parameter in a single template.
+
+## Syntax
+
+template <typename T, typename U>
+
+## Example
+
+template <typename T, typename U>
+void display(T a, U b)
+{
+    cout << a << " " << b;
+}
+
+display(10, 2.5);
+
+T = int
+U = double
+
+## Important Point
+
+T and U can represent different data types.
+
+Example:
+
+T = int
+U = double
+
+## Advantages
+
+- Supports multiple data types
+- Allows different types in the same function
+- Improves code reusability
+- Makes templates more flexible
+
+## Key Point
+
+Multiple Template Parameters = One Template + Multiple Type Parameters
