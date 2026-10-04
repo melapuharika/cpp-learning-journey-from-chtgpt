@@ -712,3 +712,49 @@ Difference
 "map" → Unique Keys + Sorted
 
 "multimap" → Duplicate Keys + Sorted
+
+### topic 17
+
+Unordered Containers
+
+Unordered containers are STL associative containers that use hashing to store and access elements.
+
+They do not maintain elements in sorted order.
+
+Types
+
+1. unordered_set
+
+- Stores unique elements.
+- Elements are not sorted.
+
+2. unordered_multiset
+
+- Allows duplicate elements.
+- Elements are not sorted.
+
+3. unordered_map
+
+- Stores key-value pairs.
+- Keys are unique.
+- Elements are not sorted.
+
+4. unordered_multimap
+
+- Stores key-value pairs.
+- Allows duplicate keys.
+- Elements are not sorted.
+
+Features
+
+- Based on hash tables.
+- No guaranteed sorted order.
+- Average insertion, deletion, and search: "O(1)".
+- Worst-case: "O(n)".
+- Useful when fast lookup is more important than ordering.
+
+Key Point
+
+"set/map" → Sorted + O(log n)
+
+"unordered_set/unordered_map" → Unsorted + Average O(1)
