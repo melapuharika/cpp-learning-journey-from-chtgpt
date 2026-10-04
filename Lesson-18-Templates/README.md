@@ -128,3 +128,51 @@ The operations used inside the function must be valid for the selected data type
 ## Key Point
 
 Function Template = One Generic Function + Multiple Data Types
+
+### topic 3
+
+# Basic Templates – Notes
+
+## Definition
+
+Basic Template is a simple template that allows the same code to work with different data types.
+
+## Syntax
+
+template <typename T>
+T functionName(T value)
+{
+    // code
+}
+
+## Example
+
+template <typename T>
+T square(T value)
+{
+    return value * value;
+}
+
+cout << square(5);       // int → 25
+cout << square(2.5);     // double → 6.25
+
+## How It Works
+
+square(5)
+→ T = int
+→ Result = 25
+
+square(2.5)
+→ T = double
+→ Result = 6.25
+
+## Advantages
+
+- Code reusability
+- Avoids duplicate code
+- Works with different data types
+- Makes code flexible
+
+## Key Point
+
+Basic Template = Same Code + Different Data Types
