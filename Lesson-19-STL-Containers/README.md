@@ -201,3 +201,37 @@ Key Point
 Sequence Containers:
 
 "array → vector → deque → list → forward_list"
+
+
+### topic 4
+
+std::array
+
+"std::array" is an STL sequence container used to store a fixed number of elements of the same data type.
+
+Syntax
+
+#include <array>
+
+array<int, 5> numbers = {10, 20, 30, 40, 50};
+
+Features
+
+- Fixed size.
+- Stores elements of the same data type.
+- Index starts from "0".
+- Supports random access.
+- Supports iterators and STL algorithms.
+- Size cannot be changed after creation.
+- Provides functions like "size()", "front()", "back()", and "at()".
+
+Example
+
+array<int, 5> numbers = {10, 20, 30, 40, 50};
+
+cout << numbers[0];
+cout << numbers.size();
+
+Key Point
+
+"std::array" = Fixed-size array + STL features
