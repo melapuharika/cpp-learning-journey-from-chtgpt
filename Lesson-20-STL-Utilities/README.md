@@ -381,3 +381,47 @@ Simple Analogy
 Key Point
 
 Smart Pointers = Automatic and safer memory management.
+
+### topic 10
+
+std::unique_ptr
+
+"std::unique_ptr" is a smart pointer that provides single ownership of a dynamically allocated object.
+
+Features
+
+- Only one "unique_ptr" can own an object at a time.
+- Automatically releases memory when the owner is destroyed.
+- Helps prevent memory leaks.
+- Cannot be copied.
+- Ownership can be transferred using "std::move()".
+- "make_unique()" → creates a "unique_ptr".
+- "get()" → returns the underlying raw pointer.
+- "reset()" → releases the owned object.
+
+Example
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    unique_ptr<int> p = make_unique<int>(10);
+
+    cout << *p;
+}
+
+Output:
+
+10
+
+Ownership Transfer
+
+unique_ptr<int> p1 = make_unique<int>(10);
+unique_ptr<int> p2 = move(p1);
+
+After "move()", "p2" becomes the owner and "p1" becomes empty.
+
+Key Point
+
+"unique_ptr" = Single ownership + Automatic memory management + No copying.
