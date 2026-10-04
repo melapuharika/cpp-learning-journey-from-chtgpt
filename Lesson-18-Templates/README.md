@@ -460,3 +460,60 @@ Important Advanced Template Concepts:
 
 Key Point:
 Advanced templates provide more control and flexibility when writing generic C++ programs.
+
+
+## topic 10
+
+Template Specialization
+
+- Template specialization allows us to provide a special implementation for a specific data type.
+
+- The general template works for all data types.
+
+- A specialized template works differently for a particular data type.
+
+General Template:
+
+template <typename T>
+class Box {
+public:
+    void display() {
+        cout << "General Box" << endl;
+    }
+};
+
+Specialized Template:
+
+template <>
+class Box<int> {
+public:
+    void display() {
+        cout << "Integer Box" << endl;
+    }
+};
+
+Here:
+- `template <>` indicates full specialization.
+- `Box<int>` means the specialization is specifically for `int`.
+- Other data types continue to use the general template.
+
+Example:
+
+Box<double> b1;
+Box<int> b2;
+
+b1.display();
+b2.display();
+
+Output:
+
+General Box
+Integer Box
+
+Advantages:
+- Allows special behavior for specific data types.
+- Keeps the general template unchanged.
+- Provides flexibility in generic programming.
+
+Key Point:
+Template specialization = General template + Special implementation for a specific type.
