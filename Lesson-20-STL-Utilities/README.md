@@ -473,3 +473,41 @@ Unique vs Shared
 Key Point
 
 "shared_ptr" = Shared ownership + Reference counting + Automatic memory management.
+
+### topic 12
+
+std::weak_ptr
+
+"std::weak_ptr" is a smart pointer that observes an object managed by "shared_ptr" without owning it.
+
+Features
+
+- Does not own the object.
+- Does not increase the "shared_ptr" reference count.
+- Helps prevent "shared_ptr" reference cycles.
+- "lock()" → creates a temporary "shared_ptr" if the object is still alive.
+- "expired()" → checks whether the object has been destroyed.
+- "reset()" → releases the "weak_ptr".
+- "use_count()" → returns the number of "shared_ptr" owners.
+
+Example
+
+shared_ptr<int> p = make_shared<int>(10);
+
+weak_ptr<int> w = p;
+
+if (auto temp = w.lock()) {
+    cout << *temp;
+}
+
+Here, "w" only observes the object; it does not own it.
+
+Smart Pointer Comparison
+
+- "unique_ptr" → Single owner
+- "shared_ptr" → Multiple owners
+- "weak_ptr" → Non-owning observer
+
+Key Point
+
+"weak_ptr" = Non-owning observer + Helps avoid "shared_ptr" reference cycles.
