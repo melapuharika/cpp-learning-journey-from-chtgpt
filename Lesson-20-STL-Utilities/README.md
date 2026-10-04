@@ -269,3 +269,42 @@ Variant vs Any
 Key Point
 
 "any" = Store a value of almost any type.
+
+### topic 7
+
+std::bitset
+
+"std::bitset" is an STL utility used to store and manipulate a fixed number of binary bits (0 and 1).
+
+Features
+
+- Stores a fixed number of bits.
+- Each bit can be "0" or "1".
+- "set()" → sets bits to "1".
+- "reset()" → sets bits to "0".
+- "flip()" → changes "0" to "1" and "1" to "0".
+- "count()" → returns the number of "1" bits.
+- "test(index)" → checks the bit at a specific position.
+- "size()" → returns the total number of bits.
+
+Example
+
+#include <iostream>
+#include <bitset>
+using namespace std;
+
+int main() {
+    bitset<8> bits(10);
+
+    cout << bits;
+}
+
+Output:
+
+00001010
+
+Here, "bitset<8>" means the bitset contains 8 fixed bits.
+
+Key Point
+
+"bitset" = Fixed-size collection of binary bits (0 and 1).
