@@ -794,3 +794,36 @@ Difference
 "set" → Unique + Sorted + O(log n)
 
 "unordered_set" → Unique + Unsorted + Average O(1)
+
+### topic 19
+
+std::unordered_multiset
+
+"std::unordered_multiset" is an STL unordered associative container that stores multiple elements, including duplicates, using a hash table.
+
+Elements are not stored in sorted order.
+
+Features
+
+- Duplicate elements are allowed.
+- Elements are not sorted.
+- Uses hashing.
+- Average insertion, search, and deletion: "O(1)".
+- Worst-case: "O(n)".
+- "insert()" → adds an element.
+- "erase()" → removes elements.
+- "find()" → searches for an element.
+- "count()" → returns how many times an element exists.
+- "size()" → returns the total number of elements.
+- "empty()" → checks whether the container is empty.
+
+Example
+
+unordered_multiset<int> numbers = {10, 20, 10, 30, 20};
+
+Here, duplicate "10" and "20" are allowed.
+
+Key Point
+
+"unordered_multiset" → Duplicates + Unsorted + Hashing + Average O(1)
+
