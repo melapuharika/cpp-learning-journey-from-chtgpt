@@ -264,3 +264,61 @@ The compiler checks the arguments and selects the matching template.
 ## Key Point
 
 Template Overloading = Same Function Name + Different Parameters
+
+
+### topic 6
+
+# Class Templates – Notes
+
+## Definition
+
+Class Template is used to create a generic class that can work with different data types.
+
+## Syntax
+
+template <typename T>
+class ClassName
+{
+    T data;
+};
+
+## Example
+
+template <typename T>
+class Box
+{
+public:
+    T value;
+
+    Box(T v)
+    {
+        value = v;
+    }
+};
+
+## Usage
+
+Box<int> b1(10);
+Box<double> b2(2.5);
+
+T = int
+T = double
+
+## How It Works
+
+Box<int>
+→ T becomes int
+
+Box<double>
+→ T becomes double
+
+## Advantages
+
+- Code reusability
+- Same class can work with different data types
+- Reduces duplicate code
+- Makes classes flexible
+
+## Key Point
+
+Class Template = One Generic Class + Different Data Types
