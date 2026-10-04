@@ -861,3 +861,39 @@ void display() {
 
 Here:
 - `T` is a template
+
+
+### topic 19
+
+Modern C++ Templates
+
+- Modern C++ provides new features that make templates simpler, safer, and more readable.
+
+Important Modern Template Features:
+
+1. `if constexpr`
+   - Performs conditional logic at compile time.
+
+2. Concepts
+   - Restrict templates to specific types or requirements.
+
+3. `requires` Clauses
+   - Specify conditions that template arguments must satisfy.
+
+4. Abbreviated Function Templates
+   - Use `auto` to write shorter function templates.
+
+5. `auto` in Template Parameters
+   - Allows automatic deduction of template parameter types.
+
+6. `decltype` with Templates
+   - Helps determine the type of an expression.
+
+7. `std::enable_if` / SFINAE
+   - Enables or disables template functions based on type conditions.
+
+8. Type Traits
+   - Provide information about types at compile time.
+
+Key Point:
+Modern C++ templates make generic programming more powerful, readable, and type-safe.
