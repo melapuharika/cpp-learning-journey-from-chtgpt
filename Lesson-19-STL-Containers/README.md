@@ -758,3 +758,39 @@ Key Point
 "set/map" → Sorted + O(log n)
 
 "unordered_set/unordered_map" → Unsorted + Average O(1)
+
+
+### topic 18
+
+std::unordered_set
+
+"std::unordered_set" is an STL unordered associative container that stores unique elements using a hash table.
+
+Elements are not stored in sorted order.
+
+Features
+
+- Stores unique elements.
+- Duplicate values are not allowed.
+- Elements are not sorted.
+- Uses hashing.
+- Average search, insertion, and deletion: "O(1)".
+- Worst-case: "O(n)".
+- "insert()" → adds an element.
+- "erase()" → removes an element.
+- "find()" → searches for an element.
+- "count()" → checks whether an element exists.
+- "size()" → returns the number of elements.
+- "empty()" → checks whether the container is empty.
+
+Example
+
+unordered_set<int> numbers = {30, 10, 20, 10};
+
+The duplicate "10" is stored only once.
+
+Difference
+
+"set" → Unique + Sorted + O(log n)
+
+"unordered_set" → Unique + Unsorted + Average O(1)
