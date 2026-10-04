@@ -36,3 +36,48 @@ Important STL Utilities
 Key Point
 
 STL Utilities = Ready-made tools for handling data and memory efficiently.
+
+### topic 2
+
+std::pair
+
+"std::pair" is an STL utility used to store two values together in a single object.
+
+Features
+
+- Stores exactly two values.
+- The two values can have different data types.
+- "first" → accesses the first value.
+- "second" → accesses the second value.
+- "make_pair()" → creates a pair easily.
+
+Example
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+int main() {
+    pair<string, int> student = {"Harika", 23};
+
+    cout << student.first << endl;
+    cout << student.second << endl;
+}
+
+Output:
+
+Harika
+23
+
+Another Example
+
+pair<int, string> p = {101, "Harika"};
+
+Here:
+
+- "101" → "first"
+- ""Harika"" → "second"
+
+Key Point
+
+"pair" = Two values stored together.
