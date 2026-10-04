@@ -394,3 +394,44 @@ Key Point
 "std::list" → Doubly linked list → forward + backward
 
 "std::forward_list" → Singly linked list → forward only
+
+### topic 9
+
+Container Adapters
+
+Container adapters are STL components that provide a specific way to access and manage elements.
+
+They use an underlying container and provide a restricted interface.
+
+Types
+
+1. stack
+
+- Follows LIFO (Last In, First Out).
+- "push()" → adds an element.
+- "pop()" → removes the top element.
+- "top()" → accesses the top element.
+
+2. queue
+
+- Follows FIFO (First In, First Out).
+- "push()" → adds an element at the back.
+- "pop()" → removes the front element.
+- "front()" → accesses the first element.
+- "back()" → accesses the last element.
+
+3. priority_queue
+
+- Highest-priority element is accessed first.
+- By default, the largest element has the highest priority.
+- "push()" → adds an element.
+- "pop()" → removes the highest-priority element.
+- "top()" → accesses the highest-priority element.
+
+Key Point
+
+"stack" → LIFO
+
+"queue" → FIFO
+
+"priority_queue" → Highest priority first
