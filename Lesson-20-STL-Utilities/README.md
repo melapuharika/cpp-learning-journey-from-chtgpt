@@ -349,3 +349,35 @@ Here, "view" does not create a copy of "name"; it only views the existing string
 Key Point
 
 "string_view" = Lightweight, non-owning view of a string without copying its data.
+
+
+### topic 9
+
+Smart Pointers
+
+Smart Pointers are C++ features used to automatically and safely manage dynamically allocated memory.
+
+They help reduce memory leaks and remove the need to manually call "delete" in many cases.
+
+Main Types
+
+1. "unique_ptr" → Single ownership.
+2. "shared_ptr" → Shared ownership.
+3. "weak_ptr" → Non-owning observer of an object managed by "shared_ptr".
+
+Example
+
+int* p = new int(10);
+delete p;
+
+With smart pointers, memory is automatically released when it is no longer needed.
+
+Simple Analogy
+
+- "unique_ptr" → One owner
+- "shared_ptr" → Multiple owners
+- "weak_ptr" → Observer, not an owner
+
+Key Point
+
+Smart Pointers = Automatic and safer memory management.
