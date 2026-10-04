@@ -318,3 +318,42 @@ Key Point
 "vector" → efficient insertion/deletion mainly at the end.
 
 "deque" → efficient insertion/deletion at both ends.
+
+
+### topic 7
+
+std::list
+
+"std::list" is an STL sequence container implemented as a doubly linked list.
+
+Each element is connected to both the previous and next element.
+
+Features
+
+- Dynamic size.
+- Uses a doubly linked list.
+- Fast insertion and deletion when the position is known.
+- Does not support random access using "[]".
+- "push_front()" → adds at the beginning.
+- "push_back()" → adds at the end.
+- "pop_front()" → removes from the beginning.
+- "pop_back()" → removes from the end.
+- "insert()" → inserts an element.
+- "erase()" → removes an element.
+
+Example
+
+list<int> numbers = {10, 20, 30};
+
+numbers.push_front(5);
+numbers.push_back(40);
+
+Output:
+
+5 10 20 30 40
+
+Key Point
+
+"std::list" = Doubly Linked List
+
+It is useful when frequent insertion and deletion are required.
