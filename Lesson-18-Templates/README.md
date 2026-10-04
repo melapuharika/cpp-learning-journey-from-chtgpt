@@ -78,3 +78,53 @@ The operations used inside a template must be valid for the selected data type.
 ## Key Point
 
 Template = Generic Code + Different Data Types
+
+
+### topic 2
+
+# Function Templates – Notes
+
+## Definition
+
+A Function Template is a generic function that can work with different data types.
+
+## Syntax
+
+template <typename T>
+T functionName(T a, T b)
+{
+    // code
+}
+
+## Example
+
+template <typename T>
+T add(T a, T b)
+{
+    return a + b;
+}
+
+cout << add(10, 20);       // int
+cout << add(2.5, 3.5);     // double
+
+## How It Works
+
+The compiler determines the required data type from the arguments.
+
+add(10, 20) → T = int
+add(2.5, 3.5) → T = double
+
+## Advantages
+
+- Code reusability
+- Avoids duplicate functions
+- Works with different data types
+- Makes code flexible
+
+## Important Point
+
+The operations used inside the function must be valid for the selected data type.
+
+## Key Point
+
+Function Template = One Generic Function + Multiple Data Types
