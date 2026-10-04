@@ -224,3 +224,48 @@ Returns "true" if the current value is an "int".
 Key Point
 
 "variant" = One active value from multiple possible types.
+
+### topic 6
+
+std::any
+
+"std::any" is an STL utility that can store a value of almost any data type.
+
+Features
+
+- Can store different types of values.
+- One value is stored at a time.
+- "any_cast<>" → accesses the stored value with the correct type.
+- "has_value()" → checks whether a value exists.
+- "reset()" → removes the stored value.
+- More flexible than "variant".
+
+Example
+
+#include <iostream>
+#include <any>
+using namespace std;
+
+int main() {
+    any data;
+
+    data = 100;
+    cout << any_cast<int>(data) << endl;
+
+    data = "Harika";
+    cout << any_cast<string>(data) << endl;
+}
+
+Output:
+
+100
+Harika
+
+Variant vs Any
+
+- "variant" → stores one value from a predefined list of types.
+- "any" → can store a value of almost any type.
+
+Key Point
+
+"any" = Store a value of almost any type.
