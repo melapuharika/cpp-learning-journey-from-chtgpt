@@ -357,3 +357,40 @@ Key Point
 "std::list" = Doubly Linked List
 
 It is useful when frequent insertion and deletion are required.
+
+
+### topic 8 
+
+std::forward_list
+
+"std::forward_list" is an STL sequence container implemented as a singly linked list.
+
+Each element stores a link to the next element, so traversal is possible only in the forward direction.
+
+Features
+
+- Dynamic size.
+- Uses a singly linked list.
+- Supports forward traversal only.
+- Does not support random access using "[]".
+- Uses less memory than "std::list".
+- "push_front()" → adds at the beginning.
+- "pop_front()" → removes the first element.
+- "insert_after()" → inserts after a given position.
+- "erase_after()" → removes the element after a given position.
+
+Example
+
+forward_list<int> numbers = {10, 20, 30};
+
+numbers.push_front(5);
+
+Output:
+
+5 10 20 30
+
+Key Point
+
+"std::list" → Doubly linked list → forward + backward
+
+"std::forward_list" → Singly linked list → forward only
