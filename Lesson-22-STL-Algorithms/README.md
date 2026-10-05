@@ -394,3 +394,43 @@ Header
 Key Point
 
 "lower_bound()" = Returns an iterator to the first position where the value can be inserted.
+
+
+### topic 10
+
+Upper Bound
+
+- "upper_bound()" is an STL algorithm used to find the first element greater than a given value.
+- It is available in the "<algorithm>" header.
+- The range should be sorted.
+- It returns an iterator.
+- If the value occurs multiple times, it skips all occurrences and returns the first greater element.
+
+Syntax
+
+upper_bound(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 20, 30, 40};
+
+auto it = upper_bound(v.begin(), v.end(), 20);
+
+cout << *it;
+
+Output:
+
+30
+
+Difference
+
+- "lower_bound(20)" → first element ≥ 20
+- "upper_bound(20)" → first element > 20
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"upper_bound()" = Returns an iterator to the first element greater than the given value.
