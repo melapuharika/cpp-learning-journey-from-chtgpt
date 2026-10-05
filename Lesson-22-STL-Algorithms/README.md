@@ -302,3 +302,53 @@ Difference
 Key Point
 
 "count_if()" = Counts elements that satisfy a given condition.
+
+
+### topic 8
+
+Binary Search
+
+- "binary_search()" is an STL algorithm used to check whether a specific value exists in a range.
+- It is available in the "<algorithm>" header.
+- The range must be sorted before using "binary_search()".
+- It returns a Boolean value:
+  - "true" → Element is found.
+  - "false" → Element is not found.
+- It does not return an iterator.
+
+Syntax
+
+binary_search(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 30, 40, 50};
+
+bool found = binary_search(v.begin(), v.end(), 30);
+
+cout << found;
+
+Output:
+
+1
+
+If Element Is Not Found
+
+bool found = binary_search(v.begin(), v.end(), 35);
+
+Output:
+
+0
+
+Header
+
+#include <algorithm>
+
+Difference
+
+- "find()" → Returns an iterator.
+- "binary_search()" → Returns true or false.
+
+Key Point
+
+"binary_search()" = Checks whether an element exists in a sorted range.
