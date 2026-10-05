@@ -73,3 +73,47 @@ Header
 Key Point
 
 "sort()" = Sorts elements in a range, ascending by default.
+
+
+### topic 2
+
+Stable Sort
+
+- "stable_sort()" is an STL algorithm used to sort elements in a range.
+- It preserves the relative order of equal elements.
+- It is available in the "<algorithm>" header.
+- By default, it sorts elements in ascending order.
+- It can also use a custom comparator.
+
+Syntax
+
+stable_sort(begin, end);
+
+Example
+
+vector<pair<string, int>> students = {
+    {"A", 80},
+    {"B", 70},
+    {"C", 80}
+};
+
+stable_sort(students.begin(), students.end(),
+    [](auto a, auto b) {
+        return a.second < b.second;
+    });
+
+Result:
+
+B → 70
+A → 80
+C → 80
+
+A and C have the same marks, so their original order is preserved.
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"stable_sort()" = Sort + Preserve the relative order of equal elements.
