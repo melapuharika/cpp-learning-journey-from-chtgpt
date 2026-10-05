@@ -150,3 +150,41 @@ Header
 Key Point
 
 "reverse()" = Reverses the order of elements in a range.
+
+
+### topic 4
+
+Find
+
+- "find()" is an STL algorithm used to search for a specific value in a range.
+- It is available in the "<algorithm>" header.
+- It returns an iterator pointing to the found element.
+- If the value is not found, it returns "end()".
+- It performs a linear search.
+
+Syntax
+
+find(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 30, 40};
+
+auto it = find(v.begin(), v.end(), 30);
+
+if (it != v.end())
+    cout << "Found";
+else
+    cout << "Not Found";
+
+Result
+
+Found
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"find()" = Searches for a specific value and returns an iterator to it.
