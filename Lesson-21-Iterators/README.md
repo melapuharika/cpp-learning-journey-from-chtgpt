@@ -641,3 +641,40 @@ Example
 Key Point
 
 Output Iterator = Write + Forward + Single Pass
+
+
+### topic 10
+
+Forward Iterator
+
+- Forward Iterator is used to read and write elements in a container or range.
+- It moves only in the forward direction.
+- It supports the increment operator "++".
+- It supports dereferencing "*" for accessing elements.
+- It supports multiple passes over the same range.
+- It does not support backward movement.
+- It does not support random access.
+
+Supported
+
+- "*it" → Access element
+- "*it = value" → Modify element
+- "++it" → Move forward
+- "it == other" → Compare
+- "it != other" → Compare
+
+Not Supported
+
+- "--it" ❌
+- "it + n" ❌
+- "it - n" ❌
+- Direct random access ❌
+
+Examples
+
+- "forward_list"
+- "unordered_set"
+
+Key Point
+
+Forward Iterator = Read + Write + Forward + Multi-Pass
