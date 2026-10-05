@@ -282,3 +282,60 @@ numbers.begin()
 One-Line Definition
 
 "begin()" returns an iterator pointing to the first element of an STL container.
+
+
+### topic 3
+end() – C++ STL
+
+Definition
+
+"end()" returns an iterator pointing to the position just after the last element of a container.
+
+It does not point to the last element.
+
+Example
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> numbers = {10, 20, 30};
+
+    auto it = numbers.end();
+
+    --it;
+
+    cout << *it;
+}
+
+Output
+
+30
+
+Important Points
+
+- "end()" returns an iterator.
+- It points after the last element.
+- "end()" itself should not be dereferenced.
+- "*end()" is invalid ❌
+- "--end()" can be used to access the last element.
+- "begin()" → first element
+- "end()" → position after the last element
+
+Example with Loop
+
+for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+    cout << *it << " ";
+}
+
+Output
+
+10 20 30
+
+Difference
+
+begin() → first element
+end()   → position after the last element
+
+Remember: "end()" is mainly used as a stopping point when traversing a container.
