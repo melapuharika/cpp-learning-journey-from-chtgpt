@@ -766,3 +766,42 @@ cout << *it;         // 50
 Key Point
 
 Random Access Iterator = Read + Write + Forward + Backward + Direct Access + Multi-Pass
+
+
+### topic 13
+
+Iterator Invalidation
+
+- Iterator invalidation means an existing iterator becomes invalid after modifying a container.
+- An invalid iterator should not be dereferenced or used.
+- It can happen when elements are inserted, erased, or the container is reallocated.
+- The exact invalidation rules depend on the container type and operation.
+
+Common Operations
+
+- "insert()" → May invalidate iterators.
+- "erase()" → May invalidate iterators.
+- "push_back()" → Can invalidate iterators, especially when reallocation occurs.
+- "push_front()" → May invalidate iterators depending on the container.
+- "clear()" → Invalidates iterators referring to the erased elements.
+- "resize()" → May invalidate iterators.
+
+Example
+
+vector<int> v = {10, 20, 30};
+
+auto it = v.begin();
+
+v.push_back(40);
+
+// it may be invalid
+
+If "vector" reallocates its memory, the old iterator becomes invalid.
+
+Important Point
+
+Always check the container's iterator invalidation rules before using an iterator after modifying the container.
+
+Key Point
+
+Iterator Invalidation = Container modification valla existing iterator invalid avvadam.
