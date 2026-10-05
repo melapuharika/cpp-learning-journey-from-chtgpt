@@ -502,3 +502,66 @@ begin()  → first element → can modify
 cbegin() → first element → cannot modify
 
 Remember: "cbegin()" = constant begin.
+
+
+### topic 7
+
+Iterator Categories in C++
+
+Iterator categories define the capabilities of an iterator and how it can move through a container.
+
+1. Input Iterator
+
+- Used to read elements.
+- Moves only in the forward direction.
+- Supports "++".
+- Generally single-pass.
+
+2. Output Iterator
+
+- Used to write elements.
+- Moves only in the forward direction.
+- Supports "++".
+- Generally single-pass.
+
+3. Forward Iterator
+
+- Supports reading and writing.
+- Moves only forward.
+- Supports multiple passes.
+- Supports "++".
+
+Examples: "forward_list", "unordered_set"
+
+4. Bidirectional Iterator
+
+- Supports reading and writing.
+- Moves forward and backward.
+- Supports "++" and "--".
+
+Examples: "list", "set", "map"
+
+5. Random Access Iterator
+
+- Supports forward and backward movement.
+- Can jump directly to positions.
+- Supports "+", "-", "+=", "-=".
+- Supports comparison operators like "<" and ">".
+
+Examples: "vector", "deque", "array"
+
+6. Contiguous Iterator
+
+- Provides all random-access capabilities.
+- Elements are stored in contiguous memory.
+- Supports direct memory-based access.
+
+Examples: "vector", "array", built-in arrays.
+
+Order
+
+Input → Forward → Bidirectional → Random Access → Contiguous
+
+Key Point
+
+Higher iterator categories provide more capabilities than lower categories.
