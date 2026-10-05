@@ -339,3 +339,55 @@ begin() → first element
 end()   → position after the last element
 
 Remember: "end()" is mainly used as a stopping point when traversing a container.
+
+
+### topic 4
+
+cend() – C++ STL
+
+Definition
+
+"cend()" returns a constant iterator pointing to the position just after the last element of a container.
+
+Example
+
+vector<int> numbers = {10, 20, 30};
+
+auto it = numbers.cend();
+
+--it;
+
+cout << *it;
+
+Output
+
+30
+
+Important Points
+
+- "cend()" returns a constant iterator.
+- It points to the position after the last element.
+- "cend()" itself should not be dereferenced.
+- "*cend()" is invalid ❌
+- "--cend()" can be used to reach the last element.
+- "c" in "cend()" means constant.
+
+Example with Loop
+
+for (auto it = numbers.cbegin(); it != numbers.cend(); ++it) {
+    cout << *it << " ";
+}
+
+Output
+
+10 20 30
+
+Difference
+
+begin()  → first element
+end()    → position after last element
+
+cbegin() → first element (constant)
+cend()   → position after last element (constant)
+
+Remember: "cend()" is mainly used for constant traversal of a container.
