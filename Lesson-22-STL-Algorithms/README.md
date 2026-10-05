@@ -117,3 +117,36 @@ Header
 Key Point
 
 "stable_sort()" = Sort + Preserve the relative order of equal elements.
+
+
+### topic 3
+
+Reverse
+
+- "reverse()" is an STL algorithm used to reverse the order of elements in a range.
+- It is available in the "<algorithm>" header.
+- It reverses the elements in the same container.
+- It does not create a new container.
+- It works with bidirectional iterators.
+
+Syntax
+
+reverse(begin, end);
+
+Example
+
+vector<int> v = {10, 20, 30, 40};
+
+reverse(v.begin(), v.end());
+
+Result:
+
+40 30 20 10
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"reverse()" = Reverses the order of elements in a range.
