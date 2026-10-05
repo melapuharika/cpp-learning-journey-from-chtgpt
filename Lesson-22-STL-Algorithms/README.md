@@ -352,3 +352,45 @@ Difference
 Key Point
 
 "binary_search()" = Checks whether an element exists in a sorted range.
+
+
+### topic 9
+
+Lower Bound
+
+- "lower_bound()" is an STL algorithm used to find the first position where a value can be inserted without breaking sorted order.
+- It is available in the "<algorithm>" header.
+- The range should be sorted.
+- It returns an iterator.
+- If the value exists multiple times, it returns the first occurrence.
+- If the value does not exist, it returns the position where it can be inserted.
+
+Syntax
+
+lower_bound(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 20, 30, 40};
+
+auto it = lower_bound(v.begin(), v.end(), 20);
+
+cout << *it;
+
+Output:
+
+20
+
+Example: Value Not Present
+
+auto it = lower_bound(v.begin(), v.end(), 25);
+
+It returns the position before "30", where "25" can be inserted.
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"lower_bound()" = Returns an iterator to the first position where the value can be inserted.
