@@ -260,3 +260,45 @@ Header
 Key Point
 
 "count()" = Counts the number of times a specific value occurs in a range.
+
+
+### topic 7
+
+Count If
+
+- "count_if()" is an STL algorithm used to count elements that satisfy a given condition.
+- It is available in the "<algorithm>" header.
+- It returns the number of elements that satisfy the condition.
+- It uses a predicate (condition).
+- It does not modify the container.
+
+Syntax
+
+count_if(begin, end, condition);
+
+Example
+
+vector<int> v = {10, 15, 20, 25, 30};
+
+int result = count_if(v.begin(), v.end(), [](int x) {
+    return x % 2 == 0;
+});
+
+Output:
+
+3
+
+The even numbers are "10", "20", and "30".
+
+Header
+
+#include <algorithm>
+
+Difference
+
+- "count()" → Counts a specific value.
+- "count_if()" → Counts elements satisfying a condition.
+
+Key Point
+
+"count_if()" = Counts elements that satisfy a given condition.
