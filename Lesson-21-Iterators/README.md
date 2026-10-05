@@ -604,3 +604,40 @@ cout << *it;
 Key Point
 
 Input Iterator = Read + Forward + Single Pass
+
+
+### topic 9
+
+Output Iterator
+
+- Output Iterator is used to write elements to a container or output range.
+- It moves only in the forward direction.
+- It supports the increment operator "++".
+- It supports dereferencing for writing using "*it = value".
+- It does not support backward movement.
+- It does not support random access.
+- It is generally a single-pass iterator.
+
+Supported
+
+- "*it = value" → Write a value
+- "++it" → Move forward
+
+Not Supported
+
+- "--it" ❌
+- "it + n" ❌
+- "it - n" ❌
+- Reading "*it" ❌
+
+Example
+
+*it = 10;
+++it;
+
+*it = 20;
+++it;
+
+Key Point
+
+Output Iterator = Write + Forward + Single Pass
