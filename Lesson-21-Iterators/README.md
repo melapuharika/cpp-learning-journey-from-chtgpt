@@ -565,3 +565,42 @@ Input → Forward → Bidirectional → Random Access → Contiguous
 Key Point
 
 Higher iterator categories provide more capabilities than lower categories.
+
+
+### topic 8
+
+Input Iterator
+
+- Input Iterator is used to read elements from a container or range.
+- It moves only in the forward direction.
+- It supports the increment operator "++".
+- It supports dereferencing "*" to read an element.
+- It does not support backward movement.
+- It does not support random access.
+- It is generally a single-pass iterator.
+
+Supported
+
+- "*it" → Read element
+- "++it" → Move forward
+- "it == other" → Compare iterators
+- "it != other" → Compare iterators
+
+Not Supported
+
+- "--it" ❌
+- "it + n" ❌
+- "it - n" ❌
+- "*it = value" ❌
+
+Example
+
+auto it = container.begin();
+
+cout << *it;
+++it;
+cout << *it;
+
+Key Point
+
+Input Iterator = Read + Forward + Single Pass
