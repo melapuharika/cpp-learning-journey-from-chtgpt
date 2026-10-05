@@ -717,3 +717,52 @@ Examples
 Key Point
 
 Bidirectional Iterator = Read + Write + Forward + Backward + Multi-Pass
+
+
+### topic 12
+
+Random Access Iterator
+
+- Random Access Iterator allows reading and modifying elements.
+- It can move in forward and backward directions.
+- It supports "++" and "--".
+- It can jump directly to any position.
+- It supports arithmetic operations like "+", "-", "+=", and "-=".
+- It supports subscript operator "[]".
+- It supports iterator comparisons like "<", ">", "<=", and ">=".
+- It supports multiple passes.
+
+Supported
+
+- "*it" → Access element
+- "*it = value" → Modify element
+- "++it" → Move forward
+- "--it" → Move backward
+- "it + n" → Move "n" positions forward
+- "it - n" → Move "n" positions backward
+- "it += n" → Move forward by "n"
+- "it -= n" → Move backward by "n"
+- "it[n]" → Access element at position "n"
+- "it < other" → Compare positions
+
+Examples
+
+- "vector"
+- "deque"
+- "array"
+
+Example
+
+vector<int> v = {10, 20, 30, 40, 50};
+
+auto it = v.begin();
+
+cout << it[2];       // 30
+cout << *(it + 3);   // 40
+
+it += 4;
+cout << *it;         // 50
+
+Key Point
+
+Random Access Iterator = Read + Write + Forward + Backward + Direct Access + Multi-Pass
