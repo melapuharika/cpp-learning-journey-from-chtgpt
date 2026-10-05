@@ -391,3 +391,68 @@ cbegin() → first element (constant)
 cend()   → position after last element (constant)
 
 Remember: "cend()" is mainly used for constant traversal of a container.
+
+
+### topic 5
+
+Reverse Iterators – C++ STL
+
+Definition
+
+A reverse iterator is used to traverse the elements of a container from the last element to the first element.
+
+Normal Direction
+
+10 → 20 → 30 → 40
+
+Reverse Direction
+
+40 → 30 → 20 → 10
+
+"rbegin()"
+
+"rbegin()" returns a reverse iterator pointing to the last element.
+
+vector<int> numbers = {10, 20, 30, 40};
+
+auto it = numbers.rbegin();
+
+cout << *it;
+
+Output
+
+40
+
+"rend()"
+
+"rend()" returns a reverse iterator pointing to the position before the first element.
+
+It is mainly used as the stopping point for reverse traversal.
+
+Example
+
+for (auto it = numbers.rbegin(); it != numbers.rend(); ++it) {
+    cout << *it << " ";
+}
+
+Output
+
+40 30 20 10
+
+Important Points
+
+- "rbegin()" → points to the last element.
+- "rend()" → position before the first element.
+- Reverse iterators traverse from last to first.
+- "++it" moves to the previous element in the original container.
+- "rbegin()" and "rend()" are useful for reverse traversal.
+
+Iterator Comparison
+
+begin()  → first element
+end()    → after last element
+
+rbegin() → last element
+rend()   → before first element
+
+Remember: "rbegin()" = reverse begin, "rend()" = reverse end.
