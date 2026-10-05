@@ -678,3 +678,42 @@ Examples
 Key Point
 
 Forward Iterator = Read + Write + Forward + Multi-Pass
+
+
+### topic 11
+
+Bidirectional Iterator
+
+- Bidirectional Iterator is used to read and modify elements in a container or range.
+- It can move in both forward and backward directions.
+- It supports the increment operator "++".
+- It supports the decrement operator "--".
+- It supports dereferencing "*" to access elements.
+- It supports multiple passes.
+- It does not support random access.
+
+Supported
+
+- "*it" → Access element
+- "*it = value" → Modify element
+- "++it" → Move forward
+- "--it" → Move backward
+- "it == other" → Compare
+- "it != other" → Compare
+
+Not Supported
+
+- "it + n" ❌
+- "it - n" ❌
+- "it[n]" ❌
+- Direct random access ❌
+
+Examples
+
+- "list"
+- "set"
+- "map"
+
+Key Point
+
+Bidirectional Iterator = Read + Write + Forward + Backward + Multi-Pass
