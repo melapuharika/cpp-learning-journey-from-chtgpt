@@ -456,3 +456,49 @@ rbegin() → last element
 rend()   → before first element
 
 Remember: "rbegin()" = reverse begin, "rend()" = reverse end.
+
+
+### topic 6
+
+cbegin() – C++ STL
+
+Definition
+
+"cbegin()" returns a constant iterator pointing to the first element of a container.
+
+Example
+
+vector<int> numbers = {10, 20, 30};
+
+auto it = numbers.cbegin();
+
+cout << *it;
+
+Output
+
+10
+
+Important Points
+
+- "cbegin()" points to the first element.
+- It returns a constant iterator.
+- The element cannot be modified through the iterator.
+- "c" in "cbegin()" means constant.
+- "*cbegin()" can be used to access the first value.
+
+Example
+
+auto it = numbers.cbegin();
+
+cout << *it;   // 10
+
+Trying to modify:
+
+*it = 100;   // ❌ Error
+
+Difference
+
+begin()  → first element → can modify
+cbegin() → first element → cannot modify
+
+Remember: "cbegin()" = constant begin.
