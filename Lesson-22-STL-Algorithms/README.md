@@ -226,3 +226,37 @@ Difference
 Key Point
 
 "find_if()" = Finds the first element that satisfies a given condition.
+
+
+### topic 6
+Count
+
+- "count()" is an STL algorithm used to count how many times a specific value occurs in a range.
+- It is available in the "<algorithm>" header.
+- It returns the number of matching elements.
+- It does not modify the container.
+- It searches the entire given range.
+
+Syntax
+
+count(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 10, 30, 10};
+
+int result = count(v.begin(), v.end(), 10);
+
+cout << result;
+
+Output:
+
+3
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"count()" = Counts the number of times a specific value occurs in a range.
