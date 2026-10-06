@@ -712,3 +712,74 @@ Important Points
 Key Point
 
 User-defined exception = A custom exception class created by the programmer to represent a specific error.
+
+
+### topic 10
+
+Standard Exception
+
+- Standard exceptions are predefined exception classes provided by the C++ Standard Library.
+- They are used to handle common errors in C++ programs.
+- Instead of creating a custom exception, we can use standard exception classes.
+- Most standard exceptions are derived from "std::exception".
+
+Common Standard Exceptions
+
+std::exception
+runtime_error
+logic_error
+out_of_range
+bad_alloc
+
+Example
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    try {
+        throw runtime_error("Something went wrong");
+    }
+    catch (const runtime_error& e) {
+        cout << e.what();
+    }
+
+    return 0;
+}
+
+Output
+
+Something went wrong
+
+"what()"
+
+e.what()
+
+- "what()" is a member function used to get a description of the exception.
+- It returns a C-style string ("const char*").
+
+Catching Standard Exceptions
+
+catch (const exception& e) {
+    cout << e.what();
+}
+
+This can catch exceptions derived from "std::exception".
+
+Important Points
+
+- Standard exceptions are provided by the C++ Standard Library.
+- They are useful for handling common programming errors.
+- Most standard exceptions inherit from "std::exception".
+- Use "const" reference when catching exception objects.
+- "what()" provides an error description.
+
+Headers
+
+#include <exception>
+#include <stdexcept>
+
+Key Point
+
+Standard Exception = A predefined exception class provided by the C++ Standard Library for handling common errors.
