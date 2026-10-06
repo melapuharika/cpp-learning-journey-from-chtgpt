@@ -166,3 +166,78 @@ Important Points
 Key Point
 
 "catch" = Catches and handles an exception thrown from a "try" block.
+
+
+### topic 3
+
+Throw
+
+- "throw" is a C++ keyword used to generate and send an exception.
+- It is used when an error or unexpected situation occurs.
+- The exception is sent to a matching "catch" block.
+- When "throw" executes, normal execution of the current "try" block stops.
+
+Syntax
+
+throw value;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age = -5;
+
+    try {
+        if (age < 0) {
+            throw age;
+        }
+
+        cout << "Valid age";
+    }
+    catch (int x) {
+        cout << "Invalid age: " << x;
+    }
+
+    return 0;
+}
+
+Output
+
+Invalid age: -5
+
+How It Works
+
+try
+ ↓
+Condition checked
+ ↓
+throw age
+ ↓
+Exception sent
+ ↓
+catch(int x)
+ ↓
+Exception handled
+
+Types of Values That Can Be Thrown
+
+throw 10;          // int
+throw 3.14;        // double
+throw "Error";     // string literal
+
+Exception objects can also be thrown:
+
+throw runtime_error("File not found");
+
+Important Points
+
+- "throw" sends an exception.
+- A matching "catch" block receives the exception.
+- After "throw", the remaining statements in that "try" block are skipped.
+- "throw" can be used to report errors explicitly.
+
+Key Point
+
+"throw" = Generates and sends an exception to a matching "catch" block.
