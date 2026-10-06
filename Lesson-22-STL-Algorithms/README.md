@@ -1067,3 +1067,68 @@ Header
 Key Point
 
 "rotate()" = Makes the element at "middle" the new first element by rotating the range.
+
+
+### topic 23
+Swap
+
+- "swap()" is a standard library function used to exchange the values of two objects.
+- It can be used with variables, vector elements, strings, and other compatible objects.
+- "swap()" modifies both objects.
+
+Syntax
+
+swap(a, b);
+
+Example
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int b = 20;
+
+    swap(a, b);
+
+    cout << a << " " << b;
+
+    return 0;
+}
+
+Output
+
+20 10
+
+Vector Example
+
+vector<int> v = {10, 20};
+
+swap(v[0], v[1]);
+
+Result
+
+20 10
+
+How It Works
+
+Before "swap()":
+
+a = 10
+b = 20
+
+After "swap()":
+
+a = 20
+b = 10
+
+The values are exchanged.
+
+Header
+
+#include <utility>
+
+Key Point
+
+"swap()" = Exchanges the values of two objects.
