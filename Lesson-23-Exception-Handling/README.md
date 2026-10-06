@@ -993,3 +993,65 @@ Important Points
 Key Point
 
 "out_of_range" = Standard exception used when an index or value is outside the valid range.
+
+
+### topic 15
+
+bad_alloc
+
+- "bad_alloc" is a standard exception class in C++.
+- It is thrown when dynamic memory allocation fails.
+- It is commonly associated with the "new" operator.
+- It is defined in the "<new>" header.
+- "bad_alloc" is derived from "std::exception".
+
+Syntax
+
+throw bad_alloc();
+
+Example
+
+#include <iostream>
+#include <new>
+using namespace std;
+
+int main() {
+    try {
+        int* arr = new int[1000000000000];
+    }
+    catch (const bad_alloc& e) {
+        cout << "Memory allocation failed";
+    }
+
+    return 0;
+}
+
+Output
+
+Memory allocation failed
+
+How It Works
+
+1. "new" tries to allocate memory.
+2. If enough memory is not available, "bad_alloc" may be thrown.
+3. The "catch" block catches the exception.
+4. The program can handle the memory allocation failure safely.
+
+"what()"
+
+e.what()
+
+- "what()" returns a description of the exception.
+
+Important Points
+
+- Header: "<new>"
+- Namespace: "std"
+- Base class: "std::exception"
+- Used for dynamic memory allocation failures.
+- Commonly thrown by "new".
+- Usually caught using a "const" reference.
+
+Key Point
+
+"bad_alloc" = Standard exception thrown when dynamic memory allocation fails.
