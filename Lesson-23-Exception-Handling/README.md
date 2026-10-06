@@ -622,3 +622,93 @@ Important Points
 Key Point
 
 Stack Unwinding = Cleaning up the call stack and destroying local objects while searching for a matching "catch".
+
+
+### topic 9
+
+User Defined Exceptions
+
+- User-defined exceptions are custom exception types created by the programmer.
+- They are used to represent specific errors in a program.
+- We can create a custom exception using a class or struct.
+- The custom exception object can be thrown using "throw".
+- A matching "catch" block handles the custom exception.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+class InvalidAge {
+public:
+    const char* message() {
+        return "Age cannot be negative";
+    }
+};
+
+int main() {
+    try {
+        int age = -5;
+
+        if (age < 0) {
+            throw InvalidAge();
+        }
+    }
+    catch (InvalidAge& e) {
+        cout << e.message();
+    }
+
+    return 0;
+}
+
+Output
+
+Age cannot be negative
+
+How It Works
+
+Create custom exception class
+        ↓
+Condition occurs
+        ↓
+throw InvalidAge()
+        ↓
+catch(InvalidAge& e)
+        ↓
+Exception handled
+
+Custom Exception Class
+
+class InvalidAge {
+public:
+    const char* message() {
+        return "Age cannot be negative";
+    }
+};
+
+This class represents our custom exception.
+
+Throwing the Exception
+
+throw InvalidAge();
+
+This creates and throws an object of the "InvalidAge" class.
+
+Catching the Exception
+
+catch (InvalidAge& e) {
+    cout << e.message();
+}
+
+This catches the custom exception object.
+
+Important Points
+
+- User-defined exceptions allow programmers to create meaningful error types.
+- They can contain custom messages and additional data.
+- They are thrown using "throw".
+- They are handled using a matching "catch".
+
+Key Point
+
+User-defined exception = A custom exception class created by the programmer to represent a specific error.
