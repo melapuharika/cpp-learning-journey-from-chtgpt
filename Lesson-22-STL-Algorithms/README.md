@@ -627,3 +627,47 @@ Header
 Key Point
 
 "accumulate()" = Combines elements of a range into one result.
+
+
+### topic 16
+
+For Each
+
+- "for_each()" is an STL algorithm used to apply an operation to every element in a range.
+- It is available in the "<algorithm>" header.
+- It takes a function, function object, or lambda expression.
+- It can read or modify elements depending on how the function is defined.
+
+Syntax
+
+for_each(begin, end, function);
+
+Example
+
+vector<int> v = {10, 20, 30, 40};
+
+for_each(v.begin(), v.end(), [](int x) {
+    cout << x << " ";
+});
+
+Output:
+
+10 20 30 40
+
+Modifying Elements
+
+for_each(v.begin(), v.end(), [](int& x) {
+    x *= 2;
+});
+
+Result:
+
+20 40 60 80
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"for_each()" = Applies an operation to every element in a range.
