@@ -861,7 +861,76 @@ Here, "unique()" will not remove the duplicate "10" or "20" because they are not
 Header
 
 #include <algorithm>
+Unique
+
+- "unique()" is an STL algorithm used to remove consecutive duplicate elements from a range.
+- It is available in the "<algorithm>" header.
+- "unique()" does not actually reduce the container size.
+- It rearranges the elements and returns an iterator to the new logical end.
+- To actually remove the duplicate elements, use "erase()".
+
+Syntax
+
+unique(begin, end);
+
+Example
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 10, 20, 20, 20, 30};
+
+    v.erase(unique(v.begin(), v.end()), v.end());
+
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+10 20 30
+
+How It Works
+
+- "unique()" checks for consecutive duplicate elements.
+- It moves unique elements toward the beginning.
+- It returns an iterator pointing to the new logical end.
+- "erase()" removes the remaining unwanted elements.
+
+Erase-Unique Idiom
+
+v.erase(unique(v.begin(), v.end()), v.end());
+
+- "unique()" → Removes consecutive duplicates logically.
+- "erase()" → Actually removes them and reduces the container size.
+
+Important
+
+"unique()" removes only consecutive duplicates.
+
+Example:
+
+vector<int> v = {10, 20, 10, 20};
+
+Here, "unique()" will not remove the duplicate "10" or "20" because they are not next to each other.
+
+Header
+
+#include <algorithm>
 
 Key Point
 
 "unique()" = Removes consecutive duplicate elements logically; use "erase()" to actually remove them.
+Key Point
+
+"unique()" = Removes consecutive duplicate elements logically; use "erase()" to actually remove them.
+
+
+### topic 21
+
