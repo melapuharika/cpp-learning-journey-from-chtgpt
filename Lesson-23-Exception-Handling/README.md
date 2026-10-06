@@ -536,3 +536,89 @@ Important Points
 Key Point
 
 Exception Specification = Specifies whether a function can throw exceptions; modern C++ mainly uses "noexcept".
+
+
+### topic 8
+
+Stack Unwinding
+
+- Stack unwinding is the process of removing function call frames from the stack when an exception is thrown.
+- During stack unwinding, C++ searches for a matching "catch" block.
+- Local objects are destroyed when their scopes are exited.
+- Their destructors are called during this cleanup process.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void function2() {
+    int x = 10;
+    throw 100;
+}
+
+void function1() {
+    int y = 20;
+    function2();
+}
+
+int main() {
+    try {
+        function1();
+    }
+    catch (int x) {
+        cout << "Exception caught: " << x;
+    }
+
+    return 0;
+}
+
+Output
+
+Exception caught: 100
+
+How It Works
+
+main()
+ ↓
+function1()
+ ↓
+function2()
+ ↓
+throw 100
+ ↓
+function2() stack frame unwound
+ ↓
+function1() stack frame unwound
+ ↓
+main() catch
+ ↓
+Exception handled
+
+Object Destruction
+
+class Test {
+public:
+    ~Test() {
+        cout << "Destructor called\n";
+    }
+};
+
+void test() {
+    Test obj;
+    throw 10;
+}
+
+When "throw" occurs, "obj" goes out of scope during stack unwinding, so its destructor is called.
+
+Important Points
+
+- Stack unwinding starts when an exception is thrown.
+- C++ searches for a matching "catch" block.
+- Local objects are destroyed as their scopes are exited.
+- Destructors are called during stack unwinding.
+- If no matching handler is found, "std::terminate()" is called.
+
+Key Point
+
+Stack Unwinding = Cleaning up the call stack and destroying local objects while searching for a matching "catch".
