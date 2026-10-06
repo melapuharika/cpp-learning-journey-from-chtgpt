@@ -467,3 +467,72 @@ Important Points
 Key Point
 
 Nested Exception = Using exception-handling blocks inside other exception-handling blocks.
+
+
+### topic 7
+
+Exception Specification
+
+- Exception specification describes whether a function can throw exceptions.
+- In modern C++, the main exception specification is "noexcept".
+- "noexcept" tells the compiler that a function is not expected to throw exceptions.
+
+Syntax
+
+void function() noexcept;
+
+Example
+
+#include <iostream>
+using namespace std;
+
+void display() noexcept {
+    cout << "Hello";
+}
+
+int main() {
+    display();
+
+    return 0;
+}
+
+Output
+
+Hello
+
+"noexcept(false)"
+
+A function can explicitly specify that it may throw exceptions.
+
+void test() noexcept(false) {
+    throw 10;
+}
+
+- "noexcept" → Function promises not to throw.
+- "noexcept(false)" → Function may throw.
+
+Older Exception Specification
+
+Older C++ versions allowed dynamic exception specifications:
+
+void test() throw(int);
+
+This specified that the function could throw an "int".
+
+However, dynamic exception specifications were:
+
+- Deprecated in C++11
+- Removed in C++17
+
+Modern C++ uses "noexcept" instead.
+
+Important Points
+
+- "noexcept" is used to specify that a function should not throw exceptions.
+- "noexcept(false)" means the function may throw.
+- "noexcept" is important in modern C++.
+- Old "throw(type)" exception specifications should not be used in modern C++.
+
+Key Point
+
+Exception Specification = Specifies whether a function can throw exceptions; modern C++ mainly uses "noexcept".
