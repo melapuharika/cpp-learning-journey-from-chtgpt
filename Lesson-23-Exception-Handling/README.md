@@ -391,3 +391,79 @@ Important Points
 Key Point
 
 "catch(...)" = Catches any type of exception.
+
+
+### topic 6
+
+Nested Exception
+
+- Nested exception handling means placing a "try-catch" block inside another "try" or "catch" block.
+- It allows exceptions to be handled at different levels.
+- An inner "catch" can handle an exception or rethrow it to an outer "catch".
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        try {
+            throw 10;
+        }
+        catch (int x) {
+            cout << "Inner catch\n";
+            throw;
+        }
+    }
+    catch (int x) {
+        cout << "Outer catch";
+    }
+
+    return 0;
+}
+
+Output
+
+Inner catch
+Outer catch
+
+How It Works
+
+Outer try
+   ↓
+Inner try
+   ↓
+throw 10
+   ↓
+Inner catch
+   ↓
+throw;
+   ↓
+Outer catch
+
+- Inner "try" throws the exception.
+- Inner "catch" catches it first.
+- "throw;" rethrows the same exception.
+- Outer "catch" receives and handles the rethrown exception.
+
+Rethrowing an Exception
+
+catch (int x) {
+    cout << "Inner catch";
+    throw;
+}
+
+- "throw;" without a value means rethrow the currently handled exception.
+- The exception can then be handled by an outer "catch".
+
+Important Points
+
+- A "try-catch" block can be nested inside another "try-catch".
+- Inner handlers get the first opportunity to handle an exception.
+- "throw;" can rethrow the current exception.
+- The outer "catch" can handle a rethrown exception.
+
+Key Point
+
+Nested Exception = Using exception-handling blocks inside other exception-handling blocks.
