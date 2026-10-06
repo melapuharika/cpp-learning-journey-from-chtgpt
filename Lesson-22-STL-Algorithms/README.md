@@ -590,3 +590,40 @@ Difference
 Key Point
 
 "max_element()" = Returns an iterator to the largest element in a range.
+
+
+### topic 15
+
+Accumulate
+
+- "accumulate()" is a numeric algorithm used to combine elements of a range into one result.
+- It is commonly used to calculate the sum of elements.
+- It is available in the "<numeric>" header.
+- It takes an initial value as the third argument.
+- It does not modify the container.
+
+Syntax
+
+accumulate(begin, end, initial_value);
+
+Example
+
+vector<int> v = {10, 20, 30, 40};
+
+int sum = accumulate(v.begin(), v.end(), 0);
+
+cout << sum;
+
+Output:
+
+100
+
+Here, "0" is the initial value.
+
+Header
+
+#include <numeric>
+
+Key Point
+
+"accumulate()" = Combines elements of a range into one result.
