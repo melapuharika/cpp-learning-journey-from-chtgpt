@@ -434,3 +434,47 @@ Header
 Key Point
 
 "upper_bound()" = Returns an iterator to the first element greater than the given value.
+
+
+### topic 11
+
+Min
+
+- "min()" is an STL function used to find the smaller of two values.
+- It is available in the "<algorithm>" header.
+- It returns the smaller value.
+- It does not modify the original values.
+
+Syntax
+
+min(a, b);
+
+Example
+
+int a = 10;
+int b = 20;
+
+cout << min(a, b);
+
+Output:
+
+10
+
+Example with Characters
+
+char a = 'A';
+char b = 'B';
+
+cout << min(a, b);
+
+Output:
+
+A
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"min()" = Returns the smaller of two values.
