@@ -934,3 +934,136 @@ Key Point
 
 ### topic 21
 
+Merge
+
+- "merge()" is an STL algorithm used to combine two sorted ranges into one sorted range.
+- It is available in the "<algorithm>" header.
+- Both input ranges should be sorted.
+- "merge()" does not modify the original containers.
+- The merged result is stored in the destination range.
+
+Syntax
+
+merge(first1, last1, first2, last2, destination);
+
+Example
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> a = {1, 3, 5};
+    vector<int> b = {2, 4, 6};
+
+    vector<int> result(6);
+
+    merge(a.begin(), a.end(),
+          b.begin(), b.end(),
+          result.begin());
+
+    for (int x : result) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+1 2 3 4 5 6
+
+How It Works
+
+- "a" contains sorted elements: "1 3 5"
+- "b" contains sorted elements: "2 4 6"
+- "merge()" compares elements from both ranges.
+- It places them into "result" in sorted order.
+
+Important
+
+Input ranges:
+
+{1, 3, 5}
+{2, 4, 6}
+
+Merged result:
+
+{1, 2, 3, 4, 5, 6}
+
+The original vectors remain unchanged.
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"merge()" = Combines two sorted ranges into one sorted range.
+
+## topic 22
+
+Rotate
+
+- "rotate()" is an STL algorithm used to change the position of elements in a range.
+- It makes the element at the "middle" position the new first element.
+- It is available in the "<algorithm>" header.
+- "rotate()" modifies the original container.
+
+Syntax
+
+rotate(first, middle, last);
+
+Example
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> v = {1, 2, 3, 4, 5};
+
+    rotate(v.begin(), v.begin() + 2, v.end());
+
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+3 4 5 1 2
+
+How It Works
+
+Original:
+
+1 2 3 4 5
+
+"v.begin() + 2" points to "3".
+
+After rotation:
+
+3 4 5 1 2
+
+So, the element at "middle" becomes the new first element.
+
+Important
+
+rotate(v.begin(), v.begin() + 2, v.end());
+
+- "v.begin()" → Starting position
+- "v.begin() + 2" → Middle position / new beginning
+- "v.end()" → Ending position
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"rotate()" = Makes the element at "middle" the new first element by rotating the range.
