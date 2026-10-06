@@ -886,3 +886,57 @@ Important Points
 Key Point
 
 "runtime_error" = Standard exception used to represent errors detected during program execution.
+
+
+### topic 13
+
+logic_error
+
+- "logic_error" is a standard exception class in C++.
+- It is used to represent errors caused by incorrect program logic.
+- It is defined in the "<stdexcept>" header.
+- "logic_error" is derived from "std::exception".
+
+Syntax
+
+throw logic_error("Error message");
+
+Example
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    try {
+        throw logic_error("Invalid program logic");
+    }
+    catch (const logic_error& e) {
+        cout << e.what();
+    }
+
+    return 0;
+}
+
+Output
+
+Invalid program logic
+
+"what()"
+
+e.what()
+
+- "what()" returns the description of the exception.
+- It is commonly used to display the error message.
+
+Important Points
+
+- Header: "<stdexcept>"
+- Namespace: "std"
+- Base class: "std::exception"
+- Used for logic-related errors.
+- Usually caught using a "const" reference.
+
+Key Point
+
+"logic_error" = Standard exception used to represent errors caused by incorrect program logic.
