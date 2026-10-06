@@ -19,3 +19,76 @@
 - logic_error
 - out_of_range
 - bad_alloc
+
+
+### topic 1
+
+Try
+
+- "try" is a C++ keyword used for exception handling.
+- The "try" block contains code that may cause an exception.
+- If an exception occurs, it can be handled by a "catch" block.
+- A "try" block is followed by one or more "catch" blocks.
+
+Syntax
+
+try {
+    // Code that may cause an exception
+}
+catch (...) {
+    // Handle the exception
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        int age = -5;
+
+        if (age < 0) {
+            throw age;
+        }
+
+        cout << "Valid age";
+    }
+    catch (int x) {
+        cout << "Invalid age: " << x;
+    }
+
+    return 0;
+}
+
+Output
+
+Invalid age: -5
+
+How It Works
+
+- "try" → Contains the code that may cause an exception.
+- "throw" → Sends the exception.
+- "catch" → Handles the exception.
+
+Flow
+
+try
+ ↓
+Exception occurs
+ ↓
+throw
+ ↓
+catch
+ ↓
+Exception handled
+
+Important Points
+
+- "try" is used as part of C++ exception handling.
+- The risky code is placed inside the "try" block.
+- A "try" block must be followed by at least one "catch" block.
+
+Key Point
+
+"try" = Contains code that may cause an exception and allows that exception to be handled.
