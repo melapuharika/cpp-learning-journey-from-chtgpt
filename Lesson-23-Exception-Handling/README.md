@@ -241,3 +241,90 @@ Important Points
 Key Point
 
 "throw" = Generates and sends an exception to a matching "catch" block.
+
+
+### topic 4
+
+Multiple Catch
+
+- Multiple catch means using more than one "catch" block with a single "try" block.
+- Each "catch" block can handle a different type of exception.
+- When an exception is thrown, C++ checks the "catch" blocks in order.
+- Only the first matching "catch" block is executed.
+
+Syntax
+
+try {
+    // Code that may cause an exception
+}
+catch (int x) {
+    // Handle int exception
+}
+catch (double x) {
+    // Handle double exception
+}
+catch (string x) {
+    // Handle string exception
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        throw 10;
+    }
+    catch (int x) {
+        cout << "Integer exception: " << x;
+    }
+    catch (double x) {
+        cout << "Double exception: " << x;
+    }
+
+    return 0;
+}
+
+Output
+
+Integer exception: 10
+
+How It Works
+
+try
+ ↓
+throw 10
+ ↓
+catch(int x) → MATCH
+ ↓
+Exception handled
+
+The other "catch" blocks are skipped.
+
+Different Exception Types
+
+try {
+    // Code
+}
+catch (int x) {
+    // Integer exception
+}
+catch (double x) {
+    // Double exception
+}
+catch (const char* msg) {
+    // String literal exception
+}
+
+Important Points
+
+- A single "try" block can have multiple "catch" blocks.
+- Each "catch" can handle a different exception type.
+- "catch" blocks are checked from top to bottom.
+- Only the first matching handler executes.
+- More specific exception handlers should generally be placed before broader handlers.
+
+Key Point
+
+Multiple Catch = Using multiple "catch" blocks to handle different types of exceptions.
