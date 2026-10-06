@@ -1217,3 +1217,91 @@ Header
 Key Point
 
 Comparator = Defines the rule used to compare and arrange elements.
+
+
+### topic 25
+
+Custom Sorting
+
+- Custom sorting means sorting elements according to our own rule.
+- By default, "sort()" arranges elements in ascending order.
+- A comparator can be passed to "sort()" to define a custom order.
+- Custom sorting is useful for numbers, strings, pairs, objects, and structures.
+
+Syntax
+
+sort(begin, end, comparator);
+
+Example 1 – Descending Order
+
+vector<int> v = {10, 30, 20, 40};
+
+sort(v.begin(), v.end(), [](int a, int b) {
+    return a > b;
+});
+
+Output
+
+40 30 20 10
+
+Here:
+
+a > b
+
+makes larger elements come first.
+
+Example 2 – Sort by String Length
+
+vector<string> v = {"apple", "cat", "banana", "dog"};
+
+sort(v.begin(), v.end(), [](string a, string b) {
+    return a.length() < b.length();
+});
+
+Output
+
+cat dog apple banana
+
+Here, shorter strings come first.
+
+Example 3 – Sort Pairs by Second Value
+
+vector<pair<int, int>> v = {
+    {1, 50},
+    {2, 20},
+    {3, 40}
+};
+
+sort(v.begin(), v.end(), [](auto a, auto b) {
+    return a.second < b.second;
+});
+
+Result
+
+{2, 20}
+{3, 40}
+{1, 50}
+
+The pairs are sorted based on their second value.
+
+Important
+
+return a < b;
+
+→ Smaller elements come first.
+
+return a > b;
+
+→ Larger elements come first.
+
+return a.length() < b.length();
+
+→ Shorter strings come first.
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+Custom Sorting = Using a comparator to define our own sorting rule.
