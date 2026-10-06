@@ -328,3 +328,66 @@ Important Points
 Key Point
 
 Multiple Catch = Using multiple "catch" blocks to handle different types of exceptions.
+
+
+### topic 5
+
+Catch All
+
+- Catch All is a "catch" block that can handle any type of exception.
+- It is written using three dots: "...".
+- It is useful when the exact type of exception is unknown or when we want a general exception handler.
+
+Syntax
+
+catch (...) {
+    // Handle any exception
+}
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        throw 10;
+    }
+    catch (...) {
+        cout << "Exception caught";
+    }
+
+    return 0;
+}
+
+Output
+
+Exception caught
+
+Here, "throw 10" throws an "int", and "catch(...)" catches it.
+
+With Multiple Catch
+
+try {
+    throw 10;
+}
+catch (int x) {
+    cout << "Integer exception";
+}
+catch (...) {
+    cout << "Some other exception";
+}
+
+- "catch(int x)" handles an "int" exception.
+- "catch(...)" handles exceptions that were not matched by the previous handlers.
+
+Important Points
+
+- "catch(...)" can catch any type of exception.
+- It does not provide a variable containing the thrown value.
+- "catch(...)" should generally be placed last.
+- It is useful as a general or fallback exception handler.
+
+Key Point
+
+"catch(...)" = Catches any type of exception.
