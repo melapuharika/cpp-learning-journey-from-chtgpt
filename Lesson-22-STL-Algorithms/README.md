@@ -550,3 +550,43 @@ Difference
 Key Point
 
 "min_element()" = Returns an iterator to the smallest element in a range.
+
+
+### topic 14
+
+Max Element
+
+- "max_element()" is an STL algorithm used to find the largest element in a range.
+- It is available in the "<algorithm>" header.
+- It returns an iterator pointing to the largest element.
+- It does not modify the container.
+- It searches the given range.
+
+Syntax
+
+max_element(begin, end);
+
+Example
+
+vector<int> v = {40, 10, 30, 20};
+
+auto it = max_element(v.begin(), v.end());
+
+cout << *it;
+
+Output:
+
+40
+
+Header
+
+#include <algorithm>
+
+Difference
+
+- "max()" → Finds the larger of two values.
+- "max_element()" → Finds the largest element in a range.
+
+Key Point
+
+"max_element()" = Returns an iterator to the largest element in a range.
