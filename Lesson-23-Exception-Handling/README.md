@@ -832,3 +832,57 @@ Important Points
 Key Point
 
 "std::exception" = Base class for many standard C++ exceptions.
+
+
+### topic 12
+
+runtime_error
+
+- "runtime_error" is a standard exception class in C++.
+- It is used to represent errors that occur during program execution.
+- It is defined in the "<stdexcept>" header.
+- "runtime_error" is derived from "std::exception".
+
+Syntax
+
+throw runtime_error("Error message");
+
+Example
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    try {
+        throw runtime_error("Runtime error occurred");
+    }
+    catch (const runtime_error& e) {
+        cout << e.what();
+    }
+
+    return 0;
+}
+
+Output
+
+Runtime error occurred
+
+"what()"
+
+e.what()
+
+- "what()" returns the description of the exception.
+- It is commonly used to display the error message.
+
+Important Points
+
+- Header: "<stdexcept>"
+- Namespace: "std"
+- Base class: "std::exception"
+- Used for runtime-related errors.
+- Usually caught using a "const" reference.
+
+Key Point
+
+"runtime_error" = Standard exception used to represent errors detected during program execution.
