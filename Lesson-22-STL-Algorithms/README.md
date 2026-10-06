@@ -478,3 +478,35 @@ Header
 Key Point
 
 "min()" = Returns the smaller of two values.
+
+### topic 12
+
+Max
+
+- "max()" is an STL function used to find the larger of two values.
+- It is available in the "<algorithm>" header.
+- It returns the larger value.
+- It does not modify the original values.
+
+Syntax
+
+max(a, b);
+
+Example
+
+int a = 10;
+int b = 20;
+
+cout << max(a, b);
+
+Output:
+
+20
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"max()" = Returns the larger of two values.
