@@ -671,3 +671,39 @@ Header
 Key Point
 
 "for_each()" = Applies an operation to every element in a range.
+
+
+### topic 17
+
+Transform
+
+- "transform()" is an STL algorithm used to apply an operation to each element.
+- It stores the transformed result in an output range.
+- It is available in the "<algorithm>" header.
+- It is commonly used with lambda expressions.
+- It can transform one range or combine two ranges.
+
+Syntax
+
+transform(begin, end, output, operation);
+
+Example
+
+vector<int> v = {1, 2, 3, 4};
+vector<int> result(4);
+
+transform(v.begin(), v.end(), result.begin(), [](int x) {
+    return x * 2;
+});
+
+Result:
+
+2 4 6 8
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"transform()" = Applies an operation to elements and stores the transformed results.
