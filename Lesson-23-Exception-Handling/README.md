@@ -783,3 +783,52 @@ Headers
 Key Point
 
 Standard Exception = A predefined exception class provided by the C++ Standard Library for handling common errors.
+
+
+### topic 11
+
+std::exception
+
+- "std::exception" is the base class for many standard exceptions in C++.
+- It is provided by the C++ Standard Library.
+- Standard exception classes such as "runtime_error", "logic_error", "out_of_range", and "bad_alloc" are derived from "std::exception".
+- It can be used to catch different standard exceptions using one general "catch" block.
+
+Example
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    try {
+        throw runtime_error("File error");
+    }
+    catch (const exception& e) {
+        cout << e.what();
+    }
+
+    return 0;
+}
+
+Output
+
+File error
+
+"what()"
+
+e.what()
+
+- "what()" returns a description of the exception.
+- It is commonly used to display the error message.
+
+Important Points
+
+- "std::exception" is a base exception class.
+- Many standard exceptions inherit from it.
+- It allows us to catch different standard exceptions using one catch block.
+- Usually caught using a const reference.
+
+Key Point
+
+"std::exception" = Base class for many standard C++ exceptions.
