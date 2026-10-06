@@ -940,3 +940,56 @@ Important Points
 Key Point
 
 "logic_error" = Standard exception used to represent errors caused by incorrect program logic.
+
+
+### topic 14
+
+out_of_range
+
+- "out_of_range" is a standard exception class in C++.
+- It is used when a value or index is accessed outside the valid range.
+- It is defined in the "<stdexcept>" header.
+- "out_of_range" is derived from "logic_error".
+
+Syntax
+
+throw out_of_range("Index out of range");
+
+Example
+
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    try {
+        vector<int> numbers = {10, 20, 30};
+
+        cout << numbers.at(5);
+    }
+    catch (const out_of_range& e) {
+        cout << e.what();
+    }
+
+    return 0;
+}
+
+Output
+
+Index out of range
+
+«Exact error message may vary depending on the compiler and standard library.»
+
+Important Points
+
+- Header: "<stdexcept>"
+- Namespace: "std"
+- Base class: "std::logic_error"
+- Used when accessing something outside its valid range.
+- "vector::at()" can throw "out_of_range".
+- "operator[]" generally does not perform range checking.
+
+Key Point
+
+"out_of_range" = Standard exception used when an index or value is outside the valid range.
