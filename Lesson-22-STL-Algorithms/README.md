@@ -1132,3 +1132,88 @@ Header
 Key Point
 
 "swap()" = Exchanges the values of two objects.
+
+
+### topic 24
+Comparator
+
+- A comparator is a function or function object used to define how two elements should be compared.
+- It is commonly used with STL algorithms such as "sort()" and "stable_sort()".
+- A comparator decides which element should come before another element.
+
+Syntax
+
+sort(begin, end, comparator);
+
+Example – Descending Order
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 30, 20, 40};
+
+    sort(v.begin(), v.end(), greater<int>());
+
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+40 30 20 10
+
+Here, "greater<int>()" is a comparator that arranges elements from larger to smaller.
+
+Custom Comparator
+
+sort(v.begin(), v.end(), [](int a, int b) {
+    return a > b;
+});
+
+- "a > b" → Larger elements come first.
+- "a < b" → Smaller elements come first.
+
+How Comparator Works
+
+A comparator generally returns:
+
+true  → first element should come before second
+false → first element should not come before second
+
+Example
+
+[](int a, int b) {
+    return a > b;
+}
+
+For:
+
+a = 30
+b = 10
+
+"30 > 10" is "true", so "30" comes before "10".
+
+Common Comparators
+
+less<int>()
+
+→ Ascending order
+
+greater<int>()
+
+→ Descending order
+
+Header
+
+#include <algorithm>
+#include <functional>
+
+Key Point
+
+Comparator = Defines the rule used to compare and arrange elements.
