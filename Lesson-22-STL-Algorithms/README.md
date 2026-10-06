@@ -707,3 +707,43 @@ Header
 Key Point
 
 "transform()" = Applies an operation to elements and stores the transformed results.
+
+
+### topic 18
+
+Remove
+
+- "remove()" is an STL algorithm used to remove elements equal to a specific value from a range.
+- It is available in the "<algorithm>" header.
+- "remove()" does not actually reduce the container size.
+- It rearranges the elements and returns an iterator to the new logical end.
+- To actually remove the elements, use "erase()".
+
+Syntax
+
+remove(begin, end, value);
+
+Example
+
+vector<int> v = {10, 20, 10, 30, 10};
+
+v.erase(remove(v.begin(), v.end(), 10), v.end());
+
+Result:
+
+20 30
+
+Erase-Remove Idiom
+
+v.erase(remove(v.begin(), v.end(), value), v.end());
+
+- "remove()" → Moves unwanted elements to the end.
+- "erase()" → Actually removes them and reduces the container size.
+
+Header
+
+#include <algorithm>
+
+Key Point
+
+"remove()" = Removes a value logically; use "erase()" to actually remove the elements.
