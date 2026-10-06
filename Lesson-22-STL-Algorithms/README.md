@@ -510,3 +510,43 @@ Header
 Key Point
 
 "max()" = Returns the larger of two values.
+
+
+### topic 13
+
+Min Element
+
+- "min_element()" is an STL algorithm used to find the smallest element in a range.
+- It is available in the "<algorithm>" header.
+- It returns an iterator pointing to the smallest element.
+- It does not modify the container.
+- It searches the given range.
+
+Syntax
+
+min_element(begin, end);
+
+Example
+
+vector<int> v = {40, 10, 30, 20};
+
+auto it = min_element(v.begin(), v.end());
+
+cout << *it;
+
+Output:
+
+10
+
+Header
+
+#include <algorithm>
+
+Difference
+
+- "min()" → Finds the smaller of two values.
+- "min_element()" → Finds the smallest element in a range.
+
+Key Point
+
+"min_element()" = Returns an iterator to the smallest element in a range.
