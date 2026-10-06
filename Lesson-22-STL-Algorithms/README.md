@@ -747,3 +747,64 @@ Header
 Key Point
 
 "remove()" = Removes a value logically; use "erase()" to actually remove the elements.
+
+
+### topic 19
+
+Remove If
+
+- "remove_if()" is an STL algorithm used to remove elements that satisfy a given condition.
+- It is available in the "<algorithm>" header.
+- "remove_if()" does not actually reduce the container size.
+- It rearranges the elements and returns an iterator to the new logical end.
+- To actually remove the elements, use "erase()".
+
+Syntax
+
+remove_if(begin, end, condition);
+
+Example
+
+vector<int> v = {10, 15, 20, 25, 30};
+
+v.erase(
+    remove_if(v.begin(), v.end(), [](int x) {
+        return x % 2 == 0;
+    }),
+    v.end()
+);
+
+Result
+
+15 25
+
+How It Works
+
+- "remove_if()" checks every element.
+- The condition "x % 2 == 0" checks whether the number is even.
+- Elements satisfying the condition are moved toward the end.
+- "erase()" actually removes those elements.
+- The container size is reduced after "erase()".
+
+Erase-Remove Idiom
+
+v.erase(
+    remove_if(v.begin(), v.end(), condition),
+    v.end()
+);
+
+- "remove_if()" → Finds and rearranges elements that satisfy the condition.
+- "erase()" → Actually removes them and reduces the container size.
+
+Header
+
+#include <algorithm>
+
+Difference
+
+- "remove()" → Removes a specific value.
+- "remove_if()" → Removes elements based on a condition.
+
+Key Point
+
+"remove_if()" = Removes elements logically based on a condition; use "erase()" to actually remove them.
