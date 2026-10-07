@@ -548,3 +548,62 @@ Important Points
 Key Point
 
 Binary File = File that stores data in raw binary/byte format.
+
+
+### topic 9
+
+File Position
+
+- File Position means the current location of the reading or writing operation inside a file.
+- We can imagine it like a cursor inside the file.
+- When data is read or written, the file position usually moves forward.
+
+Example
+
+Suppose "data.txt" contains:
+
+Hello
+
+ifstream file("data.txt");
+
+char ch;
+file.get(ch);
+
+cout << ch;
+
+Output
+
+H
+
+After reading "H", the file position moves to the next character:
+
+H e l l o
+  ^
+
+Types of File Positions
+
+- Get Position → Current position used for reading.
+- Put Position → Current position used for writing.
+
+Related Functions
+
+seekg()
+seekp()
+tellg()
+tellp()
+
+- "seekg()" → Change get/read position.
+- "seekp()" → Change put/write position.
+- "tellg()" → Get current read position.
+- "tellp()" → Get current write position.
+
+Important Points
+
+- File position acts like a cursor.
+- Reading moves the get position.
+- Writing moves the put position.
+- File positions can be checked and changed using file-position functions.
+
+Key Point
+
+File Position = Current location of reading or writing inside a file.
