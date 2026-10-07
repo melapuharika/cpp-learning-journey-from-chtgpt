@@ -400,3 +400,71 @@ Key Point
 
 Read = Get data from a file.
 Write = Store data in a file.
+
+
+### topic 7
+
+Text Files
+
+- Text File is a file that stores data in a human-readable text format.
+- Text files can be opened and read using a normal text editor.
+- Common text file extensions include:
+  - ".txt"
+  - ".csv"
+  - ".cpp"
+  - ".html"
+
+Example File
+
+Name: Harika
+Course: BCA
+Age: 22
+
+Writing to a Text File
+
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file("data.txt");
+
+    file << "Name: Harika\n";
+    file << "Course: BCA\n";
+    file << "Age: 22\n";
+
+    file.close();
+
+    return 0;
+}
+
+Reading a Text File
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("data.txt");
+
+    string line;
+
+    while (getline(file, line)) {
+        cout << line << endl;
+    }
+
+    file.close();
+
+    return 0;
+}
+
+Important Points
+
+- Text files store data as readable characters.
+- "ofstream" → Write to a text file.
+- "ifstream" → Read from a text file.
+- "getline()" → Read a complete line.
+- Text files are easy for humans to read and edit.
+
+Key Point
+
+Text File = Human-readable file used to store data in text format.
