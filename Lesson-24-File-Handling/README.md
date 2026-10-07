@@ -704,3 +704,30 @@ Key Point
 "seekp()" → moves the write pointer.
 
 "seekg()" → moves the read pointer.
+
+### topic 12
+
+tellg() – Notes
+
+- "tellg()" stands for Tell Get.
+- It is used to find the current position of the read (get) pointer in a file.
+- It is mainly used with "ifstream" and "fstream".
+- It returns the current file position.
+
+Syntax
+
+file.tellg();
+
+Example
+
+fstream file("data.txt", ios::in);
+
+cout << file.tellg();
+
+If the read pointer is at position "5", "tellg()" returns "5".
+
+Key Point
+
+"tellg()" → tells the current read position.
+
+"tellp()" → tells the current write position.
