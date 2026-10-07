@@ -222,3 +222,42 @@ int main() {
 Key Point
 
 "ostringstream" → writes output into a string.
+
+
+### topic 8
+
+Formatting – Notes
+
+- Formatting means controlling how input or output data is displayed.
+- C++ provides formatting options for controlling width, precision, alignment, and number format.
+- Formatting is mainly used with output streams such as "cout".
+- Many formatting tools are provided through the "<iomanip>" header.
+
+Common Formatting Tools
+
+- "setw()" → sets the field width.
+- "setprecision()" → controls decimal precision.
+- "fixed" → displays floating-point numbers in fixed notation.
+- "scientific" → displays numbers in scientific notation.
+- "left" → aligns output to the left.
+- "right" → aligns output to the right.
+
+Example
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double price = 123.4567;
+
+    cout << fixed << setprecision(2) << price;
+}
+
+Output
+
+123.46
+
+Key Point
+
+Formatting → controls how data is displayed.
