@@ -93,3 +93,30 @@ Here, "cin" reads input from the keyboard.
 Key Point
 
 "istream" → used for input operations.
+
+
+### topic 4
+
+ostream – Notes
+
+- "ostream" stands for Output Stream.
+- It is a C++ class used for output operations.
+- It provides functions and operators to write or display data.
+- "cout" is an object of the "ostream" class.
+- "ostream" is defined in the "<iostream>" header.
+- The insertion operator "<<" is commonly used with "ostream".
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello World";
+}
+
+Here, "cout" displays the output on the screen.
+
+Key Point
+
+"ostream" → used for output operations.
