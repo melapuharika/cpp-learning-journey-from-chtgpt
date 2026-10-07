@@ -261,3 +261,42 @@ Output
 Key Point
 
 Formatting → controls how data is displayed.
+
+
+### topic 9
+
+Manipulators – Notes
+
+- Manipulators are special functions or objects used to control the formatting and behavior of input/output streams.
+- They are commonly used with "cin" and "cout".
+- Some manipulators are available through "<iostream>".
+- Formatting manipulators such as "setw()" and "setprecision()" are provided by "<iomanip>".
+
+Common Manipulators
+
+- "endl" → inserts a new line and flushes the output buffer.
+- "setw()" → sets the field width.
+- "setprecision()" → sets the decimal precision.
+- "fixed" → uses fixed-point notation.
+- "scientific" → uses scientific notation.
+- "boolalpha" → displays "true" and "false" instead of "1" and "0".
+
+Example
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double value = 12.3456;
+
+    cout << fixed << setprecision(2) << value << endl;
+}
+
+Output
+
+12.35
+
+Key Point
+
+Manipulators → control stream formatting and behavior.
