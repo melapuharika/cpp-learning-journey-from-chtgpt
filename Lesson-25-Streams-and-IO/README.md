@@ -154,3 +154,38 @@ int main() {
 Key Point
 
 String Stream → performs stream operations on strings in memory.
+
+
+### topic 6
+
+istringstream – Notes
+
+- "istringstream" stands for Input String Stream.
+- It is used to read data from a string.
+- It is provided by the "<sstream>" header.
+- It works like an input stream, but the source is a string.
+- The extraction operator ">>" is used to read values.
+- It is useful for parsing strings and converting string data into other data types.
+
+Example
+
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    string data = "100 200";
+
+    istringstream input(data);
+
+    int a, b;
+    input >> a >> b;
+
+    cout << a << " " << b;
+}
+
+Here, "istringstream" reads "100" and "200" from the string.
+
+Key Point
+
+"istringstream" → reads input from a string.
