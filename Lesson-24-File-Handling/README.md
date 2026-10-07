@@ -607,3 +607,62 @@ Important Points
 Key Point
 
 File Position = Current location of reading or writing inside a file.
+
+
+### topic 10
+
+seekg()
+
+- "seekg()" stands for Seek Get.
+- It is used to change the get/read position in a file.
+- The "g" in "seekg()" means get position.
+- It is mainly used with input file streams such as "ifstream".
+
+Syntax
+
+file.seekg(position);
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("data.txt");
+
+    file.seekg(5);
+
+    char ch;
+    file.get(ch);
+
+    cout << ch;
+
+    file.close();
+
+    return 0;
+}
+
+Move to Beginning
+
+file.seekg(0);
+
+- Moves the reading position to the beginning of the file.
+
+Move to End
+
+file.seekg(0, ios::end);
+
+- Moves the reading position to the end of the file.
+
+Important Points
+
+- "seekg()" → Changes the reading/get position.
+- "g" → Get.
+- "seekg(0)" → Moves to the beginning.
+- "seekg(0, ios::end)" → Moves to the end.
+- Commonly used with "ifstream".
+
+Key Point
+
+"seekg()" = Function used to change the reading/get position in a file.
