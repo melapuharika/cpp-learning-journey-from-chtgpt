@@ -468,3 +468,83 @@ Important Points
 Key Point
 
 Text File = Human-readable file used to store data in text format.
+
+
+### topic 8
+
+Binary Files
+
+- Binary File stores data in raw binary/byte format.
+- Binary files are generally not human-readable.
+- They store data directly as bytes.
+- Binary files can be useful for storing structured or non-text data.
+
+Opening a Binary File
+
+ofstream file("data.bin", ios::binary);
+
+- "ios::binary" → Opens the file in binary mode.
+
+Writing to a Binary File
+
+int age = 22;
+
+file.write(reinterpret_cast<char*>(&age), sizeof(age));
+
+- "write()" → Writes raw bytes to the file.
+- "sizeof()" → Gives the size of the data in bytes.
+
+Reading a Binary File
+
+int age;
+
+file.read(reinterpret_cast<char*>(&age), sizeof(age));
+
+- "read()" → Reads raw bytes from the file.
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int age = 22;
+
+    ofstream out("data.bin", ios::binary);
+    out.write(reinterpret_cast<char*>(&age), sizeof(age));
+    out.close();
+
+    ifstream in("data.bin", ios::binary);
+    in.read(reinterpret_cast<char*>(&age), sizeof(age));
+
+    cout << age;
+
+    in.close();
+
+    return 0;
+}
+
+Output
+
+22
+
+Text File vs Binary File
+
+Text File| Binary File
+Human-readable| Usually not human-readable
+Stores text characters| Stores raw bytes
+"<<", ">>", "getline()"| "write()", "read()"
+Easy to edit with a text editor| Not normally edited directly
+
+Important Points
+
+- Use "ios::binary" for binary mode.
+- "write()" → Writes bytes.
+- "read()" → Reads bytes.
+- "sizeof()" → Determines the number of bytes.
+- Binary files are usually not directly readable by humans.
+
+Key Point
+
+Binary File = File that stores data in raw binary/byte format.
