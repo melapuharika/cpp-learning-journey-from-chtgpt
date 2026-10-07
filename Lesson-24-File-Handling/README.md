@@ -325,3 +325,78 @@ Key Point
 
 Open = Connect the file with the program.
 Close = End the connection with the file.
+
+
+### topic 6
+
+Read / Write
+
+- Read means getting data from a file into the program.
+- Write means storing data from the program into a file.
+
+Write Data
+
+- "ofstream" is used to write data into a file.
+- "<<" operator is used to write data.
+
+ofstream file("data.txt");
+
+file << "Hello C++";
+file << 100;
+
+Read Data
+
+- "ifstream" is used to read data from a file.
+- ">>" operator is used to read data.
+
+ifstream file("data.txt");
+
+string text;
+file >> text;
+
+cout << text;
+
+Complete Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream out("data.txt");
+
+    out << "Hello C++";
+    out.close();
+
+    ifstream in("data.txt");
+
+    string text;
+    in >> text;
+
+    cout << text;
+
+    in.close();
+
+    return 0;
+}
+
+Output
+
+Hello
+
+- ">>" stops reading at whitespace.
+- "getline()" can be used to read a complete line.
+
+Important Points
+
+- "ofstream" → Write
+- "ifstream" → Read
+- "<<" → Write data
+- ">>" → Read data
+- "getline()" → Read a complete line
+- "close()" → Close the file
+
+Key Point
+
+Read = Get data from a file.
+Write = Store data in a file.
