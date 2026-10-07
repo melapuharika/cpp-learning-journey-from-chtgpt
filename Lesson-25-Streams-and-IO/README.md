@@ -65,3 +65,31 @@ int main() {
 Key Point
 
 "iostream" provides the basic tools needed for standard input and output in C++.
+
+
+### topic 3
+
+istream – Notes
+
+- "istream" stands for Input Stream.
+- It is a C++ class used for input operations.
+- It provides functions and operators to read data.
+- "cin" is an object of the "istream" class.
+- "istream" is defined in the "<iostream>" header.
+- The extraction operator ">>" is commonly used with "istream".
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    cin >> age;
+}
+
+Here, "cin" reads input from the keyboard.
+
+Key Point
+
+"istream" → used for input operations.
