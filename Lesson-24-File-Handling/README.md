@@ -666,3 +666,41 @@ Important Points
 Key Point
 
 "seekg()" = Function used to change the reading/get position in a file.
+
+
+### topic 11
+
+seekp() – Notes
+
+- "seekp()" stands for Seek Put.
+- It is used to move the write (put) pointer to a specific position in a file.
+- It is mainly used with "ofstream" and "fstream".
+- The position is generally measured in bytes from the beginning of the file.
+
+Syntax
+
+file.seekp(position);
+
+Example
+
+fstream file("data.txt", ios::in | ios::out);
+
+file.seekp(5);
+file << "Hello";
+
+Here:
+
+- "seekp(5)" moves the write pointer to position "5".
+- ""Hello"" is written from that position.
+
+Using ios::beg
+
+file.seekp(5, ios::beg);
+
+Moves the write pointer 5 positions from the beginning of the file.
+
+Key Point
+
+"seekp()" → moves the write pointer.
+
+"seekg()" → moves the read pointer.
