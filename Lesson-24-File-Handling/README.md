@@ -139,3 +139,56 @@ Important Points
 Key Point
 
 "ifstream" = Input File Stream used to read data from files.
+
+
+### topic 3
+
+ofstream
+
+- "ofstream" stands for Output File Stream.
+- It is used to write data into a file.
+- It is provided by the "<fstream>" header.
+- "ofstream" is part of the C++ Standard Library.
+
+Syntax
+
+ofstream file("filename.txt");
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file("data.txt");
+
+    file << "Hello C++";
+
+    file.close();
+
+    return 0;
+}
+
+File Content
+
+Hello C++
+
+How It Works
+
+1. "ofstream" opens the file for writing.
+2. "<<" writes data into the file.
+3. "close()" closes the file.
+4. If the file does not exist, "ofstream" can create it.
+
+Important Points
+
+- "ofstream" → Write to file
+- Header → "<fstream>"
+- "<<" → Writes data into the file.
+- "close()" → Closes the file.
+- Can create a new file if it does not exist.
+
+Key Point
+
+"ofstream" = Output File Stream used to write data into files.
