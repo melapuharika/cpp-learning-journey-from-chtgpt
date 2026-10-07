@@ -731,3 +731,31 @@ Key Point
 "tellg()" → tells the current read position.
 
 "tellp()" → tells the current write position.
+
+
+### topic 13
+
+tellp() – Notes
+
+- "tellp()" stands for Tell Put.
+- It is used to find the current position of the write (put) pointer in a file.
+- It is mainly used with "ofstream" and "fstream".
+- It returns the current file position.
+
+Syntax
+
+file.tellp();
+
+Example
+
+fstream file("data.txt", ios::in | ios::out);
+
+cout << file.tellp();
+
+If the write pointer is at position "5", "tellp()" returns "5".
+
+Key Point
+
+"tellp()" → tells the current write position.
+
+"tellg()" → tells the current read position.
