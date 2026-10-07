@@ -120,3 +120,37 @@ Here, "cout" displays the output on the screen.
 Key Point
 
 "ostream" → used for output operations.
+
+
+### topic 5
+
+String Stream – Notes
+
+- A String Stream is used to perform input and output operations on strings in memory.
+- It is provided by the "<sstream>" header.
+- It allows a string to be treated like a stream.
+- It is useful for parsing and converting data stored in strings.
+
+Main String Stream Classes
+
+- "istringstream" → performs input from a string.
+- "ostringstream" → performs output to a string.
+- "stringstream" → performs both input and output.
+
+Example
+
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    string data = "100";
+    istringstream stream(data);
+
+    int number;
+    stream >> number;
+}
+
+Key Point
+
+String Stream → performs stream operations on strings in memory.
