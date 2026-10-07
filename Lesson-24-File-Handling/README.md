@@ -192,3 +192,74 @@ Important Points
 Key Point
 
 "ofstream" = Output File Stream used to write data into files.
+
+
+### topic 4
+
+fstream
+
+- "fstream" stands for File Stream.
+- It is used to read and write data in a file.
+- It is provided by the "<fstream>" header.
+- "fstream" supports both input and output operations.
+
+Syntax
+
+fstream file("filename.txt", ios::in | ios::out);
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    fstream file("data.txt", ios::in | ios::out);
+
+    file << "Hello C++";
+
+    file.seekg(0);
+
+    string text;
+    file >> text;
+
+    cout << text;
+
+    file.close();
+
+    return 0;
+}
+
+File Modes
+
+ios::in
+
+- Opens the file for reading.
+
+ios::out
+
+- Opens the file for writing.
+
+ios::in | ios::out
+
+- Opens the file for both reading and writing.
+
+Comparison
+
+Class| Purpose
+"ifstream"| Read
+"ofstream"| Write
+"fstream"| Read + Write
+
+Important Points
+
+- Header: "<fstream>"
+- "<<" → Writes data.
+- ">>" → Reads data.
+- "ios::in" → Input mode.
+- "ios::out" → Output mode.
+- "close()" → Closes the file.
+
+Key Point
+
+"fstream" = File stream used to read and write data in files.
