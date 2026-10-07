@@ -327,3 +327,31 @@ When the user enters "20", the input is stored in the input stream and then "cin
 Key Point
 
 Input buffering → temporarily stores input data before it is processed.
+
+
+### topic 11
+
+Output Buffering – Notes
+
+- Output buffering is the process of temporarily storing output data in a buffer before it is sent to its destination.
+- A buffer is a temporary memory area.
+- Output data may be stored in the buffer before being displayed on the screen.
+- It helps reduce the number of direct output operations.
+- "cout" uses an output stream and works with buffering.
+- "flush()" can be used to force buffered output to be written immediately.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello";
+    cout.flush();
+}
+
+Here, "flush()" forces the buffered output to be sent immediately.
+
+Key Point
+
+Output buffering → temporarily stores output data before sending it to its destination.
