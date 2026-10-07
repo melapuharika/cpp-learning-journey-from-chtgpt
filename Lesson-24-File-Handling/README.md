@@ -263,3 +263,65 @@ Important Points
 Key Point
 
 "fstream" = File stream used to read and write data in files.
+
+
+### topic 5
+
+Open / Close
+
+- Open means connecting a file with the C++ program.
+- Close means ending the connection with the file.
+- Files can be opened using the constructor or the "open()" function.
+
+Open Using Constructor
+
+ofstream file("data.txt");
+
+Open Using "open()"
+
+ofstream file;
+file.open("data.txt");
+
+Close a File
+
+file.close();
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file;
+
+    file.open("data.txt");
+
+    file << "Hello C++";
+
+    file.close();
+
+    return 0;
+}
+
+Check Whether File Is Open
+
+if (file.is_open()) {
+    cout << "File opened successfully";
+}
+
+- "open()" → Opens the file.
+- "is_open()" → Checks whether the file is open.
+- "close()" → Closes the file.
+
+Important Points
+
+- A file should be opened before performing file operations.
+- Close the file after completing the required operations.
+- "open()" can be used to open a file.
+- "close()" is used to close a file.
+
+Key Point
+
+Open = Connect the file with the program.
+Close = End the connection with the file.
