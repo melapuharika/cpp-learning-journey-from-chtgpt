@@ -79,3 +79,63 @@ Important Points
 Key Point
 
 File Handling = Using C++ programs to create, open, read, write, modify, and close files.
+
+### topic 2
+
+ifstream
+
+- "ifstream" stands for Input File Stream.
+- It is used to read data from a file.
+- It is provided by the "<fstream>" header.
+- "ifstream" is part of the C++ Standard Library.
+
+Syntax
+
+ifstream file("filename.txt");
+
+Example
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream file("data.txt");
+
+    string text;
+    file >> text;
+
+    cout << text;
+
+    file.close();
+
+    return 0;
+}
+
+Example File
+
+Hello C++
+
+Output
+
+Hello
+
+Reading a Complete Line
+
+string text;
+getline(file, text);
+
+- ">>" reads data and stops at whitespace.
+- "getline()" reads the complete line.
+
+Important Points
+
+- "ifstream" → Read from file
+- Header → "<fstream>"
+- ">>" → Read formatted data
+- "getline()" → Read a complete line
+- "close()" → Closes the file
+
+Key Point
+
+"ifstream" = Input File Stream used to read data from files.
