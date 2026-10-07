@@ -189,3 +189,36 @@ Here, "istringstream" reads "100" and "200" from the string.
 Key Point
 
 "istringstream" → reads input from a string.
+
+
+### topic 7
+
+ostringstream – Notes
+
+- "ostringstream" stands for Output String Stream.
+- It is used to write data into a string.
+- It is provided by the "<sstream>" header.
+- It works like an output stream, but the destination is a string.
+- The insertion operator "<<" is used to add data.
+- The "str()" function is used to get the resulting string.
+- It is useful for building and formatting strings.
+
+Example
+
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    ostringstream output;
+
+    output << "Age: " << 20;
+
+    string result = output.str();
+
+    cout << result;
+}
+
+Key Point
+
+"ostringstream" → writes output into a string.
