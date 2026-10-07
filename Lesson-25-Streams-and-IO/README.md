@@ -34,3 +34,34 @@ Examples
 Key Point
 
 Input → Program → Output
+
+### topic 2
+
+iostream – Notes
+
+- "iostream" is a standard C++ header file used for input and output operations.
+- It is included using:
+
+#include <iostream>
+
+Common Objects
+
+- "cin" → used for input.
+- "cout" → used for output.
+- "cerr" → used for error messages.
+- "clog" → used for logging messages.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    cin >> age;
+    cout << age;
+}
+
+Key Point
+
+"iostream" provides the basic tools needed for standard input and output in C++.
