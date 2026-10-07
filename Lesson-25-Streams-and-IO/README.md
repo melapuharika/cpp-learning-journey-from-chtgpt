@@ -300,3 +300,30 @@ Output
 Key Point
 
 Manipulators → control stream formatting and behavior.
+
+
+### topic 10
+
+Input Buffering – Notes
+
+- Input buffering is the process of temporarily storing input data in a buffer before the program reads and processes it.
+- A buffer is a temporary memory area.
+- Input data is stored in the buffer before being processed by the program.
+- It helps make input operations more efficient.
+- "cin" reads input through the input stream.
+
+Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    cin >> age;
+}
+
+When the user enters "20", the input is stored in the input stream and then "cin" extracts the value.
+
+Key Point
+
+Input buffering → temporarily stores input data before it is processed.
