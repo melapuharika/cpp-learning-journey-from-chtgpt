@@ -355,3 +355,36 @@ Here, "flush()" forces the buffered output to be sent immediately.
 Key Point
 
 Output buffering → temporarily stores output data before sending it to its destination.
+
+
+## topic 12
+
+I/O Redirection – Notes
+
+- I/O Redirection means changing the default source or destination of input and output.
+- Normally, input comes from the keyboard and output goes to the screen.
+- With redirection, input can come from a file and output can be sent to a file.
+
+Common Operators
+
+- "<" → redirects input.
+- ">" → redirects output and overwrites the file.
+- ">>" → redirects output and appends to the file.
+
+Examples
+
+program < input.txt
+
+Reads input from "input.txt" instead of the keyboard.
+
+program > output.txt
+
+Sends output to "output.txt" instead of the screen.
+
+program >> output.txt
+
+Appends output to the existing "output.txt".
+
+Key Point
+
+I/O Redirection → changes where input comes from or where output goes.
