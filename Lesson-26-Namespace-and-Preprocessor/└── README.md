@@ -5777,3 +5777,649 @@ Easy Memory Trick
 #ifndef   → If Not Defined
 #if       → If Condition is True
 #endif    → End
+
+
+### topic 13
+
+C++ Include Guards
+
+1. Introduction
+
+Include guards are a technique used in C++ header files to prevent the same header file from being included multiple times in a single translation unit.
+
+They use preprocessor directives:
+
+#ifndef
+#define
+#endif
+
+Basic Structure
+
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// Header contents
+
+#endif
+
+---
+
+2. Why Do We Need Include Guards?
+
+Suppose we have a header file:
+
+// Student.h
+
+class Student {
+public:
+    void display();
+};
+
+And the same header is included more than once:
+
+#include "Student.h"
+#include "Student.h"
+
+Without protection, the contents of the header may be processed multiple times.
+
+This can cause redefinition errors for declarations such as classes, structs, variables, or other entities that cannot be defined repeatedly in the same translation unit.
+
+Include guards prevent this problem.
+
+---
+
+3. Basic Include Guard Syntax
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+public:
+    void display();
+};
+
+#endif
+
+There are three important directives:
+
+Directive| Purpose
+"#ifndef"| Checks whether the guard macro is not defined
+"#define"| Defines the guard macro
+"#endif"| Ends the conditional block
+
+---
+
+4. How Include Guards Work
+
+Consider:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+public:
+    void display();
+};
+
+#endif
+
+First Inclusion
+
+When the header is included for the first time:
+
+Is STUDENT_H defined?
+        ↓
+       NO
+        ↓
+Include header contents
+        ↓
+#define STUDENT_H
+
+The class definition is processed.
+
+---
+
+5. Second Inclusion
+
+If the same header is included again:
+
+Is STUDENT_H defined?
+        ↓
+       YES
+        ↓
+Skip the header contents
+
+Therefore, the class definition is not processed again.
+
+---
+
+6. Complete Example
+
+"Student.h"
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+public:
+    void display();
+};
+
+#endif
+
+"main.cpp"
+
+#include <iostream>
+#include "Student.h"
+#include "Student.h"
+
+int main() {
+
+    Student s;
+    s.display();
+
+    return 0;
+}
+
+Even though "Student.h" is included twice, the contents are processed only once because of the include guard.
+
+---
+
+7. Step-by-Step Working
+
+Suppose the header contains:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+// Header contents
+
+#endif
+
+First time
+
+STUDENT_H → Not defined
+        ↓
+#ifndef → TRUE
+        ↓
+#define STUDENT_H
+        ↓
+Header contents included
+
+Second time
+
+STUDENT_H → Already defined
+        ↓
+#ifndef → FALSE
+        ↓
+Header contents skipped
+
+---
+
+8. Naming the Guard Macro
+
+The macro name should be unique to the header.
+
+For:
+
+Student.h
+
+Possible guard:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+For:
+
+Database.h
+
+Possible guard:
+
+#ifndef DATABASE_H
+#define DATABASE_H
+
+For a project named "MyProject":
+
+#ifndef MYPROJECT_STUDENT_H
+#define MYPROJECT_STUDENT_H
+
+Using a project-specific name reduces the chance of macro-name collisions.
+
+---
+
+9. Common Naming Convention
+
+A common convention is:
+
+FILENAME_H
+
+Example:
+
+Student.h
+
+becomes:
+
+STUDENT_H
+
+Another common convention is:
+
+PROJECT_FILENAME_H
+
+Example:
+
+MYPROJECT_STUDENT_H
+
+The exact name is not important.
+
+What matters is that the macro name is consistent and unlikely to conflict with another macro.
+
+---
+
+10. Include Guards with Functions and Classes
+
+Include guards can protect declarations and definitions inside a header.
+
+Example:
+
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+
+class Calculator {
+public:
+    int add(int a, int b);
+};
+
+#endif
+
+The entire class declaration is protected.
+
+---
+
+11. Include Guards with Structs
+
+Example:
+
+#ifndef PERSON_H
+#define PERSON_H
+
+struct Person {
+    int age;
+    double height;
+};
+
+#endif
+
+If the header is included multiple times, the "Person" definition is processed only once.
+
+---
+
+12. Include Guards with Multiple Headers
+
+Suppose we have:
+
+Student.h
+Teacher.h
+main.cpp
+
+"Student.h"
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+"Teacher.h"
+
+#ifndef TEACHER_H
+#define TEACHER_H
+
+class Teacher {
+};
+
+#endif
+
+Each header has its own unique guard macro.
+
+---
+
+13. Why Must Guard Names Be Different?
+
+Consider two headers:
+
+#ifndef HEADER_H
+#define HEADER_H
+
+and:
+
+#ifndef HEADER_H
+#define HEADER_H
+
+Both use the same macro.
+
+After the first header is included:
+
+HEADER_H → defined
+
+When the second header is processed:
+
+#ifndef HEADER_H
+
+becomes false.
+
+Therefore, the second header may be skipped accidentally.
+
+Better
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+and:
+
+#ifndef TEACHER_H
+#define TEACHER_H
+
+Use unique guard names.
+
+---
+
+14. Include Guards and "#ifndef"
+
+Include guards are based directly on the "#ifndef" directive.
+
+Basic pattern:
+
+#ifndef UNIQUE_MACRO
+#define UNIQUE_MACRO
+
+// Header contents
+
+#endif
+
+This is why understanding "#ifndef" is important before learning include guards.
+
+---
+
+15. Include Guards vs "#pragma once"
+
+There are two common ways to prevent repeated header inclusion.
+
+Include Guard
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+// Header contents
+
+#endif
+
+"#pragma once"
+
+#pragma once
+
+// Header contents
+
+Both are widely used for preventing repeated inclusion.
+
+---
+
+16. Comparison
+
+Feature| Include Guards| "#pragma once"
+Uses "#ifndef"| Yes| No
+Uses "#define"| Yes| No
+Uses "#endif"| Yes| No
+Shorter| No| Yes
+Standard C++ preprocessor directive| Yes| No
+Compiler support| Very broad| Very broad
+Commonly used| Yes| Yes
+
+"#pragma once" is widely supported by modern C++ compilers, but it is not part of the ISO C++ standard in the same way that the traditional "#ifndef"/"#define"/"#endif" pattern is.
+
+---
+
+17. Example Using "#pragma once"
+
+Instead of:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+we can commonly write:
+
+#pragma once
+
+class Student {
+};
+
+This is simpler, but it relies on compiler support for "#pragma once".
+
+---
+
+18. Why Include Guards Are Important
+
+Include guards are especially useful because headers can indirectly include other headers.
+
+For example:
+
+main.cpp
+   |
+   ├── Student.h
+   |      |
+   |      └── Person.h
+   |
+   └── Person.h
+
+"Person.h" may be encountered more than once.
+
+An include guard ensures that its contents are processed only once within the translation unit.
+
+---
+
+19. Include Guards and Header Dependencies
+
+Suppose:
+
+"Person.h"
+
+#ifndef PERSON_H
+#define PERSON_H
+
+class Person {
+};
+
+#endif
+
+"Student.h"
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+#include "Person.h"
+
+class Student : public Person {
+};
+
+#endif
+
+"main.cpp"
+
+#include "Person.h"
+#include "Student.h"
+
+"Person.h" is encountered through both paths, but its guard prevents its contents from being processed repeatedly.
+
+---
+
+20. Important Points
+
+- Include guards prevent repeated processing of a header's contents within one translation unit.
+- They are commonly written using "#ifndef", "#define", and "#endif".
+- The guard macro should have a unique name.
+- The macro is defined the first time the header is processed.
+- Later inclusions see that the macro is already defined and skip the header contents.
+- Include guards are especially important when headers include other headers.
+- "#pragma once" is a common alternative supported by modern compilers.
+- Include guards are not the same thing as preventing the file from being physically opened or read; they control whether the guarded contents are processed.
+
+---
+
+21. Common Mistakes
+
+Mistake 1: Forgetting "#define"
+
+Incorrect:
+
+#ifndef STUDENT_H
+
+class Student {
+};
+
+#endif
+
+Correct:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+---
+
+Mistake 2: Forgetting "#endif"
+
+Incorrect:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+Correct:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+---
+
+Mistake 3: Using the Same Guard for Different Headers
+
+Avoid:
+
+// Student.h
+#ifndef HEADER_H
+#define HEADER_H
+
+and:
+
+// Teacher.h
+#ifndef HEADER_H
+#define HEADER_H
+
+Use unique names:
+
+// Student.h
+#ifndef STUDENT_H
+#define STUDENT_H
+
+// Teacher.h
+#ifndef TEACHER_H
+#define TEACHER_H
+
+---
+
+22. Include Guard Template
+
+You can use this template for a header file:
+
+#ifndef UNIQUE_HEADER_NAME_H
+#define UNIQUE_HEADER_NAME_H
+
+// Header declarations
+// Classes
+// Functions
+// Structures
+// Constants
+
+#endif
+
+Example:
+
+#ifndef CAR_H
+#define CAR_H
+
+class Car {
+public:
+    void start();
+};
+
+#endif
+
+---
+
+23. Quick Revision
+
+Include Guard
+      ↓
+#ifndef
+      ↓
+Is guard macro NOT defined?
+      ↓
+     YES
+      ↓
+#define guard macro
+      ↓
+Process header contents
+      ↓
+#endif
+
+If the header is included again:
+
+Guard macro already defined
+          ↓
+     Skip contents
+
+---
+
+24. One-Line Definition
+
+An include guard is a preprocessor technique that prevents a header's contents from being processed more than once in a single translation unit.
+
+---
+
+25. Quick Memory Trick
+
+#ifndef → Check if NOT defined
+#define → Define the guard
+#endif  → End the guard
+
+Standard Pattern
+
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// Header contents
+
+#endif
+
+Modern Alternative
+
+#pragma once
+
+// Header contents
