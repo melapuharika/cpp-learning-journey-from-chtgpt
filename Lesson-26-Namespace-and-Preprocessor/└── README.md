@@ -996,3 +996,420 @@ namespace { }
 Internal linkage
         ↓
 File-local use
+
+
+### topic 4
+
+Using in C++
+
+1. Introduction
+
+The "using" keyword in C++ is used to make names from a namespace available in the current scope.
+
+It can reduce the need to repeatedly write the namespace name and scope resolution operator "::".
+
+For example:
+
+std::cout
+
+can be used as:
+
+cout
+
+by using a "using" declaration.
+
+---
+
+2. "using" Declaration
+
+A using declaration introduces a specific name from a namespace into the current scope.
+
+Syntax
+
+using namespace_name::member_name;
+
+Example
+
+#include <iostream>
+
+using std::cout;
+
+int main() {
+    cout << "Hello";
+    return 0;
+}
+
+Output
+
+Hello
+
+Here:
+
+using std::cout;
+
+means that we can use "cout" directly without writing "std::cout".
+
+---
+
+3. Using Multiple Names
+
+We can introduce multiple names individually.
+
+#include <iostream>
+#include <string>
+
+using std::cout;
+using std::cin;
+using std::string;
+
+int main() {
+
+    string name;
+
+    cin >> name;
+    cout << name;
+
+    return 0;
+}
+
+Here, only "cout", "cin", and "string" are introduced.
+
+Other members of "std" are not automatically introduced.
+
+---
+
+4. "using namespace"
+
+A using-directive makes names from a namespace available for unqualified lookup in the relevant scope.
+
+Syntax
+
+using namespace namespace_name;
+
+Example:
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    cout << "Hello";
+
+    return 0;
+}
+
+Instead of:
+
+std::cout << "Hello";
+
+we can write:
+
+cout << "Hello";
+
+---
+
+5. Using Declaration vs Using Directive
+
+Using Declaration
+
+using std::cout;
+
+Only a specific name is introduced.
+
+Using Directive
+
+using namespace std;
+
+Names from the namespace can be used without repeatedly writing the namespace qualifier.
+
+---
+
+6. Example of "using std::cout"
+
+#include <iostream>
+
+using std::cout;
+
+int main() {
+
+    cout << "Hello";
+
+    return 0;
+}
+
+This is equivalent to:
+
+#include <iostream>
+
+int main() {
+
+    std::cout << "Hello";
+
+    return 0;
+}
+
+---
+
+7. Using a Function from a Namespace
+
+Suppose we have:
+
+namespace Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+}
+
+Normally, we call:
+
+Calculator::add(10, 20);
+
+Using a declaration:
+
+using Calculator::add;
+
+Now we can write:
+
+add(10, 20);
+
+Complete Example
+
+#include <iostream>
+
+namespace Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+}
+
+using Calculator::add;
+
+int main() {
+
+    std::cout << add(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+---
+
+8. Using a Class from a Namespace
+
+A "using" declaration can also introduce a class.
+
+#include <iostream>
+
+namespace College {
+
+    class Student {
+    public:
+        void display() {
+            std::cout << "Student";
+        }
+    };
+
+}
+
+using College::Student;
+
+int main() {
+
+    Student s;
+    s.display();
+
+    return 0;
+}
+
+Output
+
+Student
+
+---
+
+9. Namespace Alias vs Using
+
+These two concepts are different.
+
+Namespace Alias
+
+namespace C = College;
+
+This gives another name to the namespace itself.
+
+Using Declaration
+
+using College::Student;
+
+This introduces a specific member into the current scope.
+
+---
+
+10. Advantages of "using"
+
+1. Reduces Repetition
+
+Instead of:
+
+std::cout
+std::cin
+std::string
+
+we can use:
+
+cout
+cin
+string
+
+when appropriate.
+
+2. Improves Readability
+
+Long namespace names can be avoided when using specific declarations.
+
+3. Useful with Long Namespaces
+
+For example:
+
+using Company::Software::Development::Project;
+
+After that:
+
+Project p;
+
+can be used.
+
+---
+
+11. Avoiding "using namespace std;" in Large Programs
+
+Although this is valid:
+
+using namespace std;
+
+it is generally better to avoid putting it in global scope, especially in large projects and header files.
+
+Why?
+
+Because many names can become available and may cause name conflicts.
+
+For example:
+
+namespace A {
+    int value = 10;
+}
+
+namespace B {
+    int value = 20;
+}
+
+using namespace A;
+using namespace B;
+
+Now writing:
+
+value;
+
+can be ambiguous because both "A" and "B" contain "value".
+
+It is clearer to write:
+
+A::value;
+B::value;
+
+or use a specific using declaration when appropriate.
+
+---
+
+12. "using" Inside a Function
+
+A using declaration can be placed inside a function.
+
+#include <iostream>
+
+int main() {
+
+    using std::cout;
+
+    cout << "Hello";
+
+    return 0;
+}
+
+Here, the declaration is limited to the scope where it is written.
+
+---
+
+13. Important Points
+
+- "using" is a C++ keyword.
+- A using declaration introduces a specific name.
+- Example:
+
+using std::cout;
+
+- A using-directive makes namespace names available without qualification.
+- Example:
+
+using namespace std;
+
+- "using std::cout;" is more specific than "using namespace std;".
+- "using" can be used with variables, functions, classes, and other names.
+- Avoid unnecessary "using namespace" directives in large programs and header files.
+
+---
+
+14. One-Line Definitions
+
+Using Declaration
+
+A using declaration introduces a specific name from a namespace into the current scope.
+
+Example:
+
+using std::cout;
+
+Using Directive
+
+A using-directive allows names from a namespace to be used without repeatedly specifying the namespace qualifier.
+
+Example:
+
+using namespace std;
+
+---
+
+15. Quick Comparison
+
+Feature| Using Declaration| Using Directive
+Syntax| "using std::cout;"| "using namespace std;"
+Scope| Specific name| Namespace names
+Specificity| More specific| Broader
+Example| "cout"| "cout", "cin", "string"
+Name conflict risk| Lower| Higher
+
+---
+
+Key Concept
+
+using std::cout;
+        ↓
+Only cout is introduced
+
+using namespace std;
+        ↓
+Names from std can be used without std::
+
+Remember
+
+"using std::cout;" → specific name
+
+"using namespace std;" → namespace-wide using-directive
