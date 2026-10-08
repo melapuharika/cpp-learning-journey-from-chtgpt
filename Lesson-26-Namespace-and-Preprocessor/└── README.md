@@ -3224,3 +3224,720 @@ Macro → Preprocessor replacement
 "#undef" → Remove a macro
 
 "constexpr" / functions → Often safer alternatives in modern C++
+
+
+### topic 9
+
+Conditional Compilation in C++
+
+1. Introduction
+
+Conditional compilation is a feature of the C++ preprocessor that allows us to include or exclude parts of a program based on conditions.
+
+The preprocessor checks the condition before the compiler compiles the program.
+
+Common Conditional Compilation Directives
+
+#if
+#ifdef
+#ifndef
+#else
+#elif
+#endif
+
+---
+
+2. Why Conditional Compilation Is Used
+
+Conditional compilation is useful when we want different code to be compiled under different conditions.
+
+Common uses include:
+
+- Debugging
+- Platform-specific code
+- Different operating systems
+- Different configurations
+- Feature control
+- Header guards
+- Development and production builds
+
+---
+
+3. Basic Structure
+
+The general structure is:
+
+#if condition
+
+// code
+
+#endif
+
+If the condition is true, the code is included.
+
+If the condition is false, the code is excluded from compilation.
+
+---
+
+4. Simple Example
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+    return 0;
+}
+
+Output
+
+Debug mode
+
+Because "DEBUG" is defined, the code inside "#ifdef DEBUG" is included.
+
+---
+
+5. "#if"
+
+"#if" is used to compile code when a preprocessor condition evaluates to true.
+
+Syntax
+
+#if condition
+
+// code
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define VERSION 2
+
+int main() {
+
+#if VERSION == 2
+    std::cout << "Version 2";
+#endif
+
+    return 0;
+}
+
+Output
+
+Version 2
+
+Here:
+
+VERSION == 2
+
+is true, so the code is included.
+
+---
+
+6. "#if" with Different Values
+
+Example:
+
+#define VERSION 3
+
+#if VERSION == 2
+    // This code is excluded
+#endif
+
+#if VERSION == 3
+    std::cout << "Version 3";
+#endif
+
+Only the second block is included.
+
+---
+
+7. "#ifdef"
+
+"#ifdef" means:
+
+«If defined»
+
+It checks whether a particular macro has been defined.
+
+Syntax
+
+#ifdef MACRO_NAME
+
+// code
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode is enabled";
+#endif
+
+    return 0;
+}
+
+Output
+
+Debug mode is enabled
+
+Because "DEBUG" is defined.
+
+---
+
+8. What Happens If the Macro Is Not Defined?
+
+Consider:
+
+#include <iostream>
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+    return 0;
+}
+
+Here "DEBUG" has not been defined.
+
+Therefore, the code inside "#ifdef DEBUG" is excluded.
+
+Output
+
+No output
+
+---
+
+9. "#ifndef"
+
+"#ifndef" means:
+
+«If not defined»
+
+It checks whether a macro has not been defined.
+
+Syntax
+
+#ifndef MACRO_NAME
+
+// code
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#ifndef DEBUG
+    std::cout << "Debug mode is not enabled";
+#endif
+
+If "DEBUG" is not defined, the message is included.
+
+---
+
+10. "#else"
+
+"#else" provides an alternative block when the previous condition is false.
+
+Syntax
+
+#if condition
+
+// code if true
+
+#else
+
+// code if false
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define VERSION 1
+
+#if VERSION == 2
+    std::cout << "Version 2";
+#else
+    std::cout << "Other version";
+#endif
+
+Output
+
+Other version
+
+---
+
+11. "#ifdef" with "#else"
+
+Example:
+
+#include <iostream>
+
+#define DEBUG
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#else
+    std::cout << "Normal mode";
+#endif
+
+Output
+
+Debug mode
+
+If "DEBUG" were not defined:
+
+Normal mode
+
+would be printed.
+
+---
+
+12. "#ifndef" with "#else"
+
+Example:
+
+#include <iostream>
+
+#ifndef DEBUG
+    std::cout << "Debug is not enabled";
+#else
+    std::cout << "Debug is enabled";
+#endif
+
+If "DEBUG" is not defined:
+
+Debug is not enabled
+
+If "DEBUG" is defined:
+
+Debug is enabled
+
+---
+
+13. "#elif"
+
+"#elif" means:
+
+«Else if»
+
+It allows us to check multiple conditions.
+
+Syntax
+
+#if condition1
+
+// code
+
+#elif condition2
+
+// code
+
+#else
+
+// code
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define VERSION 2
+
+#if VERSION == 1
+    std::cout << "Version 1";
+
+#elif VERSION == 2
+    std::cout << "Version 2";
+
+#else
+    std::cout << "Unknown version";
+
+#endif
+
+Output
+
+Version 2
+
+---
+
+14. Multiple "#elif" Conditions
+
+We can use multiple "#elif" directives.
+
+#define VERSION 3
+
+#if VERSION == 1
+
+    // Version 1
+
+#elif VERSION == 2
+
+    // Version 2
+
+#elif VERSION == 3
+
+    // Version 3
+
+#else
+
+    // Unknown version
+
+#endif
+
+Only the first matching condition is included.
+
+---
+
+15. "#endif"
+
+Every conditional compilation block must be properly closed with:
+
+#endif
+
+Example:
+
+#ifdef DEBUG
+
+    std::cout << "Debug";
+
+#endif
+
+"#endif" marks the end of the conditional section.
+
+---
+
+16. Complete Conditional Compilation Structure
+
+#if condition
+
+    // Code
+
+#elif another_condition
+
+    // Code
+
+#else
+
+    // Code
+
+#endif
+
+This is similar to:
+
+if
+else if
+else
+
+but it happens during preprocessing, not normal runtime execution.
+
+---
+
+17. Conditional Compilation vs "if"
+
+These two are different.
+
+Normal "if"
+
+if (condition) {
+    std::cout << "Hello";
+}
+
+The compiler compiles the program containing this statement, and the condition is evaluated when the program runs.
+
+Conditional compilation
+
+#if condition
+    std::cout << "Hello";
+#endif
+
+The preprocessor decides whether the code is included before compilation.
+
+Difference
+
+Feature| "if"| "#if"
+Handled by| Compiler| Preprocessor
+When condition is handled| Runtime/compile-time depending on expression| Preprocessing
+Code excluded from compilation?| No| Yes
+Type checking of excluded code| Not applicable to excluded branch in the same way| Excluded code is not compiled
+Used for| Program logic| Build/configuration control
+
+---
+
+18. Debugging with Conditional Compilation
+
+Conditional compilation is commonly used for debugging.
+
+Example:
+
+#define DEBUG
+
+#ifdef DEBUG
+    std::cout << "Debug information";
+#endif
+
+When debugging is required, define:
+
+#define DEBUG
+
+When debugging is not required, remove or disable the definition.
+
+---
+
+19. Platform-Specific Code
+
+Conditional compilation can be used for different operating systems or platforms.
+
+Example:
+
+#ifdef _WIN32
+    std::cout << "Windows";
+#elif defined(__linux__)
+    std::cout << "Linux";
+#else
+    std::cout << "Other platform";
+#endif
+
+The exact predefined macros available depend on the compiler and platform.
+
+---
+
+20. Feature Control
+
+We can use macros to enable or disable features.
+
+Example:
+
+#define FEATURE_A
+
+#ifdef FEATURE_A
+    std::cout << "Feature A is enabled";
+#endif
+
+If "FEATURE_A" is defined, the feature-related code is included.
+
+---
+
+21. Nested Conditional Compilation
+
+Conditional directives can be nested.
+
+Example:
+
+#define DEBUG
+#define VERSION 2
+
+#ifdef DEBUG
+
+    #if VERSION == 2
+        std::cout << "Debug Version 2";
+    #endif
+
+#endif
+
+Output
+
+Debug Version 2
+
+---
+
+22. "defined" Operator
+
+The "defined" operator can be used with "#if".
+
+Example:
+
+#define DEBUG
+
+#if defined(DEBUG)
+    std::cout << "Debug mode";
+#endif
+
+This is similar to:
+
+#ifdef DEBUG
+
+Another example:
+
+#if !defined(DEBUG)
+    std::cout << "Debug is not defined";
+#endif
+
+This is similar to:
+
+#ifndef DEBUG
+
+---
+
+23. Example Program
+
+#include <iostream>
+
+#define VERSION 2
+
+int main() {
+
+#if VERSION == 1
+
+    std::cout << "Running Version 1";
+
+#elif VERSION == 2
+
+    std::cout << "Running Version 2";
+
+#else
+
+    std::cout << "Unknown Version";
+
+#endif
+
+    return 0;
+}
+
+Output
+
+Running Version 2
+
+---
+
+24. Advantages
+
+1. Platform-Specific Code
+
+Different code can be compiled for different operating systems.
+
+2. Debugging
+
+Debug-only code can be included when needed.
+
+3. Feature Management
+
+Features can be enabled or disabled.
+
+4. Build Configuration
+
+Different versions of a program can be created from the same source code.
+
+5. Header Guards
+
+Conditional compilation is used to prevent multiple inclusion of headers.
+
+---
+
+25. Disadvantages
+
+1. Can Make Code Difficult to Read
+
+Too many conditional blocks can make the source complicated.
+
+2. Multiple Configurations
+
+Testing every possible combination of macros can be difficult.
+
+3. Debugging Can Be Harder
+
+The actual code compiled may differ depending on the defined macros.
+
+4. Excessive Use Should Be Avoided
+
+Normal C++ language features should be preferred when conditional compilation is not necessary.
+
+---
+
+26. Important Points
+
+- Conditional compilation is performed by the preprocessor.
+- It can include or exclude sections of source code.
+- "#if" checks a preprocessor condition.
+- "#ifdef" checks whether a macro is defined.
+- "#ifndef" checks whether a macro is not defined.
+- "#elif" provides another condition.
+- "#else" provides an alternative block.
+- "#endif" closes the conditional block.
+- "defined()" can check whether a macro exists.
+- Conditional compilation happens before actual compilation.
+- It is commonly used for debugging, platform-specific code, and configuration.
+
+---
+
+27. One-Line Definitions
+
+"#if"
+
+"#if" conditionally includes code when a preprocessor expression is true.
+
+"#ifdef"
+
+"#ifdef" includes code if a specified macro is defined.
+
+"#ifndef"
+
+"#ifndef" includes code if a specified macro is not defined.
+
+"#else"
+
+"#else" provides an alternative block when the previous condition is false.
+
+"#elif"
+
+"#elif" checks another condition when previous conditions are false.
+
+"#endif"
+
+"#endif" marks the end of a conditional compilation block.
+
+---
+
+28. Quick Revision
+
+Conditional Compilation
+        ↓
+Preprocessor
+        ↓
+Check condition
+        ↓
+ ┌───────────────┐
+ │               │
+True           False
+ │               │
+Include         Exclude
+code            code
+
+Main Directives
+
+#if
+#ifdef
+#ifndef
+#elif
+#else
+#endif
+
+Easy Memory Trick
+
+#if     → If condition is true
+#ifdef  → If defined
+#ifndef → If not defined
+#elif   → Else if
+#else   → Otherwise
+#endif  → End
+
+Remember: "#if" / "#ifdef" / "#ifndef" are preprocessor directives, not normal C++ "if" statements.
