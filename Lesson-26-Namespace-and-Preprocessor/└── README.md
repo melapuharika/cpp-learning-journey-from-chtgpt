@@ -2622,3 +2622,605 @@ Remember
 "#undef" → Remove macro definition
 
 "constexpr" → Preferred for many typed compile-time constants in modern C++
+
+
+### topic 8
+
+C++ Macros
+
+1. Introduction
+
+A macro is a name that represents a piece of replacement text and is defined using the "#define" preprocessor directive.
+
+Macros are processed by the preprocessor before compilation.
+
+Basic Syntax
+
+#define MACRO_NAME replacement_text
+
+Example:
+
+#define PI 3.14159
+
+Here:
+
+- "PI" → Macro name
+- "3.14159" → Replacement text
+
+---
+
+2. How Macros Work
+
+Consider:
+
+#define MAX_SIZE 100
+
+int arr[MAX_SIZE];
+
+Before the compiler processes the code, the preprocessor expands the macro:
+
+int arr[100];
+
+Process
+
+#define MAX_SIZE 100
+        ↓
+Preprocessor
+        ↓
+MAX_SIZE → 100
+        ↓
+Compiler
+
+---
+
+3. Types of Macros
+
+There are mainly two common types of macros:
+
+1. Object-like macros
+2. Function-like macros
+
+---
+
+4. Object-Like Macros
+
+An object-like macro does not have parameters.
+
+Syntax
+
+#define NAME replacement
+
+Example:
+
+#define PI 3.14159
+#define MAX_SIZE 100
+#define VERSION 1
+
+Example program:
+
+#include <iostream>
+
+#define MAX_SIZE 100
+
+int main() {
+
+    std::cout << MAX_SIZE;
+
+    return 0;
+}
+
+Output
+
+100
+
+---
+
+5. Function-Like Macros
+
+A function-like macro accepts parameters.
+
+Syntax
+
+#define NAME(parameter) replacement
+
+Example:
+
+#define SQUARE(x) ((x) * (x))
+
+Usage:
+
+int result = SQUARE(5);
+
+The preprocessor expands it approximately to:
+
+int result = ((5) * (5));
+
+Therefore:
+
+SQUARE(5)
+   ↓
+((5) * (5))
+   ↓
+25
+
+---
+
+6. Function-Like Macro Example
+
+#include <iostream>
+
+#define SQUARE(x) ((x) * (x))
+
+int main() {
+
+    std::cout << SQUARE(5);
+
+    return 0;
+}
+
+Output
+
+25
+
+---
+
+7. Macro with Multiple Parameters
+
+A macro can have multiple parameters.
+
+Example:
+
+#define ADD(a, b) ((a) + (b))
+
+Usage:
+
+int result = ADD(10, 20);
+
+After macro expansion, it becomes approximately:
+
+int result = ((10) + (20));
+
+Output
+
+30
+
+---
+
+8. Why Parentheses Are Important in Macros
+
+Consider this macro:
+
+#define SQUARE(x) x * x
+
+Now:
+
+SQUARE(2 + 3)
+
+Expansion becomes:
+
+2 + 3 * 2 + 3
+
+Because multiplication has higher precedence than addition, the result is not the expected "25".
+
+A safer macro is:
+
+#define SQUARE(x) ((x) * (x))
+
+Now:
+
+SQUARE(2 + 3)
+
+expands to:
+
+((2 + 3) * (2 + 3))
+
+Result:
+
+25
+
+Important Rule
+
+When writing function-like macros, parenthesize parameters and the complete expression.
+
+---
+
+9. Macro with Multiple Statements
+
+A macro can contain multiple statements.
+
+Example:
+
+#define PRINT_MESSAGE() \
+    std::cout << "Hello" << std::endl; \
+    std::cout << "Welcome" << std::endl;
+
+The backslash "\" is used to continue the macro definition onto the next line.
+
+Example:
+
+#include <iostream>
+
+#define PRINT_MESSAGE() \
+    std::cout << "Hello" << std::endl; \
+    std::cout << "Welcome" << std::endl;
+
+int main() {
+
+    PRINT_MESSAGE();
+
+    return 0;
+}
+
+Output
+
+Hello
+Welcome
+
+However, multi-statement macros can behave unexpectedly in some contexts. Modern C++ generally prefers functions when a normal function can do the job.
+
+---
+
+10. Macro Expansion
+
+Macro expansion means replacing a macro name with its replacement text during preprocessing.
+
+Example:
+
+#define NUMBER 10
+
+int x = NUMBER;
+
+After expansion:
+
+int x = 10;
+
+Another example:
+
+#define ADD(a, b) ((a) + (b))
+
+int result = ADD(5, 3);
+
+After expansion:
+
+int result = ((5) + (3));
+
+---
+
+11. Macro Does Not Have a Type
+
+Consider:
+
+#define VALUE 100
+
+"VALUE" itself does not have a C++ type.
+
+It is simply replaced with:
+
+100
+
+The resulting expression is then interpreted by the compiler.
+
+Compare:
+
+#define VALUE 100
+
+with:
+
+constexpr int VALUE = 100;
+
+The second one is a real C++ object with a type.
+
+---
+
+12. Macro vs Function
+
+Feature| Macro| Function
+Processed by| Preprocessor| Compiler
+Type checking| No| Yes
+Parameters| Text substitution| Typed parameters
+Debugging| More difficult| Easier
+Scope| Preprocessor-based| Normal C++ scope
+Runtime function call| No| Usually yes
+Safety| Lower| Higher
+
+Example macro:
+
+#define SQUARE(x) ((x) * (x))
+
+Equivalent function:
+
+int square(int x) {
+    return x * x;
+}
+
+For ordinary operations, a function or "constexpr" function is usually safer.
+
+---
+
+13. Macro vs "constexpr"
+
+For constants:
+
+#define PI 3.14159
+
+Modern C++ generally prefers:
+
+constexpr double PI = 3.14159;
+
+Why?
+
+"constexpr" provides:
+
+- Type safety
+- Normal C++ scope
+- Better compiler checking
+- Better debugging support
+
+---
+
+14. Macro Arguments Can Have Side Effects
+
+Consider:
+
+#define SQUARE(x) ((x) * (x))
+
+Now:
+
+int i = 5;
+int result = SQUARE(i++);
+
+The parameter "i++" appears more than once after expansion:
+
+((i++) * (i++))
+
+This can produce unexpected behavior.
+
+This is one reason ordinary functions are often safer than macros.
+
+---
+
+15. Predefined Macros
+
+C++ also provides some predefined macros.
+
+Examples include:
+
+__FILE__
+__LINE__
+__DATE__
+__TIME__
+
+"__FILE__"
+
+Gives the current source file name.
+
+"__LINE__"
+
+Gives the current source line number.
+
+"__DATE__"
+
+Provides the compilation date.
+
+"__TIME__"
+
+Provides the compilation time.
+
+Example:
+
+#include <iostream>
+
+int main() {
+
+    std::cout << __FILE__ << std::endl;
+    std::cout << __LINE__ << std::endl;
+
+    return 0;
+}
+
+The exact output depends on the source file and line number.
+
+---
+
+16. Removing a Macro
+
+The "#undef" directive removes a macro definition.
+
+Example:
+
+#define VALUE 100
+
+#undef VALUE
+
+After "#undef", "VALUE" is no longer defined as that macro.
+
+---
+
+17. Macros and Conditional Compilation
+
+Macros are commonly used with conditional compilation.
+
+Example:
+
+#define DEBUG
+
+Then:
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+If "DEBUG" is defined, the code is included during preprocessing.
+
+Conditional compilation will be covered separately.
+
+---
+
+18. Advantages of Macros
+
+1. Simple Replacement
+
+Macros can replace frequently used text.
+
+2. Conditional Compilation
+
+They are useful for enabling or disabling sections of code.
+
+3. Compile-Time Configuration
+
+Macros can be used for build configurations.
+
+4. Header Guards
+
+Traditional header guards use macros.
+
+5. Generic Text-Based Operations
+
+Some preprocessing tasks can only be conveniently performed using macros.
+
+---
+
+19. Disadvantages of Macros
+
+1. No Type Safety
+
+The preprocessor does not perform normal C++ type checking.
+
+2. Difficult Debugging
+
+Macro expansion can make debugging more complicated.
+
+3. Unexpected Evaluation
+
+Function-like macro parameters can be evaluated multiple times.
+
+4. Operator Precedence Problems
+
+Poorly written macros can produce unexpected results.
+
+5. Name Conflicts
+
+Macros can interfere with identifiers having the same name.
+
+6. No Normal C++ Scope
+
+Macros are controlled by preprocessing rules rather than ordinary C++ scope.
+
+---
+
+20. Best Practices for Macros
+
+Use uppercase names
+
+#define MAX_SIZE 100
+
+Parenthesize macro parameters
+
+Prefer:
+
+#define SQUARE(x) ((x) * (x))
+
+instead of:
+
+#define SQUARE(x) x * x
+
+Avoid unnecessary macros
+
+For constants, prefer:
+
+constexpr int MAX_SIZE = 100;
+
+when appropriate.
+
+For normal operations, prefer functions.
+
+Keep macros simple
+
+Complex macros are difficult to read and maintain.
+
+---
+
+21. Complete Example
+
+#include <iostream>
+
+#define PI 3.14159
+#define SQUARE(x) ((x) * (x))
+#define ADD(a, b) ((a) + (b))
+
+int main() {
+
+    int number = 5;
+
+    std::cout << "PI = " << PI << std::endl;
+    std::cout << "Square = " << SQUARE(number) << std::endl;
+    std::cout << "Addition = " << ADD(10, 20) << std::endl;
+
+    return 0;
+}
+
+Output
+
+PI = 3.14159
+Square = 25
+Addition = 30
+
+---
+
+22. Important Points
+
+- A macro is defined using "#define".
+- Macros are processed by the preprocessor.
+- Macro expansion happens before compilation.
+- Object-like macros have no parameters.
+- Function-like macros can accept parameters.
+- Macro parameters should generally be parenthesized.
+- Macros do not have normal C++ types.
+- Macros can be removed using "#undef".
+- Macros are useful for conditional compilation.
+- Avoid using macros when a function or "constexpr" can safely replace them.
+- Macros can cause unexpected results if written incorrectly.
+
+---
+
+23. One-Line Definition
+
+A macro is a preprocessor-defined name that is replaced by its replacement text before the C++ compiler processes the program.
+
+---
+
+24. Quick Revision
+
+Macro
+  ↓
+Defined using #define
+  ↓
+Processed by Preprocessor
+  ↓
+Macro Expansion
+  ↓
+Compiler processes expanded code
+
+Examples
+
+#define PI 3.14159
+
+Object-like macro
+
+#define SQUARE(x) ((x) * (x))
+
+Function-like macro
+
+#undef PI
+
+Remove a macro
+
+Remember
+
+"#define" → Define a macro
+
+Macro → Preprocessor replacement
+
+"#undef" → Remove a macro
+
+"constexpr" / functions → Often safer alternatives in modern C++
