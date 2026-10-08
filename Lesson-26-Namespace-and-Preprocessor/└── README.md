@@ -6423,3 +6423,500 @@ Modern Alternative
 #pragma once
 
 // Header contents
+
+
+### topic 14
+
+C++ "#pragma" Preprocessor Directive
+
+1. Introduction
+
+"#pragma" is a preprocessor directive used to provide special instructions to the compiler or implementation.
+
+Unlike many standard preprocessor directives, the behavior of "#pragma" can depend on the compiler.
+
+Basic Syntax
+
+#pragma instruction
+
+Example:
+
+#pragma once
+
+---
+
+2. What Does "#pragma" Do?
+
+"#pragma" tells the compiler:
+
+«"Apply this special instruction while processing the source code."»
+
+The exact behavior depends on the compiler and the particular pragma being used.
+
+Therefore, "#pragma" is often used for compiler-specific or implementation-specific features.
+
+---
+
+3. Most Common Example — "#pragma once"
+
+One of the most commonly used pragmas in C++ is:
+
+#pragma once
+
+It is used in header files to prevent the header from being included more than once in a single translation unit.
+
+Example:
+
+#pragma once
+
+class Student {
+public:
+    void display();
+};
+
+This is an alternative to traditional include guards.
+
+---
+
+4. "#pragma once" with a Header File
+
+Suppose we have:
+
+"Student.h"
+
+#pragma once
+
+class Student {
+public:
+    void display();
+};
+
+Then:
+
+"main.cpp"
+
+#include "Student.h"
+#include "Student.h"
+
+int main() {
+
+    Student s;
+
+    return 0;
+}
+
+The compiler treats the header as included only once for that translation unit.
+
+---
+
+5. "#pragma once" vs Include Guards
+
+Traditional Include Guard
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+public:
+    void display();
+};
+
+#endif
+
+Using "#pragma once"
+
+#pragma once
+
+class Student {
+public:
+    void display();
+};
+
+Both are commonly used to prevent repeated inclusion of a header.
+
+---
+
+6. Comparison
+
+Feature| Include Guards| "#pragma once"
+Uses "#ifndef"| Yes| No
+Uses "#define"| Yes| No
+Uses "#endif"| Yes| No
+Code length| Longer| Shorter
+Standard preprocessor technique| Yes| No
+Compiler support| Very broad| Very broad in modern compilers
+Main purpose| Prevent repeated header inclusion| Prevent repeated header inclusion
+
+Important
+
+"#pragma once" is widely supported by modern C++ compilers, but it is not an ISO-standard C++ directive in the same sense as the traditional include-guard technique.
+
+---
+
+7. Why Use "#pragma once"?
+
+It makes header files simpler.
+
+Instead of:
+
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+
+class Calculator {
+};
+
+#endif
+
+we can write:
+
+#pragma once
+
+class Calculator {
+};
+
+This reduces boilerplate code.
+
+---
+
+8. Example with a Struct
+
+"Person.h"
+
+#pragma once
+
+struct Person {
+    int age;
+    double height;
+};
+
+The header can safely be included multiple times in a translation unit without processing its contents repeatedly.
+
+---
+
+9. Example with Functions
+
+"MathUtils.h"
+
+#pragma once
+
+int add(int a, int b);
+int subtract(int a, int b);
+
+The "#pragma once" directive protects the header from repeated inclusion.
+
+---
+
+10. Compiler-Specific Pragmas
+
+"#pragma" can also be used for compiler-specific instructions.
+
+For example, some compilers provide pragmas for:
+
+- Warning control
+- Optimization
+- Packing/alignment
+- Diagnostic messages
+- Compiler-specific features
+
+However, these pragmas are not necessarily portable.
+
+Code that works with one compiler may behave differently with another compiler.
+
+---
+
+11. Example of a Compiler-Specific Pragma
+
+Some compilers support pragmas for controlling warnings.
+
+For example, compiler-specific syntax may look like:
+
+#pragma warning(...)
+
+This is associated with Microsoft's compiler ecosystem.
+
+Other compilers have their own pragma mechanisms.
+
+Important
+
+Do not assume that every "#pragma" works with every compiler.
+
+---
+
+12. "#pragma" Is Not the Same as "#define"
+
+"#define"
+
+Used to define a macro:
+
+#define MAX_SIZE 100
+
+"#pragma"
+
+Used to provide a special instruction to the compiler:
+
+#pragma once
+
+Directive| Purpose
+"#define"| Defines a macro
+"#include"| Includes a file
+"#if"| Conditional compilation
+"#ifndef"| Checks whether a macro is not defined
+"#pragma"| Provides implementation/compiler-specific instructions
+
+---
+
+13. "#pragma" and the Preprocessor
+
+The general compilation process is:
+
+Source Code
+     ↓
+Preprocessor
+     ↓
+Compiler
+     ↓
+Object Code
+     ↓
+Linker
+     ↓
+Executable
+
+"#pragma" is processed as part of the preprocessing stage, but its exact effect can involve compiler-specific behavior.
+
+---
+
+14. Important Characteristics
+
+1. Begins with "#"
+
+Like other preprocessor directives:
+
+#pragma once
+
+starts with "#".
+
+2. No semicolon
+
+Do not write:
+
+#pragma once;
+
+Correct:
+
+#pragma once
+
+3. Implementation-dependent
+
+Many pragmas are compiler-specific.
+
+4. "#pragma once" is widely supported
+
+Modern C++ compilers commonly support:
+
+#pragma once
+
+5. Commonly used in header files
+
+Especially for preventing repeated inclusion.
+
+---
+
+15. "#pragma once" Example
+
+// Student.h
+
+#pragma once
+
+class Student {
+
+public:
+    void display();
+};
+
+Then:
+
+// main.cpp
+
+#include "Student.h"
+
+int main() {
+
+    Student s;
+
+    return 0;
+}
+
+The header is protected from repeated inclusion.
+
+---
+
+16. Include Guard vs "#pragma once"
+
+Include Guard
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+"#pragma once"
+
+#pragma once
+
+class Student {
+};
+
+Which One Should You Use?
+
+For modern projects, "#pragma once" is convenient and widely supported.
+
+Traditional include guards are also highly portable and remain completely valid.
+
+The choice may depend on your project, compiler requirements, and coding standards.
+
+---
+
+17. Advantages of "#pragma once"
+
+- Very simple syntax.
+- Less code.
+- No need to create a unique guard macro manually.
+- Easy to read.
+- Widely supported by modern C++ compilers.
+- Useful for preventing repeated header inclusion.
+
+---
+
+18. Limitations of "#pragma"
+
+- Many pragmas are compiler-specific.
+- Code using compiler-specific pragmas may not be portable.
+- Different compilers may support different pragmas.
+- You should check the documentation of the compiler when using non-standard pragmas.
+
+---
+
+19. Common Mistake
+
+Incorrect
+
+#pragma once;
+
+There should be no semicolon.
+
+Correct
+
+#pragma once
+
+---
+
+20. Important Points
+
+- "#pragma" is a preprocessor directive.
+- It provides special instructions to the compiler or implementation.
+- Its behavior can be compiler-specific.
+- "#pragma once" is one of the most common uses.
+- "#pragma once" helps prevent repeated inclusion of a header.
+- It is a convenient alternative to traditional include guards.
+- "#pragma once" is widely supported but is not an ISO-standard C++ directive.
+- Compiler-specific pragmas may reduce portability.
+- "#pragma" does not create a variable, function, or class.
+
+---
+
+21. One-Line Definition
+
+"#pragma" is a preprocessor directive used to provide implementation- or compiler-specific instructions.
+
+---
+
+22. Quick Revision
+
+Basic syntax
+
+#pragma instruction
+
+Most common example
+
+#pragma once
+
+Traditional alternative
+
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// Header contents
+
+#endif
+
+Easy Memory Trick
+
+#pragma
+   ↓
+Special instruction to compiler
+   ↓
+Common example:
+#pragma once
+   ↓
+Protects header from repeated inclusion
+
+---
+
+23. Lesson 26 — Final Preprocessor Revision
+
+You have now completed Namespace and Preprocessor.
+
+Namespace Topics
+
+01. Namespace
+02. Nested Namespace
+03. Anonymous Namespace
+04. using
+05. Namespace Aliases
+
+Preprocessor Topics
+
+06. #include
+07. #define
+08. Macros
+09. Conditional Compilation
+10. #if
+11. #ifdef
+12. #ifndef
+13. Include Guards
+14. #pragma
+
+Most Important Directives to Remember
+
+#include
+#define
+#undef
+#if
+#ifdef
+#ifndef
+#else
+#elif
+#endif
+#pragma
+
+Important Header Protection Techniques
+
+Traditional:
+
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// Header contents
+
+#endif
+
+Modern/common alternative:
+
+#pragma once
+
+// Header contents
+
+Lesson 26 completed! 🎉
