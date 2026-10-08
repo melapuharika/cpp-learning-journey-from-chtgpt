@@ -1791,3 +1791,391 @@ namespace Short = VeryLongNamespaceName;
 Short::value
 
 Namespace Alias → Short/alternative name for an existing namespace.
+
+
+### topic 6
+
+"#include" in C++
+
+1. Introduction
+
+"#include" is a preprocessor directive in C++.
+
+It is used to make the contents of another file available to the current source file before the compiler processes the program.
+
+Syntax
+
+#include <header_file>
+
+or
+
+#include "header_file"
+
+---
+
+2. Why Do We Use "#include"?
+
+C++ programs often need functionality provided by libraries or other files.
+
+For example, to use "std::cout", we commonly include:
+
+#include <iostream>
+
+Example:
+
+#include <iostream>
+
+int main() {
+    std::cout << "Hello C++";
+    return 0;
+}
+
+Here, "iostream" provides the declarations needed for standard input/output operations.
+
+---
+
+3. "#include" Is a Preprocessor Directive
+
+The "#include" directive is handled by the preprocessor before the compiler processes the source code.
+
+Simplified flow:
+
+Source Code
+     ↓
+Preprocessor
+     ↓
+#include is processed
+     ↓
+Compiler
+     ↓
+Object Code
+     ↓
+Linker
+     ↓
+Executable Program
+
+---
+
+4. Two Forms of "#include"
+
+There are two commonly used forms:
+
+1. Angle Brackets
+
+#include <iostream>
+
+2. Double Quotes
+
+#include "myheader.h"
+
+---
+
+5. "#include <...>"
+
+Angle brackets are commonly used for standard library or system headers.
+
+Example:
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+Some common standard headers:
+
+Header| Common Purpose
+"<iostream>"| Input and output
+"<string>"| "std::string"
+"<vector>"| "std::vector"
+"<algorithm>"| Algorithms
+"<cmath>"| Mathematical functions
+"<fstream>"| File streams
+"<iomanip>"| Input/output formatting
+
+Example:
+
+#include <vector>
+
+int main() {
+    std::vector<int> numbers;
+}
+
+---
+
+6. "#include "...""
+
+Double quotes are commonly used for your own/project header files.
+
+Example:
+
+#include "calculator.h"
+
+Suppose we have:
+
+project/
+├── main.cpp
+└── calculator.h
+
+Then "main.cpp" can contain:
+
+#include "calculator.h"
+
+This allows declarations from "calculator.h" to be used in "main.cpp".
+
+---
+
+7. Difference Between "< >" and "" ""
+
+Feature| "<header>"| ""header""
+Common use| Standard/system headers| Project/user headers
+Example| "<iostream>"| ""calculator.h""
+Search behavior| Typically searches configured system/include paths| Typically checks the source file's directory first, then configured include paths
+
+Example:
+
+#include <iostream>
+
+and:
+
+#include "myheader.h"
+
+---
+
+8. Including a Custom Header
+
+Suppose we create:
+
+"math_utils.h"
+
+#ifndef MATH_UTILS_H
+#define MATH_UTILS_H
+
+int add(int a, int b);
+
+#endif
+
+"main.cpp"
+
+#include <iostream>
+#include "math_utils.h"
+
+int main() {
+
+    std::cout << add(10, 20);
+
+    return 0;
+}
+
+The custom header is included using:
+
+#include "math_utils.h"
+
+---
+
+9. Header Files
+
+A header file usually contains declarations that can be shared between source files.
+
+Common extensions include:
+
+.h
+.hpp
+
+Example:
+
+calculator.h
+student.h
+functions.hpp
+
+A header can contain declarations for:
+
+- Functions
+- Classes
+- Structures
+- Constants
+- Templates
+- Other declarations
+
+---
+
+10. Example with a Header File
+
+"calculator.h"
+
+int add(int a, int b);
+
+"calculator.cpp"
+
+#include "calculator.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+"main.cpp"
+
+#include <iostream>
+#include "calculator.h"
+
+int main() {
+
+    std::cout << add(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+Here:
+
+calculator.h
+      ↓
+declaration
+
+calculator.cpp
+      ↓
+definition
+
+main.cpp
+      ↓
+uses add()
+
+---
+
+11. Can We Include a ".cpp" File?
+
+Technically, the preprocessor can include a ".cpp" file:
+
+#include "file.cpp"
+
+But this is generally not recommended.
+
+Normally:
+
+- Header files → declarations/interfaces
+- ".cpp" files → implementations/definitions
+
+A normal project structure is:
+
+project/
+├── main.cpp
+├── calculator.cpp
+└── calculator.h
+
+---
+
+12. Multiple "#include" Directives
+
+A source file can include multiple headers.
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include "calculator.h"
+
+Each directive tells the preprocessor to include the specified header.
+
+---
+
+13. "#include" and Header Guards
+
+A header may accidentally be included more than once.
+
+For example:
+
+#include "student.h"
+#include "student.h"
+
+Repeated inclusion can cause multiple-definition or redeclaration problems, depending on the contents.
+
+Header guards can prevent the same header from being processed multiple times in one translation unit.
+
+Example:
+
+#ifndef STUDENT_H
+#define STUDENT_H
+
+class Student {
+};
+
+#endif
+
+This topic will be covered in detail later under Include Guards.
+
+---
+
+14. "#include" and the Preprocessor
+
+The preprocessor processes directives beginning with "#".
+
+Examples:
+
+#include <iostream>
+#define PI 3.14
+#if VERSION == 2
+#endif
+
+"#include" is therefore part of the C++ preprocessing stage.
+
+---
+
+15. Important Points
+
+- "#include" is a preprocessor directive.
+- It begins with the "#" symbol.
+- It is used to include headers or other files.
+- "<...>" is commonly used for standard/system headers.
+- ""..."" is commonly used for project/user headers.
+- "#include" is processed before compilation.
+- Header files commonly use ".h" or ".hpp".
+- Header guards can prevent repeated inclusion of a header.
+- Including ".cpp" files is generally not recommended.
+
+---
+
+16. Common Examples
+
+Standard Library
+
+#include <iostream>
+
+#include <vector>
+
+#include <string>
+
+#include <algorithm>
+
+User Header
+
+#include "student.h"
+
+#include "calculator.h"
+
+---
+
+17. One-Line Definition
+
+"#include" is a preprocessor directive used to include the contents of a header or another file before compilation.
+
+---
+
+18. Quick Revision
+
+#include
+   ↓
+Preprocessor directive
+   ↓
+Includes another file/header
+   ↓
+Processed before compilation
+
+Remember
+
+#include <iostream>
+
+→ commonly used for standard/system headers.
+
+#include "myheader.h"
+
+→ commonly used for user/project headers.
