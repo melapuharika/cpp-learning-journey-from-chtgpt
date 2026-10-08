@@ -4562,3 +4562,655 @@ Remember:
 #elif    → Check another condition
 #else    → Alternative
 #endif   → End the block
+
+
+### topic 11
+
+"#ifdef" Preprocessor Directive in C++
+
+1. Introduction
+
+"#ifdef" stands for "if defined".
+
+It is a preprocessor directive used in conditional compilation.
+
+It checks whether a particular macro has already been defined.
+
+Basic Syntax
+
+#ifdef MACRO_NAME
+
+// code
+
+#endif
+
+If the macro is defined, the code between "#ifdef" and "#endif" is included for compilation.
+
+If the macro is not defined, that code is excluded.
+
+---
+
+2. Simple Example
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode is enabled";
+#endif
+
+    return 0;
+}
+
+Output
+
+Debug mode is enabled
+
+Here:
+
+#define DEBUG
+
+defines the "DEBUG" macro.
+
+Therefore:
+
+#ifdef DEBUG
+
+is true.
+
+---
+
+3. What If the Macro Is Not Defined?
+
+Consider:
+
+#include <iostream>
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+    return 0;
+}
+
+Here, "DEBUG" has not been defined.
+
+Therefore, the code inside "#ifdef DEBUG" is excluded.
+
+Output
+
+No output
+
+---
+
+4. How "#ifdef" Works
+
+The preprocessor checks whether the specified macro exists.
+
+#define DEBUG
+      ↓
+#ifdef DEBUG
+      ↓
+Is DEBUG defined?
+      ↓
+     YES
+      ↓
+Include the code
+      ↓
+   Compiler
+
+If "DEBUG" is not defined:
+
+#ifdef DEBUG
+      ↓
+Is DEBUG defined?
+      ↓
+      NO
+      ↓
+Exclude the code
+
+---
+
+5. "#ifdef" with "#else"
+
+We can use "#else" when we want an alternative block.
+
+Syntax
+
+#ifdef MACRO_NAME
+
+// code if defined
+
+#else
+
+// code if not defined
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#else
+    std::cout << "Normal mode";
+#endif
+
+    return 0;
+}
+
+Output
+
+Debug mode
+
+If we remove:
+
+#define DEBUG
+
+the output becomes:
+
+Normal mode
+
+---
+
+6. "#ifdef" with "#elif"
+
+"#ifdef" can be combined with other conditional compilation directives.
+
+Example:
+
+#include <iostream>
+
+#define VERSION_2
+
+#ifdef VERSION_1
+
+    std::cout << "Version 1";
+
+#elif defined(VERSION_2)
+
+    std::cout << "Version 2";
+
+#else
+
+    std::cout << "Unknown version";
+
+#endif
+
+Output
+
+Version 2
+
+---
+
+7. "#ifdef" vs "#if"
+
+These two directives are related but different.
+
+"#ifdef"
+
+Checks whether a macro is defined.
+
+#ifdef DEBUG
+
+"#if"
+
+Checks a preprocessor expression.
+
+#if VERSION == 2
+
+Difference
+
+Feature| "#ifdef"| "#if"
+Meaning| If defined| If condition is true
+Checks| Macro existence| Preprocessor expression
+Example| "#ifdef DEBUG"| "#if VERSION == 2"
+Requires value?| No| Usually uses a value/expression
+
+---
+
+8. "#ifdef" vs "#ifndef"
+
+These are opposites.
+
+"#ifdef"
+
+Means:
+
+«If defined»
+
+#ifdef DEBUG
+
+The block is included if "DEBUG" exists.
+
+"#ifndef"
+
+Means:
+
+«If not defined»
+
+#ifndef DEBUG
+
+The block is included if "DEBUG" does not exist.
+
+Easy Memory Trick
+
+#ifdef   → If Defined
+#ifndef  → If Not Defined
+
+---
+
+9. "#ifdef" with an Empty Macro
+
+A macro does not need to have a value.
+
+This is valid:
+
+#define DEBUG
+
+Then:
+
+#ifdef DEBUG
+    std::cout << "Debug enabled";
+#endif
+
+The important thing is that "DEBUG" exists as a defined macro.
+
+---
+
+10. "#ifdef" with a Numeric Macro
+
+Consider:
+
+#define DEBUG 1
+
+Then:
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+The block is included because "DEBUG" is defined.
+
+Important:
+
+"#ifdef" checks whether the macro exists, not whether its value is "1".
+
+For example:
+
+#define DEBUG 0
+
+Even though its value is "0":
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+is still true because "DEBUG" is defined.
+
+If you want to check the value, use:
+
+#if DEBUG
+
+---
+
+11. Important Difference: "#ifdef DEBUG" vs "#if DEBUG"
+
+Suppose:
+
+#define DEBUG 0
+
+Using "#ifdef"
+
+#ifdef DEBUG
+    std::cout << "Debug";
+#endif
+
+This code is included because "DEBUG" is defined.
+
+Using "#if"
+
+#if DEBUG
+    std::cout << "Debug";
+#endif
+
+This code is not included because "DEBUG" has the value "0".
+
+Remember
+
+#ifdef DEBUG
+→ Is DEBUG defined?
+
+#if DEBUG
+→ Does DEBUG evaluate to true?
+
+---
+
+12. Using "defined()"
+
+The "defined()" operator can also check whether a macro exists.
+
+Example:
+
+#define DEBUG
+
+#if defined(DEBUG)
+    std::cout << "Debug mode";
+#endif
+
+This is equivalent to:
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+---
+
+13. Negating "defined()"
+
+We can use "!defined()" to check whether a macro is not defined.
+
+Example:
+
+#if !defined(DEBUG)
+    std::cout << "Debug is not enabled";
+#endif
+
+This is equivalent to:
+
+#ifndef DEBUG
+    std::cout << "Debug is not enabled";
+#endif
+
+---
+
+14. Using "#undef" with "#ifdef"
+
+A macro can be removed using "#undef".
+
+Example:
+
+#define DEBUG
+
+#ifdef DEBUG
+    std::cout << "Debug is enabled";
+#endif
+
+#undef DEBUG
+
+#ifdef DEBUG
+    std::cout << "Debug is still enabled";
+#endif
+
+The first block is included because "DEBUG" is defined.
+
+After:
+
+#undef DEBUG
+
+the second "#ifdef DEBUG" condition is false.
+
+---
+
+15. Debugging with "#ifdef"
+
+One of the most common uses of "#ifdef" is debugging.
+
+Example:
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+    std::cout << "Debug information" << std::endl;
+#endif
+
+    std::cout << "Program running";
+
+    return 0;
+}
+
+Output
+
+Debug information
+Program running
+
+If we remove:
+
+#define DEBUG
+
+the debug message is excluded.
+
+Output:
+
+Program running
+
+---
+
+16. Feature Control
+
+"#ifdef" can be used to enable optional features.
+
+Example:
+
+#define FEATURE_A
+
+#ifdef FEATURE_A
+    std::cout << "Feature A is enabled";
+#endif
+
+If "FEATURE_A" is defined, the feature-related code is included.
+
+---
+
+17. Platform-Specific Code
+
+Compilers often provide predefined macros that can be used to detect platforms.
+
+Example:
+
+#ifdef _WIN32
+    std::cout << "Windows";
+#endif
+
+For Linux-related builds, compilers commonly provide:
+
+#ifdef __linux__
+    std::cout << "Linux";
+#endif
+
+The exact predefined macros depend on the compiler and platform.
+
+---
+
+18. Header Guards
+
+One of the most important uses of "#ifdef"/"#ifndef" style conditional compilation is header guards.
+
+A traditional header guard looks like:
+
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+// header contents
+
+#endif
+
+The idea is:
+
+1. Check whether the macro already exists.
+2. If it does not exist, define it.
+3. Include the header contents.
+4. On later inclusions, the macro already exists, so the contents are skipped.
+
+Header guards will be covered in detail in the Include Guards topic.
+
+---
+
+19. Nested "#ifdef"
+
+Conditional compilation directives can be nested.
+
+Example:
+
+#define DEBUG
+#define FEATURE_A
+
+#ifdef DEBUG
+
+    #ifdef FEATURE_A
+        std::cout << "Debug + Feature A";
+    #endif
+
+#endif
+
+Output
+
+Debug + Feature A
+
+Both macros are defined, so both conditions are satisfied.
+
+---
+
+20. Complete Example
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifdef DEBUG
+
+    std::cout << "Debug mode is enabled" << std::endl;
+
+#else
+
+    std::cout << "Normal mode" << std::endl;
+
+#endif
+
+    return 0;
+}
+
+Output
+
+Debug mode is enabled
+
+If we remove:
+
+#define DEBUG
+
+the output becomes:
+
+Normal mode
+
+---
+
+21. Advantages of "#ifdef"
+
+1. Debugging
+
+Debug-only code can be conditionally included.
+
+2. Feature Control
+
+Optional features can be enabled using macros.
+
+3. Platform-Specific Code
+
+Different platforms can use different code.
+
+4. Build Configuration
+
+Different builds can include different features.
+
+5. Header Guards
+
+It is part of the traditional technique used to prevent multiple header inclusion.
+
+---
+
+22. Disadvantages
+
+- Excessive use can make code difficult to understand.
+- Different macro configurations can make testing complicated.
+- Excluded code is not compiled and therefore does not receive normal compiler checking in that build.
+- Macro-based configuration can make debugging harder.
+
+---
+
+23. Important Points
+
+- "#ifdef" means if defined.
+- It is a preprocessor directive.
+- It checks whether a macro has been defined.
+- The macro does not need to have a value.
+- "#else" can provide an alternative block.
+- "#endif" closes the conditional block.
+- "#undef" can remove a macro definition.
+- "#ifdef DEBUG" checks existence, even if "DEBUG" is defined as "0".
+- "#if DEBUG" checks the value/expression.
+- "defined(DEBUG)" is another way to check whether a macro exists.
+- "#ifdef" is commonly used for debugging, feature control, platform-specific code, and header guards.
+
+---
+
+24. One-Line Definition
+
+"#ifdef" is a preprocessor directive that includes a block of code only when the specified macro has been defined.
+
+---
+
+25. Quick Revision
+
+#ifdef
+   ↓
+Check whether macro exists
+   ↓
+ ┌───────────────┐
+ │               │
+Defined       Not Defined
+ │               │
+Include         Exclude
+code            code
+
+Example
+
+#define DEBUG
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+Easy Memory Trick
+
+#ifdef   → If Defined
+#ifndef  → If Not Defined
+#if      → If Condition is True
+#endif   → End of Conditional Block
+
+Most important difference:
+
+#define DEBUG 0
+
+#ifdef DEBUG
+    // INCLUDED because DEBUG is defined
+#endif
+
+#if DEBUG
+    // NOT INCLUDED because DEBUG is 0
+#endif
