@@ -336,3 +336,329 @@ namespace Student {
 }
 
 std::cout << Student::age;
+
+
+### topic 2
+
+Nested Namespace in C++
+
+1. Introduction
+
+A nested namespace is a namespace declared inside another namespace.
+
+In simple words:
+
+«Namespace inside another namespace is called a nested namespace.»
+
+The outer namespace contains the inner namespace.
+
+---
+
+2. Syntax
+
+namespace Outer {
+
+    namespace Inner {
+        // members
+    }
+
+}
+
+Here:
+
+- "Outer" → Outer namespace
+- "Inner" → Nested/Inner namespace
+
+---
+
+3. Simple Example
+
+#include <iostream>
+
+namespace College {
+
+    namespace Student {
+        int age = 20;
+    }
+
+}
+
+int main() {
+
+    std::cout << College::Student::age;
+
+    return 0;
+}
+
+Output
+
+20
+
+---
+
+4. How to Access a Nested Namespace Member
+
+We use the scope resolution operator "::".
+
+Syntax
+
+OuterNamespace::InnerNamespace::member
+
+Example:
+
+College::Student::age
+
+The compiler searches in this order:
+
+College
+   ↓
+Student
+   ↓
+age
+
+---
+
+5. Nested Namespace with Functions
+
+A nested namespace can contain functions.
+
+#include <iostream>
+
+namespace Calculator {
+
+    namespace Basic {
+
+        int add(int a, int b) {
+            return a + b;
+        }
+
+    }
+
+}
+
+int main() {
+
+    std::cout << Calculator::Basic::add(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+Here:
+
+Calculator → Outer namespace
+Basic      → Nested namespace
+add()      → Function
+
+---
+
+6. Multiple Nested Namespaces
+
+A namespace can contain multiple nested namespaces.
+
+namespace Company {
+
+    namespace HR {
+        int employees = 50;
+    }
+
+    namespace IT {
+        int developers = 100;
+    }
+
+}
+
+We can access them as:
+
+Company::HR::employees
+Company::IT::developers
+
+---
+
+7. Nested Namespace with Classes
+
+A nested namespace can also contain classes.
+
+#include <iostream>
+
+namespace University {
+
+    namespace Students {
+
+        class Student {
+        public:
+            void display() {
+                std::cout << "Student";
+            }
+        };
+
+    }
+
+}
+
+int main() {
+
+    University::Students::Student s;
+
+    s.display();
+
+    return 0;
+}
+
+Output
+
+Student
+
+---
+
+8. Modern C++ Nested Namespace Syntax
+
+C++17 introduced a shorter syntax for nested namespaces.
+
+Instead of:
+
+namespace Company {
+
+    namespace IT {
+
+        namespace Development {
+
+            int value = 10;
+
+        }
+
+    }
+
+}
+
+We can write:
+
+namespace Company::IT::Development {
+
+    int value = 10;
+
+}
+
+Both represent nested namespaces.
+
+Access:
+
+Company::IT::Development::value
+
+---
+
+9. Why Use Nested Namespaces?
+
+Nested namespaces are useful for organizing large programs.
+
+For example:
+
+Company
+│
+├── HR
+│   └── employees
+│
+├── IT
+│   ├── Development
+│   └── Testing
+│
+└── Finance
+    └── accounts
+
+This creates a clear hierarchy.
+
+---
+
+10. Advantages
+
+1. Better Organization
+
+Related code can be grouped into different levels.
+
+2. Avoids Name Conflicts
+
+Different nested namespaces can have members with the same name.
+
+3. Useful for Large Projects
+
+Large applications and libraries can organize code hierarchically.
+
+4. Improves Readability
+
+The namespace hierarchy shows where an identifier belongs.
+
+---
+
+11. Nested Namespace vs Normal Namespace
+
+Normal Namespace
+
+namespace Student {
+    int age = 20;
+}
+
+Student::age;
+
+Nested Namespace
+
+namespace College {
+
+    namespace Student {
+        int age = 20;
+    }
+
+}
+
+College::Student::age;
+
+The nested namespace provides an additional level of organization.
+
+---
+
+12. Important Points
+
+- A namespace declared inside another namespace is called a nested namespace.
+- The outer namespace contains the inner namespace.
+- Nested namespace members are accessed using "::".
+- Multiple levels of nesting are possible.
+- C++17 provides a shorter syntax for nested namespaces.
+- Nested namespaces are useful for organizing large programs.
+
+---
+
+13. One-Line Definition
+
+A nested namespace is a namespace declared inside another namespace to provide hierarchical organization of identifiers.
+
+---
+
+Key Syntax
+
+Traditional Syntax
+
+namespace Outer {
+
+    namespace Inner {
+        // members
+    }
+
+}
+
+Access:
+
+Outer::Inner::member;
+
+C++17 Syntax
+
+namespace Outer::Inner {
+
+    // members
+
+}
+
+Access:
+
+Outer::Inner::member;
