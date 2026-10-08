@@ -5214,3 +5214,566 @@ Most important difference:
 #if DEBUG
     // NOT INCLUDED because DEBUG is 0
 #endif
+
+
+### topic 12
+
+"#ifndef" Preprocessor Directive in C++
+
+1. Introduction
+
+"#ifndef" stands for "if not defined."
+
+It is a preprocessor directive used for conditional compilation.
+
+It checks whether a particular macro has NOT been defined.
+
+Basic Syntax
+
+#ifndef MACRO_NAME
+
+// code
+
+#endif
+
+If the macro is not defined, the code between "#ifndef" and "#endif" is included for compilation.
+
+If the macro is already defined, the code is excluded.
+
+---
+
+2. Simple Example
+
+#include <iostream>
+
+int main() {
+
+#ifndef DEBUG
+    std::cout << "Debug is not enabled";
+#endif
+
+    return 0;
+}
+
+Since "DEBUG" has not been defined, the condition is true.
+
+Output
+
+Debug is not enabled
+
+---
+
+3. When the Macro Is Defined
+
+Consider:
+
+#include <iostream>
+
+#define DEBUG
+
+int main() {
+
+#ifndef DEBUG
+    std::cout << "Debug is not enabled";
+#endif
+
+    return 0;
+}
+
+Here "DEBUG" is already defined.
+
+Therefore:
+
+#ifndef DEBUG
+
+is false.
+
+The code inside the block is excluded.
+
+Output
+
+No output
+
+---
+
+4. How "#ifndef" Works
+
+The preprocessor checks whether the specified macro exists.
+
+#ifndef DEBUG
+      ↓
+Is DEBUG NOT defined?
+      ↓
+ ┌───────────────┐
+ │               │
+ YES             NO
+ │               │
+Include         Exclude
+code            code
+
+---
+
+5. "#ifndef" with "#else"
+
+We can use "#else" to provide an alternative block.
+
+Syntax
+
+#ifndef MACRO_NAME
+
+// code if not defined
+
+#else
+
+// code if defined
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#ifndef DEBUG
+    std::cout << "Debug is not enabled";
+#else
+    std::cout << "Debug is enabled";
+#endif
+
+If "DEBUG" is not defined:
+
+Debug is not enabled
+
+If "DEBUG" is defined:
+
+Debug is enabled
+
+---
+
+6. "#ifndef" with "#elif"
+
+"#ifndef" can also be combined with "#elif".
+
+Example:
+
+#include <iostream>
+
+#ifndef DEBUG
+    std::cout << "Debug is not defined";
+
+#elif defined(TEST)
+    std::cout << "Test mode";
+
+#else
+    std::cout << "Other mode";
+
+#endif
+
+The preprocessor checks the conditions in order.
+
+---
+
+7. "#ifndef" vs "#ifdef"
+
+These two directives are opposites.
+
+"#ifdef"
+
+Means:
+
+«If defined»
+
+#ifdef DEBUG
+    // code
+#endif
+
+The code is included when "DEBUG" is defined.
+
+"#ifndef"
+
+Means:
+
+«If not defined»
+
+#ifndef DEBUG
+    // code
+#endif
+
+The code is included when "DEBUG" is not defined.
+
+Comparison
+
+Feature| "#ifdef"| "#ifndef"
+Meaning| If defined| If not defined
+Checks| Macro exists| Macro does not exist
+Example| "#ifdef DEBUG"| "#ifndef DEBUG"
+Opposite| "#ifndef"| "#ifdef"
+
+Easy Memory Trick
+
+#ifdef   → If Defined
+#ifndef  → If Not Defined
+
+---
+
+8. "#ifndef" vs "#if"
+
+These directives are also different.
+
+"#ifndef"
+
+Checks whether a macro is not defined.
+
+#ifndef DEBUG
+    // code
+#endif
+
+"#if"
+
+Checks a preprocessor expression.
+
+#define DEBUG 0
+
+#if DEBUG
+    // code
+#endif
+
+Here "DEBUG" is defined, but its value is "0", so "#if DEBUG" is false.
+
+---
+
+9. Important Difference with "0"
+
+Consider:
+
+#define DEBUG 0
+
+Using "#ifndef"
+
+#ifndef DEBUG
+    std::cout << "Debug";
+#endif
+
+This block is not included because "DEBUG" is defined.
+
+Using "#if"
+
+#if DEBUG
+    std::cout << "Debug";
+#endif
+
+This block is also not included, but for a different reason: "DEBUG" has the value "0".
+
+Remember
+
+#ifndef DEBUG
+→ Is DEBUG NOT defined?
+
+#if DEBUG
+→ Does DEBUG evaluate to true?
+
+---
+
+10. "#ifndef" with an Empty Macro
+
+A macro does not need to have a value.
+
+This is valid:
+
+#define FEATURE_A
+
+Then:
+
+#ifndef FEATURE_A
+    std::cout << "Feature A is not enabled";
+#endif
+
+Since "FEATURE_A" is defined, the code is excluded.
+
+The important thing is whether the macro exists, not what value it contains.
+
+---
+
+11. Using "defined()"
+
+We can use "defined()" with "#if" to check whether a macro is not defined.
+
+Example:
+
+#if !defined(DEBUG)
+    std::cout << "Debug is not defined";
+#endif
+
+This is equivalent to:
+
+#ifndef DEBUG
+    std::cout << "Debug is not defined";
+#endif
+
+Comparison
+
+#ifndef DEBUG
+
+and
+
+#if !defined(DEBUG)
+
+perform the same basic check.
+
+---
+
+12. Using "#undef"
+
+A macro can be removed using "#undef".
+
+Example:
+
+#define DEBUG
+
+#undef DEBUG
+
+#ifndef DEBUG
+    std::cout << "DEBUG is not defined";
+#endif
+
+After:
+
+#undef DEBUG
+
+the macro no longer exists.
+
+Therefore, "#ifndef DEBUG" becomes true.
+
+---
+
+13. Header Guards
+
+One of the most important uses of "#ifndef" is include guards.
+
+A traditional header guard looks like this:
+
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+// Header contents
+
+#endif
+
+How It Works
+
+First time the header is included:
+
+MYHEADER_H is not defined
+        ↓
+#ifndef is TRUE
+        ↓
+#define MYHEADER_H
+        ↓
+Header contents included
+
+If the same header is included again:
+
+MYHEADER_H is already defined
+        ↓
+#ifndef is FALSE
+        ↓
+Header contents are skipped
+
+This prevents the same header contents from being processed multiple times.
+
+The complete topic of Include Guards will be covered separately.
+
+---
+
+14. Feature Control
+
+"#ifndef" can be used to provide default behavior when a macro has not been defined.
+
+Example:
+
+#ifndef MAX_SIZE
+#define MAX_SIZE 100
+#endif
+
+This means:
+
+«If "MAX_SIZE" has not already been defined, define it as "100".»
+
+If another configuration has already defined:
+
+#define MAX_SIZE 500
+
+then the default definition above will not be applied.
+
+---
+
+15. Default Configuration Example
+
+#include <iostream>
+
+#ifndef VERSION
+#define VERSION 1
+#endif
+
+int main() {
+
+    std::cout << "Version: " << VERSION;
+
+    return 0;
+}
+
+If "VERSION" was not defined before this code, it gets the default value:
+
+Version: 1
+
+---
+
+16. Nested "#ifndef"
+
+Conditional directives can be nested.
+
+Example:
+
+#define FEATURE_A
+
+#ifndef DEBUG
+
+    #ifdef FEATURE_A
+        std::cout << "Feature A without debug";
+    #endif
+
+#endif
+
+Here the outer "#ifndef" checks whether "DEBUG" is not defined.
+
+The inner "#ifdef" checks whether "FEATURE_A" is defined.
+
+---
+
+17. Complete Example
+
+#include <iostream>
+
+int main() {
+
+#ifndef PRODUCTION
+    std::cout << "Development mode";
+#else
+    std::cout << "Production mode";
+#endif
+
+    return 0;
+}
+
+Since "PRODUCTION" is not defined:
+
+Output
+
+Development mode
+
+If we add:
+
+#define PRODUCTION
+
+then the output becomes:
+
+Production mode
+
+---
+
+18. Advantages of "#ifndef"
+
+1. Header Guards
+
+It helps prevent repeated inclusion of header contents.
+
+2. Default Values
+
+It can provide default macro definitions.
+
+3. Feature Control
+
+It can include code when a feature macro is not defined.
+
+4. Configuration
+
+It can provide default configuration settings.
+
+5. Conditional Compilation
+
+It allows code to be included only when a macro is absent.
+
+---
+
+19. Disadvantages
+
+- Excessive preprocessor conditions can make code difficult to understand.
+- Different macro configurations can make testing complicated.
+- Excluded code is not compiled in that configuration.
+- Macro-based configuration can make maintenance harder.
+
+---
+
+20. Important Points
+
+- "#ifndef" means if not defined.
+- It is a preprocessor directive.
+- It checks whether a macro has not been defined.
+- If the macro is not defined, the code is included.
+- If the macro is defined, the code is excluded.
+- "#else" can provide an alternative block.
+- "#endif" closes the conditional block.
+- "#undef" can remove a macro definition.
+- "#if !defined(MACRO)" is equivalent to "#ifndef MACRO".
+- "#ifndef" is very important for header guards.
+- It can also be used to provide default macro values.
+
+---
+
+21. One-Line Definition
+
+"#ifndef" is a preprocessor directive that conditionally includes a block of code when the specified macro has not been defined.
+
+---
+
+22. Quick Revision
+
+#ifndef MACRO
+        ↓
+Is MACRO NOT defined?
+        ↓
+ ┌───────────────┐
+ │               │
+ YES             NO
+ │               │
+Include         Exclude
+code            code
+        ↓
+      #endif
+
+Common Examples
+
+#ifndef DEBUG
+    // Debug is not defined
+#endif
+
+Default definition:
+
+#ifndef MAX_SIZE
+#define MAX_SIZE 100
+#endif
+
+Header guard:
+
+#ifndef MYHEADER_H
+#define MYHEADER_H
+
+// Header contents
+
+#endif
+
+Easy Memory Trick
+
+#ifdef    → If Defined
+#ifndef   → If Not Defined
+#if       → If Condition is True
+#endif    → End
