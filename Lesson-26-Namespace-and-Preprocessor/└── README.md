@@ -2179,3 +2179,446 @@ Remember
 #include "myheader.h"
 
 → commonly used for user/project headers.
+
+
+### topic 7
+
+"#define" in C++
+
+1. Introduction
+
+"#define" is a preprocessor directive in C++.
+
+It is used to define a macro.
+
+A macro is a name that the preprocessor replaces with specified replacement text before the compiler processes the program.
+
+Basic Syntax
+
+#define name replacement
+
+Example:
+
+#define PI 3.14159
+
+---
+
+2. How "#define" Works
+
+Consider:
+
+#define PI 3.14159
+
+double area = PI * 10 * 10;
+
+Before compilation, the preprocessor conceptually replaces "PI" with "3.14159":
+
+double area = 3.14159 * 10 * 10;
+
+The compiler then processes the resulting source code.
+
+Flow
+
+#define PI 3.14159
+        ↓
+Preprocessor
+        ↓
+PI → 3.14159
+        ↓
+Compiler
+
+---
+
+3. Simple Example
+
+#include <iostream>
+
+#define PI 3.14159
+
+int main() {
+
+    std::cout << PI;
+
+    return 0;
+}
+
+Output
+
+3.14159
+
+---
+
+4. Defining Constants with "#define"
+
+A macro can be used to represent a constant value.
+
+#define MAX_SIZE 100
+#define MIN_VALUE 0
+#define DAYS_IN_WEEK 7
+
+Example:
+
+#include <iostream>
+
+#define MAX_SIZE 100
+
+int main() {
+
+    int numbers[MAX_SIZE];
+
+    std::cout << MAX_SIZE;
+
+    return 0;
+}
+
+Output
+
+100
+
+---
+
+5. "#define" Does Not Create a Variable
+
+This is an important point.
+
+When we write:
+
+#define PI 3.14159
+
+"PI" is not a C++ variable.
+
+It is a macro handled by the preprocessor.
+
+There is:
+
+- No variable object named "PI"
+- No C++ type associated with the macro name itself
+- No normal variable storage created just because of the macro
+
+---
+
+6. Object-Like Macros
+
+A macro without parameters is called an object-like macro.
+
+Syntax
+
+#define NAME replacement
+
+Example:
+
+#define MAX_SIZE 100
+
+Another example:
+
+#define MESSAGE "Hello C++"
+
+Usage:
+
+std::cout << MESSAGE;
+
+---
+
+7. Function-Like Macros
+
+Macros can also accept parameters.
+
+Syntax
+
+#define NAME(parameter) replacement
+
+Example:
+
+#define SQUARE(x) ((x) * (x))
+
+Usage:
+
+int result = SQUARE(5);
+
+The preprocessor expands it approximately to:
+
+int result = ((5) * (5));
+
+So:
+
+SQUARE(5)
+    ↓
+((5) * (5))
+    ↓
+25
+
+Function-like macros are covered more deeply in the Macros topic.
+
+---
+
+8. "#define" with Strings
+
+We can define string replacement text.
+
+#define GREETING "Hello, World!"
+
+Example:
+
+#include <iostream>
+
+#define GREETING "Hello, World!"
+
+int main() {
+
+    std::cout << GREETING;
+
+    return 0;
+}
+
+Output
+
+Hello, World!
+
+---
+
+9. Undefining a Macro
+
+The "#undef" directive can remove a previously defined macro.
+
+Example
+
+#define VALUE 100
+
+#undef VALUE
+
+After "#undef VALUE", the macro "VALUE" is no longer defined.
+
+Example:
+
+#include <iostream>
+
+#define VALUE 100
+
+int main() {
+
+    std::cout << VALUE;
+
+    return 0;
+}
+
+If we write:
+
+#undef VALUE
+
+before using "VALUE", it will no longer have the macro definition.
+
+---
+
+10. "#define" with Conditional Compilation
+
+"#define" is often used together with conditional compilation.
+
+Example:
+
+#define DEBUG
+
+Then:
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+If "DEBUG" is defined, the code inside "#ifdef" is processed.
+
+Conditional compilation will be covered in detail in a later topic.
+
+---
+
+11. "#define" vs "const"
+
+In modern C++, "const" or "constexpr" is often preferred for typed constants.
+
+Using "#define"
+
+#define PI 3.14159
+
+Using "constexpr"
+
+constexpr double PI = 3.14159;
+
+Differences
+
+Feature| "#define"| "constexpr"
+Type| No C++ type for macro| Has a C++ type
+Processed by| Preprocessor| Compiler
+Scope behavior| Macro-based| Normal C++ scope
+Debugging| Generally less convenient| Generally easier
+Type checking| No| Yes
+Modern C++ preference for constants| Usually avoid when unnecessary| Preferred
+
+---
+
+12. Why "constexpr" Is Often Better
+
+Consider:
+
+constexpr double PI = 3.14159;
+
+The compiler knows that "PI" is a "double".
+
+But:
+
+#define PI 3.14159
+
+is simply preprocessor replacement text.
+
+Therefore, for ordinary typed constants, modern C++ generally prefers:
+
+constexpr
+
+over:
+
+#define
+
+when a macro is not actually needed.
+
+---
+
+13. Rules for Macro Names
+
+Macro names are commonly written in uppercase letters to distinguish them from ordinary variables.
+
+Example:
+
+#define MAX_SIZE 100
+#define PI 3.14159
+#define VERSION 1
+
+This is a naming convention, not a requirement.
+
+---
+
+14. Example Program
+
+#include <iostream>
+
+#define MAX_MARKS 100
+#define PASS_MARKS 40
+
+int main() {
+
+    int marks = 75;
+
+    std::cout << "Maximum Marks: " << MAX_MARKS << std::endl;
+    std::cout << "Pass Marks: " << PASS_MARKS << std::endl;
+    std::cout << "Student Marks: " << marks;
+
+    return 0;
+}
+
+Output
+
+Maximum Marks: 100
+Pass Marks: 40
+Student Marks: 75
+
+---
+
+15. Advantages of "#define"
+
+1. Simple Text Replacement
+
+It can replace a name with specified text.
+
+2. Useful for Conditional Compilation
+
+Macros can act as feature or configuration flags.
+
+3. Useful for Header Guards
+
+"#define" is commonly used with "#ifndef" to create traditional include guards.
+
+4. Useful for Function-Like Macros
+
+It can create parameterized macros when appropriate.
+
+---
+
+16. Disadvantages of "#define"
+
+1. No Type Safety
+
+Macros are not normal typed C++ objects.
+
+2. Can Make Debugging Harder
+
+The source seen by the compiler has already undergone macro expansion.
+
+3. Can Cause Unexpected Substitution
+
+Because macros perform preprocessing replacement.
+
+4. Can Cause Name Conflicts
+
+A macro name can conflict with other identifiers.
+
+5. Often Unnecessary for Constants
+
+Modern C++ provides better alternatives such as:
+
+const
+constexpr
+enum
+inline functions
+
+depending on the situation.
+
+---
+
+17. Important Points
+
+- "#define" is a preprocessor directive.
+- It is used to define macros.
+- Macro replacement occurs during preprocessing.
+- "#define" does not create a normal C++ variable.
+- Object-like macros have no parameters.
+- Function-like macros can have parameters.
+- "#undef" removes a macro definition.
+- Macros are often written using uppercase names by convention.
+- "#define" is useful for conditional compilation and include guards.
+- For ordinary typed constants, "constexpr" is usually preferred in modern C++.
+
+---
+
+18. One-Line Definition
+
+"#define" is a preprocessor directive used to define macros that are expanded by the preprocessor before compilation.
+
+---
+
+Quick Revision
+
+#define
+   ↓
+Preprocessor directive
+   ↓
+Defines a macro
+   ↓
+Macro expansion
+   ↓
+Compiler processes expanded code
+
+Example
+
+#define MAX_SIZE 100
+
+Usage:
+
+int arr[MAX_SIZE];
+
+Conceptually becomes:
+
+int arr[100];
+
+Remember
+
+"#define" → Macro definition
+
+"#undef" → Remove macro definition
+
+"constexpr" → Preferred for many typed compile-time constants in modern C++
