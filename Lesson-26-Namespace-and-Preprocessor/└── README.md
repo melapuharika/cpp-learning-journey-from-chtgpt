@@ -3941,3 +3941,624 @@ Easy Memory Trick
 #endif  → End
 
 Remember: "#if" / "#ifdef" / "#ifndef" are preprocessor directives, not normal C++ "if" statements.
+
+
+### topic 10
+
+"#if" Preprocessor Directive in C++
+
+1. Introduction
+
+"#if" is a preprocessor directive used for conditional compilation.
+
+It tells the preprocessor to include a block of code only when a specified condition evaluates to true.
+
+Basic Syntax
+
+#if condition
+
+// code to include
+
+#endif
+
+The condition is evaluated during preprocessing, before the actual compilation takes place.
+
+---
+
+2. How "#if" Works
+
+Consider:
+
+#define VERSION 2
+
+#if VERSION == 2
+    std::cout << "Version 2";
+#endif
+
+The preprocessor checks:
+
+VERSION == 2
+
+Since "VERSION" is "2", the condition is true.
+
+Therefore, the code is included for compilation.
+
+Process
+
+#define VERSION 2
+        ↓
+      #if
+        ↓
+VERSION == 2 ?
+        ↓
+      TRUE
+        ↓
+Include the code
+        ↓
+     Compiler
+
+---
+
+3. Simple Example
+
+#include <iostream>
+
+#define NUMBER 10
+
+#if NUMBER == 10
+    std::cout << "Number is 10";
+#endif
+
+Output
+
+Number is 10
+
+---
+
+4. "#if" with a False Condition
+
+If the condition is false, the code inside the block is excluded.
+
+#include <iostream>
+
+#define NUMBER 20
+
+#if NUMBER == 10
+    std::cout << "Number is 10";
+#endif
+
+Here:
+
+NUMBER == 10
+
+is false.
+
+Therefore, the "std::cout" statement is not included in the compiled program.
+
+Output
+
+No output
+
+---
+
+5. "#if" with "#else"
+
+We can use "#else" to provide an alternative block.
+
+Syntax
+
+#if condition
+
+// code if true
+
+#else
+
+// code if false
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define NUMBER 20
+
+#if NUMBER == 10
+
+    std::cout << "Number is 10";
+
+#else
+
+    std::cout << "Number is not 10";
+
+#endif
+
+Output
+
+Number is not 10
+
+---
+
+6. "#if" with "#elif"
+
+"#elif" means else if.
+
+It allows us to check multiple conditions.
+
+Syntax
+
+#if condition1
+
+// code
+
+#elif condition2
+
+// code
+
+#else
+
+// code
+
+#endif
+
+Example:
+
+#include <iostream>
+
+#define VERSION 2
+
+#if VERSION == 1
+
+    std::cout << "Version 1";
+
+#elif VERSION == 2
+
+    std::cout << "Version 2";
+
+#else
+
+    std::cout << "Unknown Version";
+
+#endif
+
+Output
+
+Version 2
+
+---
+
+7. "#if" with Comparison Operators
+
+Preprocessor conditions can use comparison operators.
+
+Common operators include:
+
+==    Equal to
+!=    Not equal to
+>     Greater than
+<     Less than
+>=    Greater than or equal to
+<=    Less than or equal to
+
+Example:
+
+#define VERSION 3
+
+#if VERSION >= 2
+    std::cout << "Supported version";
+#endif
+
+Since "3 >= 2" is true, the code is included.
+
+---
+
+8. "#if" with Logical Operators
+
+Logical operators can also be used.
+
+Logical AND "&&"
+
+#define VERSION 2
+#define DEBUG 1
+
+#if VERSION == 2 && DEBUG == 1
+    std::cout << "Debug Version 2";
+#endif
+
+Both conditions must be true.
+
+---
+
+Logical OR "||"
+
+#define VERSION 2
+#define DEBUG 0
+
+#if VERSION == 2 || DEBUG == 1
+    std::cout << "Condition is true";
+#endif
+
+At least one condition must be true.
+
+---
+
+Logical NOT "!"
+
+#define DEBUG 0
+
+#if !DEBUG
+    std::cout << "Debug is disabled";
+#endif
+
+The "!" operator reverses the condition.
+
+---
+
+9. "#if" with Numeric Macros
+
+"#if" is commonly used with numeric macro values.
+
+Example:
+
+#define VERSION 3
+
+#if VERSION == 3
+    std::cout << "Version 3";
+#endif
+
+Another example:
+
+#define MAX_SIZE 100
+
+#if MAX_SIZE >= 50
+    std::cout << "Large size";
+#endif
+
+---
+
+10. "#if" with "defined"
+
+The "defined" operator can check whether a macro has been defined.
+
+Example:
+
+#define DEBUG
+
+#if defined(DEBUG)
+    std::cout << "Debug mode";
+#endif
+
+This is similar to:
+
+#ifdef DEBUG
+    std::cout << "Debug mode";
+#endif
+
+We can also use:
+
+#if !defined(DEBUG)
+    std::cout << "Debug is not defined";
+#endif
+
+This is similar to:
+
+#ifndef DEBUG
+    std::cout << "Debug is not defined";
+#endif
+
+---
+
+11. "#if 1" and "#if 0"
+
+A useful feature is using "1" and "0".
+
+"#if 1"
+
+#if 1
+    std::cout << "This code is included";
+#endif
+
+Since "1" represents true, the code is included.
+
+"#if 0"
+
+#if 0
+    std::cout << "This code is excluded";
+#endif
+
+Since "0" represents false, the code is excluded.
+
+---
+
+12. Using "#if 0" to Temporarily Disable Code
+
+"#if 0" can be useful when temporarily disabling a block of code.
+
+Example:
+
+#if 0
+
+    std::cout << "This code is temporarily disabled";
+    std::cout << "This will not be compiled";
+
+#endif
+
+The preprocessor excludes the entire block.
+
+To enable it again:
+
+#if 1
+
+This technique is useful during development, although comments or version control may be preferable depending on the situation.
+
+---
+
+13. Nested "#if"
+
+An "#if" block can contain another "#if".
+
+Example:
+
+#define VERSION 2
+#define DEBUG 1
+
+#if VERSION == 2
+
+    #if DEBUG == 1
+        std::cout << "Debug Version 2";
+    #endif
+
+#endif
+
+Output
+
+Debug Version 2
+
+---
+
+14. "#if" vs Normal "if"
+
+This is a very important difference.
+
+Normal "if"
+
+if (x > 10) {
+    std::cout << "Greater";
+}
+
+The "if" statement is part of normal C++ code and is handled by the compiler.
+
+Preprocessor "#if"
+
+#if VERSION > 1
+    std::cout << "Version supported";
+#endif
+
+The "#if" directive is handled by the preprocessor before compilation.
+
+Difference Table
+
+Feature| "if"| "#if"
+Type| C++ statement| Preprocessor directive
+Handled by| Compiler| Preprocessor
+Stage| Compilation/program execution logic| Before compilation
+Can exclude source code from compilation?| No| Yes
+Common use| Runtime program logic| Conditional compilation
+
+---
+
+15. Example: Version Control
+
+Suppose a program supports different versions.
+
+#include <iostream>
+
+#define VERSION 2
+
+#if VERSION == 1
+
+    std::cout << "Running Version 1";
+
+#elif VERSION == 2
+
+    std::cout << "Running Version 2";
+
+#elif VERSION == 3
+
+    std::cout << "Running Version 3";
+
+#else
+
+    std::cout << "Unsupported Version";
+
+#endif
+
+Output
+
+Running Version 2
+
+Changing:
+
+#define VERSION 2
+
+to:
+
+#define VERSION 3
+
+will cause the Version 3 block to be compiled instead.
+
+---
+
+16. Example: Debug Configuration
+
+#include <iostream>
+
+#define DEBUG 1
+
+#if DEBUG
+    std::cout << "Debug information enabled";
+#endif
+
+If:
+
+#define DEBUG 0
+
+then the condition is false and the block is excluded.
+
+---
+
+17. Advantages of "#if"
+
+1. Conditional Compilation
+
+Different code can be compiled depending on conditions.
+
+2. Platform Support
+
+Different code can be selected for different platforms.
+
+3. Debugging
+
+Debug-only code can be enabled or disabled.
+
+4. Feature Management
+
+Specific features can be conditionally included.
+
+5. Build Configurations
+
+Different versions of an application can use different code.
+
+---
+
+18. Limitations of "#if"
+
+- It is a preprocessor feature, not normal C++ control flow.
+- Excessive use can make code difficult to understand.
+- Many combinations of conditions can make testing complicated.
+- Code excluded by "#if" is not compiled, so normal compiler checks do not apply to that excluded code.
+- Complex conditional compilation can make maintenance harder.
+
+---
+
+19. Important Rules
+
+Rule 1: Use "#endif"
+
+An "#if" block should be closed with:
+
+#endif
+
+Rule 2: Conditions are evaluated by the preprocessor
+
+The condition must be something the preprocessor can evaluate.
+
+Rule 3: "#if" is not runtime logic
+
+Do not confuse:
+
+#if
+
+with:
+
+if
+
+Rule 4: Macros are commonly used
+
+For example:
+
+#define VERSION 2
+
+#if VERSION == 2
+
+---
+
+20. Complete Example
+
+#include <iostream>
+
+#define VERSION 2
+#define DEBUG 1
+
+int main() {
+
+#if VERSION == 1
+
+    std::cout << "Version 1";
+
+#elif VERSION == 2
+
+    std::cout << "Version 2";
+
+    #if DEBUG == 1
+        std::cout << " - Debug mode";
+    #endif
+
+#else
+
+    std::cout << "Unknown Version";
+
+#endif
+
+    return 0;
+}
+
+Output
+
+Version 2 - Debug mode
+
+---
+
+21. Important Points
+
+- "#if" is a preprocessor directive.
+- It is used for conditional compilation.
+- It checks a preprocessor expression.
+- If the condition is true, the code is included.
+- If the condition is false, the code is excluded.
+- "#else" provides an alternative block.
+- "#elif" allows additional conditions.
+- "#endif" closes the conditional block.
+- "defined()" can be used to check whether a macro exists.
+- "#if 1" means the block is included.
+- "#if 0" means the block is excluded.
+- "#if" happens before compilation.
+- "#if" is different from the normal C++ "if" statement.
+
+---
+
+22. One-Line Definition
+
+"#if" is a preprocessor directive that conditionally includes a block of code when its preprocessor condition evaluates to true.
+
+---
+
+23. Quick Revision
+
+#if condition
+    ↓
+Condition checked by preprocessor
+    ↓
+ ┌───────────────┐
+ │               │
+TRUE           FALSE
+ │               │
+Include         Exclude
+code            code
+ │
+#endif
+
+Example
+
+#define VERSION 2
+
+#if VERSION == 2
+    std::cout << "Version 2";
+#endif
+
+Remember:
+
+#if      → Check a condition
+#elif    → Check another condition
+#else    → Alternative
+#endif   → End the block
