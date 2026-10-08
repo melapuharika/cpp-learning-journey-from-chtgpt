@@ -662,3 +662,337 @@ namespace Outer::Inner {
 Access:
 
 Outer::Inner::member;
+
+
+### topic 3
+
+Anonymous Namespace in C++
+
+1. Introduction
+
+An anonymous namespace is a namespace that has no name.
+
+It is created using the "namespace" keyword without specifying a name.
+
+Anonymous namespaces are mainly used to make variables, functions, and other declarations local to a single source file (translation unit).
+
+---
+
+2. Syntax
+
+namespace {
+    // declarations
+}
+
+There is no name after the "namespace" keyword.
+
+---
+
+3. Simple Example
+
+#include <iostream>
+
+namespace {
+    int value = 10;
+}
+
+int main() {
+
+    std::cout << value;
+
+    return 0;
+}
+
+Output
+
+10
+
+The variable "value" can be directly accessed within the same source file.
+
+---
+
+4. Why Is It Called Anonymous?
+
+Normally, a namespace has a name:
+
+namespace Student {
+    int age = 20;
+}
+
+Here, "Student" is the namespace name.
+
+But in an anonymous namespace:
+
+namespace {
+    int age = 20;
+}
+
+There is no namespace name.
+
+Therefore, it is called an anonymous namespace.
+
+---
+
+5. Accessing Members
+
+Anonymous namespace members can be accessed directly within the same source file.
+
+Example:
+
+namespace {
+    int number = 100;
+}
+
+int main() {
+    std::cout << number;
+}
+
+We don't write:
+
+::number
+
+We simply write:
+
+number
+
+---
+
+6. Anonymous Namespace with Functions
+
+An anonymous namespace can contain functions.
+
+#include <iostream>
+
+namespace {
+
+    void display() {
+        std::cout << "Hello";
+    }
+
+}
+
+int main() {
+
+    display();
+
+    return 0;
+}
+
+Output
+
+Hello
+
+The "display()" function is intended to be used only within the same source file.
+
+---
+
+7. Anonymous Namespace with Multiple Members
+
+An anonymous namespace can contain multiple declarations.
+
+#include <iostream>
+
+namespace {
+
+    int number = 10;
+
+    void display() {
+        std::cout << number;
+    }
+
+}
+
+int main() {
+
+    display();
+
+    return 0;
+}
+
+Both "number" and "display()" belong to the anonymous namespace.
+
+---
+
+8. Scope of an Anonymous Namespace
+
+The important purpose of an anonymous namespace is file-local visibility.
+
+Consider two source files:
+
+main.cpp
+helper.cpp
+
+If we write this in "helper.cpp":
+
+namespace {
+    int value = 10;
+}
+
+"value" is intended to be usable only within "helper.cpp".
+
+It is not intended to be accessed directly from "main.cpp".
+
+---
+
+9. Internal Linkage
+
+Declarations in an anonymous namespace have internal linkage.
+
+This means the entity is associated with the current translation unit.
+
+In simple words:
+
+«The name is intended to be available only inside that source file.»
+
+This is useful when we have helper functions or variables that should not be exposed to other source files.
+
+---
+
+10. Anonymous Namespace vs Named Namespace
+
+Named Namespace
+
+namespace Student {
+    int age = 20;
+}
+
+Access:
+
+Student::age;
+
+Anonymous Namespace
+
+namespace {
+    int age = 20;
+}
+
+Access:
+
+age;
+
+---
+
+11. Anonymous Namespace vs "static"
+
+Before anonymous namespaces became common, file-local global variables and functions were often declared using "static".
+
+Example:
+
+static int value = 10;
+
+Modern C++ code commonly uses:
+
+namespace {
+    int value = 10;
+}
+
+Both can provide internal linkage for namespace-scope entities, but an anonymous namespace is often preferred for grouping multiple file-local declarations.
+
+---
+
+12. Why Use Anonymous Namespaces?
+
+1. Avoid Name Conflicts
+
+Names can remain private to the source file.
+
+2. Hide Implementation Details
+
+Helper functions and variables do not need to be exposed outside the source file.
+
+3. Improve Code Organization
+
+Multiple file-local declarations can be grouped together.
+
+4. Provide Internal Linkage
+
+The declarations have internal linkage.
+
+---
+
+13. Example with Helper Function
+
+#include <iostream>
+
+namespace {
+
+    int square(int n) {
+        return n * n;
+    }
+
+}
+
+int main() {
+
+    std::cout << square(5);
+
+    return 0;
+}
+
+Output
+
+25
+
+The "square()" function is a helper function used by this source file.
+
+---
+
+14. Important Points
+
+- An anonymous namespace has no name.
+- It is declared using:
+
+namespace {
+}
+
+- Its members can be accessed directly within the same source file.
+- Namespace-scope declarations in an anonymous namespace have internal linkage.
+- It is useful for file-local helper functions and variables.
+- It helps hide implementation details.
+- It can contain variables, functions, classes, and other declarations.
+- Unlike a named namespace, it does not need a namespace name to access its members.
+
+---
+
+15. One-Line Definition
+
+An anonymous namespace is an unnamed namespace whose namespace-scope declarations have internal linkage and are intended for use within the same translation unit.
+
+---
+
+Key Example
+
+#include <iostream>
+
+namespace {
+
+    int value = 10;
+
+    void display() {
+        std::cout << value;
+    }
+
+}
+
+int main() {
+
+    display();
+
+    return 0;
+}
+
+Output
+
+10
+
+Remember
+
+Anonymous Namespace
+        ↓
+No name
+        ↓
+namespace { }
+        ↓
+Internal linkage
+        ↓
+File-local use
