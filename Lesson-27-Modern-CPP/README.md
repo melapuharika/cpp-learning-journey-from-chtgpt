@@ -1351,3 +1351,54 @@ Output:
 Q: What is "constexpr"?
 
 "constexpr" is a C++ keyword that allows compile-time evaluation of values and functions when the required conditions are satisfied.
+
+
+### topic 9
+
+1. What is decltype?
+
+"decltype" is a C++ keyword used to determine the type of a variable or expression.
+
+Simple meaning: Oka variable type enti ani telusukoni, ade type ni vere variable ki use cheyadaniki help chestundi.
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+
+    decltype(a) b = 20;
+
+    cout << b;
+
+    return 0;
+}
+
+Output:
+
+20
+
+3. Explanation
+
+- "a" is an "int" variable.
+- "decltype(a)" identifies the type of "a".
+- So, "b" is also an "int" variable.
+
+4. Difference Between auto and decltype
+
+- "auto" → Initializer nunchi variable type ni deduce chestundi.
+- "decltype" → Given expression yokka type ni determine chestundi.
+
+5. Advantages
+
+1. Type ni manually repeat cheyalsina avasaram taggutundi.
+2. Complex expressions types ni identify cheyadaniki useful.
+3. Generic programming lo help chestundi.
+
+6. Interview Question
+
+Q: What is "decltype" in C++?
+
+"decltype" is a keyword used to determine the type of a variable or expression.
