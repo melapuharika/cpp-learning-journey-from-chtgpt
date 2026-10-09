@@ -766,3 +766,234 @@ for (const auto& n : numbers) {
 Conclusion
 
 The range-based for loop is a useful C++11 feature that simplifies iteration over arrays and suitable collections. It improves readability and works with variables, references, and "auto" for different programming needs.
+
+
+### topic 5
+
+Topic 5: Lambda Expressions in C++
+
+1. Introduction
+
+A lambda expression is an anonymous function that can be defined directly where it is needed.
+
+Lambda expressions were introduced in C++11.
+
+Simple Meaning:
+
+Normal ga manam function ki oka name istam. Lambda expression ki separate name avasaram ledu. Small function ni required place lone create chesi use cheyochu.
+
+Lambda expressions are useful for short operations, calculations, and working with collections.
+
+2. Syntax
+
+[capture](parameters) {
+    // Function body
+};
+
+Parts of a Lambda Expression
+
+- Capture "[ ]": Allows the lambda to access variables from the surrounding scope.
+- Parameters "( )": Inputs passed to the lambda.
+- Body "{ }": Statements executed when the lambda is called.
+
+Example:
+
+[]() {
+    cout << "Hello";
+};
+
+Ikkada capture list empty, parameters levu, body lo ""Hello"" print cheyadaniki code undi.
+
+3. Simple Lambda Example
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto greet = []() {
+        cout << "Hello C++";
+    };
+
+    greet();
+
+    return 0;
+}
+
+Output
+
+Hello C++
+
+Explanation
+
+- "auto greet" – lambda expression ni "greet" ane variable lo store chestunnam.
+- "[]" – surrounding variables ni capture cheyyatledu.
+- "()" – parameters levu.
+- "{ cout << "Hello C++"; }" – lambda body.
+- "greet()" – lambda ni execute chestundi.
+
+4. Lambda with Parameters
+
+Lambda expression ki inputs kuda pass cheyochu.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto add = [](int a, int b) {
+        return a + b;
+    };
+
+    cout << add(10, 20);
+
+    return 0;
+}
+
+Output
+
+30
+
+Explanation
+
+- "a" and "b" are parameters.
+- "add(10, 20)" call chesinappudu "a = 10", "b = 20".
+- "return a + b" result "30" ni return chestundi.
+
+5. Lambda without Return Value
+
+Lambda expression value return cheyyakunda kuda pani cheyochu.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto message = []() {
+        cout << "Learning C++";
+    };
+
+    message();
+
+    return 0;
+}
+
+Output:
+
+Learning C++
+
+Ikkada lambda message print chestundi, kani value return cheyyadu.
+
+6. Capture List
+
+Capture list anedi lambda lopala bayata declare chesina variables ni access cheyadaniki use avutundi.
+
+Example: Capture by Value
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 10;
+
+    auto show = [number]() {
+        cout << number;
+    };
+
+    show();
+
+    return 0;
+}
+
+Output:
+
+10
+
+"[number]" use chesinanduku lambda "number" yokka copy ni capture chestundi.
+
+Example: Capture by Reference
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 10;
+
+    auto change = [&number]() {
+        number = 20;
+    };
+
+    change();
+
+    cout << number;
+
+    return 0;
+}
+
+Output:
+
+20
+
+"[&number]" use chesinanduku lambda original variable ni reference dwara access chestundi. Kabatti value change avutundi.
+
+Remember:
+
+- "[number]" – capture by value.
+- "[&number]" – capture by reference.
+
+7. Advantages of Lambda Expressions
+
+- Small functions ni quick ga create cheyochu.
+- Separate named function avasaram leni situations lo useful.
+- Code readability improve cheyagalavu.
+- Algorithms tho kalipi use cheyadaniki convenient.
+- Variables ni value or reference dwara capture cheyochu.
+
+8. Lambda Expressions with Arrays
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30};
+
+    auto print = [](int n) {
+        cout << n << " ";
+    };
+
+    for (int n : numbers) {
+        print(n);
+    }
+
+    return 0;
+}
+
+Output:
+
+10 20 30
+
+Ikkada range-based for loop array elements ni okkokkati access chestundi. "print" lambda prathi element ni print chestundi.
+
+9. Important Points to Remember
+
+- Lambda expressions were introduced in C++11.
+- Lambda is an anonymous function.
+- "[]" is the capture list.
+- "()" contains parameters.
+- "{}" contains the function body.
+- "auto" can be used to store a lambda in a variable.
+- "return" can be used to return a result.
+- Capture by value copies a variable into the lambda.
+- Capture by reference allows access to the original variable.
+
+10. Practice Questions
+
+1. What is a lambda expression?
+2. In which C++ standard were lambda expressions introduced?
+3. Write the syntax of a lambda expression.
+4. What is the purpose of a capture list?
+5. What is the difference between capture by value and capture by reference?
+6. Write a lambda expression to add two numbers.
+7. Write a lambda expression to print a message.
+8. How can a lambda expression access a variable declared outside it?
+
+Conclusion
+
+Lambda expressions are a useful C++11 feature for writing small anonymous functions directly where they are needed. They support parameters, return values, and variable capture, making many programming tasks simpler.
