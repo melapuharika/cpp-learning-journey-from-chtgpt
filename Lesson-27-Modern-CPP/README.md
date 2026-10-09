@@ -380,3 +380,167 @@ Ikkada "number" type "int" gaane untundi. "5.5" assign chesinappudu fractional p
 Conclusion
 
 The "auto" keyword allows the C++ compiler to determine a variable's type from its initializer. It reduces repetitive declarations and is an important feature of Modern C++.
+
+
+### topic 3
+
+Topic 3: nullptr in C++
+
+1. Introduction
+
+"nullptr" is a special keyword introduced in C++11 to represent a null pointer.
+
+A null pointer does not point to any valid object or function.
+
+Simple Meaning:
+
+Pointer ante memory address ni store chese variable.
+
+Pointer prastutaniki ye valid object ni point cheyyakapothe, daniki "nullptr" assign cheyochu.
+
+Example:
+
+int* ptr = nullptr;
+
+Here, "ptr" is an integer pointer that currently points to no object.
+
+2. Syntax
+
+data_type* pointer_name = nullptr;
+
+Example:
+
+int* ptr = nullptr;
+double* value = nullptr;
+char* character = nullptr;
+
+Ikkada moodu pointers kuda null pointers.
+
+3. Simple Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = nullptr;
+
+    if (ptr == nullptr) {
+        cout << "Pointer is null";
+    }
+
+    return 0;
+}
+
+Output
+
+Pointer is null
+
+Explanation
+
+- "int* ptr" – integer pointer ni declare chestundi.
+- "nullptr" – pointer ye object ni point cheyyatledu ani indicate chestundi.
+- "if (ptr == nullptr)" – pointer null ga undo ledo check chestundi.
+- Condition true kabatti message print avutundi.
+
+4. Why Do We Use nullptr?
+
+"nullptr" use cheyadaniki main reasons:
+
+- Pointer currently ye object ni point cheyyatledu ani indicate cheyadaniki.
+- Uninitialized or unavailable object address ni represent cheyadaniki, pointer ni explicit ga initialize cheyadaniki.
+- Pointer valid object ni point chestundo ledo check cheyadaniki.
+- Old-style null pointer constants valla vacche konni ambiguity problems ni avoid cheyadaniki.
+
+Important: "nullptr" ni initialize cheyadam valla pointer safe ga null state lo untundi. Kaani tarvatha valid object address assign chesina appudu kuda correct lifetime and validity maintain cheyyali.
+
+5. NULL vs nullptr
+
+NULL| nullptr
+Older code lo use chestaru| C++11 lo introduce chesaru
+Usually integer constant "0" ga define chestaru| Special null pointer literal
+Function overloading lo ambiguity ravachu| Pointer overload ni clear ga select chestundi
+New C++ code lo less preferred| Null pointers kosam recommended
+
+6. Function Overloading Example
+
+#include <iostream>
+using namespace std;
+
+void show(int x) {
+    cout << "Integer function";
+}
+
+void show(int* p) {
+    cout << "Pointer function";
+}
+
+int main() {
+    show(nullptr);
+
+    return 0;
+}
+
+Output
+
+Pointer function
+
+Explanation
+
+"show()" ane peru tho rendu functions unnayi:
+
+- Oka function "int" argument teesukuntundi.
+- Inko function "int*" argument teesukuntundi.
+
+"nullptr" pointer argument kabatti "show(int*)" function call avutundi.
+
+7. Important Safety Rule
+
+Null pointer ni dereference cheyakudadhu.
+
+Wrong:
+
+int* ptr = nullptr;
+cout << *ptr;
+
+Ila null pointer ni dereference chesthe undefined behavior vastundi.
+
+Correct:
+
+int* ptr = nullptr;
+
+if (ptr != nullptr) {
+    cout << *ptr;
+}
+
+Ikkada pointer null kaakapothe matrame value access chestunnam.
+
+8. Advantages of nullptr
+
+- Pointer intent ni clear ga express chestundi.
+- "NULL" kanna type-safe.
+- Function overloading ambiguity ni avoid cheyagaladu.
+- Code readability improve chestundi.
+- Null pointers ni initialize cheyadaniki useful.
+
+9. Important Points to Remember
+
+- "nullptr" was introduced in C++11.
+- It represents a null pointer.
+- It is not the same as an uninitialized pointer.
+- Null pointer ni dereference cheyakudadhu.
+- Pointer null ga undo ledo "ptr == nullptr" tho check cheyochu.
+- New C++ code lo null pointers kosam "nullptr" prefer cheyyali.
+
+10. Practice Questions
+
+1. What is "nullptr" in C++?
+2. In which C++ standard was "nullptr" introduced?
+3. What is a pointer?
+4. What is the difference between "NULL" and "nullptr"?
+5. Why should we avoid dereferencing a null pointer?
+6. How can we check whether a pointer is null?
+7. Write a program that initializes a pointer with "nullptr" and checks its value.
+
+Conclusion
+
+"nullptr" is a C++11 feature used to represent a null pointer. It makes pointer-related code clearer and safer than using older null pointer constants such as "0" or "NULL".
