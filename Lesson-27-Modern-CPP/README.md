@@ -1226,3 +1226,75 @@ It is different from a move constructor because the destination object has alrea
 Conclusion
 
 Move Semantics is an important C++11 feature that can improve efficiency by allowing resources to be transferred between objects rather than copied unnecessarily. Understanding "std::move()", move constructors, and move assignment operators is essential for learning Modern C++.
+
+### topic 7
+
+1. What are Smart Pointers?
+
+Smart pointers are used to manage memory automatically in C++.
+
+They reduce the risk of memory leaks and avoid the need for manual "delete" in normal usage.
+
+Header file:
+
+#include <memory>
+
+2. Types of Smart Pointers
+
+1. "unique_ptr"
+
+- Only one pointer owns the object.
+- Memory is released automatically.
+
+unique_ptr<int> p = make_unique<int>(10);
+cout << *p;
+
+Output: "10"
+
+2. "shared_ptr"
+
+- Multiple pointers can share ownership of one object.
+- Memory is released when the last owner is gone.
+
+shared_ptr<int> p1 = make_shared<int>(20);
+shared_ptr<int> p2 = p1;
+
+cout << *p2;
+
+Output: "20"
+
+3. "weak_ptr"
+
+- Observes an object managed by "shared_ptr".
+- Does not own the object or keep it alive.
+
+shared_ptr<int> p = make_shared<int>(30);
+weak_ptr<int> w = p;
+
+3. Easy Difference
+
+- "unique_ptr" → One owner.
+- "shared_ptr" → Multiple owners.
+- "weak_ptr" → Observes, but does not own.
+
+4. Advantages
+
+1. Automatic memory management.
+2. Reduces memory leaks.
+3. Makes code safer and easier to maintain.
+
+5. Important Points
+
+- Smart pointers are available in the "<memory>" header.
+- Prefer "make_unique()" and "make_shared()".
+- Do not manually "delete" an object managed by a smart pointer.
+
+6. Interview Question
+
+Q: What are smart pointers?
+
+Smart pointers are C++ objects that automatically manage the lifetime of dynamically allocated memory.
+
+Q: What are the three types?
+
+"unique_ptr", "shared_ptr", and "weak_ptr".
