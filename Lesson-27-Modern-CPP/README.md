@@ -997,3 +997,232 @@ Ikkada range-based for loop array elements ni okkokkati access chestundi. "print
 Conclusion
 
 Lambda expressions are a useful C++11 feature for writing small anonymous functions directly where they are needed. They support parameters, return values, and variable capture, making many programming tasks simpler.
+
+
+### topic 6
+
+Topic 6: Move Semantics in C++
+
+1. Introduction
+
+Move Semantics was introduced in C++11.
+
+It allows resources owned by one object to be transferred to another object instead of copying those resources unnecessarily.
+
+Simple Meaning:
+
+Oka object daggara dynamic memory lanti resource undi anukundam. Aa resource ni inko object ki copy cheyadam badulu, ownership ni transfer cheyadaniki move semantics help chestundi.
+
+This can improve performance, especially when working with large objects and containers.
+
+2. What Is Copying?
+
+Copying means creating another object with its own copy of the original object's data.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> first = {10, 20, 30};
+
+    vector<int> second = first;
+
+    second.push_back(40);
+
+    cout << "First: ";
+    for (int n : first) {
+        cout << n << " ";
+    }
+
+    cout << "\nSecond: ";
+    for (int n : second) {
+        cout << n << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+First: 10 20 30
+Second: 10 20 30 40
+
+Explanation
+
+- "first" vector lo three elements unnayi.
+- "second = first" original vector elements ni copy chestundi.
+- "second" lo new element add chesina, "first" change avvadu.
+
+3. What Is Move Semantics?
+
+Move semantics allows an object to transfer resources to another object when a suitable move operation is available.
+
+For standard library containers such as "std::vector", moving can transfer ownership of their allocated storage instead of copying each element.
+
+Example:
+
+#include <iostream>
+#include <vector>
+#include <utility>
+using namespace std;
+
+int main() {
+    vector<int> first = {10, 20, 30};
+
+    vector<int> second = move(first);
+
+    cout << "Second: ";
+    for (int n : second) {
+        cout << n << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+Second: 10 20 30
+
+Explanation
+
+- "first" vector lo elements unnayi.
+- "std::move(first)" "first" ni rvalue expression ga cast chestundi.
+- Ee expression valla suitable move constructor use ayye avakasam untundi.
+- "second" vector elements ni own chesukuntundi.
+
+Important: "std::move()" okkate resource ni transfer cheyyadu. Adi expression ni rvalue ga cast chestundi. Actual transfer anedi selected constructor or assignment operation meeda depend avutundi.
+
+4. Copy vs Move
+
+Copy Semantics| Move Semantics
+Data or resources copy cheyabadutayi| Resources transfer cheyabadavachu
+Original object generally unchanged ga untundi| Source object valid but moved-from state lo untundi
+Large data ki costly avvachu| Some cases lo faster ga untundi
+Copy constructor or copy assignment use avutundi| Move constructor or move assignment use avvachu
+
+5. What Is std::move()?
+
+"std::move()" is a utility function provided by the "<utility>" header.
+
+It converts an expression into an rvalue expression, allowing the compiler to select a move operation when one is available.
+
+Syntax:
+
+std::move(object);
+
+Example:
+
+#include <iostream>
+#include <string>
+#include <utility>
+using namespace std;
+
+int main() {
+    string first = "Hello C++";
+
+    string second = move(first);
+
+    cout << second;
+
+    return 0;
+}
+
+Output:
+
+Hello C++
+
+Here, "second" receives the string value through the string's move operation when applicable.
+
+After moving, "first" remains valid, but its exact value is unspecified. We should not assume that it is necessarily empty.
+
+6. Move Constructor
+
+A move constructor creates a new object using resources from another object, typically an rvalue.
+
+General syntax:
+
+ClassName(ClassName&& other);
+
+Here:
+
+- "ClassName" is the class name.
+- "&&" represents an rvalue reference.
+- "other" is the source object.
+
+Example:
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+class Demo {
+public:
+    Demo() {
+        cout << "Default constructor\n";
+    }
+
+    Demo(Demo&& other) {
+        cout << "Move constructor\n";
+    }
+};
+
+int main() {
+    Demo first;
+    Demo second = move(first);
+
+    return 0;
+}
+
+Output:
+
+Default constructor
+Move constructor
+
+This example demonstrates how a move constructor can be selected. A real resource-owning class must also transfer ownership correctly and release resources safely.
+
+7. Move Assignment Operator
+
+A move assignment operator transfers resources into an object that already exists.
+
+General syntax:
+
+ClassName& operator=(ClassName&& other);
+
+It is different from a move constructor because the destination object has already been created.
+
+8. Advantages of Move Semantics
+
+- Can avoid unnecessary copying.
+- Can improve performance for large objects.
+- Helps transfer ownership of dynamically allocated resources.
+- Is useful with containers, strings, and resource-managing classes.
+- Supports efficient return and transfer of objects.
+
+9. Important Points to Remember
+
+- Move semantics was introduced in C++11.
+- "std::move()" is declared in the "<utility>" header.
+- "std::move()" itself does not perform a move.
+- Move operations can transfer resources instead of copying them.
+- A moved-from standard library object remains valid, but its value may be unspecified.
+- Move constructors use rvalue references, commonly written as "ClassName&&".
+- Not every move is automatically faster than a copy.
+
+10. Practice Questions
+
+1. What is Move Semantics in C++?
+2. In which C++ standard was Move Semantics introduced?
+3. What is the difference between copying and moving?
+4. What is "std::move()"?
+5. Which header file provides "std::move()"?
+6. What is a move constructor?
+7. What is a move assignment operator?
+8. What happens to an object after it has been moved from?
+9. Write a program that moves a "std::vector" using "std::move()".
+
+Conclusion
+
+Move Semantics is an important C++11 feature that can improve efficiency by allowing resources to be transferred between objects rather than copied unnecessarily. Understanding "std::move()", move constructors, and move assignment operators is essential for learning Modern C++.
