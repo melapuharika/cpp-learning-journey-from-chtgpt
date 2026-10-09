@@ -1298,3 +1298,56 @@ Smart pointers are C++ objects that automatically manage the lifetime of dynamic
 Q: What are the three types?
 
 "unique_ptr", "shared_ptr", and "weak_ptr".
+
+
+### topic 8
+
+1. What is constexpr?
+
+"constexpr" is a C++ keyword that allows values and functions to be evaluated at compile time when possible.
+
+Simple meaning: Program run avvakamunde value calculate cheyadaniki help chestundi.
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+constexpr int square(int n) {
+    return n * n;
+}
+
+int main() {
+    constexpr int result = square(5);
+    cout << result;
+
+    return 0;
+}
+
+Output:
+
+25
+
+3. Explanation
+
+- "constexpr" — compile-time calculation ki allow chestundi.
+- "square(5)" — 5 × 5 calculate chestundi.
+- "result" value "25".
+
+4. Advantages
+
+1. Compile-time calculations cheyagaladu.
+2. Code efficiency improve cheyadaniki help chestundi.
+3. Constants define cheyadaniki use avuthundi.
+
+5. Important Points
+
+- "constexpr" is a C++ keyword.
+- Compile time lo evaluate avvagaladu.
+- "constexpr" function konni situations lo runtime lo kuda execute avvachu.
+
+6. Interview Question
+
+Q: What is "constexpr"?
+
+"constexpr" is a C++ keyword that allows compile-time evaluation of values and functions when the required conditions are satisfied.
