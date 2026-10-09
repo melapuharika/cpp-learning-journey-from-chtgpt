@@ -544,3 +544,225 @@ Ikkada pointer null kaakapothe matrame value access chestunnam.
 Conclusion
 
 "nullptr" is a C++11 feature used to represent a null pointer. It makes pointer-related code clearer and safer than using older null pointer constants such as "0" or "NULL".
+
+
+### topic 4
+
+Topic 4: Range-Based For Loop in C++
+
+1. Introduction
+
+The Range-Based For Loop was introduced in C++11.
+
+It is used to access each element in an array or a suitable collection without manually managing an index.
+
+Simple Meaning:
+
+Array lo 5 elements unnayi anukundam. Normal "for" loop lo "i = 0", "i < 5", "i++" ani rayali.
+
+Range-based "for" loop lo array elements ni direct ga okkokkati access cheyochu.
+
+2. Syntax
+
+for (data_type variable : collection) {
+    // Statements
+}
+
+Explanation
+
+- "data_type" – element data type.
+- "variable" – current element ni receive chestundi.
+- ":" – collection nunchi elements ni okkokkati access cheyadaniki use chestaru.
+- "collection" – array leda suitable iterable collection.
+
+3. Simple Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    for (int n : numbers) {
+        cout << n << " ";
+    }
+
+    return 0;
+}
+
+Output
+
+10 20 30 40 50
+
+Explanation
+
+Array lo five elements unnayi.
+
+- First iteration: "n = 10"
+- Second iteration: "n = 20"
+- Third iteration: "n = 30"
+- Fourth iteration: "n = 40"
+- Fifth iteration: "n = 50"
+
+Prathi iteration lo next element "n" loki vastundi. Anni elements process ayyaka loop automatically stop avutundi.
+
+4. Normal For Loop vs Range-Based For Loop
+
+Normal For Loop
+
+int numbers[] = {10, 20, 30};
+
+for (int i = 0; i < 3; i++) {
+    cout << numbers[i] << " ";
+}
+
+Range-Based For Loop
+
+int numbers[] = {10, 20, 30};
+
+for (int n : numbers) {
+    cout << n << " ";
+}
+
+Output for Both
+
+10 20 30
+
+Difference
+
+Normal "for" loop lo index ni maintain cheyyali.
+
+Range-based "for" loop lo elements ni direct ga access cheyochu. Kabatti code simple ga untundi.
+
+5. Using Range-Based For Loop with Different Data Types
+
+Example 1: Integer Array
+
+int numbers[] = {1, 2, 3};
+
+for (int n : numbers) {
+    cout << n << " ";
+}
+
+Output:
+
+1 2 3
+
+Example 2: Character Array
+
+char letters[] = {'A', 'B', 'C'};
+
+for (char ch : letters) {
+    cout << ch << " ";
+}
+
+Output:
+
+A B C
+
+Example 3: Double Array
+
+double prices[] = {10.5, 20.5, 30.5};
+
+for (double price : prices) {
+    cout << price << " ";
+}
+
+Output:
+
+10.5 20.5 30.5
+
+6. Using auto in a Range-Based For Loop
+
+C++11 lo "auto" keyword ni range-based loop tho kalipi use cheyochu.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30};
+
+    for (auto n : numbers) {
+        cout << n << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+10 20 30
+
+Ikkada compiler "n" type ni array element type batti determine chestundi.
+
+7. Important Point: Copy vs Reference
+
+Using a Normal Variable
+
+int numbers[] = {10, 20, 30};
+
+for (int n : numbers) {
+    n = n + 5;
+}
+
+Ikkada "n" anedi prathi element yokka copy. Kabatti original array values change avvavu.
+
+Using a Reference
+
+int numbers[] = {10, 20, 30};
+
+for (int& n : numbers) {
+    n = n + 5;
+}
+
+Output array values:
+
+15 25 35
+
+"int& n" use chesthe "n" original array element ni refer chestundi. Kabatti changes original array lo kuda reflect avutayi.
+
+8. Advantages
+
+- Code simple ga, readable ga untundi.
+- Index ni manually manage cheyyalsina avasaram ledu.
+- Arrays and suitable collections meeda iteration easy avutundi.
+- "auto" and references tho kalipi use cheyochu.
+- Index-related mistakes ni tagginchagaladu.
+
+9. Limitations
+
+- Current element ni access cheyadaniki suitable.
+- Index kavali ante normal "for" loop convenient ga undochu.
+- Collection lo elements add/remove chesthe, container rules follow avvali.
+- Read-only access kosam "const auto&" use cheyochu.
+
+Example:
+
+for (const auto& n : numbers) {
+    cout << n << " ";
+}
+
+10. Important Points to Remember
+
+- Range-based "for" loop was introduced in C++11.
+- It accesses elements one by one.
+- Syntax lo colon (":") use chestaru.
+- Loop elements anni process chesaka automatic ga stop avutundi.
+- "auto" tho element type deduction cheyochu.
+- "int&" use chesthe original elements ni modify cheyochu.
+- "const auto&" read-only access ki useful.
+
+11. Practice Questions
+
+1. What is a range-based for loop?
+2. In which C++ standard was it introduced?
+3. Write the syntax of a range-based for loop.
+4. What is the difference between a normal "for" loop and a range-based "for" loop?
+5. How can we modify array elements using a range-based loop?
+6. What is the purpose of "auto" in a range-based loop?
+7. Write a program to print all elements of an integer array.
+8. What is the difference between "int n" and "int& n" in a range-based loop?
+
+Conclusion
+
+The range-based for loop is a useful C++11 feature that simplifies iteration over arrays and suitable collections. It improves readability and works with variables, references, and "auto" for different programming needs.
