@@ -2883,3 +2883,84 @@ Introduced in C++20.| Used in C and earlier C++ standards too.
 Q: What are modules in C++20?
 
 Answer: Modules are a feature that allows code to be organized into named units and reused through imports, providing an alternative to traditional header-based inclusion.
+
+
+### topic 27
+
+Three-Way Comparison Operator (<=>) in C++20
+
+1. What is the Three-Way Comparison Operator?
+
+The Three-Way Comparison Operator ("<=>") was introduced in C++20. It is also called the spaceship operator.
+
+It compares two values and determines whether the first value is less than, equal to, or greater than the second value.
+
+2. Syntax
+
+result = value1 <=> value2;
+
+The result represents the ordering relationship between the two values.
+
+3. Example Program
+
+#include <iostream>
+#include <compare>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int b = 20;
+
+    auto result = a <=> b;
+
+    if (result < 0) {
+        cout << "a is less than b";
+    } else if (result == 0) {
+        cout << "a is equal to b";
+    } else {
+        cout << "a is greater than b";
+    }
+
+    return 0;
+}
+
+Output
+
+a is less than b
+
+4. Explanation
+
+- "a <=> b" compares the values of "a" and "b".
+- Since "10" is less than "20", the result indicates that "a" is less than "b".
+- "result < 0" checks for a less-than ordering.
+- "result == 0" checks for equality.
+- "result > 0" checks for a greater-than ordering.
+
+For integers, the result is a comparison category such as "std::strong_ordering".
+
+5. Comparison Examples
+
+Expression| Result
+"10 <=> 20"| Less than
+"10 <=> 10"| Equal
+"20 <=> 10"| Greater than
+
+6. Advantages
+
+- Provides a single operator for three-way comparison.
+- Helps implement comparison operations for custom types.
+- Can simplify class comparison code.
+- Works with C++20 comparison features, including defaulted comparisons.
+
+7. Important Points
+
+- The "<=>" operator was introduced in C++20.
+- It is called the spaceship operator.
+- It does not simply return "-1", "0", or "1" in every case; it returns an ordering category.
+- The main comparison categories are "std::strong_ordering", "std::weak_ordering", and "std::partial_ordering".
+
+8. Interview Question
+
+Q: What is the three-way comparison operator in C++20?
+
+Answer: The "<=>" operator compares two values and produces an ordering result indicating whether they are less than, equal to, or greater than each other.
