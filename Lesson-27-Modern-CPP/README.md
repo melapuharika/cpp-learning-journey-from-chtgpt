@@ -1847,3 +1847,76 @@ When using "auto [a, b] = object;", the variables are initialized from the objec
 Q: What are structured bindings in C++17?
 
 Answer: Structured bindings allow multiple elements of an object to be unpacked into separate named variables, making code easier to read and write.
+
+
+### topic 16
+
+If constexpr in C++17
+
+1. What is if constexpr?
+
+"if constexpr" is a feature introduced in C++17 that allows the compiler to choose which code to compile based on a compile-time condition.
+
+It is especially useful in template programming.
+
+2. Syntax
+
+if constexpr (condition) {
+    // Code compiled if the condition is true
+} else {
+    // Code compiled if the condition is false
+}
+
+The condition must be a compile-time constant expression.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    constexpr int number = 10;
+
+    if constexpr (number > 5) {
+        cout << "Number is greater than 5";
+    } else {
+        cout << "Number is 5 or less";
+    }
+
+    return 0;
+}
+
+Output
+
+Number is greater than 5
+
+4. Explanation
+
+- "constexpr int number = 10;" declares a compile-time constant.
+- "if constexpr (number > 5)" checks the condition at compile time.
+- Since "10 > 5" is true, the first branch is selected.
+- The output is "Number is greater than 5".
+
+5. Difference Between if and if constexpr
+
+"if"| "if constexpr"
+Normally selects a branch at runtime.| Selects a branch at compile time when the condition is a constant expression.
+Both branches generally need to be valid code.| In a templated context, the discarded branch can avoid certain instantiation errors.
+Used for ordinary runtime decisions.| Particularly useful for compile-time decisions in templates.
+
+6. Advantages
+
+- Helps write efficient template code.
+- Avoids instantiating code in discarded branches of templates.
+- Makes compile-time decisions easier.
+- Can prevent errors involving types that are not supported by a particular branch.
+
+7. Important Point
+
+"if constexpr" was introduced in C++17. Its main benefit is in template programming, where the compiler can discard a branch that does not apply to a particular type or compile-time condition.
+
+8. Interview Question
+
+Q: What is "if constexpr" in C++17?
+
+Answer: "if constexpr" is a compile-time conditional statement that allows the compiler to select a branch based on a constant expression. It is especially useful in template programming.
