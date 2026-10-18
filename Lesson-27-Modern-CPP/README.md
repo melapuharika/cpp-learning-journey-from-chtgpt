@@ -1523,3 +1523,72 @@ On Windows PowerShell, run the program using:
 Q: What is C++14? Name any three features.
 
 Answer: C++14 is a C++ language standard released in 2014. Three features are binary literals, generic lambdas, and "std::make_unique".
+
+
+### topic 12
+
+Generic Lambdas in C++14
+
+1. What is a Generic Lambda?
+
+A generic lambda is a lambda function that uses "auto" as a parameter type. It can accept different data types without writing separate functions for each type.
+
+Generic lambdas were introduced in C++14.
+
+2. Syntax
+
+auto lambda = [](auto x) {
+    // Code
+};
+
+- "auto" automatically determines the parameter's type.
+- "[]" is called the lambda capture list.
+- "()" contains the parameters.
+- "{}" contains the function body.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto display = [](auto x) {
+        cout << x << endl;
+    };
+
+    display(10);
+    display(5.5);
+    display("Hello");
+
+    return 0;
+}
+
+Output
+
+10
+5.5
+Hello
+
+4. Explanation
+
+- "display(10)" passes an integer.
+- "display(5.5)" passes a floating-point number.
+- "display("Hello")" passes a string literal.
+- The "auto" parameter allows the lambda to work with different types.
+
+5. Advantages of Generic Lambdas
+
+- Reduce code duplication.
+- Support different data types.
+- Make code shorter and more flexible.
+- Help write reusable operations.
+
+6. Important Point
+
+Generic lambdas were introduced in C++14. The compiler generates suitable call operators for the different argument types used.
+
+7. Interview Question
+
+Q: What is a generic lambda in C++14?
+
+Answer: A generic lambda is a lambda expression that uses "auto" in its parameter list, allowing it to accept arguments of different types.
