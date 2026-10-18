@@ -2031,3 +2031,108 @@ An optional value must be checked before accessing it. Calling "value()" on an e
 Q: What is "std::optional" in C++17?
 
 Answer: "std::optional" is a standard library type that represents a value that may or may not be present. It is useful for functions that may not always return a valid result.
+
+
+### topic 18
+
+std::variant in C++17
+
+1. What is std::variant?
+
+"std::variant" is a feature introduced in C++17 that allows a variable to store a value of one type from a predefined list of types.
+
+At any given time, a "std::variant" holds a value of one of its alternative types.
+
+2. Header File
+
+#include <variant>
+
+3. Syntax
+
+std::variant<int, double, std::string> value;
+
+Here, "value" can store an "int", a "double", or a "std::string".
+
+4. Example Program
+
+#include <iostream>
+#include <variant>
+#include <string>
+using namespace std;
+
+int main() {
+    variant<int, double, string> data;
+
+    data = 100;
+    cout << get<int>(data) << endl;
+
+    data = 5.5;
+    cout << get<double>(data) << endl;
+
+    data = string("Hello");
+    cout << get<string>(data) << endl;
+
+    return 0;
+}
+
+Output
+
+100
+5.5
+Hello
+
+5. Explanation
+
+- "variant<int, double, string>" declares a variable that can hold one of three types.
+- "data = 100" stores an integer.
+- "get<int>(data)" retrieves the integer value.
+- "data = 5.5" replaces the stored value with a double.
+- "data = string("Hello")" replaces it with a string.
+- Only one alternative is stored at a time.
+
+6. Important Functions
+
+- "std::get<T>(value)" — retrieves the value of the specified type; throws "std::bad_variant_access" if that type is not currently active.
+- "std::holds_alternative<T>(value)" — checks whether the variant currently holds type "T".
+- "std::get_if<T>(&value)" — returns a pointer to the stored value if the type matches, or "nullptr" otherwise.
+- "value.index()" — returns the zero-based index of the currently active alternative.
+- "std::monostate" — provides a simple alternative that can represent an empty-like state.
+
+7. Example Using holds_alternative()
+
+#include <iostream>
+#include <variant>
+using namespace std;
+
+int main() {
+    variant<int, double> data = 10;
+
+    if (holds_alternative<int>(data)) {
+        cout << "Integer value";
+    }
+
+    return 0;
+}
+
+Output
+
+Integer value
+
+8. Advantages of std::variant
+
+- Stores values of different predefined types.
+- Provides type-safe alternatives to "void*" and many uses of C-style unions.
+- Helps avoid unexpected type conversions.
+- Makes code easier to understand and maintain.
+
+9. Important Point
+
+"std::variant" was introduced in C++17 and is available through the "<variant>" header.
+
+A variant can hold only one of its alternative types at a time. Use "std::get_if" or check the active type before retrieving a value when the type is uncertain.
+
+10. Interview Question
+
+Q: What is "std::variant" in C++17?
+
+Answer: "std::variant" is a type-safe container that stores a value of one type from a predefined list of alternative types.
