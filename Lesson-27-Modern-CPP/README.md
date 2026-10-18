@@ -2356,3 +2356,97 @@ The directory is created relative to the program's current working directory.
 Q: What is the Filesystem Library in C++17?
 
 Answer: The Filesystem Library provides functions and classes to manage files, directories, and paths in a convenient and portable way.
+
+
+### topic 21
+
+Fold Expressions in C++17
+
+1. What are Fold Expressions?
+
+Fold expressions are a feature introduced in C++17 that allow us to apply an operator to all elements of a parameter pack.
+
+They are mainly used with variadic templates, which allow functions or classes to accept a variable number of arguments.
+
+2. Syntax
+
+(expression operator ... operator expression)
+
+Common fold expression forms include:
+
+- "(args + ...)" — unary right fold.
+- "(... + args)" — unary left fold.
+- "(initialValue + ... + args)" — binary right fold.
+- "(args + ... + initialValue)" — binary left fold.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+template <typename... Args>
+auto sum(Args... args) {
+    return (args + ...);
+}
+
+int main() {
+    cout << sum(10, 20, 30) << endl;
+    cout << sum(1, 2, 3, 4, 5) << endl;
+
+    return 0;
+}
+
+Output
+
+60
+15
+
+4. Explanation
+
+- "template <typename... Args>" declares a template parameter pack.
+- "Args... args" allows the function to receive multiple arguments.
+- "(args + ...)" adds all the arguments together.
+- "sum(10, 20, 30)" returns "60".
+- "sum(1, 2, 3, 4, 5)" returns "15".
+
+5. Example Using the Multiplication Operator
+
+#include <iostream>
+using namespace std;
+
+template <typename... Args>
+auto multiply(Args... args) {
+    return (args * ...);
+}
+
+int main() {
+    cout << multiply(2, 3, 4);
+
+    return 0;
+}
+
+Output
+
+24
+
+The fold expression multiplies all the arguments: "2 * 3 * 4 = 24".
+
+6. Advantages of Fold Expressions
+
+- Reduce repetitive code.
+- Make variadic templates easier to write.
+- Simplify operations on multiple arguments.
+- Improve readability compared with recursive template techniques.
+
+7. Important Points
+
+- Fold expressions were introduced in C++17.
+- They work with parameter packs.
+- The operator must be supported by the argument types.
+- A unary fold over an empty parameter pack is valid only for "&&", "||", and ",", which have defined identity results. Other cases may require an initial value or at least one argument.
+
+8. Interview Question
+
+Q: What are fold expressions in C++17?
+
+Answer: Fold expressions allow an operator to be applied across the elements of a parameter pack, simplifying operations in variadic templates.
