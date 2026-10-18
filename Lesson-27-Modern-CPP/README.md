@@ -2245,3 +2245,114 @@ It can store copy-constructible types. Always use the correct type with "any_cas
 Q: What is "std::any" in C++17?
 
 Answer: "std::any" is a standard library class that can store a value of almost any copy-constructible type and retrieve it using "std::any_cast".
+
+### topic 20
+
+Filesystem in C++17
+
+1. What is Filesystem?
+
+The Filesystem Library was introduced into the C++ standard library in C++17. It helps programmers work with files, directories, and file paths.
+
+It allows us to create directories, check whether files exist, and obtain information about files and folders.
+
+2. Header File
+
+#include <filesystem>
+
+The filesystem library is commonly accessed using the "std::filesystem" namespace.
+
+3. Important Filesystem Functions
+
+- "exists()" — checks whether a file or directory exists.
+- "create_directory()" — creates a directory.
+- "create_directories()" — creates directories, including missing parent directories.
+- "remove()" — removes a file or an empty directory.
+- "file_size()" — returns the size of a regular file in bytes.
+- "current_path()" — gets the current working directory.
+- "is_directory()" — checks whether a path refers to a directory.
+- "is_regular_file()" — checks whether a path refers to a regular file.
+
+4. Example Program
+
+#include <iostream>
+#include <filesystem>
+using namespace std;
+namespace fs = std::filesystem;
+
+int main() {
+    fs::path filePath = "example.txt";
+
+    if (fs::exists(filePath)) {
+        cout << "File exists";
+    } else {
+        cout << "File does not exist";
+    }
+
+    return 0;
+}
+
+Output
+
+If "example.txt" exists in the current working directory:
+
+File exists
+
+Otherwise:
+
+File does not exist
+
+5. Explanation
+
+- "#include <filesystem>" includes the filesystem library.
+- "namespace fs = std::filesystem;" creates a shorter alias for the namespace.
+- "fs::path" represents a file or directory path.
+- "fs::exists(filePath)" checks whether the specified path exists.
+- The "if-else" statement displays the appropriate message.
+
+6. Example: Creating a Directory
+
+#include <iostream>
+#include <filesystem>
+using namespace std;
+namespace fs = std::filesystem;
+
+int main() {
+    if (fs::create_directory("MyFolder")) {
+        cout << "Directory created";
+    } else {
+        cout << "Directory already exists or could not be created";
+    }
+
+    return 0;
+}
+
+Output
+
+When the directory is created successfully:
+
+Directory created
+
+The directory is created relative to the program's current working directory.
+
+7. Advantages of Filesystem
+
+- Makes file and directory management easier.
+- Provides cross-platform path handling.
+- Helps check whether files and directories exist.
+- Supports directory creation and removal.
+- Provides information about files and paths.
+
+8. Important Points
+
+- The filesystem library became part of the C++ standard library in C++17.
+- Use the "<filesystem>" header.
+- Its namespace is "std::filesystem".
+- File operations can fail because of permissions, missing paths, or other operating-system errors.
+- Some filesystem functions can throw "std::filesystem::filesystem_error".
+
+9. Interview Question
+
+Q: What is the Filesystem Library in C++17?
+
+Answer: The Filesystem Library provides functions and classes to manage files, directories, and paths in a convenient and portable way.
