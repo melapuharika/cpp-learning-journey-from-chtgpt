@@ -3771,3 +3771,121 @@ Think of "{}" as an empty box. When you write:
 std::println("I am {} years old", 20);
 
 The value "20" fills the empty box, and the sentence is printed on the screen.
+
+
+### topic 34
+
+C++23 – std::generator
+
+1. What is "std::generator"?
+
+"std::generator" is a C++23 feature that allows a function to produce a sequence of values one at a time, whenever they are requested.
+
+It uses coroutines to generate values lazily, rather than creating and storing the entire sequence in advance.
+
+Header file:
+
+#include <generator>
+
+2. Why do we use "std::generator"?
+
+Suppose we want to generate numbers from 1 to 1000.
+
+We could store all the numbers in a vector, or we could use a generator to produce each number when needed.
+
+Generators are useful for:
+
+- Producing sequences of values.
+- Processing data one item at a time.
+- Avoiding the need to store an entire generated sequence.
+- Writing coroutine-based code more clearly.
+
+3. Important syntax
+
+std::generator<int> numbers()
+{
+    co_yield 10;
+    co_yield 20;
+    co_yield 30;
+}
+
+- "std::generator<int>" means the generator produces integer values.
+- "co_yield" produces a value and suspends the coroutine.
+- When the next value is requested, execution resumes after the previous "co_yield".
+
+4. Example program
+
+#include <iostream>
+#include <generator>
+
+std::generator<int> numbers()
+{
+    for (int i = 1; i <= 5; i++)
+    {
+        co_yield i;
+    }
+}
+
+int main()
+{
+    for (int number : numbers())
+    {
+        std::cout << number << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+1 2 3 4 5
+
+5. Explanation
+
+1. "std::generator<int>" specifies that the generated values are integers.
+2. "numbers()" is the generator function.
+3. The loop generates values from 1 through 5.
+4. "co_yield i" produces the current value and suspends the coroutine.
+5. The range-based "for" loop requests each value and prints it.
+6. After the fifth value, the generator finishes.
+
+6. Difference between "return" and "co_yield"
+
+"return"| "co_yield"
+Returns from a function| Produces a value and suspends a coroutine
+Ends an ordinary function call| Allows execution to resume later
+Commonly returns a final result| Can produce multiple values over time
+
+7. Difference between "std::vector" and "std::generator"
+
+"std::vector"| "std::generator"
+Stores elements in a container| Produces values on demand
+Can hold all elements at once| Can generate values one at a time
+Supports indexed access, such as "v[0]"| Does not provide ordinary vector-style indexed access
+Useful for storing and reusing data| Useful for generating sequences lazily
+
+8. Advantages of "std::generator"
+
+- Supports lazy evaluation.
+- Produces values one at a time.
+- Can avoid storing an entire generated sequence.
+- Makes sequence-generation logic easier to express.
+- Integrates with C++ coroutine functionality.
+
+9. Important points
+
+- "std::generator" was introduced in C++23.
+- Its header file is "<generator>".
+- It uses coroutine syntax such as "co_yield".
+- It requires compiler and standard-library support for C++23 "std::generator".
+- A generator does not automatically make every program faster; performance depends on the task.
+
+10. Interview question
+
+Q: What is "std::generator" in C++23?
+
+Answer: "std::generator" is a coroutine-based C++23 type that lazily produces a sequence of values using "co_yield", allowing each value to be generated when requested.
+
+Easy real-life example
+
+Imagine a vending machine that gives you one chocolate whenever you request one. It does not need to hand you all the chocolates at once. Similarly, a generator produces values one at a time when requested.
