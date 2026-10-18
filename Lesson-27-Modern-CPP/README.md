@@ -1459,3 +1459,67 @@ TrafficLight::GREEN
 Q: What is "enum class" in C++?
 
 "enum class" is a type-safe enumeration used to group related named constants under a common type.
+
+
+### topic 11
+
+C++14
+
+1. What is C++14?
+
+C++14 is a version of the C++ programming language standard released in 2014. It introduced improvements and new features to C++11.
+
+2. Important Features of C++14
+
+- Binary Literals: Represent numbers in binary format using "0b".
+- Digit Separators: Use apostrophes to make large numbers easier to read.
+- Generic Lambdas: Use "auto" in lambda function parameters.
+- Return Type Deduction: The compiler can automatically determine a function's return type using "auto".
+- Variable Templates: Define variables using templates.
+- std::make_unique: Create unique pointers easily.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 0b1010;
+
+    cout << number;
+
+    return 0;
+}
+
+Output
+
+10
+
+Explanation
+
+- "0b1010" represents the binary number 1010.
+- Its decimal value is 10.
+- "cout" displays the value on the screen.
+
+4. Compile Using C++14
+
+Use the following command with the G++ compiler:
+
+g++ -std=c++14 main.cpp -o main
+
+On Windows PowerShell, run the program using:
+
+.\main.exe
+
+5. Advantages of C++14
+
+- Improves C++11 features.
+- Makes code easier to write and read.
+- Supports useful features for modern C++ programming.
+- Helps developers write more flexible code.
+
+6. Interview Question
+
+Q: What is C++14? Name any three features.
+
+Answer: C++14 is a C++ language standard released in 2014. Three features are binary literals, generic lambdas, and "std::make_unique".
