@@ -2136,3 +2136,112 @@ A variant can hold only one of its alternative types at a time. Use "std::get_if
 Q: What is "std::variant" in C++17?
 
 Answer: "std::variant" is a type-safe container that stores a value of one type from a predefined list of alternative types.
+
+
+### topic 19
+
+std::any in C++17
+
+1. What is std::any?
+
+"std::any" is a feature introduced in C++17 that allows a variable to store a value of almost any copy-constructible type.
+
+Unlike "std::variant", which accepts only a predefined list of types, "std::any" can hold different types without listing them in advance.
+
+2. Header File
+
+#include <any>
+
+3. Syntax
+
+std::any value;
+
+The variable "value" can store values of different types during its lifetime.
+
+4. Example Program
+
+#include <iostream>
+#include <any>
+#include <string>
+using namespace std;
+
+int main() {
+    any data = 100;
+    cout << any_cast<int>(data) << endl;
+
+    data = 5.5;
+    cout << any_cast<double>(data) << endl;
+
+    data = string("Hello");
+    cout << any_cast<string>(data) << endl;
+
+    return 0;
+}
+
+Output
+
+100
+5.5
+Hello
+
+5. Explanation
+
+- "any data = 100;" stores an integer.
+- "any_cast<int>(data)" retrieves the integer value.
+- "data = 5.5;" replaces the stored value with a double.
+- "data = string("Hello");" replaces it with a string.
+- The type does not need to be specified when declaring "std::any".
+
+6. Important Functions
+
+- "std::any_cast<T>(value)" — retrieves the stored value as type "T". It throws "std::bad_any_cast" if the type does not match.
+- "value.has_value()" — checks whether a value is stored.
+- "value.reset()" — removes the stored value.
+- "value.type()" — returns type information about the stored value.
+
+7. Example Using has_value()
+
+#include <iostream>
+#include <any>
+using namespace std;
+
+int main() {
+    any data = 50;
+
+    if (data.has_value()) {
+        cout << "Value is available";
+    }
+
+    return 0;
+}
+
+Output
+
+Value is available
+
+8. Difference Between std::any and std::variant
+
+"std::any"| "std::variant"
+Can hold different types without listing them in advance.| Holds one of a predefined list of types.
+Uses "any_cast" to retrieve the stored value.| Uses "get", "get_if", or other variant operations.
+Incorrect casts can throw "std::bad_any_cast".| Incorrect "get" access can throw "std::bad_variant_access".
+Useful when the stored type is not known in advance.| Useful when all possible types are known in advance.
+
+9. Advantages of std::any
+
+- Stores values of many different types.
+- Allows the stored type to change during runtime.
+- Useful when the exact type is not known in advance.
+- Provides a standard alternative to some uses of "void*".
+
+10. Important Point
+
+"std::any" was introduced in C++17 and is available through the "<any>" header.
+
+It can store copy-constructible types. Always use the correct type with "any_cast" to avoid "std::bad_any_cast" exceptions.
+
+11. Interview Question
+
+Q: What is "std::any" in C++17?
+
+Answer: "std::any" is a standard library class that can store a value of almost any copy-constructible type and retrieve it using "std::any_cast".
