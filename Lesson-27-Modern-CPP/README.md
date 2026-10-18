@@ -2520,3 +2520,91 @@ Note: Some C++20 features require newer compiler versions and standard library s
 Q: What is C++20? Name any three important features.
 
 Answer: C++20 is a C++ language standard released in 2020. Three important features are concepts, ranges, and modules.
+
+
+### topic 23
+
+Concepts in C++20
+
+1. What are Concepts?
+
+Concepts are a feature introduced in C++20 that allow us to specify requirements for template types.
+
+They help ensure that a type supports the operations required by a template function or class.
+
+In simple words, concepts check whether a type meets the conditions needed by a template.
+
+2. Syntax
+
+template <typename T>
+concept ConceptName = condition;
+
+A concept can then be used to restrict a template parameter.
+
+template <typename T>
+requires ConceptName<T>
+void functionName(T value) {
+    // Code
+}
+
+3. Example Program
+
+#include <iostream>
+#include <concepts>
+using namespace std;
+
+template <typename T>
+concept Numeric = is_arithmetic_v<T>;
+
+template <Numeric T>
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    cout << add(10, 20) << endl;
+    cout << add(2.5, 3.5) << endl;
+
+    return 0;
+}
+
+Output
+
+30
+6
+
+4. Explanation
+
+- "#include <concepts>" includes standard library concepts.
+- "Numeric" is a user-defined concept name.
+- "is_arithmetic_v<T>" checks whether "T" is an arithmetic type, such as an integer or floating-point type.
+- "template <Numeric T>" restricts "T" to types that satisfy the "Numeric" concept.
+- "add()" adds two values of the same type.
+- Both integer and floating-point arguments satisfy the requirement.
+
+5. Example of a Type That Does Not Satisfy the Concept
+
+add("Hello", "World");
+
+This call does not satisfy the "Numeric" concept because string literals are not arithmetic types. The compiler rejects the call.
+
+6. Advantages of Concepts
+
+- Specify template requirements clearly.
+- Improve compiler error messages.
+- Prevent unsuitable types from being used with templates.
+- Make template code easier to understand.
+- Improve code readability and maintainability.
+
+7. Important Points
+
+- Concepts were introduced in C++20.
+- The "concept" keyword is used to define a concept.
+- Concepts can be used with template parameters and "requires" clauses.
+- A concept checks whether a type satisfies specified requirements; it does not create a new data type.
+
+8. Interview Question
+
+Q: What are concepts in C++20?
+
+Answer: Concepts are named compile-time constraints that specify requirements for template arguments. They help restrict templates to suitable types and improve error messages.
