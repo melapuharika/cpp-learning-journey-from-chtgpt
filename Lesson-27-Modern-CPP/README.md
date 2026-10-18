@@ -1402,3 +1402,60 @@ Output:
 Q: What is "decltype" in C++?
 
 "decltype" is a keyword used to determine the type of a variable or expression.
+
+
+### topic 10 
+
+1. What is enum class?
+
+"enum class" is a C++ feature used to group related named constants together.
+
+Example: Traffic lights have three states: RED, YELLOW, and GREEN.
+
+2. Example
+
+#include <iostream>
+using namespace std;
+
+enum class TrafficLight {
+    RED,
+    YELLOW,
+    GREEN
+};
+
+int main() {
+    TrafficLight light = TrafficLight::RED;
+
+    cout << "Stop!";
+
+    return 0;
+}
+
+Output:
+
+Stop!
+
+3. Explanation
+
+- "enum class TrafficLight" creates a group of named values.
+- "RED", "YELLOW", "GREEN" are the values.
+- "TrafficLight::RED" accesses the RED value.
+- "light" stores the selected traffic light state.
+
+4. Advantages
+
+1. Groups related constants.
+2. Avoids many naming conflicts.
+3. Provides stronger type safety than ordinary "enum".
+
+5. Important Point
+
+Always access the value using its enum name and scope:
+
+TrafficLight::GREEN
+
+6. Interview Question
+
+Q: What is "enum class" in C++?
+
+"enum class" is a type-safe enumeration used to group related named constants under a common type.
