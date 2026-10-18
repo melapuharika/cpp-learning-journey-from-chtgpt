@@ -1756,3 +1756,94 @@ On Windows PowerShell, run:
 Q: What is C++17? Name any three features.
 
 Answer: C++17 is a C++ language standard released in 2017. Three features are structured bindings, "if constexpr", and "std::optional".
+
+
+### topic 15
+
+Structured Bindings in C++17
+
+1. What are Structured Bindings?
+
+Structured bindings are a feature introduced in C++17 that allows us to unpack the elements of an object into separate variables.
+
+They make it easier to access multiple values stored in pairs, tuples, arrays, and certain other objects.
+
+2. Syntax
+
+auto [variable1, variable2] = object;
+
+- "auto" allows the compiler to deduce the types.
+- "[variable1, variable2]" declares separate names for the elements.
+- "object" is the object whose elements we want to access.
+
+3. Example Program
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+int main() {
+    pair<int, string> student = {1, "Harika"};
+
+    auto [id, name] = student;
+
+    cout << id << endl;
+    cout << name << endl;
+
+    return 0;
+}
+
+Output
+
+1
+Harika
+
+4. Explanation
+
+- "pair<int, string>" stores two values: an integer and a string.
+- "student" contains "1" and ""Harika"".
+- "auto [id, name] = student;" creates separate variables for the two elements.
+- "id" contains "1".
+- "name" contains ""Harika"".
+
+5. Example Using an Array
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[] = {10, 20, 30};
+
+    auto [a, b, c] = numbers;
+
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+
+    return 0;
+}
+
+Output
+
+10
+20
+30
+
+6. Advantages of Structured Bindings
+
+- Make code shorter and more readable.
+- Allow multiple values to be accessed easily.
+- Reduce the need to access elements individually.
+- Work with arrays, pairs, tuples, and suitable class or structure types.
+
+7. Important Point
+
+Structured bindings were introduced in C++17.
+
+When using "auto [a, b] = object;", the variables are initialized from the object's elements. Using "auto& [a, b] = object;" instead creates bindings that refer to the original elements.
+
+8. Interview Question
+
+Q: What are structured bindings in C++17?
+
+Answer: Structured bindings allow multiple elements of an object to be unpacked into separate named variables, making code easier to read and write.
