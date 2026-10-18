@@ -1681,3 +1681,78 @@ In C++14, a function using deduced return types must have its return type determ
 Q: What is return type deduction in C++14?
 
 Answer: Return type deduction allows the compiler to automatically determine a function's return type from its return statement when the function is declared with "auto".
+
+
+### topic 14
+
+C++17
+
+1. What is C++17?
+
+C++17 is a version of the C++ programming language standard released in 2017. It introduced new features and improvements that make C++ programming easier, safer, and more readable.
+
+2. Important Features of C++17
+
+1. Structured Bindings: Store multiple values from an object in separate variables.
+2. if constexpr: Select code at compile time based on a condition.
+3. Inline Variables: Define variables in header files more conveniently.
+4. std::optional: Represent a value that may or may not exist.
+5. std::variant: Store one value from a set of different types.
+6. std::string_view: View a string without copying its characters.
+7. Filesystem Library: Work with files and directories.
+8. Fold Expressions: Apply operators to parameter packs in variadic templates.
+9. Class Template Argument Deduction (CTAD): Let the compiler deduce class template arguments.
+10. std::any: Store a value of almost any copyable type.
+
+3. Example Program — Structured Bindings
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+int main() {
+    pair<int, string> student = {1, "Harika"};
+
+    auto [id, name] = student;
+
+    cout << id << endl;
+    cout << name << endl;
+
+    return 0;
+}
+
+Output
+
+1
+Harika
+
+4. Explanation
+
+- "pair<int, string>" stores two values: an integer and a string.
+- "student" contains the values "1" and ""Harika"".
+- "auto [id, name]" uses structured bindings to access both values through separate variables.
+- "cout" displays the values.
+
+5. Advantages of C++17
+
+- Makes code more readable.
+- Reduces unnecessary code.
+- Provides useful standard library features.
+- Improves template programming.
+- Makes working with files and directories easier.
+
+6. How to Compile Using C++17
+
+Use this command with the G++ compiler:
+
+g++ -std=c++17 main.cpp -o main
+
+On Windows PowerShell, run:
+
+.\main.exe
+
+7. Interview Question
+
+Q: What is C++17? Name any three features.
+
+Answer: C++17 is a C++ language standard released in 2017. Three features are structured bindings, "if constexpr", and "std::optional".
