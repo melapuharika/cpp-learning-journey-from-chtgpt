@@ -2450,3 +2450,73 @@ The fold expression multiplies all the arguments: "2 * 3 * 4 = 24".
 Q: What are fold expressions in C++17?
 
 Answer: Fold expressions allow an operator to be applied across the elements of a parameter pack, simplifying operations in variadic templates.
+
+
+### topic 22
+
+C++20
+
+1. What is C++20?
+
+C++20 is a version of the C++ programming language standard released in 2020. It introduced several important features that improve modern C++ programming.
+
+2. Important Features of C++20
+
+1. Concepts — Specify requirements for template types.
+2. Ranges — Work with sequences of elements using a more convenient interface.
+3. Coroutines — Suspend and resume function execution.
+4. Modules — Organize and reuse code without relying only on traditional header inclusion.
+5. Three-Way Comparison Operator ("<=>") — Compare two values and determine their ordering.
+6. Designated Initializers — Initialize specific members of an aggregate by name.
+7. "consteval" — Require a function call to be evaluated at compile time.
+8. "constinit" — Require static or thread-local variables to be initialized during static initialization.
+9. "std::span" — Provide a non-owning view of a contiguous sequence of elements.
+10. "std::format" — Format text using a convenient format-string interface.
+11. Calendar and Time-Zone Support — Provide additional date and time facilities.
+12. "std::jthread" — Provide a joining thread with automatic joining and stop-token support.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 100;
+
+    cout << "C++20 Example" << endl;
+    cout << "Number: " << number << endl;
+
+    return 0;
+}
+
+Output
+
+C++20 Example
+Number: 100
+
+4. Advantages of C++20
+
+- Improves template programming through concepts.
+- Makes sequence processing easier with ranges.
+- Supports modern asynchronous programming through coroutines.
+- Introduces modules for code organization.
+- Provides useful additions to the standard library.
+- Improves code clarity and type safety.
+
+5. How to Compile Using C++20
+
+With a compatible G++ compiler, use:
+
+g++ -std=c++20 main.cpp -o main
+
+On Windows PowerShell, run:
+
+.\main.exe
+
+Note: Some C++20 features require newer compiler versions and standard library support.
+
+6. Interview Question
+
+Q: What is C++20? Name any three important features.
+
+Answer: C++20 is a C++ language standard released in 2020. Three important features are concepts, ranges, and modules.
