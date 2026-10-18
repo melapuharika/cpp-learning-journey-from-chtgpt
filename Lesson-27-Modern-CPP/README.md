@@ -3123,3 +3123,156 @@ Keyword| Purpose
 Q: What is "constinit" in C++20?
 
 Answer: "constinit" ensures that a variable with static or thread storage duration is initialized during static initialization. Unlike "const", it does not prevent the variable from being modified later.
+
+
+### topic 30
+
+C++20 – "std::span"
+
+1. What is "std::span"?
+
+"std::span" is a C++20 feature that provides a view of a continuous sequence of elements without owning or copying those elements.
+
+In simple words, "std::span" lets us access a portion of an array or vector easily.
+
+Header file:
+
+#include <span>
+
+2. Why do we use "std::span"?
+
+Suppose we have an array of 5 numbers. We want to pass those numbers to a function.
+
+Without "std::span", we might pass the array and its size separately.
+
+With "std::span", we can pass them together as one object.
+
+3. Example using "std::span"
+
+#include <iostream>
+#include <span>
+#include <array>
+using namespace std;
+
+void display(span<int> numbers)
+{
+    for (int number : numbers)
+    {
+        cout << number << " ";
+    }
+}
+
+int main()
+{
+    array<int, 5> arr = {10, 20, 30, 40, 50};
+
+    display(arr);
+
+    return 0;
+}
+
+Output:
+
+10 20 30 40 50
+
+4. Explanation
+
+- "#include <span>" provides the "std::span" feature.
+- "array<int, 5>" creates an array containing five integers.
+- "span<int> numbers" receives a view of the array's elements.
+- The range-based "for" loop accesses each element.
+- "display(arr)" passes a view of the array to the function.
+
+Important: "std::span" does not copy or own the elements. It refers to the original data.
+
+5. Using "std::span" with a portion of an array
+
+We can create a span that refers to only some elements.
+
+#include <iostream>
+#include <span>
+#include <array>
+using namespace std;
+
+int main()
+{
+    array<int, 5> arr = {10, 20, 30, 40, 50};
+
+    span<int> numbers(arr);
+
+    span<int> part = numbers.subspan(1, 3);
+
+    for (int number : part)
+    {
+        cout << number << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+20 30 40
+
+Here, "subspan(1, 3)" means start at index "1" and select "3" elements.
+
+Remember that array indexing starts from "0".
+
+6. Modifying elements through "std::span"
+
+A span can modify the original elements when it refers to a non-const sequence.
+
+#include <iostream>
+#include <span>
+#include <array>
+using namespace std;
+
+int main()
+{
+    array<int, 3> arr = {10, 20, 30};
+
+    span<int> numbers(arr);
+
+    numbers[0] = 100;
+
+    cout << arr[0];
+
+    return 0;
+}
+
+Output:
+
+100
+
+Changing "numbers[0]" also changes "arr[0]" because the span refers to the same data.
+
+7. Advantages of "std::span"
+
+1. It avoids copying array elements.
+2. It makes passing arrays and vectors to functions easier.
+3. It provides access to the sequence's size using ".size()".
+4. It can represent a portion of a sequence using ".subspan()".
+5. It makes code cleaner when working with continuous data.
+
+8. Important points
+
+- "std::span" was introduced in C++20.
+- It is a non-owning view; it does not manage the lifetime of the underlying data.
+- The original array, vector, or other data source must remain valid while the span is being used.
+- A span does not automatically grow when a vector grows.
+- "std::span<int>" allows modification of elements; "std::span<const int>" provides read-only access through the span.
+- Accessing elements outside the span's valid range is unsafe; "operator[]" does not guarantee bounds checking.
+
+9. Interview question
+
+Q: What is the difference between "std::span" and "std::vector"?
+
+Answer:
+
+- "std::vector" owns and manages a dynamically sized collection of elements.
+- "std::span" is a non-owning view of existing continuous elements.
+- A vector can grow or shrink; a span does not manage the size of the underlying collection.
+
+Easy example
+
+Think of a "vector" as a box containing toys. A "span" is like a window through which you can see some of those toys without owning or copying them.
