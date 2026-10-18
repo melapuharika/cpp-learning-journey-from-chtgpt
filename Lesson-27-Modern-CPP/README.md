@@ -2798,3 +2798,88 @@ A working coroutine generally needs:
 Q: What are coroutines in C++20?
 
 Answer: Coroutines are functions that can suspend execution and resume later. C++20 supports them through "co_await", "co_yield", and "co_return", making them useful for tasks, generators, and asynchronous programming.
+
+
+### topic 26
+
+Modules in C++20
+
+1. What are Modules?
+
+Modules are a feature introduced in C++20 that help organize and reuse code across different parts of a program.
+
+They provide an alternative to traditional header-based code sharing using "#include".
+
+Modules can improve compilation efficiency and help avoid some problems associated with header files.
+
+2. Important Module Keywords
+
+- "export" — makes a declaration available to code that imports the module.
+- "module" — declares a module or module-related unit.
+- "import" — imports a module or header unit.
+
+3. Example Program
+
+A simple module can be divided into two files.
+
+File 1: "math.cppm"
+
+export module math;
+
+export int add(int a, int b) {
+    return a + b;
+}
+
+File 2: "main.cpp"
+
+import math;
+#include <iostream>
+
+int main() {
+    std::cout << add(10, 20);
+    return 0;
+}
+
+Output
+
+30
+
+Note: This example illustrates the module syntax. The module interface must be compiled before the importing source file, using compiler-specific module commands. Simply compiling "main.cpp" alone may not work.
+
+4. Explanation
+
+- "export module math;" declares the module named "math".
+- "export int add(...)" makes the "add()" function available to importing code.
+- "import math;" imports the module.
+- "add(10, 20)" returns "30".
+- "std::cout" displays the result.
+
+5. Advantages of Modules
+
+- Organize large programs into reusable units.
+- Reduce reliance on traditional header files.
+- Can improve compilation times in suitable projects.
+- Help control which declarations are exposed to other code.
+- Reduce some problems caused by repeated header inclusion and macro interactions.
+
+6. Modules vs Header Files
+
+Modules| Header files
+Use "export module" and "import".| Commonly use "#include".
+Can control which declarations are exported.| Included declarations are processed through textual inclusion.
+May improve compilation efficiency.| Can increase repeated parsing in large projects.
+Introduced in C++20.| Used in C and earlier C++ standards too.
+
+7. Important Points
+
+- Modules were introduced in C++20.
+- A module interface declares what a module exports.
+- Module compilation support and commands differ between compilers.
+- Modules do not mean that header files are no longer supported.
+- "import" and "#include" serve different purposes.
+
+8. Interview Question
+
+Q: What are modules in C++20?
+
+Answer: Modules are a feature that allows code to be organized into named units and reused through imports, providing an alternative to traditional header-based inclusion.
