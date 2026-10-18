@@ -2964,3 +2964,85 @@ Expression| Result
 Q: What is the three-way comparison operator in C++20?
 
 Answer: The "<=>" operator compares two values and produces an ordering result indicating whether they are less than, equal to, or greater than each other.
+
+
+### topic 28
+
+consteval in C++20
+
+1. What is consteval?
+
+"consteval" is a keyword introduced in C++20 that declares an immediate function.
+
+An immediate function must be evaluated at compile time whenever it is called in a potentially evaluated context.
+
+It is useful when a calculation must be completed during compilation rather than at runtime.
+
+2. Syntax
+
+consteval returnType functionName(parameters) {
+    // Code
+}
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+consteval int square(int n) {
+    return n * n;
+}
+
+int main() {
+    constexpr int result = square(5);
+
+    cout << result;
+
+    return 0;
+}
+
+Output
+
+25
+
+4. Explanation
+
+- "consteval" declares "square()" as an immediate function.
+- "square(5)" calculates "5 * 5".
+- The result "25" is computed at compile time.
+- "constexpr int result" stores the compile-time result.
+- "cout" displays "25".
+
+5. Example of an Invalid Call
+
+int n = 5;
+int result = square(n);
+
+This call is invalid because "n" is an ordinary runtime variable, and its value is not known as a constant expression at compile time.
+
+6. Difference Between consteval and constexpr
+
+"consteval"| "constexpr"
+Declares an immediate function.| Declares a function that can be evaluated at compile time when the context and arguments allow it.
+Calls must satisfy compile-time evaluation requirements.| Can also be called at runtime.
+Introduced in C++20.| Introduced in C++11 and enhanced in later standards.
+
+7. Advantages of consteval
+
+- Guarantees compile-time evaluation for valid calls.
+- Helps detect errors during compilation.
+- Useful for calculations that must be known at compile time.
+- Makes compile-time requirements explicit.
+
+8. Important Points
+
+- "consteval" was introduced in C++20.
+- It is used to declare immediate functions.
+- A call must produce a valid compile-time result.
+- It is stricter than "constexpr" for function calls.
+
+9. Interview Question
+
+Q: What is "consteval" in C++20?
+
+Answer: "consteval" declares an immediate function whose calls must be evaluated at compile time, provided the call appears in a potentially evaluated context and satisfies the language requirements.
