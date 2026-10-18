@@ -1592,3 +1592,92 @@ Generic lambdas were introduced in C++14. The compiler generates suitable call o
 Q: What is a generic lambda in C++14?
 
 Answer: A generic lambda is a lambda expression that uses "auto" in its parameter list, allowing it to accept arguments of different types.
+
+
+### topic 13
+
+Return Type Deduction in C++14
+
+1. What is Return Type Deduction?
+
+Return Type Deduction is a feature that allows the compiler to automatically determine the return type of a function using "auto".
+
+This feature was introduced for ordinary function return types in C++14.
+
+2. Syntax
+
+auto functionName() {
+    return value;
+}
+
+The compiler determines the return type based on the returned value.
+
+3. Example Program
+
+#include <iostream>
+using namespace std;
+
+auto add() {
+    return 10 + 20;
+}
+
+int main() {
+    cout << add();
+
+    return 0;
+}
+
+Output
+
+30
+
+4. Explanation
+
+- "auto add()" defines a function whose return type is deduced automatically.
+- "return 10 + 20;" returns the integer value "30".
+- The compiler determines that the function's return type is "int".
+- "cout << add();" displays the result.
+
+5. Example with Different Data Types
+
+#include <iostream>
+using namespace std;
+
+auto getNumber() {
+    return 10;
+}
+
+auto getPrice() {
+    return 99.5;
+}
+
+int main() {
+    cout << getNumber() << endl;
+    cout << getPrice() << endl;
+
+    return 0;
+}
+
+Output
+
+10
+99.5
+
+Here, the compiler deduces "int" for "getNumber()" and "double" for "getPrice()".
+
+6. Advantages
+
+- Reduces the need to write explicit return types.
+- Makes code shorter and easier to maintain.
+- Helps when the return type is complex.
+- Supports modern C++ programming.
+
+7. Important Point
+
+In C++14, a function using deduced return types must have its return type determined from its return statements. For a function with multiple return statements, their deduced types must be compatible.
+
+8. Interview Question
+
+Q: What is return type deduction in C++14?
+
+Answer: Return type deduction allows the compiler to automatically determine a function's return type from its return statement when the function is declared with "auto".
