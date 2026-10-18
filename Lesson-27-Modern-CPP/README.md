@@ -1920,3 +1920,114 @@ Used for ordinary runtime decisions.| Particularly useful for compile-time decis
 Q: What is "if constexpr" in C++17?
 
 Answer: "if constexpr" is a compile-time conditional statement that allows the compiler to select a branch based on a constant expression. It is especially useful in template programming.
+
+
+### topic 17
+std::optional in C++17
+
+1. What is std::optional?
+
+"std::optional" is a feature introduced in C++17 that represents a value that may or may not exist.
+
+It can either contain a value or be empty.
+
+It is useful when a function might not have a valid result to return.
+
+2. Header File
+
+#include <optional>
+
+3. Syntax
+
+std::optional<int> number = 10;
+
+Here, "number" contains the integer value "10".
+
+An empty optional can be declared as:
+
+std::optional<int> number;
+
+4. Example Program
+
+#include <iostream>
+#include <optional>
+using namespace std;
+
+optional<int> getNumber(bool found) {
+    if (found) {
+        return 100;
+    }
+
+    return nullopt;
+}
+
+int main() {
+    auto result = getNumber(true);
+
+    if (result.has_value()) {
+        cout << result.value();
+    } else {
+        cout << "No value found";
+    }
+
+    return 0;
+}
+
+Output
+
+100
+
+5. Explanation
+
+- "optional<int>" can contain an integer or no value.
+- "getNumber(true)" returns the value "100".
+- "nullopt" represents an empty optional.
+- "has_value()" checks whether a value exists.
+- "value()" retrieves the stored value when present.
+
+6. Important Functions
+
+- "has_value()" — checks whether a value exists.
+- "value()" — returns the stored value; throws "std::bad_optional_access" if empty.
+- "value_or(defaultValue)" — returns the stored value or a default value.
+- "reset()" — makes the optional empty.
+- "std::nullopt" — represents the absence of a value.
+
+7. Example Using value_or()
+
+#include <iostream>
+#include <optional>
+using namespace std;
+
+int main() {
+    optional<int> age;
+
+    cout << age.value_or(18);
+
+    return 0;
+}
+
+Output
+
+18
+
+Since "age" is empty, "value_or(18)" returns the default value "18".
+
+8. Advantages of std::optional
+
+- Represents missing values clearly.
+- Avoids using special values such as "-1" to indicate that no result exists.
+- Makes function results easier to understand.
+- Helps handle cases where a value may be unavailable.
+
+9. Important Point
+
+"std::optional" was introduced in C++17 and is defined in the "<optional>" header.
+
+An optional value must be checked before accessing it. Calling "value()" on an empty optional throws an exception.
+
+10. Interview Question
+
+Q: What is "std::optional" in C++17?
+
+Answer: "std::optional" is a standard library type that represents a value that may or may not be present. It is useful for functions that may not always return a valid result.
