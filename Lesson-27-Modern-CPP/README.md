@@ -3425,3 +3425,160 @@ Q: What is C++23?
 
 Answer: C++23 is a version of the C++ programming language standardized in 2023. It builds on C++20 by adding language improvements and Standard Library features such as "std::expected", "std::generator", "std::print", and "std::ranges::to".
     
+### topic 32
+
+C++23 – "std::expected"
+
+1. What is "std::expected"?
+
+"std::expected" is a C++23 feature that allows a function to return either a successful result or an error.
+
+Header file:
+
+#include <expected>
+
+For example, imagine a function that divides two numbers. If the divisor is zero, the operation cannot succeed. Instead of returning an invalid result, the function can return an error message.
+
+2. Why do we use "std::expected"?
+
+Normally, a function returns a result. But sometimes an operation can fail.
+
+Examples:
+
+- Dividing a number by zero.
+- Reading a file that does not exist.
+- Processing invalid user input.
+- Looking up a student ID that cannot be found.
+
+"std::expected" helps us handle success and failure in one return value.
+
+3. Basic syntax
+
+std::expected<ResultType, ErrorType>
+
+- "ResultType" — the type of the successful result.
+- "ErrorType" — the type of the error information.
+
+For example:
+
+std::expected<int, std::string>
+
+This means the function can return either an "int" result or a "std::string" error.
+
+4. Example program
+
+#include <iostream>
+#include <expected>
+#include <string>
+
+using namespace std;
+
+expected<int, string> divide(int a, int b)
+{
+    if (b == 0)
+    {
+        return unexpected(string("Cannot divide by zero"));
+    }
+
+    return a / b;
+}
+
+int main()
+{
+    auto result = divide(10, 2);
+
+    if (result)
+    {
+        cout << "Result: " << *result;
+    }
+    else
+    {
+        cout << "Error: " << result.error();
+    }
+
+    return 0;
+}
+
+Output:
+
+Result: 5
+
+5. Explanation
+
+1. "expected<int, string>" says that the function returns an integer on success or a string on failure.
+2. "divide(int a, int b)" receives two numbers.
+3. "if (b == 0)" checks whether the divisor is zero.
+4. "unexpected(string("Cannot divide by zero"))" returns the error case.
+5. "return a / b" returns the successful result.
+6. "if (result)" checks whether the result contains a value.
+7. "*result" accesses the successful value.
+8. "result.error()" accesses the error when the operation fails.
+
+6. What happens when division fails?
+
+Change this line:
+
+auto result = divide(10, 2);
+
+to:
+
+auto result = divide(10, 0);
+
+Output:
+
+Error: Cannot divide by zero
+
+The program handles the error instead of trying to divide by zero.
+
+7. Important functions
+
+Function| Purpose
+"has_value()"| Checks whether a successful value exists
+"value()"| Returns the value; throws "std::bad_expected_access" if there is an error
+"error()"| Accesses the stored error
+"value_or()"| Returns the value if available, otherwise a fallback value
+"operator bool"| Checks whether the object contains a successful value
+"operator*"| Accesses the successful value
+
+Example:
+
+int answer = result.value_or(0);
+
+If the operation succeeds, "answer" gets the result. Otherwise, it gets "0".
+
+8. Advantages of "std::expected"
+
+- Handles success and failure in a structured way.
+- Makes error handling explicit.
+- Avoids using special return values such as "-1" to represent errors.
+- Keeps the result and its associated error in one return object.
+- Helps make function behavior easier to understand.
+
+9. Important points to remember
+
+- "std::expected" was introduced in C++23.
+- Its header is "<expected>".
+- It is a template type: "std::expected<ValueType, ErrorType>".
+- It is not an automatic replacement for exceptions in every situation.
+- Calling ".value()" when an error is present throws an exception.
+- Compiler and standard-library support for C++23 must be checked.
+
+10. Interview question
+
+Q: What is the difference between "std::expected" and "std::optional"?
+
+Answer:
+
+- "std::optional<T>" represents either a value of type "T" or no value.
+- "std::expected<T, E>" represents either a value of type "T" or an error of type "E".
+
+For example, "optional<int>" can tell us that a result is missing, while "expected<int, string>" can tell us why the operation failed.
+
+Easy example
+
+Think of ordering food online:
+
+- Success: Your food is delivered.
+- Failure: The restaurant is closed, and you receive a reason.
+
+"std::expected" can represent either the successful result or the reason for failure.
