@@ -3582,3 +3582,192 @@ Think of ordering food online:
 - Failure: The restaurant is closed, and you receive a reason.
 
 "std::expected" can represent either the successful result or the reason for failure.
+
+
+### topic 33
+
+C++23 – "std::print" and "std::println"
+
+1. What is "std::print"?
+
+"std::print" is a C++23 feature used to display formatted output on the screen.
+
+It is similar to "std::cout", but it makes inserting variables into text easier using "{}" placeholders.
+
+Header file:
+
+#include <print>
+
+2. Why do we use "std::print"?
+
+Using "std::cout":
+
+std::cout << "My age is " << 20;
+
+Using "std::print":
+
+std::print("My age is {}", 20);
+
+Both display the same text, but "std::print" provides a convenient way to format output.
+
+3. Example using "std::print"
+
+#include <print>
+
+int main()
+{
+    std::print("Hello, World!");
+
+    return 0;
+}
+
+Output:
+
+Hello, World!
+
+Explanation
+
+- "#include <print>" provides the printing functions.
+- "std::print()" displays formatted text.
+- ""Hello, World!"" is the text displayed.
+- "std::print" does not automatically add a newline.
+
+4. Using placeholders "{}"
+
+The "{}" symbol is a placeholder. It is replaced with the value of the corresponding argument.
+
+#include <print>
+#include <string>
+
+int main()
+{
+    std::string name = "Harika";
+    int age = 20;
+
+    std::print("Name: {}, Age: {}", name, age);
+
+    return 0;
+}
+
+Output:
+
+Name: Harika, Age: 20
+
+Explanation
+
+- The first "{}" is replaced by "name".
+- The second "{}" is replaced by "age".
+- Arguments are matched to placeholders in order.
+
+5. What is "std::println"?
+
+"std::println" is another C++23 function that prints formatted output and automatically adds a newline at the end.
+
+Example:
+
+#include <print>
+
+int main()
+{
+    std::println("Hello");
+    std::println("Welcome to C++23");
+
+    return 0;
+}
+
+Output:
+
+Hello
+Welcome to C++23
+
+Each call prints on a new line.
+
+6. Difference between "std::print" and "std::println"
+
+"std::print"| "std::println"
+Prints formatted output| Prints formatted output followed by a newline
+Does not automatically move to the next line| Automatically moves to the next line
+Useful for output on the same line| Useful for printing separate lines
+
+Example:
+
+std::print("Hello ");
+std::print("World");
+
+Output:
+
+Hello World
+
+Using "std::println":
+
+std::println("Hello");
+std::println("World");
+
+Output:
+
+Hello
+World
+
+7. Formatting numbers
+
+C++23 printing functions support format specifications.
+
+#include <print>
+
+int main()
+{
+    int number = 42;
+
+    std::println("Decimal: {}", number);
+    std::println("Hexadecimal: {:x}", number);
+    std::println("Binary: {:b}", number);
+
+    return 0;
+}
+
+Output:
+
+Decimal: 42
+Hexadecimal: 2a
+Binary: 101010
+
+Here:
+
+- "{}" displays the number normally.
+- "{:x}" displays it in hexadecimal.
+- "{:b}" displays it in binary.
+
+8. Advantages of "std::print"
+
+1. Makes formatted output easier to read.
+2. Reduces repeated stream insertion operators.
+3. Supports placeholders and format specifications.
+4. "std::println" automatically adds a newline.
+5. Helps produce cleaner output statements.
+
+9. Important points to remember
+
+- "std::print" and "std::println" were introduced in C++23.
+- Their header is "<print>".
+- "{}" is used to insert values into formatted text.
+- "std::print" does not automatically append a newline.
+- "std::println" appends a newline.
+- Your compiler and standard library must support these features. With GCC, select C++23 mode using "-std=c++23"; the flag alone does not guarantee that "<print>" is implemented.
+
+10. Interview question
+
+Q: What is the difference between "std::cout", "std::print", and "std::println"?
+
+Answer:
+
+- "std::cout" displays output using stream insertion operators such as "<<".
+- "std::print" displays formatted output using placeholders such as "{}".
+- "std::println" works similarly to "std::print" but automatically adds a newline.
+
+Easy example
+
+Think of "{}" as an empty box. When you write:
+
+std::println("I am {} years old", 20);
+
+The value "20" fills the empty box, and the sentence is printed on the screen.
