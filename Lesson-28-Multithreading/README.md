@@ -136,3 +136,142 @@ In this topic, we learned:
 - Advantages and Disadvantages
 - Important Terminology
 - Concurrency vs Parallelism
+
+
+### topic 2 
+
+Topic 2: Process vs Thread
+
+1. What is a Process?
+
+A process is a program that is currently being executed.
+
+When we open and run an application, the operating system creates a process for it.
+
+Examples:
+
+- Running Google Chrome
+- Running VS Code
+- Running Calculator
+- Running a Music Player
+
+Characteristics of a Process
+
+1. Each process has its own virtual address space.
+2. A process has its own system resources.
+3. Processes are generally isolated from each other.
+4. Processes communicate using Inter-Process Communication (IPC).
+
+2. What is a Thread?
+
+A thread is the smallest unit of execution within a process.
+
+A process can contain one or more threads. Threads perform different tasks within the same process.
+
+Example: YouTube Application
+
+- Thread 1 – Video playback.
+- Thread 2 – Audio processing.
+- Thread 3 – User interactions.
+- Thread 4 – Background loading.
+
+Characteristics of a Thread
+
+1. A process can contain multiple threads.
+2. Threads within the same process share its address space.
+3. Threads share global variables and dynamically allocated memory.
+4. Each thread has its own stack and execution state.
+5. Threads are generally lightweight compared to processes.
+
+3. Process vs Thread
+
+Process| Thread
+A running program| An execution unit within a process
+Has its own virtual address space| Shares the process address space
+Generally requires more resources| Generally requires fewer resources
+Communication uses IPC mechanisms| Can communicate through shared memory
+Isolated from other processes| Shares resources with other threads in the same process
+Failure is generally isolated| A thread failure can affect the entire process
+
+4. Memory Difference
+
+Process Memory
+
+- Each process has its own virtual address space.
+- One process normally cannot directly access another process's memory.
+- Processes can communicate through IPC mechanisms.
+
+Thread Memory
+
+- Threads within a process share the same address space.
+- They share global variables and dynamically allocated memory.
+- Each thread has its own stack, registers and execution state.
+
+5. Can a Process Have Multiple Threads?
+
+Yes. A single process can contain multiple threads.
+
+When a program starts, its main thread begins execution. Additional threads can be created to perform other tasks.
+
+6. Real-Life Example
+
+Consider a college:
+
+- College – Process
+- Teachers – Threads
+- Classes – Tasks
+
+A college has multiple teachers performing different tasks.
+
+Similarly, a process can contain multiple threads performing different tasks.
+
+7. Advantages of Threads
+
+1. Lightweight execution units.
+2. Better application responsiveness.
+3. Efficient communication through shared memory.
+4. Better utilization of multiple CPU cores.
+5. Support concurrent task execution.
+
+8. Important Interview Questions
+
+Q1. What is a process?
+
+A process is a program that is currently being executed.
+
+Q2. What is a thread?
+
+A thread is the smallest unit of execution within a process.
+
+Q3. Can a process have multiple threads?
+
+Yes, a process can contain multiple threads.
+
+Q4. Do threads share memory?
+
+Yes, threads within the same process share its address space, but each thread has its own stack and execution state.
+
+Q5. Which is lightweight, a process or a thread?
+
+A thread is generally lightweight compared to a process.
+
+Q6. Can two processes share memory?
+
+Yes, processes can share memory using inter-process communication mechanisms such as shared memory.
+
+Q7. What is the main difference between a process and a thread?
+
+A process has its own virtual address space, whereas threads within the same process share that address space.
+
+9. Lesson Summary
+
+In this topic, we learned:
+
+- Definition of Process.
+- Definition of Thread.
+- Characteristics of Process.
+- Characteristics of Thread.
+- Process vs Thread.
+- Process Memory vs Thread Memory.
+- Multiple Threads in a Process.
+- Advantages of Threads.
