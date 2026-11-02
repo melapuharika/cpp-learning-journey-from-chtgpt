@@ -898,6 +898,228 @@ In this topic, we learned:
 5. How to get thread IDs.
 6. How to use "hardware_concurrency()".
 
+### topic 5
+
+Topic 5: "join()" in C++
+
+1. What is "join()"?
+
+"join()" is a member function of the C++ "std::thread" class.
+
+It makes the calling thread wait until the target thread finishes its execution.
+
+In simple words, "join()" is used to wait for a thread to complete.
+
+2. Syntax
+
+threadObject.join();
+
+Example:
+
+thread t(task);
+t.join();
+
+Here, the main thread waits until thread "t" finishes.
+
+3. Simple Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Thread is working..." << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    t.join();
+
+    cout << "Main thread is finished." << endl;
+
+    return 0;
+}
+
+Output
+
+Thread is working...
+Main thread is finished.
+
+Explanation
+
+1. "#include <thread>" – Includes the thread library.
+2. "void task()" – Function executed by the new thread.
+3. "thread t(task);" – Creates a new thread.
+4. "t.join();" – Waits until thread "t" completes.
+5. The main thread continues after "join()" returns.
+
+4. Without "join()" vs With "join()"
+
+Without "join()"
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Thread running" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    cout << "Main running" << endl;
+
+    return 0;
+}
+
+Result: The program calls "std::terminate()" when the joinable thread object "t" is destroyed.
+
+With "join()"
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Thread running" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    cout << "Main running" << endl;
+
+    t.join();
+
+    return 0;
+}
+
+Possible Output
+
+Main running
+Thread running
+
+Or:
+
+Thread running
+Main running
+
+The order of the first two messages is not guaranteed because both threads may execute concurrently.
+
+However, the worker thread always finishes before "join()" returns.
+
+5. Multiple Threads with "join()"
+
+We can use "join()" for multiple threads.
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task1()
+{
+    cout << "Task 1 completed" << endl;
+}
+
+void task2()
+{
+    cout << "Task 2 completed" << endl;
+}
+
+int main()
+{
+    thread t1(task1);
+    thread t2(task2);
+
+    t1.join();
+    t2.join();
+
+    cout << "All tasks completed" << endl;
+
+    return 0;
+}
+
+Possible Output
+
+Task 1 completed
+Task 2 completed
+All tasks completed
+
+The order of Task 1 and Task 2 messages may change.
+
+But "All tasks completed" is printed only after both threads finish.
+
+6. Important Rules of "join()"
+
+1. "join()" can be called only when the thread object is joinable.
+2. We cannot call "join()" again after the same thread has already been joined.
+3. "join()" blocks the calling thread until the target thread completes.
+4. After "join()" returns, the target thread has finished execution.
+5. A joinable thread object must be joined or detached before destruction.
+
+7. Real-Life Example
+
+Imagine ordering food:
+
+- Task 1: Food preparation.
+- Task 2: Food delivery.
+- Main task: Receiving the food.
+
+We need to wait until the required work is complete.
+
+Similarly, "join()" makes one thread wait until another thread finishes.
+
+8. Interview Questions
+
+Q1. What is "join()" in C++?
+
+Answer: "join()" is a member function of "std::thread" that waits for the target thread to finish execution.
+
+Q2. Why do we use "join()"?
+
+Answer: To ensure that a thread completes before the calling thread continues.
+
+Q3. What happens if we don't call "join()" or "detach()"?
+
+Answer: If a joinable thread object is destroyed, the program calls "std::terminate()".
+
+Q4. Can we call "join()" twice on the same thread object?
+
+Answer: No. Calling "join()" when the thread is no longer joinable results in a "std::system_error".
+
+Q5. Does "join()" block the main thread?
+
+Answer: Yes. When called from the main thread, it waits until the target thread completes.
+
+9. Important Points
+
+- "join()" waits for a thread to finish.
+- It blocks the calling thread.
+- It does not create a new thread.
+- It does not detach a thread.
+- After joining, the thread object is no longer joinable.
+- Each joinable thread must be joined or detached before its object is destroyed.
+
+10. Lesson Summary
+
+In this topic, we learned:
+
+1. What "join()" is.
+2. Syntax of "join()".
+3. How to use "join()" with a single thread.
+4. How to use "join()" with multiple threads.
+5. Difference between using and not using "join()".
+6. Important rules and interview questions.
 
 
 
