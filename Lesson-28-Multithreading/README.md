@@ -1501,6 +1501,171 @@ In this topic, we learned:
 6. How mutex helps prevent race conditions.
 7. Why automatic mutex management is safer.
 
+### topic 8
+
+
+# Topic: std::unique_lock in C++
+
+## 1. Definition
+
+`std::unique_lock` is a C++ class template used to manage mutex locking in multithreaded programs.
+
+It follows the RAII (Resource Acquisition Is Initialization) principle.
+
+It is more flexible than `std::lock_guard` because it supports manual locking, unlocking and transferring lock ownership.
+
+## 2. Header File
+
+```cpp
+#include <mutex>
+```
+
+## 3. Why Do We Use unique_lock?
+
+- To protect shared resources.
+- To prevent race conditions.
+- To support manual locking and unlocking.
+- To support deferred locking.
+- To transfer lock ownership.
+- To provide flexible mutex management.
+
+## 4. Syntax
+
+```cpp
+std::mutex mtx;
+
+{
+    std::unique_lock<std::mutex> lock(mtx);
+
+    // Critical Section
+}
+```
+
+## 5. How Does It Work?
+
+1. Create a mutex object.
+2. Create a unique_lock object.
+3. The mutex gets locked automatically.
+4. Execute the critical section.
+5. You can manually unlock the mutex if needed.
+6. When the object goes out of scope, it unlocks the mutex if it still owns the lock.
+
+## 6. Example Program
+
+```cpp
+#include <iostream>
+#include <mutex>
+#include <thread>
+
+std::mutex mtx;
+
+void display()
+{
+    std::unique_lock<std::mutex> lock(mtx);
+
+    std::cout << "Thread is executing\n";
+
+    lock.unlock();
+
+    std::cout << "Mutex is unlocked\n";
+}
+
+int main()
+{
+    std::thread t1(display);
+
+    t1.join();
+
+    return 0;
+}
+```
+
+### Output
+
+```text
+Thread is executing
+Mutex is unlocked
+```
+
+## 7. Important Functions
+
+| Function | Purpose |
+|---|---|
+| `lock()` | Locks the mutex |
+| `unlock()` | Unlocks the mutex |
+| `try_lock()` | Tries to lock without waiting |
+| `owns_lock()` | Checks whether the lock is owned |
+| `release()` | Releases ownership without unlocking the mutex |
+| `mutex()` | Returns a pointer to the associated mutex |
+
+## 8. Deferred Locking
+
+Deferred locking means creating a unique_lock object without locking the mutex immediately.
+
+```cpp
+std::mutex mtx;
+
+std::unique_lock<std::mutex> lock(mtx, std::defer_lock);
+
+lock.lock();
+
+// Critical Section
+
+lock.unlock();
+```
+
+Here, `std::defer_lock` tells the constructor not to lock the mutex immediately.
+
+## 9. Advantages
+
+- Supports automatic locking and unlocking.
+- Allows manual locking and unlocking.
+- Supports deferred locking.
+- Supports transferring lock ownership.
+- Provides flexibility in multithreaded programming.
+- Provides exception safety.
+
+## 10. Limitations
+
+- Slightly more overhead than lock_guard.
+- More complex to understand.
+- Requires careful handling of manual unlocking.
+
+## 11. Difference Between lock_guard and unique_lock
+
+| Feature | lock_guard | unique_lock |
+|---|---|---|
+| Automatic locking | Yes | Yes |
+| Automatic unlocking | Yes | Yes |
+| Manual unlock | No | Yes |
+| Manual lock | No | Yes |
+| Deferred locking | No | Yes |
+| Try locking | No | Yes |
+| Ownership transfer | No | Yes |
+| Flexibility | Limited | High |
+| Overhead | Lower | Slightly higher |
+
+## 12. Important Interview Questions
+
+1. What is `std::unique_lock`?
+2. Why do we use unique_lock?
+3. What is the difference between lock_guard and unique_lock?
+4. What is deferred locking?
+5. What is `std::defer_lock`?
+6. What is the purpose of `try_lock()`?
+7. What does `owns_lock()` do?
+8. Can we manually unlock unique_lock?
+9. What is ownership transfer?
+10. Why is unique_lock more flexible than lock_guard?
+
+## 13. Key Takeaway
+
+`std::unique_lock` is a flexible RAII-based mutex wrapper that supports automatic and manual locking, unlocking, deferred locking and ownership transfer.
+
+**Remember:**
+- `lock_guard` = Simple automatic locking.
+- `unique_lock` = Flexible locking and unlocking.
+
 
 
 
