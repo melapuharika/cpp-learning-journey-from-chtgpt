@@ -275,3 +275,180 @@ In this topic, we learned:
 - Process Memory vs Thread Memory.
 - Multiple Threads in a Process.
 - Advantages of Threads.
+
+
+### topic 3
+
+Topic 3: Creating Threads in C++
+
+1. What is Creating a Thread?
+
+A thread is a separate path of execution within a process.
+
+In C++, we can create threads using the "std::thread" class from the "<thread>" header file.
+
+A function can be passed to a thread, and that function will execute in a separate thread.
+
+2. Required Header File
+
+#include <thread>
+
+The "<thread>" header provides the "std::thread" class.
+
+3. Basic Syntax
+
+std::thread threadName(functionName);
+
+- "std::thread" – Class used to create a thread.
+- "threadName" – Name of the thread object.
+- "functionName" – Function that the thread will execute.
+
+4. Creating a Simple Thread
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void printMessage()
+{
+    cout << "Hello from thread!" << endl;
+}
+
+int main()
+{
+    thread t(printMessage);
+
+    t.join();
+
+    cout << "Hello from main thread!" << endl;
+
+    return 0;
+}
+
+Output
+
+Hello from thread!
+Hello from main thread!
+
+Explanation
+
+1. "#include <iostream>" – Allows us to use "cout".
+2. "#include <thread>" – Allows us to create threads.
+3. "printMessage()" – Function that will execute in a separate thread.
+4. "thread t(printMessage);" – Creates a thread named "t".
+5. "t.join();" – Makes the main thread wait until thread "t" finishes.
+6. The final "cout" statement executes after the created thread completes.
+
+5. Passing Arguments to a Thread
+
+We can also pass arguments to a function when creating a thread.
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void display(int number)
+{
+    cout << "Number: " << number << endl;
+}
+
+int main()
+{
+    thread t(display, 100);
+
+    t.join();
+
+    return 0;
+}
+
+Output
+
+Number: 100
+
+Explanation
+
+- "display" is the function passed to the thread.
+- "100" is the argument passed to the function.
+- The thread executes "display(100)".
+
+6. Main Thread and Created Thread
+
+When a C++ program starts, the "main()" function executes in the main thread.
+
+When we create another thread using "std::thread", it runs separately from the main thread.
+
+Example:
+
+thread t(printMessage);
+
+Here, "t" represents the newly created thread.
+
+7. Compilation
+
+When using GCC, compile a multithreaded C++ program with:
+
+g++ main.cpp -o main -pthread
+
+Run on Linux:
+
+./main
+
+On Windows, the run command and threading support depend on the compiler environment.
+
+8. Important Points
+
+- Use the "<thread>" header to create threads.
+- Use "std::thread" to create a thread object.
+- A function can be passed to a thread.
+- Function arguments can also be passed to a thread.
+- "join()" waits for the thread to finish.
+- A joinable thread must be joined or detached before its thread object is destroyed. Otherwise, the program calls "std::terminate()".
+
+9. Real-Life Example
+
+Consider watching a YouTube video:
+
+- One task plays the video.
+- Another task plays the audio.
+- Another task loads comments.
+
+These tasks can be handled using separate threads.
+
+10. Interview Questions
+
+Q1. Which header file is required to create threads in C++?
+
+Answer: "<thread>"
+
+Q2. What is "std::thread"?
+
+Answer: "std::thread" is a C++ class used to create and manage threads.
+
+Q3. Can we pass arguments to a thread?
+
+Answer: Yes. We can pass arguments after the function name.
+
+Q4. Why do we use "join()"?
+
+Answer: "join()" makes the calling thread wait until the target thread completes its execution.
+
+Q5. What happens if a joinable thread object is destroyed?
+
+Answer: The program calls "std::terminate()".
+
+11. Lesson Summary
+
+In this topic, we learned:
+
+1. How to create a thread in C++.
+2. How to use the "<thread>" header.
+3. How to create threads using "std::thread".
+4. How to pass functions to threads.
+5. How to pass arguments to threads.
+6. How "join()" works.
+
+Next Topic: Topic 4 – "std::thread" in Detail
