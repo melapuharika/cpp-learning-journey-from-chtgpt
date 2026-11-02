@@ -1295,5 +1295,212 @@ In this topic, we learned:
 5. Important rules and risks of detached threads.
 6. Real-life applications and interview questions.
 
+### topic 7
+
+Topic 7: "mutex" in C++
+
+1. What is a Mutex?
+
+"mutex" stands for Mutual Exclusion.
+
+A mutex is a synchronization mechanism in C++ used to protect shared data from simultaneous access by multiple threads.
+
+It allows only one thread at a time to access a protected section of code using the same mutex.
+
+Header file:
+
+#include <mutex>
+
+2. Why Do We Need a Mutex?
+
+Imagine a bank account has a balance of ₹1,000.
+
+Two threads are working at the same time:
+
+- Thread 1 deposits ₹500.
+- Thread 2 withdraws ₹200.
+
+If both threads access and modify the shared balance without proper synchronization, a race condition can occur.
+
+A mutex helps protect the shared data and prevents conflicting simultaneous updates.
+
+3. Mutex Syntax
+
+Creating a Mutex
+
+std::mutex mtx;
+
+Locking a Mutex
+
+mtx.lock();
+
+Unlocking a Mutex
+
+mtx.unlock();
+
+- "lock()" – Acquires the mutex. If another thread owns it, the calling thread waits.
+- "unlock()" – Releases the mutex so another thread can acquire it.
+
+4. Simple Mutex Example
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+int balance = 1000;
+
+mutex mtx;
+
+void deposit()
+{
+    mtx.lock();
+
+    balance += 500;
+
+    cout << "Balance after deposit: "
+         << balance << endl;
+
+    mtx.unlock();
+}
+
+void withdraw()
+{
+    mtx.lock();
+
+    balance -= 200;
+
+    cout << "Balance after withdrawal: "
+         << balance << endl;
+
+    mtx.unlock();
+}
+
+int main()
+{
+    thread t1(deposit);
+    thread t2(withdraw);
+
+    t1.join();
+    t2.join();
+
+    cout << "Final Balance: " << balance << endl;
+
+    return 0;
+}
+
+Possible Output 1
+
+Balance after deposit: 1500
+Balance after withdrawal: 1300
+Final Balance: 1300
+
+Possible Output 2
+
+Balance after withdrawal: 800
+Balance after deposit: 1300
+Final Balance: 1300
+
+Note: The order of execution may change because the operating system schedules the threads.
+
+The final balance is ₹1,300 because both updates are protected by the same mutex.
+
+5. How Does Mutex Work?
+
+1. Thread 1 requests the mutex.
+2. Thread 1 acquires the lock.
+3. Thread 2 tries to acquire the same mutex and waits.
+4. Thread 1 accesses and updates the shared data.
+5. Thread 1 releases the mutex using "unlock()".
+6. Thread 2 can now acquire the mutex and access the shared data.
+
+Only one thread can own a normal mutex at a time.
+
+6. Lock and Unlock
+
+Example:
+
+mtx.lock();
+
+// Critical Section
+
+mtx.unlock();
+
+A critical section is a part of the program where shared data is accessed or modified.
+
+Important: If an exception occurs after "lock()" but before "unlock()", the mutex may remain locked.
+
+To avoid this problem, C++ provides RAII-based tools such as "std::lock_guard", which automatically releases the mutex.
+
+7. Real-Life Example
+
+Imagine a college has only one computer available for students.
+
+- Student 1 uses the computer.
+- Student 2 waits.
+- Student 1 finishes and releases the computer.
+- Student 2 gets a chance to use it.
+
+In this analogy:
+
+- Computer – Shared Resource
+- Students – Threads
+- Lock – Mutex
+
+8. Important Points
+
+- Mutex stands for Mutual Exclusion.
+- "std::mutex" is available in the "<mutex>" header.
+- It is used to protect shared data.
+- "lock()" acquires the mutex.
+- "unlock()" releases the mutex.
+- Only one thread can own a normal mutex at a time.
+- Mutex helps prevent race conditions when shared data is accessed correctly.
+- Always release a manually acquired mutex.
+- Prefer RAII tools such as "lock_guard" for safer mutex management.
+
+9. Interview Questions
+
+Q1. What is a mutex in C++?
+
+Answer: A mutex is a synchronization mechanism used to protect shared data from simultaneous access by multiple threads.
+
+Q2. What does mutex stand for?
+
+Answer: Mutual Exclusion.
+
+Q3. Which header file is required for mutex?
+
+Answer: "<mutex>".
+
+Q4. What is the purpose of "lock()"?
+
+Answer: It acquires the mutex. If another thread owns it, the calling thread waits.
+
+Q5. What is the purpose of "unlock()"?
+
+Answer: It releases the mutex so another thread can acquire it.
+
+Q6. Can multiple threads lock the same normal mutex simultaneously?
+
+Answer: No. Only one thread can own a normal mutex at a time.
+
+Q7. Why should we avoid manual locking and unlocking when possible?
+
+Answer: If an exception or early return occurs before "unlock()", the mutex may remain locked. RAII tools help release it automatically.
+
+10. Lesson Summary
+
+In this topic, we learned:
+
+1. What a mutex is.
+2. Why mutex is required.
+3. How to create a mutex.
+4. How "lock()" and "unlock()" work.
+5. How to protect shared data.
+6. How mutex helps prevent race conditions.
+7. Why automatic mutex management is safer.
+
+
 
 
