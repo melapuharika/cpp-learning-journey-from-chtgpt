@@ -625,6 +625,279 @@ In this topic, we learned:
 5. How to pass arguments to threads.
 6. How "join()" works.
 
-Next Topic: Topic 4 – "std::thread" in Detail
+### topic 4
+
+Topic 4: "std::thread" in Detail
+
+1. What is "std::thread"?
+
+"std::thread" is a class in the C++ Standard Library used to create and manage threads.
+
+It allows a function to execute independently from the main thread.
+
+Header file:
+
+#include <thread>
+
+2. Syntax
+
+std::thread threadObject(functionName, arguments);
+
+Example:
+
+thread t(display, 10);
+
+- "thread" – Class used to create a thread.
+- "t" – Thread object name.
+- "display" – Function to execute.
+- "10" – Argument passed to the function.
+
+3. Creating a Thread
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Thread is running!" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    t.join();
+
+    return 0;
+}
+
+Output
+
+Thread is running!
+
+The statement "thread t(task);" creates a new thread that executes the "task()" function.
+
+4. Creating Multiple Threads
+
+We can create multiple threads in one C++ program.
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task1()
+{
+    cout << "Task 1 is running" << endl;
+}
+
+void task2()
+{
+    cout << "Task 2 is running" << endl;
+}
+
+int main()
+{
+    thread t1(task1);
+    thread t2(task2);
+
+    t1.join();
+    t2.join();
+
+    cout << "Main thread completed" << endl;
+
+    return 0;
+}
+
+Possible Output
+
+Task 1 is running
+Task 2 is running
+Main thread completed
+
+Note: The order of the first two messages is not guaranteed because the operating system schedules the threads.
+
+5. Important Member Functions
+
+Function| Purpose
+"join()"| Waits until the thread finishes
+"detach()"| Allows the thread to continue independently
+"joinable()"| Checks whether the thread object is joinable
+"get_id()"| Returns the thread ID
+"hardware_concurrency()"| Returns an estimate of supported concurrent threads
+
+6. "joinable()" Function
+
+The "joinable()" function checks whether a thread object represents a thread that can still be joined or detached.
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Thread running" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    cout << t.joinable() << endl;
+
+    t.join();
+
+    cout << t.joinable() << endl;
+
+    return 0;
+}
+
+Output
+
+1
+0
+
+Explanation
+
+- "1" means the thread is joinable.
+- "0" means it is no longer joinable after joining or detaching.
+
+7. Thread ID
+
+Every thread has an ID that can be used to identify it.
+
+We can get the current thread ID using:
+
+std::this_thread::get_id()
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void task()
+{
+    cout << "Worker Thread ID: "
+         << this_thread::get_id() << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    cout << "Main Thread ID: "
+         << this_thread::get_id() << endl;
+
+    t.join();
+
+    return 0;
+}
+
+Explanation
+
+- "this_thread::get_id()" returns the ID of the currently executing thread.
+- Actual thread IDs vary between program executions.
+- The order of the two messages may also vary.
+
+8. "hardware_concurrency()"
+
+This function returns an estimate of the number of hardware-supported concurrent threads.
+
+Example
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+int main()
+{
+    unsigned int count =
+        thread::hardware_concurrency();
+
+    cout << "Hardware threads: " << count << endl;
+
+    return 0;
+}
+
+Possible Output
+
+Hardware threads: 8
+
+Note: The returned number depends on the system. It may return "0" if the information is unavailable.
+
+9. Difference Between "std::thread" and "std::this_thread"
+
+"std::thread"| "std::this_thread"
+Used to create and manage thread objects| Provides operations for the currently executing thread
+Example: "thread t(task);"| Example: "this_thread::get_id();"
+Represents a thread object| Refers to the current thread
+
+Both are available through the "<thread>" header.
+
+10. Compilation
+
+Using GCC:
+
+g++ main.cpp -o main -pthread
+
+Run on Linux:
+
+./main
+
+11. Important Points
+
+- "std::thread" is a class in the C++ Standard Library.
+- It is available through the "<thread>" header.
+- We can create multiple threads in one program.
+- Each thread can execute a different function.
+- We can pass arguments to thread functions.
+- "joinable()" checks whether a thread object is joinable.
+- "this_thread::get_id()" returns the current thread ID.
+- "hardware_concurrency()" gives an estimate of hardware-supported concurrent threads.
+- A joinable thread must be joined or detached before its object is destroyed.
+
+12. Interview Questions
+
+Q1. What is "std::thread"?
+
+Answer: It is a C++ Standard Library class used to create and manage threads.
+
+Q2. Which header file is required for "std::thread"?
+
+Answer: "<thread>".
+
+Q3. Can we create multiple threads in one program?
+
+Answer: Yes, we can create multiple thread objects.
+
+Q4. What does "joinable()" check?
+
+Answer: It checks whether a thread object is joinable.
+
+Q5. Which function returns the current thread ID?
+
+Answer: "std::this_thread::get_id()".
+
+Q6. What is "hardware_concurrency()"?
+
+Answer: It returns an estimate of the number of concurrent threads supported by the hardware.
+
+13. Lesson Summary
+
+In this topic, we learned:
+
+1. What "std::thread" is.
+2. How to create thread objects.
+3. How to create multiple threads.
+4. How to use "joinable()".
+5. How to get thread IDs.
+6. How to use "hardware_concurrency()".
+
+
 
 
