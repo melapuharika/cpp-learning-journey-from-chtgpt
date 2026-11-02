@@ -1121,5 +1121,179 @@ In this topic, we learned:
 5. Difference between using and not using "join()".
 6. Important rules and interview questions.
 
+### topic 6
+
+Topic 6: "detach()" in C++
+
+1. What is "detach()"?
+
+"detach()" is a member function of the C++ "std::thread" class.
+
+It separates a thread from its "std::thread" object, allowing the thread to continue executing independently.
+
+In simple words, "detach()" allows a thread to run independently without making the calling thread wait for it.
+
+2. Syntax
+
+threadObject.detach();
+
+Example:
+
+thread t(task);
+t.detach();
+
+3. Simple Example
+
+#include <iostream>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+void task()
+{
+    cout << "Thread started!" << endl;
+
+    this_thread::sleep_for(chrono::seconds(2));
+
+    cout << "Thread completed!" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    t.detach();
+
+    cout << "Main thread completed!" << endl;
+
+    return 0;
+}
+
+Important Note
+
+The main function may finish before the detached thread completes.
+
+When the main process exits, all remaining threads, including detached threads, stop.
+
+Therefore, the message ""Thread completed!"" may not appear.
+
+4. How Does "detach()" Work?
+
+1. "thread t(task);" – Creates a new thread.
+2. "t.detach();" – Separates the thread from its thread object.
+3. The main thread continues its execution.
+4. The detached thread continues independently.
+5. When the process terminates, all remaining threads stop.
+
+Important: "detach()" does not separate the thread from its process. It only removes the association between the thread and its "std::thread" object.
+
+5. Difference Between "join()" and "detach()"
+
+"join()"| "detach()"
+Waits for the target thread to finish| Does not wait for the target thread
+Blocks the calling thread| Allows the calling thread to continue
+Keeps the thread associated with its object until completion| Separates the thread from its object
+Useful when completion must be guaranteed before continuing| Useful for carefully managed background tasks
+
+After either operation, the thread object is no longer joinable.
+
+6. Example Using "join()"
+
+If the main thread must wait until the worker thread completes, use "join()".
+
+#include <iostream>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+void task()
+{
+    this_thread::sleep_for(chrono::seconds(2));
+
+    cout << "Worker completed!" << endl;
+}
+
+int main()
+{
+    thread t(task);
+
+    t.join();
+
+    cout << "Main completed!" << endl;
+
+    return 0;
+}
+
+Output
+
+Worker completed!
+Main completed!
+
+The main thread waits until the worker thread finishes.
+
+7. Important Rules of "detach()"
+
+1. "detach()" can only be called on a joinable thread.
+2. Once detached, the same thread object cannot be used to join that thread.
+3. A detached thread executes independently.
+4. The main thread does not automatically wait for a detached thread.
+5. When the process terminates, remaining detached threads also stop.
+6. Be careful when accessing local variables or objects through references in detached threads. Those objects may be destroyed before the thread finishes.
+7. Exceptions and errors in detached-thread tasks must be handled carefully.
+
+8. Real-Life Example
+
+Imagine starting a file download on a mobile application.
+
+- The download continues in the background.
+- You can use other features of the application.
+- You do not need to wait for the download to finish before continuing.
+
+This is a simple analogy for independent background execution.
+
+Real applications still need proper thread-lifetime and synchronization management.
+
+9. Interview Questions
+
+Q1. What is "detach()" in C++?
+
+Answer: "detach()" separates a thread from its "std::thread" object and allows it to execute independently.
+
+Q2. What is the difference between "join()" and "detach()"?
+
+Answer: "join()" waits for a thread to finish, whereas "detach()" allows it to continue independently without waiting.
+
+Q3. Can we join a detached thread?
+
+Answer: No. After detaching, the thread object is no longer joinable.
+
+Q4. Does "detach()" stop a thread?
+
+Answer: No. It allows the thread to continue independently.
+
+Q5. What happens when the main process exits?
+
+Answer: All remaining threads, including detached threads, stop when the process terminates.
+
+10. Important Points
+
+- "detach()" is a member function of "std::thread".
+- It separates a thread from its thread object.
+- It does not make the thread wait for the main thread.
+- A detached thread continues independently while the process is running.
+- Detached threads require careful lifetime management.
+- Use "join()" when you need to guarantee that a thread has completed.
+
+11. Lesson Summary
+
+In this topic, we learned:
+
+1. What "detach()" is.
+2. Syntax of "detach()".
+3. How detached threads work.
+4. Difference between "join()" and "detach()".
+5. Important rules and risks of detached threads.
+6. Real-life applications and interview questions.
+
 
 
