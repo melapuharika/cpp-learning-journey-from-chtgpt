@@ -2705,3 +2705,148 @@ Mutex:
 11. Interview Definition
 
 An atomic variable in C++ is a variable that supports indivisible operations, allowing multiple threads to access and modify it safely without causing data races on that atomic object.
+
+
+### topic 17
+
+std::atomic in C++
+
+1. Definition
+
+std::atomic is a class template provided by the C++ Standard Library.
+
+It allows variables to perform atomic operations safely in multithreaded programs.
+
+Atomic operations are indivisible operations that cannot be interrupted halfway through by another thread.
+
+Header file:
+#include <atomic>
+
+2. Syntax
+
+std::atomic<int> counter(0);
+
+Explanation:
+- std::atomic: Atomic class template.
+- int: Data type.
+- counter: Variable name.
+- 0: Initial value.
+
+3. Why Do We Need std::atomic?
+
+1. To prevent data races on shared atomic variables.
+2. To perform thread-safe operations.
+3. To safely modify shared variables.
+4. To avoid mutex locking for simple atomic operations.
+5. To improve concurrent programming efficiency.
+
+4. Example Program
+
+#include <iostream>
+#include <thread>
+#include <atomic>
+
+using namespace std;
+
+atomic<int> counter(0);
+
+void increment()
+{
+    for (int i = 0; i < 1000; i++)
+    {
+        counter.fetch_add(1);
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << "Counter: " << counter.load() << endl;
+
+    return 0;
+}
+
+5. Output
+
+Counter: 2000
+
+6. Explanation of the Program
+
+1. #include <atomic>:
+   Includes the atomic library.
+
+2. atomic<int> counter(0):
+   Creates an atomic integer initialized to 0.
+
+3. increment():
+   Increases the counter 1000 times.
+
+4. thread t1(increment):
+   Creates the first thread.
+
+5. thread t2(increment):
+   Creates the second thread.
+
+6. counter.fetch_add(1):
+   Atomically increases the counter by 1.
+
+7. t1.join() and t2.join():
+   Wait for both threads to finish.
+
+8. counter.load():
+   Reads the final counter value atomically.
+
+9. Final result:
+   The counter value is 2000.
+
+7. Important Member Functions
+
+1. load()
+   Reads the current value.
+
+2. store()
+   Stores a new value.
+
+3. exchange()
+   Replaces the current value and returns the old value.
+
+4. fetch_add()
+   Adds a value and returns the old value.
+
+5. fetch_sub()
+   Subtracts a value and returns the old value.
+
+6. compare_exchange_strong()
+   Updates the value if it matches the expected value.
+
+8. Important Points
+
+1. std::atomic is available in the <atomic> header.
+2. It is a class template.
+3. It supports atomic operations.
+4. It helps prevent data races on atomic objects.
+5. It is useful in multithreaded programming.
+6. Atomic operations are not always lock-free.
+7. It does not automatically protect other non-atomic shared variables.
+8. It supports different memory ordering options.
+
+9. Difference Between std::atomic and Mutex
+
+std::atomic:
+1. Protects individual atomic operations.
+2. Useful for simple shared variables.
+3. Does not require manually locking and unlocking a mutex.
+
+Mutex:
+1. Protects critical sections.
+2. Useful for complex operations and multiple shared variables.
+3. Requires locking and unlocking.
+
+10. Interview Definition
+
+std::atomic is a C++ Standard Library class template that provides atomic operations on shared variables, helping multiple threads access and modify atomic objects safely without data races.
