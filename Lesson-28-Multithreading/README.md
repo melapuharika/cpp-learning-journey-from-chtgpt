@@ -3200,3 +3200,97 @@ Result: 300
 10. Interview Definition
 
 std::async is a C++ Standard Library function that allows a callable object to be executed asynchronously and provides its result through a std::future object.
+
+
+### topic 21
+
+
+Thread Pool in C++
+
+1. Definition
+
+A Thread Pool is a collection of reusable worker threads that execute multiple tasks from a shared task queue.
+
+It helps manage threads efficiently and reduces the overhead of creating and destroying threads repeatedly.
+
+2. Why Do We Need Thread Pool?
+
+1. To avoid creating new threads for every task.
+2. To reuse existing worker threads.
+3. To reduce thread creation and destruction overhead.
+4. To manage multiple tasks efficiently.
+5. To improve performance for workloads with many small tasks.
+
+3. Main Components of Thread Pool
+
+1. Worker Threads
+   Threads that execute tasks.
+
+2. Task Queue
+   Stores pending tasks waiting for execution.
+
+3. Mutex
+   Protects the shared task queue from simultaneous unsafe access.
+
+4. Condition Variable
+   Notifies worker threads when tasks are available.
+
+5. Thread Pool
+   Manages worker threads and task execution.
+
+4. How Does Thread Pool Work?
+
+1. The thread pool creates a fixed number of worker threads.
+2. Tasks are submitted to the task queue.
+3. Worker threads wait for available tasks.
+4. A worker thread picks a task from the queue.
+5. The worker thread executes the task.
+6. After completing the task, it picks another task.
+7. During shutdown, worker threads finish and exit safely.
+
+5. Simple Example
+
+Imagine a restaurant with five chefs.
+
+1. Customers place different food orders.
+2. Orders are stored in a queue.
+3. An available chef picks an order.
+4. The chef prepares the food.
+5. After finishing, the chef picks another order.
+6. The restaurant does not need to hire a new chef for every order.
+
+This is similar to how a thread pool works.
+
+6. Advantages of Thread Pool
+
+1. Better resource management.
+2. Reduces thread creation overhead.
+3. Improves task execution efficiency.
+4. Supports concurrent task execution.
+5. Reuses existing threads.
+6. Useful for applications with many tasks.
+
+7. Real-World Applications
+
+1. Web Servers
+2. Database Systems
+3. Game Engines
+4. Background Processing
+5. Image Processing
+6. Network Applications
+
+8. Important Points
+
+1. A thread pool contains reusable worker threads.
+2. Tasks are stored in a shared task queue.
+3. Worker threads execute tasks from the queue.
+4. Mutex protects shared queue data.
+5. Condition variables notify workers when tasks are available.
+6. Thread pools reduce repeated thread creation.
+7. Proper shutdown is important to avoid unfinished tasks and resource leaks.
+8. C++20 does not provide a general-purpose std::thread_pool in its Standard Library.
+9. A thread pool can be implemented using std::thread, std::mutex, std::condition_variable, and a task queue.
+
+9. Interview Definition
+
+A Thread Pool is a collection of reusable worker threads that execute tasks from a shared task queue, reducing thread creation overhead and improving concurrency management.
