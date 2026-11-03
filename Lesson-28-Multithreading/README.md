@@ -3294,3 +3294,171 @@ This is similar to how a thread pool works.
 9. Interview Definition
 
 A Thread Pool is a collection of reusable worker threads that execute tasks from a shared task queue, reducing thread creation overhead and improving concurrency management.
+
+
+### topic 22
+
+
+Lock-Free Programming Basics in C++
+
+1. Definition
+
+Lock-Free Programming is a technique used in multithreaded programming where threads coordinate without using traditional mutex locks.
+
+It commonly uses atomic operations to safely access and modify shared data.
+
+2. Why Do We Need Lock-Free Programming?
+
+1. To reduce mutex locking overhead.
+2. To avoid traditional lock-based deadlocks.
+3. To improve concurrency in suitable situations.
+4. To support efficient communication between threads.
+5. To build high-performance concurrent systems.
+
+3. Important Concepts
+
+1. std::atomic
+   Provides atomic operations on shared variables.
+
+2. CAS (Compare-And-Swap)
+   Checks an expected value and updates it if the value matches.
+
+3. Lock-Free
+   Guarantees that at least one thread makes progress within a finite number of steps.
+
+4. Wait-Free
+   Guarantees that every operation completes within a bounded number of steps.
+
+5. Memory Ordering
+   Controls the ordering and visibility of atomic operations between threads.
+
+6. Mutex
+   A traditional synchronization mechanism that uses locking.
+
+4. Example Using Atomic Operations
+
+#include <iostream>
+#include <thread>
+#include <atomic>
+
+using namespace std;
+
+atomic<int> counter(0);
+
+void increment()
+{
+    for (int i = 0; i < 1000; i++)
+    {
+        counter.fetch_add(1);
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << "Counter: " << counter.load() << endl;
+
+    return 0;
+}
+
+5. Output
+
+Counter: 2000
+
+6. Explanation of the Program
+
+1. #include <atomic>:
+   Includes the atomic library.
+
+2. atomic<int> counter(0):
+   Creates an atomic integer initialized to 0.
+
+3. increment():
+   Increases the counter 1000 times.
+
+4. counter.fetch_add(1):
+   Atomically increases the counter by 1.
+
+5. thread t1(increment):
+   Creates the first thread.
+
+6. thread t2(increment):
+   Creates the second thread.
+
+7. join():
+   Waits for both threads to finish.
+
+8. counter.load():
+   Reads the final counter value.
+
+7. What is CAS?
+
+CAS stands for Compare-And-Swap.
+
+It is an atomic operation that:
+1. Checks whether the current value matches an expected value.
+2. If both values match, updates the current value.
+3. If they do not match, updates the expected value with the current value and fails.
+
+Example:
+
+atomic<int> value(10);
+
+int expected = 10;
+
+value.compare_exchange_strong(expected, 20);
+
+Explanation:
+- Current value = 10.
+- Expected value = 10.
+- New value = 20.
+- Since both values match, the update succeeds.
+
+8. Difference Between Lock-Free and Wait-Free
+
+Lock-Free:
+1. At least one thread makes progress within a finite number of steps.
+2. Some threads may have to retry their operations.
+3. It does not guarantee that every individual thread makes progress.
+
+Wait-Free:
+1. Every operation completes within a bounded number of steps.
+2. No thread needs to wait indefinitely for another thread.
+3. It provides a stronger progress guarantee than lock-free programming.
+
+9. Advantages
+
+1. Reduces traditional mutex locking overhead.
+2. Avoids traditional lock-based deadlocks.
+3. Supports concurrent execution.
+4. Can improve performance in suitable applications.
+5. Useful for high-performance concurrent systems.
+
+10. Important Points
+
+1. Lock-free programming commonly uses std::atomic.
+2. It does not use traditional mutex locks for synchronization.
+3. CAS is an important operation in lock-free algorithms.
+4. Lock-free does not mean wait-free.
+5. Atomic operations are not always lock-free on every platform.
+6. Lock-free programming can be difficult to implement correctly.
+7. Memory ordering is important in advanced lock-free programming.
+8. Lock-free algorithms still require careful memory management.
+
+11. Real-World Applications
+
+1. High-performance servers.
+2. Operating systems.
+3. Game engines.
+4. Concurrent data structures.
+5. Networking systems.
+6. Real-time and low-latency applications.
+
+12. Interview Definition
+
+Lock-Free Programming is a multithreading technique that allows threads to coordinate and access shared data using atomic operations without relying on traditional mutex locks. It guarantees system-wide progress without requiring every individual thread to make progress.
