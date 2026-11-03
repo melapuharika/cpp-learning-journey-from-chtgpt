@@ -1859,5 +1859,92 @@ IMPORTANT POINTS:
 - Lock Guard = Automatically manages locking and unlocking.
 - Critical Section = Protected code accessing shared resources.
 
+### topic 10
+
+
+TOPIC: CRITICAL SECTION
+
+1. Definition
+
+A Critical Section is a part of a program where a thread accesses or modifies shared resources (shared data).
+
+2. Real-Life Example
+
+Imagine a bank account containing ₹1000.
+
+- Thread 1 withdraws ₹500.
+- Thread 2 withdraws ₹300.
+- Both threads access the same account balance.
+
+The code that reads, modifies and updates the account balance is called the Critical Section.
+
+3. Characteristics of Critical Section
+
+1. It accesses shared resources.
+2. It must be protected from unsafe simultaneous access.
+3. It should be properly synchronized.
+4. Mutex and Lock Guard can protect critical sections.
+5. It helps prevent race conditions.
+
+4. C++ Example
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+int counter = 0;
+mutex mtx;
+
+void increment()
+{
+    mtx.lock();
+
+    // Critical Section
+    counter++;
+
+    mtx.unlock();
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << counter;
+
+    return 0;
+}
+
+Output:
+2
+
+5. Important Terms
+
+- Critical Section: Code that accesses shared resources.
+- Mutex: Synchronization mechanism used to protect shared data.
+- Race Condition: Unexpected result due to unsafe concurrent access.
+- Synchronization: Coordinating multiple threads safely.
+
+6. Difference Between Critical Section and Mutex
+
+Critical Section:
+A part of code that accesses shared resources.
+
+Mutex:
+A synchronization mechanism used to protect shared resources.
+
+7. Interview Definition
+
+A Critical Section is a part of a program where shared resources are accessed or modified. It must be properly synchronized to prevent race conditions.
+
+IMPORTANT POINT:
+
+Critical Section = Code
+Mutex = Protection
+Race Condition = Unsafe concurrent access
 
 
