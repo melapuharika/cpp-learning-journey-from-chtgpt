@@ -2561,3 +2561,147 @@ Condition Variable:
  9. Interview Definition
 
 std::condition_variable is a C++ synchronization class that allows threads to wait efficiently until a particular condition becomes true. It works with a mutex and provides notification mechanisms to coordinate thread execution.
+
+
+### topic 16
+
+
+Atomic Variables in C++
+
+1. Definition
+
+An atomic variable is a variable that supports atomic operations.
+
+Atomic operations are indivisible operations that cannot be interrupted halfway through by another thread.
+
+Atomic variables help multiple threads access and modify shared data safely.
+
+Header file:
+#include <atomic>
+
+2. Why Do We Need Atomic Variables?
+
+1. Prevent data races on shared atomic variables.
+2. Allow safe access to shared variables.
+3. Support thread-safe operations.
+4. Avoid using mutexes for simple atomic operations.
+5. Improve efficiency in concurrent programs.
+
+3. Syntax
+
+std::atomic<int> counter(0);
+
+4. Example Program
+
+#include <iostream>
+#include <thread>
+#include <atomic>
+
+using namespace std;
+
+atomic<int> counter(0);
+
+void increment()
+{
+    for (int i = 0; i < 1000; i++)
+    {
+        counter++;
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << "Counter: " << counter << endl;
+
+    return 0;
+}
+
+5. Output
+
+Counter: 2000
+
+6. Explanation of the Program
+
+1. #include <atomic>:
+   Includes the atomic library.
+
+2. atomic<int> counter(0):
+   Creates an atomic integer initialized to 0.
+
+3. increment():
+   Increases the counter 1000 times.
+
+4. thread t1(increment):
+   Creates the first thread.
+
+5. thread t2(increment):
+   Creates the second thread.
+
+6. counter++:
+   Performs an atomic increment operation.
+
+7. t1.join() and t2.join():
+   Wait for both threads to finish.
+
+8. Final result:
+   The counter value is 2000.
+
+7. Important Atomic Operations
+
+1. load()
+   Reads the current value.
+
+2. store()
+   Updates the value.
+
+3. exchange()
+   Replaces the current value and returns the old value.
+
+4. fetch_add()
+   Adds a value and returns the old value.
+
+5. fetch_sub()
+   Subtracts a value and returns the old value.
+
+6. compare_exchange_strong()
+   Updates the value if it matches an expected value.
+
+8. Important Points
+
+1. Atomic variables are provided by the <atomic> header.
+2. Atomic operations are indivisible.
+3. They help prevent data races on atomic objects.
+4. They are useful in multithreaded programming.
+5. Atomic operations are not always lock-free.
+6. Atomic variables do not automatically make all related operations thread-safe.
+7. Complex shared data structures may still require mutexes.
+
+9. Advantages
+
+1. Safe access to shared atomic variables.
+2. Helps prevent data races.
+3. Useful for concurrent programming.
+4. Can avoid mutex locking for simple operations.
+5. Supports efficient concurrent programming.
+
+10. Difference Between Atomic Variables and Mutex
+
+Atomic Variables:
+1. Protect individual atomic operations.
+2. Useful for simple shared data.
+3. Do not require manually locking and unlocking a mutex.
+
+Mutex:
+1. Protects critical sections.
+2. Useful for complex operations and multiple shared variables.
+3. Requires locking and unlocking.
+
+11. Interview Definition
+
+An atomic variable in C++ is a variable that supports indivisible operations, allowing multiple threads to access and modify it safely without causing data races on that atomic object.
