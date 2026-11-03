@@ -2116,4 +2116,64 @@ IMPORTANT POINTS:
 - Deadlock = Threads waiting forever.
 - Scoped Lock = Safely locks multiple mutexes.
 
+### topic 12
 
+
+TOPIC: STARVATION
+
+1. Definition
+
+Starvation is a situation where a thread waits for a long time or indefinitely because other threads continuously get access to the required resources.
+
+2. Real-Life Example
+
+Imagine a hospital with three patients.
+
+- Patient 1 has high priority.
+- Patient 2 has high priority.
+- Patient 3 has low priority.
+- High-priority patients continuously arrive.
+- Patient 3 keeps waiting and never gets treatment.
+
+This situation is called Starvation.
+
+3. Causes of Starvation
+
+1. Priority Scheduling.
+2. Unfair Resource Allocation.
+3. Continuous Access by Other Threads.
+4. Unfair Locking Mechanisms.
+5. Lack of Proper Scheduling.
+
+4. How to Prevent Starvation?
+
+1. Use Fair Scheduling.
+2. Avoid unnecessary thread priorities.
+3. Use FIFO-based resource allocation.
+4. Ensure every thread gets a chance.
+5. Use proper synchronization mechanisms.
+
+5. Important Terms
+
+- Starvation: A thread waits indefinitely or excessively for resources.
+- Fair Scheduling: Giving threads a fair chance to execute.
+- Resource Allocation: Assigning resources to threads.
+- Thread Priority: Importance assigned to a thread.
+
+6. Difference Between Deadlock and Starvation
+
+Deadlock:
+Two or more threads wait indefinitely for resources held by each other.
+
+Starvation:
+A thread waits for a long time because other threads continuously get the required resources.
+
+7. Interview Definition
+
+Starvation is a situation in multithreaded programming where a thread waits indefinitely or for an excessively long time because other threads continuously get access to the required resources.
+
+IMPORTANT POINTS:
+
+- Deadlock = Threads waiting for each other.
+- Starvation = A thread does not get a chance.
+- Fair Scheduling = Helps prevent starvation.
