@@ -1666,6 +1666,198 @@ Here, `std::defer_lock` tells the constructor not to lock the mutex immediately.
 - `lock_guard` = Simple automatic locking.
 - `unique_lock` = Flexible locking and unlocking.
 
+### topic 9
+
+
+LESSON 28 – RACE CONDITION
+
+1. Definition
+
+A Race Condition occurs when two or more threads access and modify the same shared data concurrently, and the final result depends on the timing or order of their execution.
+
+2. Shared Data
+
+Shared Data is data that can be accessed by multiple threads.
+
+Examples:
+- Global variables
+- Shared counters
+- Bank account balance
+
+3. Real-Life Example
+
+Imagine a bank account has ₹1000.
+
+- Thread 1 withdraws ₹500.
+- Thread 2 withdraws ₹500.
+- Both threads read the balance as ₹1000.
+- Both subtract ₹500.
+- Both write ₹500.
+
+Expected Balance: ₹0
+Actual Balance: ₹500
+
+This is an example of Race Condition.
+
+4. C++ Example Without Mutex
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+int counter = 0;
+
+void increment()
+{
+    for(int i = 0; i < 100000; i++)
+    {
+        counter++;
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << counter;
+
+    return 0;
+}
+
+Expected Output: 200000
+
+Actual output may be incorrect due to Race Condition.
+In C++, this program has a data race and therefore undefined behavior.
+
+5. How to Prevent Race Conditions?
+
+Race Conditions can be prevented using synchronization mechanisms.
+
+Methods:
+- Mutex
+- Lock Guard
+- Unique Lock
+- Scoped Lock
+- Atomic Variables
+
+6. Preventing Race Condition Using Mutex
+
+A Mutex (Mutual Exclusion) allows only one thread at a time to access a protected critical section.
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+int counter = 0;
+mutex mtx;
+
+void increment()
+{
+    for(int i = 0; i < 100000; i++)
+    {
+        mtx.lock();
+
+        counter++;
+
+        mtx.unlock();
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << counter;
+
+    return 0;
+}
+
+Output: 200000
+
+7. Preventing Race Condition Using Lock Guard
+
+lock_guard automatically locks the mutex when entering its scope and unlocks it when leaving its scope.
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+int counter = 0;
+mutex mtx;
+
+void increment()
+{
+    for(int i = 0; i < 100000; i++)
+    {
+        lock_guard<mutex> lock(mtx);
+
+        counter++;
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << counter;
+
+    return 0;
+}
+
+Output: 200000
+
+8. Important Terms
+
+Race Condition:
+Unexpected result due to concurrent access to shared data.
+
+Thread:
+A unit of execution within a process.
+
+Shared Data:
+Data accessed by multiple threads.
+
+Mutex:
+A synchronization mechanism used to protect shared data.
+
+Critical Section:
+Part of a program where shared resources are accessed.
+
+Synchronization:
+Coordinating multiple threads to execute safely.
+
+9. Advantages of Preventing Race Conditions
+
+1. Ensures data consistency.
+2. Prevents unexpected results.
+3. Protects shared resources.
+4. Makes multithreaded programs reliable.
+5. Avoids data corruption.
+
+10. Interview Definition
+
+A Race Condition is a situation in multithreaded programming where multiple threads access shared data concurrently, and the final result depends on the timing or order of execution.
+
+IMPORTANT POINTS:
+
+- Race Condition = Unsafe concurrent access.
+- Mutex = Protects shared data.
+- Lock Guard = Automatically manages locking and unlocking.
+- Critical Section = Protected code accessing shared resources.
 
 
 
