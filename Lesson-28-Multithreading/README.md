@@ -2850,3 +2850,111 @@ Mutex:
 10. Interview Definition
 
 std::atomic is a C++ Standard Library class template that provides atomic operations on shared variables, helping multiple threads access and modify atomic objects safely without data races.
+
+### topic 18
+
+
+Futures in C++
+
+1. Definition
+
+A future in C++ is a synchronization object that provides access to a value or exception that may become available later.
+
+It is commonly used to receive results from asynchronous tasks.
+
+Header file:
+#include <future>
+
+2. Why Do We Need Futures?
+
+1. To receive results from asynchronous tasks.
+2. To communicate results between threads.
+3. To avoid manually sharing result variables.
+4. To wait for task completion when needed.
+5. To handle exceptions from asynchronous tasks.
+
+3. Important Components
+
+1. std::future
+   Receives a result that becomes available in the future.
+
+2. std::promise
+   Provides a value or exception to a future.
+
+3. std::async
+   Runs a function asynchronously.
+
+4. std::shared_future
+   Allows multiple consumers to access the same result.
+
+4. Syntax
+
+std::future<int> result;
+
+5. Example Program Using std::async
+
+#include <iostream>
+#include <future>
+
+using namespace std;
+
+int calculate()
+{
+    return 100 + 200;
+}
+
+int main()
+{
+    future<int> result = async(launch::async, calculate);
+
+    cout << "Result: " << result.get() << endl;
+
+    return 0;
+}
+
+6. Output
+
+Result: 300
+
+7. Explanation of the Program
+
+1. #include <future>:
+   Includes the future library.
+
+2. calculate():
+   Performs a calculation and returns 300.
+
+3. async(launch::async, calculate):
+   Starts the function asynchronously.
+
+4. future<int> result:
+   Stores the future result.
+
+5. result.get():
+   Waits if necessary and retrieves the result.
+
+6. cout:
+   Displays the result.
+
+8. Important Points
+
+1. Futures are available through the <future> header.
+2. std::future provides access to a result that may become available later.
+3. get() waits until the result is ready.
+4. A std::future can call get() only once.
+5. std::async can execute a task asynchronously.
+6. Futures can also transfer exceptions from tasks.
+7. std::shared_future allows multiple calls to get() by multiple consumers.
+8. Futures are useful in concurrent programming.
+
+9. Advantages
+
+1. Helps receive results from asynchronous tasks.
+2. Simplifies communication between threads.
+3. Avoids manually sharing result variables.
+4. Supports exception handling.
+5. Makes concurrent programming easier.
+
+10. Interview Definition
+
+A future in C++ is a synchronization object that provides access to a value or exception that may become available later, usually as the result of an asynchronous operation.
