@@ -2177,3 +2177,101 @@ IMPORTANT POINTS:
 - Deadlock = Threads waiting for each other.
 - Starvation = A thread does not get a chance.
 - Fair Scheduling = Helps prevent starvation.
+
+
+### topic 13
+
+
+TOPIC: THREAD SYNCHRONIZATION
+
+1. Definition
+
+Thread Synchronization is a technique used to coordinate multiple threads so that they can access shared resources safely without causing conflicts.
+
+2. Real-Life Example
+
+Imagine two students using one computer.
+
+- Student 1 uses the computer first.
+- Student 1 finishes and releases the computer.
+- Student 2 gets a chance to use it.
+
+This is an example of controlled resource access through synchronization.
+
+3. Why Do We Need Thread Synchronization?
+
+1. Prevents Race Conditions.
+2. Protects Shared Data.
+3. Controls Access to Shared Resources.
+4. Avoids Unexpected Results.
+5. Improves Program Reliability.
+
+4. Types of Thread Synchronization in C++
+
+1. Mutex
+2. Lock Guard
+3. Unique Lock
+4. Scoped Lock
+5. Atomic Variables
+6. Condition Variables
+7. Semaphores
+
+5. C++ Example Using Mutex
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+int counter = 0;
+mutex mtx;
+
+void increment()
+{
+    for(int i = 0; i < 1000; i++)
+    {
+        lock_guard<mutex> lock(mtx);
+
+        counter++;
+    }
+}
+
+int main()
+{
+    thread t1(increment);
+    thread t2(increment);
+
+    t1.join();
+    t2.join();
+
+    cout << counter;
+
+    return 0;
+}
+
+Output:
+2000
+
+6. Important Concepts
+
+- Mutual Exclusion: Only one thread accesses a protected critical section at a time.
+- Race Condition: Unexpected result due to unsafe concurrent access.
+- Critical Section: Part of code accessing shared resources.
+- Deadlock: Threads waiting indefinitely for each other.
+- Starvation: A thread waits excessively for resources.
+
+7. Advantages of Thread Synchronization
+
+1. Ensures Data Consistency.
+2. Prevents Race Conditions.
+3. Protects Shared Resources.
+4. Improves Program Reliability.
+5. Coordinates Multiple Threads Safely.
+
+8. Interview Definition
+
+Thread Synchronization is a technique used in multithreaded programming to coordinate multiple threads and ensure safe access to shared resources.
+
+IMPORTANT POINT:
+
+Thread Synchronization = Safe Coordination of Multiple Threads.
