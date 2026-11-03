@@ -3091,3 +3091,112 @@ Future:
 10. Interview Definition
 
 std::promise is a C++ synchronization object used to provide a value or exception to an associated std::future, enabling communication between threads.
+
+### topic 20
+
+
+Async in C++
+
+1. Definition
+
+std::async is a function provided by the C++ Standard Library.
+
+It is used to execute a function asynchronously and obtain its result through a std::future object.
+
+Header file:
+#include <future>
+
+2. Why Do We Need std::async?
+
+1. To execute functions asynchronously.
+2. To perform multiple tasks concurrently.
+3. To receive results from background tasks.
+4. To improve program responsiveness.
+5. To simplify multithreaded programming.
+
+3. Syntax
+
+std::future<int> result =
+    std::async(std::launch::async, functionName);
+
+4. Launch Policies
+
+1. std::launch::async
+   Requests the function to execute asynchronously.
+
+2. std::launch::deferred
+   Delays function execution until the result is requested.
+
+3. Default Policy
+   Allows the implementation to choose between asynchronous and deferred execution.
+
+5. Example Program
+
+#include <iostream>
+#include <future>
+
+using namespace std;
+
+int calculate()
+{
+    return 100 + 200;
+}
+
+int main()
+{
+    future<int> result = async(launch::async, calculate);
+
+    cout << "Main thread is working!" << endl;
+
+    cout << "Result: " << result.get() << endl;
+
+    return 0;
+}
+
+6. Output
+
+Main thread is working!
+Result: 300
+
+7. Explanation of the Program
+
+1. #include <future>:
+   Includes the future library.
+
+2. calculate():
+   Performs a calculation and returns 300.
+
+3. async(launch::async, calculate):
+   Requests asynchronous execution of the function.
+
+4. future<int> result:
+   Stores the future result.
+
+5. Main thread:
+   Continues its execution while the asynchronous task runs.
+
+6. result.get():
+   Waits if necessary and retrieves the result.
+
+8. Important Points
+
+1. std::async belongs to the <future> header.
+2. It is used to execute functions asynchronously.
+3. It returns a std::future object.
+4. get() retrieves the result and waits if necessary.
+5. std::launch::async requests asynchronous execution.
+6. std::launch::deferred delays execution until the result is requested.
+7. Exceptions from the function can be rethrown when get() is called.
+8. The future returned by async may wait for its associated task to finish when destroyed, depending on the execution policy and shared state.
+
+9. Advantages
+
+1. Simplifies asynchronous programming.
+2. Helps execute independent tasks concurrently.
+3. Provides an easy way to retrieve task results.
+4. Supports exception handling.
+5. Reduces the need to manage threads manually.
+
+10. Interview Definition
+
+std::async is a C++ Standard Library function that allows a callable object to be executed asynchronously and provides its result through a std::future object.
