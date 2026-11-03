@@ -1947,4 +1947,173 @@ Critical Section = Code
 Mutex = Protection
 Race Condition = Unsafe concurrent access
 
+### topic 11
+
+
+TOPIC: DEADLOCK
+
+1. Definition
+
+A Deadlock is a situation where two or more threads wait indefinitely for resources held by each other, and none of them can continue execution.
+
+2. Real-Life Example
+
+Imagine two friends writing an exam.
+
+- Friend 1 has a Pen but needs a Book.
+- Friend 2 has a Book but needs a Pen.
+- Friend 1 waits for the Book.
+- Friend 2 waits for the Pen.
+- Neither friend releases their resource.
+
+This situation is called Deadlock.
+
+3. C++ Example of Deadlock
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+mutex m1, m2;
+
+void thread1()
+{
+    m1.lock();
+    m2.lock();
+
+    cout << "Thread 1 running\n";
+
+    m2.unlock();
+    m1.unlock();
+}
+
+void thread2()
+{
+    m2.lock();
+    m1.lock();
+
+    cout << "Thread 2 running\n";
+
+    m1.unlock();
+    m2.unlock();
+}
+
+int main()
+{
+    thread t1(thread1);
+    thread t2(thread2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
+
+Explanation:
+
+1. Thread 1 locks m1.
+2. Thread 2 locks m2.
+3. Thread 1 waits for m2.
+4. Thread 2 waits for m1.
+5. Both threads wait indefinitely.
+
+This creates a Deadlock.
+
+Note: Deadlock depends on execution timing. It is a possible outcome of this program.
+
+4. Four Necessary Conditions for Deadlock
+
+Deadlock can occur when all four conditions exist together.
+
+1. Mutual Exclusion:
+Only one thread can use a resource at a time.
+
+2. Hold and Wait:
+A thread holds one resource while waiting for another resource.
+
+3. No Preemption:
+Resources cannot be forcibly taken away from a thread.
+
+4. Circular Wait:
+Two or more threads wait for resources held by each other in a circular order.
+
+5. How to Prevent Deadlock?
+
+1. Always acquire mutexes in the same order.
+2. Use std::lock() to lock multiple mutexes safely.
+3. Use std::scoped_lock for multiple mutexes.
+4. Avoid unnecessary locking.
+5. Release locks properly.
+
+6. C++ Example Using Scoped Lock
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+
+mutex m1, m2;
+
+void thread1()
+{
+    scoped_lock lock(m1, m2);
+
+    cout << "Thread 1 running\n";
+}
+
+void thread2()
+{
+    scoped_lock lock(m1, m2);
+
+    cout << "Thread 2 running\n";
+}
+
+int main()
+{
+    thread t1(thread1);
+    thread t2(thread2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
+
+Output:
+
+Thread 1 running
+Thread 2 running
+
+The order of output may vary.
+
+7. Important Terms
+
+- Deadlock: Threads waiting indefinitely for each other.
+- Mutex: Synchronization mechanism used to protect shared resources.
+- Mutual Exclusion: Only one thread can access a resource at a time.
+- Hold and Wait: Holding one resource while waiting for another.
+- No Preemption: Resources cannot be forcibly taken away.
+- Circular Wait: Threads waiting for each other's resources.
+
+8. Interview Definition
+
+A Deadlock is a situation in multithreaded programming where two or more threads wait indefinitely for resources held by each other, preventing further execution.
+
+9. Difference Between Race Condition and Deadlock
+
+Race Condition:
+Multiple threads access shared data unsafely, causing unexpected results.
+
+Deadlock:
+Multiple threads wait indefinitely for resources held by each other.
+
+IMPORTANT POINTS:
+
+- Race Condition = Unexpected results.
+- Critical Section = Code accessing shared resources.
+- Mutex = Protects shared resources.
+- Deadlock = Threads waiting forever.
+- Scoped Lock = Safely locks multiple mutexes.
+
 
