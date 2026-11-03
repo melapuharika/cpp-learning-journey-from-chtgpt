@@ -2275,3 +2275,144 @@ Thread Synchronization is a technique used in multithreaded programming to coord
 IMPORTANT POINT:
 
 Thread Synchronization = Safe Coordination of Multiple Threads.
+
+
+### topic 14
+
+
+Condition Variables in C++
+1. Definition
+A condition variable is a synchronization mechanism in C++ that allows one or more threads to wait until a particular condition becomes true.
+
+It is used to coordinate communication between threads.
+
+Header file:
+#include <condition_variable>
+
+2. Why Do We Need Condition Variables?
+
+Condition variables are used to:
+1. Make threads wait until a condition is satisfied.
+2. Avoid unnecessary continuous checking (busy waiting).
+3. Coordinate communication between threads.
+4. Improve CPU efficiency.
+5. Synchronize multiple threads.
+
+ 3. Important Functions
+
+1. wait()
+   - Makes a thread wait until it receives a notification.
+   - Releases the mutex while waiting.
+   - Locks the mutex again before returning.
+
+2. notify_one()
+   - Wakes up one waiting thread.
+
+3. notify_all()
+   - Wakes up all waiting threads.
+
+4. wait_for()
+   - Waits for a specified duration.
+
+5. wait_until()
+   - Waits until a specified time.
+
+4. How Condition Variables Work
+
+1. A thread locks a mutex.
+2. It checks whether the required condition is true.
+3. If the condition is false, the thread waits.
+4. While waiting, it temporarily releases the mutex.
+5. Another thread changes the shared condition.
+6. The other thread sends a notification.
+7. The waiting thread wakes up and checks the condition again.
+8. If the condition is true, it continues execution.
+
+ 5. Example Program
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+using namespace std;
+
+mutex mtx;
+condition_variable cv;
+
+bool ready = false;
+
+void worker()
+{
+    unique_lock<mutex> lock(mtx);
+
+    cv.wait(lock, [] {
+        return ready;
+    });
+
+    cout << "Worker thread is working!" << endl;
+}
+
+int main()
+{
+    thread t(worker);
+
+    {
+        lock_guard<mutex> lock(mtx);
+        ready = true;
+    }
+
+    cv.notify_one();
+
+    t.join();
+
+    return 0;
+}
+
+6. Explanation of the Program
+
+1. mutex mtx:
+   Creates a mutex to protect shared data.
+
+2. condition_variable cv:
+   Creates a condition variable.
+
+3. bool ready = false:
+   Stores the condition's initial state.
+
+4. unique_lock<mutex> lock(mtx):
+   Locks the mutex.
+
+5. cv.wait(lock, [] { return ready; }):
+   Makes the worker thread wait until ready becomes true.
+
+6. ready = true:
+   The main thread changes the condition.
+
+7. cv.notify_one():
+   Wakes up one waiting thread.
+
+8. t.join():
+   Waits for the worker thread to finish.
+
+7. Important Points
+
+- Condition variables are generally used with mutexes.
+- They help threads communicate with each other.
+- wait() releases the mutex while waiting.
+- The mutex is locked again before wait() returns.
+- notify_one() wakes one waiting thread.
+- notify_all() wakes all waiting threads.
+- Always protect shared condition data using the same mutex.
+- Use the predicate version of wait() to handle spurious wakeups.
+
+ 8. Advantages
+
+1. Prevents unnecessary CPU usage caused by busy waiting.
+2. Improves thread coordination.
+3. Helps synchronize multiple threads.
+4. Makes concurrent programs more efficient.
+
+9. Interview Definition
+
+A condition variable is a synchronization tool in C++ that allows threads to wait until a specific condition becomes true. It works together with a mutex to coordinate thread execution efficiently.
