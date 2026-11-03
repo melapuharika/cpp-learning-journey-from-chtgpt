@@ -2958,3 +2958,136 @@ Result: 300
 10. Interview Definition
 
 A future in C++ is a synchronization object that provides access to a value or exception that may become available later, usually as the result of an asynchronous operation.
+
+
+### topic 19
+
+
+Promises in C++
+
+1. Definition
+
+std::promise is a synchronization object provided by the C++ Standard Library.
+
+It is used to provide a value or exception to an associated std::future.
+
+It helps transfer results from one thread to another.
+
+Header file:
+#include <future>
+
+2. Why Do We Need Promises?
+
+1. To send results between threads.
+2. To communicate values between threads.
+3. To transfer exceptions between threads.
+4. To coordinate asynchronous operations.
+5. To provide results to future objects.
+
+3. Syntax
+
+std::promise<int> p;
+
+std::future<int> f = p.get_future();
+
+4. Example Program
+
+#include <iostream>
+#include <thread>
+#include <future>
+
+using namespace std;
+
+void worker(promise<int> p)
+{
+    int result = 100 + 200;
+    p.set_value(result);
+}
+
+int main()
+{
+    promise<int> p;
+
+    future<int> f = p.get_future();
+
+    thread t(worker, move(p));
+
+    cout << "Result: " << f.get() << endl;
+
+    t.join();
+
+    return 0;
+}
+
+5. Output
+
+Result: 300
+
+6. Explanation of the Program
+
+1. promise<int> p:
+   Creates a promise object.
+
+2. p.get_future():
+   Creates a future associated with the promise.
+
+3. worker():
+   Performs the calculation.
+
+4. p.set_value(result):
+   Sends the calculated result to the associated future.
+
+5. f.get():
+   Waits for the result and retrieves it.
+
+6. move(p):
+   Transfers ownership of the promise to the worker thread.
+
+7. t.join():
+   Waits for the worker thread to finish.
+
+7. Important Member Functions
+
+1. get_future()
+   Gets the associated future object.
+
+2. set_value()
+   Sets the result value.
+
+3. set_exception()
+   Sends an exception to the associated future.
+
+4. set_value_at_thread_exit()
+   Makes the result available when the thread exits.
+
+5. set_exception_at_thread_exit()
+   Makes an exception available when the thread exits.
+
+8. Important Points
+
+1. std::promise belongs to the <future> header.
+2. It is used to provide a value to a future.
+3. A promise and its associated future share a result state.
+4. set_value() makes the result available.
+5. future.get() waits for the result if necessary.
+6. A promise can set its result only once.
+7. A promise can also transfer exceptions.
+8. std::promise is useful for communication between threads.
+
+9. Difference Between Promise and Future
+
+Promise:
+1. Provides a result.
+2. Uses set_value().
+3. Works on the producer side.
+4. Sends a value or exception.
+
+Future:
+1. Receives a result.
+2. Uses get().
+3. Works on the consumer side.
+4. Retrieves a value or exception.
+
+10. Interview Definition
+
+std::promise is a C++ synchronization object used to provide a value or exception to an associated std::future, enabling communication between threads.
